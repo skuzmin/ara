@@ -20,5 +20,18 @@ namespace ARA
         {
             InitializeComponent();
         }
-    }
+
+		private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		{
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+		}
+
+        private void Window_CloseAppClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+		}
+	}
 }

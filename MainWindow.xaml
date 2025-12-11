@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ARA"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="[ARA] Arc Raiders Assistant" 
+        Height="480" 
+        Width="640"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Topmost="True"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
-
+		<Button Background="AliceBlue" Height="100px" Width="200px" BorderThickness="2px" BorderBrush="Aqua" FontSize="24" FontWeight="Bold" Click="Window_CloseAppClick">Close</Button>
     </Grid>
 </Window>

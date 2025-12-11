@@ -1,7 +1,94 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+﻿# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
 
-/.vs
-/obj
-/bin
+# Visual Studio cache/options directory
+.vs/
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# Visual Studio cache directory
+.vs/
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# VS Code dir
+.vscode/
+
+# macOS
+.DS_Store
+
+# Node modules
+node_modules/
+
+# npm
+npm-debug.log
+yarn-error.log
+
+# IDE
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+
+# Build
+obj/
+bin/
+
+# Test Results
+TestResults/
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+
+# Entity Framework
+*.edmx.diagram
+
+# Rider
+.idea/
+
+# Visual Studio
+.vscode/
+.vs/
+
+# Application Data
+AppData/
