@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ARA"
+		xmlns:controls="clr-namespace:ARA.Controls"
         mc:Ignorable="d"
         Title="[ARA] Arc Raiders Assistant" 
         Height="480" 
@@ -11,10 +12,29 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         Topmost="True"
-        AllowsTransparency="True"
         WindowStyle="None"
         MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
-		<Button Background="AliceBlue" Height="100px" Width="200px" BorderThickness="2px" BorderBrush="Aqua" FontSize="24" FontWeight="Bold" Click="Window_CloseAppClick">Close</Button>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="24"/>
+		</Grid.RowDefinitions>
+        <!-- Title bar -->
+		<Border BorderBrush="Gray" BorderThickness="0,0,0,2">
+			<Grid VerticalAlignment="Center" Background="Gray">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+					<Image Source="/Assets/app.ico" Height="16" Width="16" Margin="8, 0"/>
+					<TextBlock Text="[ARA] Arc Raiders Assistant" VerticalAlignment="Center" Foreground="Black" />
+				</StackPanel>
+				<StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+					<controls:AraButton Background="Transparent" Foreground="White" HoverBackground="DarkGray" Padding="8,4" Content="🗕" Click="Window_MinAppClick"/>
+					<controls:AraButton Background="Transparent" Foreground="White" HoverBackground="DarkRed" Padding="8,4" Content="✕" Click="Window_CloseAppClick"/>
+				</StackPanel>
+			</Grid>
+		</Border>
     </Grid>
 </Window>

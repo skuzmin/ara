@@ -16,10 +16,10 @@ namespace ARA
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+		public MainWindow()
         {
             InitializeComponent();
-        }
+		}
 
 		private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 		{
@@ -33,5 +33,11 @@ namespace ARA
         {
             Close();
 		}
-	}
+
+        private void Window_MinAppClick(object sender, RoutedEventArgs e)
+        {
+			WindowState = WindowState.Minimized;
+			ShowInTaskbar = false;
+		}
+    }
 }
