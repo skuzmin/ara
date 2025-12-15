@@ -6,21 +6,6 @@ namespace ARA.Controls
 {
 	public class AraButton : Button
 	{
-		static AraButton()
-		{
-			DefaultStyleKeyProperty.OverrideMetadata(
-				typeof(AraButton),
-				new FrameworkPropertyMetadata(typeof(AraButton)));
-
-			PaddingProperty.OverrideMetadata(
-				typeof(AraButton),
-				new FrameworkPropertyMetadata(new Thickness(12, 4, 12, 4)));
-
-			MarginProperty.OverrideMetadata(
-				typeof(AraButton),
-				new FrameworkPropertyMetadata(new Thickness(0)));
-		}
-
 		public static readonly DependencyProperty HoverBackgroundProperty =
 			DependencyProperty.Register(
 				nameof(HoverBackground),
@@ -32,6 +17,12 @@ namespace ARA.Controls
 		{
 			get => (Brush)GetValue(HoverBackgroundProperty);
 			set => SetValue(HoverBackgroundProperty, value);
+		}
+
+		static AraButton()
+		{
+			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraButton),
+				new FrameworkPropertyMetadata(typeof(AraButton)));
 		}
 	}
 }

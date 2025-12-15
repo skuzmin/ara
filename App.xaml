@@ -6,9 +6,9 @@
              StartupUri="MainWindow.xaml">
 	<Application.Resources>
 		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
+			<!--<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="Styles.xaml" />
-			</ResourceDictionary.MergedDictionaries>
+			</ResourceDictionary.MergedDictionaries>-->
 			<tb:TaskbarIcon x:Key="TrayIcon" 
 				IconSource="/Assets/app.ico"
 				ToolTipText="ARA" />

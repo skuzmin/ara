@@ -17,21 +17,21 @@
     <Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="24"/>
+			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
         <!-- Title bar -->
-		<Grid VerticalAlignment="Center" Background="Gray">
+		<Grid Grid.Row="0" Background="Gray">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="Auto"/>
 			</Grid.ColumnDefinitions>
 			<StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
 				<Image Source="/Assets/app.ico" Height="16" Width="16" Margin="8, 0"/>
 				<TextBlock Text="[ARA] Arc Raiders Assistant" VerticalAlignment="Center" Foreground="Black" />
 			</StackPanel>
 			<StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-				<controls:AraButton Background="Transparent" Foreground="White" HoverBackground="DarkGray" Padding="8,4" Content="🗕" Click="Window_MinAppClick"/>
-				<controls:AraButton Background="Transparent" Foreground="White" HoverBackground="DarkRed" Padding="8,4" Content="✕" Click="Window_CloseAppClick"/>
+				<controls:AraButton HoverBackground="DarkGray" Content="🗕" Click="Window_MinAppClick"/>
+				<controls:AraButton HoverBackground="DarkRed" Content="✕" Click="Window_CloseAppClick"/>
 			</StackPanel>
 		</Grid>
 	</Grid>
