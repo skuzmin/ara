@@ -1,43 +1,13 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace ARA
+﻿namespace ARA
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    public partial class MainWindow : AraWindow
+	{
 		public MainWindow()
-        {
-            InitializeComponent();
-		}
-
-		private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 		{
-            if(e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
+			InitializeComponent();
 		}
-
-        private void Window_CloseAppClick(object sender, RoutedEventArgs e)
-        {
-            Close();
-		}
-
-        private void Window_MinAppClick(object sender, RoutedEventArgs e)
-        {
-			WindowState = WindowState.Minimized;
-			ShowInTaskbar = false;
-		}
-    }
+	}
 }
