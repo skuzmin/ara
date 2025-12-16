@@ -15,7 +15,7 @@
 				<ControlTemplate TargetType="{x:Type local:AraWindow}">
 					<Grid>
 						<Grid.RowDefinitions>
-							<RowDefinition Height="24"/>
+							<RowDefinition Height="32"/>
 							<RowDefinition Height="*"/>
 						</Grid.RowDefinitions>
 						<controls:TitleBarUserControl Grid.Row="0"/>
@@ -31,7 +31,6 @@
 		<Setter Property="Background" Value="Transparent"/>
 		<Setter Property="Foreground" Value="White"/>
 		<Setter Property="BorderThickness" Value="0"/>
-		<Setter Property="Padding" Value="8, 4" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:AraButton}">
