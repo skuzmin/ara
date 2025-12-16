@@ -1,20 +1,11 @@
-﻿using System.ComponentModel;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace ARA.ViewModels
 {
-	public abstract class ViewModelBase : INotifyPropertyChanged
-	{
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		protected void OnPropertyChanged(string propertyName) =>
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-	}
-
 	public class MainViewModel : ViewModelBase
 	{
-		private object _currentPage;
-		public object CurrentPage
+		private ViewModelBase? _currentPage;
+		public ViewModelBase? CurrentPage
 		{
 			get => _currentPage;
 			set
@@ -33,18 +24,5 @@ namespace ARA.ViewModels
 			ShowSettingsCommand = new RelayCommand(_ => CurrentPage = new SettingsViewModel());
 			CurrentPage = new HomeViewModel();
 		}
-	}
-
-	public class RelayCommand : ICommand
-	{
-		private readonly Action<object> _execute;
-
-		public RelayCommand(Action<object> execute) => _execute = execute;
-
-		public bool CanExecute(object parameter) => true;
-
-		public void Execute(object parameter) => _execute(parameter);
-
-		public event EventHandler CanExecuteChanged;
 	}
 }

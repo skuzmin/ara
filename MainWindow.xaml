@@ -6,6 +6,7 @@
 			 xmlns:views="clr-namespace:ARA.Views"
 			 xmlns:viewmodels="clr-namespace:ARA.ViewModels"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}" mc:Ignorable="d" x:Class="ARA.MainWindow"
+			 WindowStartupLocation="CenterScreen"
              Title="[ARA] Arc Raiders Assistant" d:DesignHeight="480" d:DesignWidth="640">
 	<local:AraWindow.Resources>
 		<DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
