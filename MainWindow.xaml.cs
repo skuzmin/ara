@@ -1,4 +1,4 @@
-﻿using ARA.ViewModels;
+﻿using ARA.ViewModels.Shell;
 
 namespace ARA
 {

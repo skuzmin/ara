@@ -4,8 +4,9 @@
              xmlns:local="clr-namespace:ARA"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:views="clr-namespace:ARA.Views"
-			 xmlns:viewmodels="clr-namespace:ARA.ViewModels"
-			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}" mc:Ignorable="d" x:Class="ARA.MainWindow"
+			 xmlns:shell="clr-namespace:ARA.ViewModels.Shell"
+			 xmlns:viewmodels="clr-namespace:ARA.ViewModels.Pages"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DataContext="{d:DesignInstance Type=shell:MainViewModel}" mc:Ignorable="d" x:Class="ARA.MainWindow"
 			 WindowStartupLocation="CenterScreen"
              Title="[ARA] Arc Raiders Assistant" d:DesignHeight="480" d:DesignWidth="640">
 	<local:AraWindow.Resources>

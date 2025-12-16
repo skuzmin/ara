@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
+using ARA.ViewModels.Pages;
 
-namespace ARA.ViewModels
+namespace ARA.ViewModels.Shell
 {
 	public class MainViewModel : ViewModelBase
 	{

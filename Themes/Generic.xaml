@@ -17,7 +17,7 @@
 				<ControlTemplate TargetType="{x:Type local:AraWindow}">
 					<Grid Background="White">
 						<Grid.Clip>
-							<RectangleGeometry RadiusX="12" RadiusY="12" Rect="0,0,640,480" />
+							<RectangleGeometry RadiusX="8" RadiusY="8" Rect="0,0,640,480" />
 						</Grid.Clip>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="32"/>

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace ARA.ViewModels
+namespace ARA.ViewModels.Pages
 {
 	public class HomeViewModel : ViewModelBase
 	{

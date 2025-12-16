@@ -1,4 +1,4 @@
-﻿namespace ARA.ViewModels
+﻿namespace ARA.ViewModels.Pages
 {
 	public class SettingsViewModel : ViewModelBase
 	{
