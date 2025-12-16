@@ -2,9 +2,31 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ARA"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="ARA.MainWindow"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:views="clr-namespace:ARA.Views"
+			 xmlns:viewmodels="clr-namespace:ARA.ViewModels"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}" mc:Ignorable="d" x:Class="ARA.MainWindow"
              Title="[ARA] Arc Raiders Assistant" d:DesignHeight="480" d:DesignWidth="640">
-	<StackPanel Background="White">
-		<TextBlock Text="Main content area" Margin="20"/>
-	</StackPanel>
+	<local:AraWindow.Resources>
+		<DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+			<views:HomeView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
+			<views:SettingsView />
+		</DataTemplate>
+	</local:AraWindow.Resources>
+
+	<Grid Background="White">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10" Background="#F0F0F0">
+			<Button Content="Home" Margin="4" Padding="8,4" Command="{Binding ShowHomeCommand}"/>
+			<Button Content="Settings" Margin="4" Padding="8,4" Command="{Binding ShowSettingsCommand}"/>
+		</StackPanel>
+
+		<ContentPresenter Grid.Row="1" Content="{Binding CurrentPage}" Margin="12"/>
+	</Grid>
 </local:AraWindow>
