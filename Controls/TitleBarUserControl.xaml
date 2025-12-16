@@ -13,8 +13,8 @@
 			<TextBlock Text="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}, FallbackValue='[ARA] Arc Raiders Assistant'}" Foreground="Black" FontSize="20"/>
 		</StackPanel>
 		<StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-			<controls:AraButton HoverBackground="DarkGray" Height="32" Width="32" Content="🗕" Click="Minimize_Click" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-			<controls:AraButton HoverBackground="DarkRed" Height="32" Width="32" Content="✕" Click="Close_Click" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" ScrollViewer.CanContentScroll="True" VerticalContentAlignment="Center"/>
+			<controls:AraButton HoverBackground="DarkGray" Height="32" Width="40" Content="🗕" Click="Minimize_Click" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+			<controls:AraButton HoverBackground="DarkRed" Height="32" Width="40" Content="✕" Click="Close_Click" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" ScrollViewer.CanContentScroll="True" VerticalContentAlignment="Center" />
 		</StackPanel>
 	</Grid>
 </UserControl>
