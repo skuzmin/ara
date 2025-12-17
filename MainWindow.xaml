@@ -33,7 +33,7 @@
 		</Border>
 		<Border Grid.Row="1">
 			<Border.Background>
-				<SolidColorBrush Color="#080c17" Opacity="0.95"/>
+				<SolidColorBrush Color="#080c17" Opacity="0.9"/>
 			</Border.Background>
 			<ContentPresenter Content="{Binding CurrentPage}"/>
 		</Border>
