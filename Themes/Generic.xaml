@@ -34,14 +34,27 @@
 	<!--ARA Button-->
 	<Style TargetType="{x:Type controls:AraButton}">
 		<Setter Property="Background" Value="Transparent"/>
-		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
 		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Foreground" Value="Gray"/>
+
+		<Setter Property="HoverBackground" Value="Transparent"/>
+		<Setter Property="HoverBorderBrush" Value="Transparent"/>
+		<Setter Property="HoverForeground" Value="White"/>
+
+		<Setter Property="SelectedBackground" Value="Transparent"/>
+		<Setter Property="SelectedBorderBrush" Value="Transparent"/>
+		<Setter Property="SelectedForeground" Value="White"/>
+		<Setter Property="CornerRadius" Value="0"/>
+
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:AraButton}">
 					<Border x:Name="Border"
                         Background="{TemplateBinding Background}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+						BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+						CornerRadius="{TemplateBinding CornerRadius}">
 						<ContentPresenter Margin="{TemplateBinding Padding}"
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -54,7 +67,29 @@
                                 Property="Background"
                                 Value="{Binding HoverBackground,
                                         RelativeSource={RelativeSource TemplatedParent}}"/>
+							<Setter TargetName="Border"
+                                Property="BorderBrush"
+                                Value="{Binding HoverBorderBrush,
+                                        RelativeSource={RelativeSource TemplatedParent}}"/>
+							<Setter Property="Foreground"
+                                Value="{Binding HoverForeground,
+                                        RelativeSource={RelativeSource Self}}"/>
 						</Trigger>
+
+						<Trigger Property="controls:AraButton.IsSelected" Value="True">
+							<Setter TargetName="Border"
+                                Property="Background"
+                                Value="{Binding SelectedBackground,
+                                        RelativeSource={RelativeSource TemplatedParent}}"/>
+							<Setter TargetName="Border"
+                                Property="BorderBrush"
+                                Value="{Binding SelectedBorderBrush,
+                                        RelativeSource={RelativeSource TemplatedParent}}"/>
+							<Setter Property="Foreground"
+                                Value="{Binding SelectedForeground,
+                                        RelativeSource={RelativeSource Self}}"/>
+						</Trigger>
+
 						<Trigger Property="IsEnabled" Value="False">
 							<Setter TargetName="Border"
                                 Property="Opacity"

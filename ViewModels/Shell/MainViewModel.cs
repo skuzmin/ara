@@ -13,11 +13,15 @@ namespace ARA.ViewModels.Shell
 			{
 				_currentPage = value;
 				OnPropertyChanged(nameof(CurrentPage));
+				OnPropertyChanged(nameof(IsHomeSelected));
+				OnPropertyChanged(nameof(IsSettingsSelected));
 			}
 		}
 
 		public ICommand ShowHomeCommand { get; }
 		public ICommand ShowSettingsCommand { get; }
+		public bool IsHomeSelected => CurrentPage is HomeViewModel;
+		public bool IsSettingsSelected => CurrentPage is SettingsViewModel;
 
 		public MainViewModel()
 		{

@@ -6,6 +6,7 @@
 			 xmlns:views="clr-namespace:ARA.Views"
 			 xmlns:shell="clr-namespace:ARA.ViewModels.Shell"
 			 xmlns:viewmodels="clr-namespace:ARA.ViewModels.Pages"
+			 xmlns:controls="clr-namespace:ARA.Controls"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DataContext="{d:DesignInstance Type=shell:MainViewModel}" mc:Ignorable="d" x:Class="ARA.MainWindow"
 			 WindowStartupLocation="CenterScreen"
              Title="[ARA] Arc Raiders Assistant" d:DesignHeight="480" d:DesignWidth="640">
@@ -18,17 +19,23 @@
 		</DataTemplate>
 	</local:AraWindow.Resources>
 
-	<Grid Background="White">
+	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 
-		<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10" Background="#F0F0F0">
-			<Button Content="Home" Margin="4" Padding="8,4" Command="{Binding ShowHomeCommand}"/>
-			<Button Content="Settings" Margin="4" Padding="8,4" Command="{Binding ShowSettingsCommand}"/>
-		</StackPanel>
-
-		<ContentPresenter Grid.Row="1" Content="{Binding CurrentPage}" Margin="12"/>
+		<Border Padding="16, 12" Background="#090A0F">
+			<StackPanel Grid.Row="0" Orientation="Horizontal">
+				<controls:AraButton FontWeight="Medium" SelectedForeground="White" CornerRadius="20" BorderThickness="2" SelectedBorderBrush="White" Padding="16,4" Height="36" Content="Loadout" FontSize="16" Command="{Binding ShowHomeCommand}" IsSelected="{Binding IsHomeSelected}" Margin="0,0,12,0"/>
+				<controls:AraButton FontWeight="Medium" SelectedForeground="White" CornerRadius="20" BorderThickness="2" SelectedBorderBrush="White" Padding="16,4" Height="36" Content="Stash" FontSize="16" Command="{Binding ShowSettingsCommand}" IsSelected="{Binding IsSettingsSelected}" />
+			</StackPanel>
+		</Border>
+		<Border Grid.Row="1">
+			<Border.Background>
+				<SolidColorBrush Color="#080c17" Opacity="0.95"/>
+			</Border.Background>
+			<ContentPresenter Content="{Binding CurrentPage}"/>
+		</Border>
 	</Grid>
 </local:AraWindow>
