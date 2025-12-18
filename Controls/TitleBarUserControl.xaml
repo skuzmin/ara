@@ -2,19 +2,19 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controls="clr-namespace:ARA.Controls">
-	<Grid Background="Gray" MouseLeftButtonDown="WindowDrag_MouseLeftButtonDown">
+	<Grid Background="{StaticResource TitleBarBackgroundColor}" MouseLeftButtonDown="WindowDrag_MouseLeftButtonDown">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="Auto"/>
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="Auto"/>
 		</Grid.ColumnDefinitions>
 		<StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-			<Image Source="/Assets/app.ico" Height="20" Width="20" Margin="8,0"/>
-			<TextBlock Text="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}, FallbackValue='[ARA] Arc Raiders Assistant'}" Foreground="Black" FontSize="20"/>
+			<Image Source="/Assets/app.ico" Style="{StaticResource TitleBarLogo}"/>
+			<TextBlock Style="{StaticResource TitleBarText}" Text="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}, FallbackValue='[ARA] Arc Raiders Assistant'}" />
 		</StackPanel>
 		<StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-			<controls:AraButton Foreground="White" HoverBackground="DarkGray" Height="32" Width="40" Content="🗕" Click="Minimize_Click" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
-			<controls:AraButton Foreground="White" HoverBackground="DarkRed" Height="32" Width="40" Content="✕" Click="Close_Click" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+			<controls:AraButton Style="{StaticResource TitleBarDefaultButton}" Content="🗕" Click="Minimize_Click" />
+			<controls:AraButton Style="{StaticResource TitleBarCloseButton}" Content="✕" Click="Close_Click" />
 		</StackPanel>
 	</Grid>
 </UserControl>

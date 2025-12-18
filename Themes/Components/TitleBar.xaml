@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:controls="clr-namespace:ARA.Controls">
+	<Style x:Key="TitleBarLogo" TargetType="Image">
+		<Setter Property="Height" Value="20"/>
+		<Setter Property="Width" Value="20"/>
+		<Setter Property="Margin">
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-2}"
+					Right="{StaticResource Spacing-2}"
+					Top="{StaticResource Spacing-0}"
+					Bottom="{StaticResource Spacing-0}"/>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="TitleBarText" TargetType="TextBlock">
+		<Setter Property="Foreground" Value="{StaticResource TitleBarTextColor}" />
+		<Setter Property="FontSize" Value="20" />
+		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
+	</Style>
+
+	<Style x:Key="TitleBarDefaultButton" TargetType="controls:AraButton">
+		<Setter Property="Height" Value="32" />
+		<Setter Property="Width" Value="40" />
+		<Setter Property="FontWeight" Value="Bold" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="FontSize" Value="20" />
+		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
+		<Setter Property="Foreground" Value="{StaticResource TitleBarButtonColor}" />
+		<Setter Property="HoverBackground" Value="{StaticResource TitleBarDefaultButtonHoverBackgroundColor}" />
+	</Style>
+
+	<Style x:Key="TitleBarCloseButton" TargetType="controls:AraButton" BasedOn="{StaticResource TitleBarDefaultButton}">
+		<Setter Property="HoverBackground" Value="{StaticResource TitleBarCloseButtonHoverBackgroundColor}" />
+	</Style>
+</ResourceDictionary>

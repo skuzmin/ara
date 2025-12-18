@@ -6,9 +6,14 @@
              StartupUri="MainWindow.xaml">
 	<Application.Resources>
 		<ResourceDictionary>
-			<!--<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="Styles.xaml" />
-			</ResourceDictionary.MergedDictionaries>-->
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Themes/Primitives/Colors.xaml" />
+				<ResourceDictionary Source="/Themes/Primitives/Fonts.xaml" />
+				<ResourceDictionary Source="/Themes/Primitives/Radiuses.xaml" />
+				<ResourceDictionary Source="/Themes/Primitives/Spacings.xaml" />
+				<ResourceDictionary Source="/Themes/Dark.xaml" />
+				<ResourceDictionary Source="/Themes/Components/TitleBar.xaml" />
+			</ResourceDictionary.MergedDictionaries>
 			<tb:TaskbarIcon x:Key="TrayIcon" 
 				IconSource="/Assets/app.ico"
 				ToolTipText="ARA" />

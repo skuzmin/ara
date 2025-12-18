@@ -16,6 +16,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Fonts\NotoSans-Bold.ttf" />
+    <None Remove="Assets\Fonts\NotoSans-Medium.ttf" />
+    <None Remove="Assets\Fonts\NotoSans-Regular.ttf" />
+    <None Remove="Assets\Fonts\Oxanium-Bold.ttf" />
+    <None Remove="Assets\Fonts\Oxanium-Medium.ttf" />
+    <None Remove="Assets\Fonts\Oxanium-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<EmbeddedResource Include="Assets\app.ico" />
   </ItemGroup>
 
@@ -25,6 +34,24 @@
 
   <ItemGroup>
     <Resource Include="Assets\app.ico" />
+    <Resource Include="Assets\Fonts\NotoSans-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Fonts\NotoSans-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Fonts\NotoSans-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Fonts\Oxanium-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Fonts\Oxanium-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Fonts\Oxanium-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
