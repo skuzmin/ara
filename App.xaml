@@ -13,6 +13,7 @@
 				<ResourceDictionary Source="/Themes/Primitives/Spacings.xaml" />
 				<ResourceDictionary Source="/Themes/Dark.xaml" />
 				<ResourceDictionary Source="/Themes/Components/TitleBar.xaml" />
+				<ResourceDictionary Source="/Themes/Components/MainWindow.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 			<tb:TaskbarIcon x:Key="TrayIcon" 
 				IconSource="/Assets/app.ico"

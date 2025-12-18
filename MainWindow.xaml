@@ -25,10 +25,10 @@
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 
-		<Border Padding="16, 12" Background="#090A0F">
+		<Border Style="{StaticResource MainWindowContainer}">
 			<StackPanel Grid.Row="0" Orientation="Horizontal">
-				<controls:AraButton FontWeight="Medium" SelectedForeground="White" CornerRadius="20" BorderThickness="2" SelectedBorderBrush="White" Padding="16,4" Height="36" Content="Loadout" FontSize="16" Command="{Binding ShowHomeCommand}" IsSelected="{Binding IsHomeSelected}" Margin="0,0,12,0"/>
-				<controls:AraButton FontWeight="Medium" SelectedForeground="White" CornerRadius="20" BorderThickness="2" SelectedBorderBrush="White" Padding="16,4" Height="36" Content="Stash" FontSize="16" Command="{Binding ShowSettingsCommand}" IsSelected="{Binding IsSettingsSelected}" />
+				<controls:AraButton Style="{StaticResource MainWindowNavigationButton}" Content="Loadout" Command="{Binding ShowHomeCommand}" IsSelected="{Binding IsHomeSelected}" />
+				<controls:AraButton Style="{StaticResource MainWindowNavigationButton}" Content="Stash" Command="{Binding ShowSettingsCommand}" IsSelected="{Binding IsSettingsSelected}"/>
 			</StackPanel>
 		</Border>
 		<Border Grid.Row="1">

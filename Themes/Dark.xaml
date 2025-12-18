@@ -7,4 +7,9 @@
 	<SolidColorBrush x:Key="TitleBarDefaultButtonHoverBackgroundColor" Color="{StaticResource DarkGray}"/>
 	<SolidColorBrush x:Key="TitleBarCloseButtonHoverBackgroundColor" Color="{StaticResource DarkRed}"/>
 
+	<!-- MainWindow -->
+	<SolidColorBrush x:Key="MainWindowNavigationBackgroundColor" Color="{StaticResource Black}"/>
+	<SolidColorBrush x:Key="MainWindowNavigationSelectedButtonColor" Color="{StaticResource White}"/>
+	<SolidColorBrush x:Key="MainWindowNavigationSelectedButtonBorderColor" Color="{StaticResource White}"/>
+
 </ResourceDictionary>
