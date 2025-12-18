@@ -54,11 +54,14 @@
                         Background="{TemplateBinding Background}"
 						BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+						Padding="{TemplateBinding Padding}"
+						Margin="{TemplateBinding Margin}"
 						CornerRadius="{TemplateBinding CornerRadius}">
-						<ContentPresenter Margin="{TemplateBinding Padding}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      RecognizesAccessKey="True"/>
+						<ContentPresenter
+							Content="{TemplateBinding Content}"
+							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+							ContentTemplate="{TemplateBinding ContentTemplate}" />
 					</Border>
 
 					<ControlTemplate.Triggers>
@@ -71,9 +74,7 @@
                                 Property="BorderBrush"
                                 Value="{Binding HoverBorderBrush,
                                         RelativeSource={RelativeSource TemplatedParent}}"/>
-							<Setter Property="Foreground"
-                                Value="{Binding HoverForeground,
-                                        RelativeSource={RelativeSource Self}}"/>
+							<Setter Property="Foreground" Value="{Binding HoverForeground, RelativeSource={RelativeSource self}}"/>
 						</Trigger>
 
 						<Trigger Property="controls:AraButton.IsSelected" Value="True">
@@ -85,9 +86,7 @@
                                 Property="BorderBrush"
                                 Value="{Binding SelectedBorderBrush,
                                         RelativeSource={RelativeSource TemplatedParent}}"/>
-							<Setter Property="Foreground"
-                                Value="{Binding SelectedForeground,
-                                        RelativeSource={RelativeSource Self}}"/>
+							<Setter Property="Foreground" Value="{Binding SelectedForeground,RelativeSource={RelativeSource self}}"/>
 						</Trigger>
 
 						<Trigger Property="IsEnabled" Value="False">
