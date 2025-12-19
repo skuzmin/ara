@@ -16,7 +16,7 @@
 	</Style>
 
 	<Style x:Key="TitleBarText" TargetType="TextBlock">
-		<Setter Property="Foreground" Value="{StaticResource TitleBarTextColor}" />
+		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
 		<Setter Property="FontSize" Value="20" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
 	</Style>
@@ -29,7 +29,7 @@
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="FontSize" Value="20" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
-		<Setter Property="Foreground" Value="{StaticResource TitleBarButtonColor}" />
+		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
 		<Setter Property="HoverBackground" Value="{StaticResource TitleBarDefaultButtonHoverBackgroundColor}" />
 	</Style>
 

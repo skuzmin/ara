@@ -44,7 +44,7 @@
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
 		<Setter Property="CornerRadius" Value="{StaticResource Radius-5}" />
-		<Setter Property="SelectedForeground" Value="{StaticResource MainWindowNavigationSelectedButtonColor}" />
+		<Setter Property="SelectedForeground" Value="{StaticResource TextColorPrimary}" />
 		<Setter Property="SelectedBorderBrush" Value="{StaticResource MainWindowNavigationSelectedButtonBorderColor}" />
 		<Setter Property="Padding">
 			<Setter.Value>

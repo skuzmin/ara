@@ -1,16 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-	<!-- TitleBar -->
+
+	<!-- General-->
+	<SolidColorBrush x:Key="TextColorPrimary" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="TextColorSecondary" Color="{StaticResource Black}" />
+
+	<!-- TitleBarUserControl -->
 	<SolidColorBrush x:Key="TitleBarBackgroundColor" Color="{StaticResource SpaceBlack}"/>
-	<SolidColorBrush x:Key="TitleBarTextColor" Color="{StaticResource White}"/>
-	<SolidColorBrush x:Key="TitleBarButtonColor" Color="{StaticResource White}"/>
 	<SolidColorBrush x:Key="TitleBarDefaultButtonHoverBackgroundColor" Color="{StaticResource DarkGray}"/>
 	<SolidColorBrush x:Key="TitleBarCloseButtonHoverBackgroundColor" Color="{StaticResource DarkRed}"/>
 
 	<!-- MainWindow -->
 	<SolidColorBrush x:Key="MainWindowNavigationBackgroundColor" Color="{StaticResource Black}"/>
 	<SolidColorBrush x:Key="MainWindowContainerBackgroundColor" Color="{StaticResource SpaceBlack}"/>
-	<SolidColorBrush x:Key="MainWindowNavigationSelectedButtonColor" Color="{StaticResource White}"/>
 	<SolidColorBrush x:Key="MainWindowNavigationSelectedButtonBorderColor" Color="{StaticResource White}"/>
 
+	<!-- LoadoutView -->
+	<SolidColorBrush x:Key="LoadoutConfigButtonBackgroundColor" Color="{StaticResource DarkGray}"/>
 </ResourceDictionary>

@@ -10,17 +10,22 @@
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
+			<RowDefinition Height="16" />
 			<RowDefinition Height="40" />
+			<RowDefinition Height="16" />
 			<RowDefinition Height="40" />
+			<RowDefinition Height="12" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
 		<StackPanel Orientation="Horizontal" Grid.Row="0">
-			<TextBlock Text="Loadout Checker" />
-			<controls:AraButton Content="Config" />
+			<TextBlock Style="{StaticResource LoadoutViewTitle}" Text="Loadout Checker" />
+			<controls:AraButton Style="{StaticResource LoadoutConfigButton}">
+				<Image Style="{StaticResource LoadoutConfigImage}" Source="/Assets/Icons/config.png" />
+			</controls:AraButton>
 		</StackPanel>
 
-		<StackPanel Orientation="Horizontal" Grid.Row="1">
+		<StackPanel Orientation="Horizontal" Grid.Row="2">
 			<ComboBox Name="MyComboBox" VerticalAlignment="Center">
 				<ComboBoxItem Content="Coffee"/>
 				<ComboBoxItem Content="Tea" IsSelected="True"/>
@@ -30,11 +35,11 @@
 			<controls:AraButton Content="Check" VerticalAlignment="Center" />
 		</StackPanel>
 
-		<StackPanel Orientation="Horizontal" Grid.Row="2">
+		<StackPanel Orientation="Horizontal" Grid.Row="4">
 			<TextBlock Text="Preview controls" />
 		</StackPanel>
 
-		<StackPanel Orientation="Horizontal" Grid.Row="3">
+		<StackPanel Orientation="Horizontal" Grid.Row="6">
 			<TextBlock Text="Preview container" />
 		</StackPanel>
 	</Grid>

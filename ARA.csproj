@@ -22,6 +22,7 @@
     <None Remove="Assets\Fonts\Oxanium-Bold.ttf" />
     <None Remove="Assets\Fonts\Oxanium-Medium.ttf" />
     <None Remove="Assets\Fonts\Oxanium-Regular.ttf" />
+    <None Remove="Assets\Icons\config.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +51,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Fonts\Oxanium-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\config.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
