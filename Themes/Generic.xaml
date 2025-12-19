@@ -51,6 +51,8 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:AraButton}">
 					<Border x:Name="Border"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
                         Background="{TemplateBinding Background}"
 						BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
