@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:ARA.Controls">
-	<Style x:Key="MainWindowContainer" TargetType="Border">
+	<Style x:Key="MainWindowNavigation" TargetType="Border">
 		<Setter Property="Background">
 			<Setter.Value>
 				<SolidColorBrush Color="{Binding Source={StaticResource MainWindowNavigationBackgroundColor}, Path=Color}" Opacity="0.9"/>
@@ -14,6 +14,23 @@
 					Right="{StaticResource Spacing-4}"
 					Top="{StaticResource Spacing-3}"
 					Bottom="{StaticResource Spacing-3}"/>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="MainWindowContaier" TargetType="Border">
+		<Setter Property="Background">
+			<Setter.Value>
+				<SolidColorBrush Color="{Binding Source={StaticResource MainWindowContainerBackgroundColor}, Path=Color}" Opacity="0.9"/>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Padding">
+			<Setter.Value>
+				<Thickness 
+				Left="{StaticResource Spacing-4}"
+				Right="{StaticResource Spacing-4}"
+				Top="{StaticResource Spacing-4}"
+				Bottom="{StaticResource Spacing-4}"/>
 			</Setter.Value>
 		</Setter>
 	</Style>

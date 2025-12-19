@@ -9,6 +9,7 @@
 
 	<!-- MainWindow -->
 	<SolidColorBrush x:Key="MainWindowNavigationBackgroundColor" Color="{StaticResource Black}"/>
+	<SolidColorBrush x:Key="MainWindowContainerBackgroundColor" Color="{StaticResource SpaceBlack}"/>
 	<SolidColorBrush x:Key="MainWindowNavigationSelectedButtonColor" Color="{StaticResource White}"/>
 	<SolidColorBrush x:Key="MainWindowNavigationSelectedButtonBorderColor" Color="{StaticResource White}"/>
 

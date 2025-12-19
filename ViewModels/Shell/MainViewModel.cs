@@ -13,21 +13,21 @@ namespace ARA.ViewModels.Shell
 			{
 				_currentPage = value;
 				OnPropertyChanged(nameof(CurrentPage));
-				OnPropertyChanged(nameof(IsHomeSelected));
+				OnPropertyChanged(nameof(IsLoadoutSelected));
 				OnPropertyChanged(nameof(IsSettingsSelected));
 			}
 		}
 
-		public ICommand ShowHomeCommand { get; }
+		public ICommand ShowLoadoutCommand { get; }
 		public ICommand ShowSettingsCommand { get; }
-		public bool IsHomeSelected => CurrentPage is HomeViewModel;
+		public bool IsLoadoutSelected => CurrentPage is LoadoutViewModel;
 		public bool IsSettingsSelected => CurrentPage is SettingsViewModel;
 
 		public MainViewModel()
 		{
-			ShowHomeCommand = new RelayCommand(_ => CurrentPage = new HomeViewModel());
+			ShowLoadoutCommand = new RelayCommand(_ => CurrentPage = new LoadoutViewModel());
 			ShowSettingsCommand = new RelayCommand(_ => CurrentPage = new SettingsViewModel());
-			CurrentPage = new HomeViewModel();
+			CurrentPage = new LoadoutViewModel();
 		}
 	}
 }

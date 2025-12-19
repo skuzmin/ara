@@ -1,8 +1,8 @@
 ﻿<local:AraWindow
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ARA"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ARA"
 			 xmlns:views="clr-namespace:ARA.Views"
 			 xmlns:shell="clr-namespace:ARA.ViewModels.Shell"
 			 xmlns:viewmodels="clr-namespace:ARA.ViewModels.Pages"
@@ -11,8 +11,8 @@
 			 WindowStartupLocation="CenterScreen"
              Title="[ARA] Arc Raiders Assistant" d:DesignHeight="480" d:DesignWidth="640">
 	<local:AraWindow.Resources>
-		<DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
-			<views:HomeView />
+		<DataTemplate DataType="{x:Type viewmodels:LoadoutViewModel}">
+			<views:LoadoutView />
 		</DataTemplate>
 		<DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
 			<views:SettingsView />
@@ -25,16 +25,13 @@
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 
-		<Border Style="{StaticResource MainWindowContainer}">
+		<Border Style="{StaticResource MainWindowNavigation}">
 			<StackPanel Grid.Row="0" Orientation="Horizontal">
-				<controls:AraButton Style="{StaticResource MainWindowNavigationButton}" Content="Loadout" Command="{Binding ShowHomeCommand}" IsSelected="{Binding IsHomeSelected}" />
+				<controls:AraButton Style="{StaticResource MainWindowNavigationButton}" Content="Loadout" Command="{Binding ShowLoadoutCommand}" IsSelected="{Binding IsLoadoutSelected}" />
 				<controls:AraButton Style="{StaticResource MainWindowNavigationButton}" Content="Stash" Command="{Binding ShowSettingsCommand}" IsSelected="{Binding IsSettingsSelected}"/>
 			</StackPanel>
 		</Border>
-		<Border Grid.Row="1">
-			<Border.Background>
-				<SolidColorBrush Color="#080c17" Opacity="0.9"/>
-			</Border.Background>
+		<Border Grid.Row="1" Style="{StaticResource MainWindowContaier}">
 			<ContentPresenter Content="{Binding CurrentPage}"/>
 		</Border>
 	</Grid>

@@ -2,9 +2,9 @@
 
 namespace ARA.ViewModels.Pages
 {
-	public class HomeViewModel : ViewModelBase
+	public class LoadoutViewModel : ViewModelBase
 	{
-		private string _title = "Home page";
+		private string _title = "Loadout page";
 		public string Title
 		{
 			get => _title;
@@ -17,9 +17,9 @@ namespace ARA.ViewModels.Pages
 
 		public ICommand ChangeTitleCommand { get; }
 
-		public HomeViewModel()
+		public LoadoutViewModel()
 		{
-			ChangeTitleCommand = new RelayCommand(_ => Title = "Home title changed");
+			ChangeTitleCommand = new RelayCommand(_ => Title = "Loadout title changed");
 		}
 	}
 }
