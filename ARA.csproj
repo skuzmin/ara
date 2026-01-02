@@ -22,7 +22,14 @@
     <None Remove="Assets\Fonts\Oxanium-Bold.ttf" />
     <None Remove="Assets\Fonts\Oxanium-Medium.ttf" />
     <None Remove="Assets\Fonts\Oxanium-Regular.ttf" />
+    <None Remove="Assets\Icons\check-mark.png" />
     <None Remove="Assets\Icons\config.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Icons\check-mark.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

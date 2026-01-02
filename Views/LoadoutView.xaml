@@ -25,15 +25,25 @@
 			</controls:AraButton>
 		</StackPanel>
 
-		<StackPanel Orientation="Horizontal" Grid.Row="2">
-			<ComboBox Name="MyComboBox" VerticalAlignment="Center">
+		<Grid Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="12"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<ComboBox x:Name="ConfigComboBox" Grid.Column="0" Style="{StaticResource LoadoutConfigComboBox}">
 				<ComboBoxItem Content="Coffee"/>
 				<ComboBoxItem Content="Tea" IsSelected="True"/>
 				<ComboBoxItem Content="Orange Juice"/>
 				<ComboBoxItem Content="Milk"/>
 			</ComboBox>
-			<controls:AraButton Content="Check" VerticalAlignment="Center" />
-		</StackPanel>
+			<controls:AraButton  Grid.Column="2" Style="{StaticResource LoadoutConfigCheckButton}">
+				<StackPanel Orientation="Horizontal">
+					<Image Style="{StaticResource LoadoutCheckImage}" Source="/Assets/Icons/check-mark.png" />
+					<TextBlock Text="Check" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
+				</StackPanel>
+			</controls:AraButton>
+		</Grid>
 
 		<StackPanel Orientation="Horizontal" Grid.Row="4">
 			<TextBlock Text="Preview controls" />

@@ -36,4 +36,34 @@
 	<Style x:Key="LoadoutConfigImage" TargetType="Image">
 		<Setter Property="SnapsToDevicePixels" Value="True" />
 	</Style>
+
+	<Style x:Key="LoadoutCheckImage" TargetType="Image">
+		<Setter Property="Height" Value="20" />
+		<Setter Property="Width" Value="20" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="Margin" Value="0,0,4,0" />
+	</Style>
+
+	<Style x:Key="LoadoutConfigComboBox" TargetType="ComboBox">
+	</Style>
+
+	<Style x:Key="LoadoutConfigCheckButton" TargetType="controls:AraButton">
+		<Setter Property="Foreground" Value="{StaticResource TextColorSecondary}" />
+		<Setter Property="HoverForeground" Value="{StaticResource TextColorSecondary}" />
+		<Setter Property="Background" Value="{StaticResource LoadoutCheckButtonBackgroundColor}" />
+		<Setter Property="HoverBackground" Value="{StaticResource LoadoutCheckButtonHoverBackgroundColor}" />
+		<Setter Property="CornerRadius" Value="{StaticResource Radius-1}" />
+		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
+		<Setter Property="FontSize" Value="24" />
+		<Setter Property="FontWeight" Value="Medium" />
+		<Setter Property="Padding">
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-2}"
+					Right="{StaticResource Spacing-2}"
+					Top="{StaticResource Spacing-1}"
+					Bottom="{StaticResource Spacing-1}"/>
+			</Setter.Value>
+		</Setter>
+	</Style>
 </ResourceDictionary>

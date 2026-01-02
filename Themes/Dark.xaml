@@ -17,4 +17,6 @@
 
 	<!-- LoadoutView -->
 	<SolidColorBrush x:Key="LoadoutConfigButtonBackgroundColor" Color="{StaticResource DarkGray}"/>
+	<SolidColorBrush x:Key="LoadoutCheckButtonBackgroundColor" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="LoadoutCheckButtonHoverBackgroundColor" Color="{StaticResource Orange}" />
 </ResourceDictionary>
