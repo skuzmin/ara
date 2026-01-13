@@ -196,7 +196,7 @@ namespace ARA.Controls
 				nameof(ListItemHoverBackground),
 				typeof(Brush),
 				typeof(AraComboBox),
-				new PropertyMetadata(Brushes.White));
+				new PropertyMetadata(Brushes.Transparent));
 		public Brush ListItemHoverBackground
 		{
 			get => (Brush)GetValue(ListItemHoverBackgroundProperty);
@@ -209,7 +209,7 @@ namespace ARA.Controls
 				nameof(ListItemSelectedBackground),
 				typeof(Brush),
 				typeof(AraComboBox),
-				new PropertyMetadata(Brushes.White));
+				new PropertyMetadata(Brushes.Green));
 		public Brush ListItemSelectedBackground
 		{
 			get => (Brush)GetValue(ListItemSelectedBackgroundProperty);
@@ -217,6 +217,188 @@ namespace ARA.Controls
 		}
 		#endregion
 
+		#region ToggleButtonBackground
+		public static readonly DependencyProperty ToggleButtonBackgroundProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonBackground),
+				typeof(Brush),
+				typeof(AraComboBox),
+				new PropertyMetadata(Brushes.Transparent));
+		public Brush ToggleButtonBackground
+		{
+			get => (Brush)GetValue(ToggleButtonBackgroundProperty);
+			set => SetValue(ToggleButtonBackgroundProperty, value);
+		}
+		#endregion
+		#region ToggleButtonBorderThickness
+		public static readonly DependencyProperty ToggleButtonBorderThicknessProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonBorderThickness),
+				typeof(Thickness),
+				typeof(AraComboBox),
+				new PropertyMetadata(new Thickness(1)));
+		public Thickness ToggleButtonBorderThickness
+		{
+			get => (Thickness)GetValue(ToggleButtonBorderThicknessProperty);
+			set => SetValue(ToggleButtonBorderThicknessProperty, value);
+		}
+		#endregion
+		#region ToggleButtonCornerRadius
+		public static readonly DependencyProperty ToggleButtonCornerRadiusProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonCornerRadius),
+				typeof(CornerRadius),
+				typeof(AraComboBox),
+				new PropertyMetadata(new CornerRadius(0)));
+		public CornerRadius ToggleButtonCornerRadius
+		{
+			get => (CornerRadius)GetValue(ToggleButtonCornerRadiusProperty);
+			set => SetValue(ToggleButtonCornerRadiusProperty, value);
+		}
+		#endregion
+		#region ToggleButtonBorderBrush
+		public static readonly DependencyProperty ToggleButtonBorderBrushProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonBorderBrush),
+				typeof(Brush),
+				typeof(AraComboBox),
+				new PropertyMetadata(Brushes.Black));
+		public Brush ToggleButtonBorderBrush
+		{
+			get => (Brush)GetValue(ToggleButtonBorderBrushProperty);
+			set => SetValue(ToggleButtonBorderBrushProperty, value);
+		}
+		#endregion
+		#region ToggleButtonArrowHeight
+		public static readonly DependencyProperty ToggleButtonArrowHeightProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonArrowHeight),
+				typeof(Double),
+				typeof(AraComboBox),
+				new PropertyMetadata(16.0));
+		public Double ToggleButtonArrowHeight
+		{
+			get => (Double)GetValue(ToggleButtonArrowHeightProperty);
+			set => SetValue(ToggleButtonArrowHeightProperty, value);
+		}
+		#endregion
+		#region ToggleButtonArrowWidth
+		public static readonly DependencyProperty ToggleButtonArrowWidthProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonArrowWidth),
+				typeof(Double),
+				typeof(AraComboBox),
+				new PropertyMetadata(16.0));
+		public Double ToggleButtonArrowWidth
+		{
+			get => (Double)GetValue(ToggleButtonArrowWidthProperty);
+			set => SetValue(ToggleButtonArrowWidthProperty, value);
+		}
+		#endregion
+		#region ToggleButtonArrowMargin
+		public static readonly DependencyProperty ToggleButtonArrowMarginProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonArrowMargin),
+				typeof(Thickness),
+				typeof(AraComboBox),
+				new PropertyMetadata(new Thickness(0)));
+		public Thickness ToggleButtonArrowMargin
+		{
+			get => (Thickness)GetValue(ToggleButtonArrowMarginProperty);
+			set => SetValue(ToggleButtonArrowMarginProperty, value);
+		}
+		#endregion
+		#region ToggleButtonArrowBrush
+		public static readonly DependencyProperty ToggleButtonArrowBrushProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonArrowBrush),
+				typeof(Brush),
+				typeof(AraComboBox),
+				new PropertyMetadata(Brushes.Black));
+		public Brush ToggleButtonArrowBrush
+		{
+			get => (Brush)GetValue(ToggleButtonArrowBrushProperty);
+			set => SetValue(ToggleButtonArrowBrushProperty, value);
+		}
+		#endregion
+		#region ToggleButtonHoverBorderBrush
+		public static readonly DependencyProperty ToggleButtonHoverBorderBrushProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonHoverBorderBrush),
+				typeof(Brush),
+				typeof(AraComboBox),
+				new PropertyMetadata(Brushes.Gray));
+		public Brush ToggleButtonHoverBorderBrush
+		{
+			get => (Brush)GetValue(ToggleButtonHoverBorderBrushProperty);
+			set => SetValue(ToggleButtonHoverBorderBrushProperty, value);
+		}
+		#endregion
+		#region ToggleButtonHoverBackground
+		public static readonly DependencyProperty ToggleButtonHoverBackgroundProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonHoverBackground),
+				typeof(Brush),
+				typeof(AraComboBox),
+				new PropertyMetadata(Brushes.Transparent));
+		public Brush ToggleButtonHoverBackground
+		{
+			get => (Brush)GetValue(ToggleButtonHoverBackgroundProperty);
+			set => SetValue(ToggleButtonHoverBackgroundProperty, value);
+		}
+		#endregion
+		#region ToggleButtonHoverArrowBrush
+		public static readonly DependencyProperty ToggleButtonHoverArrowBrushProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonHoverArrowBrush),
+				typeof(Brush),
+				typeof(AraComboBox),
+				new PropertyMetadata(Brushes.Gray));
+		public Brush ToggleButtonHoverArrowBrush
+		{
+			get => (Brush)GetValue(ToggleButtonHoverArrowBrushProperty);
+			set => SetValue(ToggleButtonHoverArrowBrushProperty, value);
+		}
+		#endregion
+		#region ToggleButtonOpenBorderBrush
+		public static readonly DependencyProperty ToggleButtonOpenBorderBrushProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonOpenBorderBrush),
+				typeof(Brush),
+				typeof(AraComboBox),
+				new PropertyMetadata(Brushes.White));
+		public Brush ToggleButtonOpenBorderBrush
+		{
+			get => (Brush)GetValue(ToggleButtonOpenBorderBrushProperty);
+			set => SetValue(ToggleButtonOpenBorderBrushProperty, value);
+		}
+		#endregion
+		#region ToggleButtonOpenBackground
+		public static readonly DependencyProperty ToggleButtonOpenBackgroundProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonOpenBackground),
+				typeof(Brush),
+				typeof(AraComboBox),
+				new PropertyMetadata(Brushes.Transparent));
+		public Brush ToggleButtonOpenBackground
+		{
+			get => (Brush)GetValue(ToggleButtonOpenBackgroundProperty);
+			set => SetValue(ToggleButtonOpenBackgroundProperty, value);
+		}
+		#endregion
+		#region ToggleButtonOpenArrowBrush
+		public static readonly DependencyProperty ToggleButtonOpenArrowBrushProperty =
+			DependencyProperty.Register(
+				nameof(ToggleButtonOpenArrowBrush),
+				typeof(Brush),
+				typeof(AraComboBox),
+				new PropertyMetadata(Brushes.White));
+		public Brush ToggleButtonOpenArrowBrush
+		{
+			get => (Brush)GetValue(ToggleButtonOpenArrowBrushProperty);
+			set => SetValue(ToggleButtonOpenArrowBrushProperty, value);
+		}
+		#endregion
 		static AraComboBox()
 		{
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraComboBox),

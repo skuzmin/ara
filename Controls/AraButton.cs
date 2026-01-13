@@ -7,6 +7,7 @@ namespace ARA.Controls
 	public class AraButton : Button
 	{
 
+		#region HoverForeground
 		public static readonly DependencyProperty HoverForegroundProperty =
 			DependencyProperty.Register(
 				nameof(HoverForeground),
@@ -18,7 +19,8 @@ namespace ARA.Controls
 			get => (Brush)GetValue(HoverForegroundProperty);
 			set => SetValue(HoverForegroundProperty, value);
 		}
-
+		#endregion
+		#region HoverBackground
 		public static readonly DependencyProperty HoverBackgroundProperty =
 			DependencyProperty.Register(
 				nameof(HoverBackground),
@@ -30,7 +32,8 @@ namespace ARA.Controls
 			get => (Brush)GetValue(HoverBackgroundProperty);
 			set => SetValue(HoverBackgroundProperty, value);
 		}
-
+		#endregion
+		#region HoverBorderBrush
 		public static readonly DependencyProperty HoverBorderBrushProperty =
 			DependencyProperty.Register(
 				nameof(HoverBorderBrush),
@@ -42,7 +45,8 @@ namespace ARA.Controls
 			get => (Brush)GetValue(HoverBorderBrushProperty);
 			set => SetValue(HoverBorderBrushProperty, value);
 		}
-
+		#endregion
+		#region SelectedBackground
 		public static readonly DependencyProperty SelectedBackgroundProperty =
 			DependencyProperty.Register(
 				nameof(SelectedBackground),
@@ -54,7 +58,8 @@ namespace ARA.Controls
 			get => (Brush)GetValue(SelectedBackgroundProperty);
 			set => SetValue(SelectedBackgroundProperty, value);
 		}
-
+		#endregion
+		#region SelectedForeground
 		public static readonly DependencyProperty SelectedForegroundProperty =
 			DependencyProperty.Register(
 				nameof(SelectedForeground),
@@ -66,7 +71,8 @@ namespace ARA.Controls
 			get => (Brush)GetValue(SelectedForegroundProperty);
 			set => SetValue(SelectedForegroundProperty, value);
 		}
-
+		#endregion
+		#region SelectedBorderBrush
 		public static readonly DependencyProperty SelectedBorderBrushProperty =
 			DependencyProperty.Register(
 				nameof(SelectedBorderBrush),
@@ -78,7 +84,8 @@ namespace ARA.Controls
 			get => (Brush)GetValue(SelectedBorderBrushProperty);
 			set => SetValue(SelectedBorderBrushProperty, value);
 		}
-
+		#endregion
+		#region CornerRadius
 		public static readonly DependencyProperty CornerRadiusProperty =
 			DependencyProperty.Register(
 				nameof(CornerRadius),
@@ -90,7 +97,8 @@ namespace ARA.Controls
 			get => (CornerRadius)GetValue(CornerRadiusProperty);
 			set => SetValue(CornerRadiusProperty, value);
 		}
-
+		#endregion
+		#region IsSelected
 		public static readonly DependencyProperty IsSelectedProperty =
 			DependencyProperty.Register(
 				nameof(IsSelected),
@@ -102,7 +110,7 @@ namespace ARA.Controls
 			get => (bool)GetValue(IsSelectedProperty);
 			set => SetValue(IsSelectedProperty, value);
 		}
-
+		#endregion
 
 		static AraButton()
 		{
