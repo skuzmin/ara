@@ -13,8 +13,6 @@
 			<RowDefinition Height="16" />
 			<RowDefinition Height="40" />
 			<RowDefinition Height="16" />
-			<RowDefinition Height="40" />
-			<RowDefinition Height="12" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
@@ -32,6 +30,21 @@
 				<ColumnDefinition Width="Auto"/>
 			</Grid.ColumnDefinitions>
 			<controls:AraComboBox
+				ItemsListCornerRadius="12"
+				ItemsListMaxHeight="120"
+				ListItemHeight="40"
+				ListItemBackground="Gray"
+				ListItemHoverBackground="LightBlue"
+				ListItemSelectedBackground="LightGreen"
+				ListItemMargin="12,0"
+				ListItemFontSize="16"
+				ListItemFontFamily="{DynamicResource Font-Primary}"
+				ListItemForeground="Black"
+				ListItemFontWeight="Medium"
+				SelectedTextFontSize="20"
+				SelectedTextForeground="White"
+				SelectedTextMargin="12,4"
+				SelectedTextFontFamily="{DynamicResource Font-Primary}"
 				ItemsSource="{Binding LoadoutOptions}" 
 				SelectedItem="{Binding SelectedLoadout, Mode=TwoWay}"/>
 			<controls:AraButton  Grid.Column="2" Style="{StaticResource LoadoutConfigCheckButton}">
@@ -44,10 +57,6 @@
 
 		<StackPanel Orientation="Horizontal" Grid.Row="4">
 			<TextBlock Text="Preview controls" />
-		</StackPanel>
-
-		<StackPanel Orientation="Horizontal" Grid.Row="6">
-			<TextBlock Text="Preview container" />
 		</StackPanel>
 	</Grid>
 </UserControl>

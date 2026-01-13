@@ -132,27 +132,32 @@
 		<Style.Resources>
 			<Style TargetType="{x:Type ComboBoxItem}">
 				<Setter Property="OverridesDefaultStyle" Value="True"/>
-				<Setter Property="Height" Value="40"/>
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="{x:Type ComboBoxItem}">
 							<Border x:Name="Border" 
-								Height="40"
-								Background="Gray">
+								Height="{Binding ListItemHeight, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"
+								Background="{Binding ListItemBackground, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}">
 								<ContentPresenter 
-									Margin="12, 0" 
-									TextElement.FontSize="16"
-									TextElement.FontFamily="{DynamicResource Font-Primary}"
-									TextElement.Foreground="Black"
-									TextElement.FontWeight="Medium"
+									Margin="{Binding ListItemMargin, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}" 
+									TextElement.FontSize="{Binding ListItemFontSize, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"
+									TextElement.FontFamily="{Binding ListItemFontFamily, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"
+									TextElement.Foreground="{Binding ListItemForeground, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"
+									TextElement.FontWeight="{Binding ListItemFontWeight, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"
 									VerticalAlignment="Center" />
 							</Border>
 							<ControlTemplate.Triggers>
 								<Trigger Property="IsMouseOver" Value="True">
-									<Setter TargetName="Border" Property="Background" Value="LightBlue"/>
+									<Setter 
+										TargetName="Border" 
+										Property="Background" 
+										Value="{Binding ListItemHoverBackground, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"/>
 								</Trigger>
 								<Trigger Property="IsSelected" Value="True">
-									<Setter TargetName="Border" Property="Background" Value="LightGreen"/>
+									<Setter 
+										TargetName="Border" 
+										Property="Background" 
+										Value="{Binding ListItemSelectedBackground, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"/>
 								</Trigger>
 							</ControlTemplate.Triggers>
 						</ControlTemplate>
@@ -173,10 +178,10 @@
 						<TextBlock  
 							x:Name="ContentSite"
 							IsHitTestVisible="False"
-							FontSize="20"
-							FontFamily="{DynamicResource Font-Primary}"
-							Foreground="White"
-							Margin="12,4"
+							FontSize="{Binding SelectedTextFontSize, RelativeSource={RelativeSource TemplatedParent}}"
+							FontFamily="{Binding SelectedTextFontFamily, RelativeSource={RelativeSource TemplatedParent}}"
+							Foreground="{Binding SelectedTextForeground, RelativeSource={RelativeSource TemplatedParent}}"
+							Margin="{Binding SelectedTextMargin, RelativeSource={RelativeSource TemplatedParent}}"
 							VerticalAlignment="Center"
 							Text="{TemplateBinding SelectionBoxItem}" />
 						<TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
@@ -186,8 +191,8 @@
 							PopupAnimation="Slide"
 							AllowsTransparency="True">
 							<Border
-								CornerRadius="8" 
-								MaxHeight="150"
+								CornerRadius="{Binding ItemsListCornerRadius, RelativeSource={RelativeSource TemplatedParent}}" 
+								MaxHeight="{Binding ItemsListMaxHeight, RelativeSource={RelativeSource TemplatedParent}}"
 								MaxWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
 								MinWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}">
 								<ScrollViewer VerticalScrollBarVisibility="Hidden">
