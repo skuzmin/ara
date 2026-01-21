@@ -251,7 +251,7 @@
 								MaxHeight="{Binding ItemsListMaxHeight, RelativeSource={RelativeSource TemplatedParent}}"
 								MaxWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
 								MinWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}">
-								<ScrollViewer VerticalScrollBarVisibility="Hidden">
+								<ScrollViewer VerticalScrollBarVisibility="Auto">
 									<ItemsPresenter />
 								</ScrollViewer>
 							</Border>
