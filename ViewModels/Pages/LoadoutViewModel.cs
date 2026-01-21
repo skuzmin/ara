@@ -33,8 +33,8 @@ namespace ARA.ViewModels.Pages
 
 		public LoadoutViewModel()
 		{
-			_selectedLoadout = "Option 2";
-			LoadoutOptions = ["Option 1", "Option 2", "Option 3", "Option 4"];
+			_selectedLoadout = "Config 2";
+			LoadoutOptions = ["Config 1", "Config 2", "Config 3", "Config 4"];
 			ChangeTitleCommand = new RelayCommand(_ => Title = "Loadout title changed");
 		}
 	}

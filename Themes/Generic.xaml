@@ -214,6 +214,7 @@
 							x:Name="PART_Popup"
 							IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
 							PopupAnimation="Slide"
+							VerticalOffset="4"
 							AllowsTransparency="True">
 							<Border
 								BorderThickness="{Binding ItemsListBorderThickness, RelativeSource={RelativeSource TemplatedParent}}"

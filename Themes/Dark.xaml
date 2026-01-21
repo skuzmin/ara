@@ -19,4 +19,20 @@
 	<SolidColorBrush x:Key="LoadoutConfigButtonBackgroundColor" Color="{StaticResource DarkGray}"/>
 	<SolidColorBrush x:Key="LoadoutCheckButtonBackgroundColor" Color="{StaticResource Yellow}" />
 	<SolidColorBrush x:Key="LoadoutCheckButtonHoverBackgroundColor" Color="{StaticResource Orange}" />
+
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonArrowBrush" Color="{StaticResource Black}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonBackground" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonBorderBrush" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonHoverBackground" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonHoverBorderBrush" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonHoverArrowBrush" Color="{StaticResource Black}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonOpenBorderBrush" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonOpenArrowBrush" Color="{StaticResource Black}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonOpenBackground" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ItemsListBorderBrush" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ListItemForeground" Color="{StaticResource Black}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ListItemBackground" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ListItemHoverBackground" Color="{StaticResource LightTan}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ListItemSelectedBackground" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__SelectedTextForeground" Color="{StaticResource Black}" />
 </ResourceDictionary>
