@@ -98,6 +98,32 @@ namespace ARA.Controls
 			set => SetValue(ItemsListMaxHeightProperty, value);
 		}
 		#endregion
+		#region ItemsListBorderThickness
+		public static readonly DependencyProperty ItemsListBorderThicknessProperty =
+			DependencyProperty.Register(
+				nameof(ItemsListBorderThickness),
+				typeof(Thickness),
+				typeof(AraComboBox),
+				new PropertyMetadata(new Thickness(1)));
+		public Thickness ItemsListBorderThickness
+		{
+			get => (Thickness)GetValue(ItemsListBorderThicknessProperty);
+			set => SetValue(ItemsListBorderThicknessProperty, value);
+		}
+		#endregion
+		#region ItemsListBorderBrush
+		public static readonly DependencyProperty ItemsListBorderBrushProperty =
+			DependencyProperty.Register(
+				nameof(ItemsListBorderBrush),
+				typeof(Brush),
+				typeof(AraComboBox),
+				new PropertyMetadata(Brushes.Black));
+		public Brush ItemsListBorderBrush
+		{
+			get => (Brush)GetValue(ItemsListBorderBrushProperty);
+			set => SetValue(ItemsListBorderBrushProperty, value);
+		}
+		#endregion
 
 		#region ListItemHeight
 		public static readonly DependencyProperty ListItemHeightProperty =

@@ -30,32 +30,7 @@
 				<ColumnDefinition Width="Auto"/>
 			</Grid.ColumnDefinitions>
 			<controls:AraComboBox
-				ItemsListCornerRadius="12"
-				ItemsListMaxHeight="120"
-				ListItemHeight="40"
-				ListItemBackground="Gray"
-				ListItemHoverBackground="LightBlue"
-				ListItemSelectedBackground="LightGreen"
-				ListItemMargin="12,0"
-				ListItemFontSize="16"
-				ListItemFontFamily="{DynamicResource Font-Primary}"
-				ListItemForeground="Black"
-				ListItemFontWeight="Medium"
-				SelectedTextFontSize="20"
-				SelectedTextForeground="White"
-				SelectedTextMargin="12,4"
-				SelectedTextFontFamily="{DynamicResource Font-Primary}"
-				ToggleButtonBorderThickness="1,1,1,1"
-				ToggleButtonCornerRadius="4"
-				ToggleButtonBorderBrush="Black"
-				ToggleButtonArrowHeight="16"
-				ToggleButtonArrowWidth="16"
-				ToggleButtonArrowMargin="0,0,8,0"
-				ToggleButtonArrowBrush="Black"
-				ToggleButtonHoverArrowBrush="Gray"
-				ToggleButtonHoverBorderBrush="Gray"
-				ToggleButtonOpenArrowBrush="White"
-				ToggleButtonOpenBorderBrush="White"
+				Style="{StaticResource LoadoutConfigComboBox}"
 				ItemsSource="{Binding LoadoutOptions}" 
 				SelectedItem="{Binding SelectedLoadout, Mode=TwoWay}"/>
 			<controls:AraButton  Grid.Column="2" Style="{StaticResource LoadoutConfigCheckButton}">

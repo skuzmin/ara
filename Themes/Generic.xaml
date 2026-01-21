@@ -216,6 +216,8 @@
 							PopupAnimation="Slide"
 							AllowsTransparency="True">
 							<Border
+								BorderThickness="{Binding ItemsListBorderThickness, RelativeSource={RelativeSource TemplatedParent}}"
+								BorderBrush="{Binding ItemsListBorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
 								CornerRadius="{Binding ItemsListCornerRadius, RelativeSource={RelativeSource TemplatedParent}}" 
 								MaxHeight="{Binding ItemsListMaxHeight, RelativeSource={RelativeSource TemplatedParent}}"
 								MaxWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
