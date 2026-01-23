@@ -67,18 +67,6 @@
 					</Border>
 
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsMouseOver" Value="True">
-							<Setter TargetName="Border"
-                                Property="Background"
-                                Value="{Binding HoverBackground,
-                                        RelativeSource={RelativeSource TemplatedParent}}"/>
-							<Setter TargetName="Border"
-                                Property="BorderBrush"
-                                Value="{Binding HoverBorderBrush,
-                                        RelativeSource={RelativeSource TemplatedParent}}"/>
-							<Setter Property="Foreground" Value="{Binding HoverForeground, RelativeSource={RelativeSource self}}"/>
-						</Trigger>
-
 						<Trigger Property="controls:AraButton.IsSelected" Value="True">
 							<Setter TargetName="Border"
                                 Property="Background"
@@ -108,7 +96,7 @@
 			<!-- ComboBoxToggleButton -->
 			<ControlTemplate x:Key="AraComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
 				<Grid>
-					<Border x:Name="Border" 
+					<Border x:Name="ToggleBorder" 
 						Background="{Binding ToggleButtonBackground, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}" 
 						BorderThickness="{Binding ToggleButtonBorderThickness, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}" 
 						CornerRadius="{Binding ToggleButtonCornerRadius, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"  
@@ -131,7 +119,7 @@
 				<ControlTemplate.Triggers>
 					<Trigger Property="IsMouseOver" Value="True">
 						<Setter 
-							TargetName="Border" 
+							TargetName="ToggleBorder" 
 							Property="BorderBrush" 
 							Value="{Binding ToggleButtonHoverBorderBrush, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"  />
 						<Setter 
@@ -139,13 +127,13 @@
 							Property="Fill" 
 							Value="{Binding ToggleButtonHoverArrowBrush, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"  />
 						<Setter 
-							TargetName="Border" 
+							TargetName="ToggleBorder" 
 							Property="Background" 
 							Value="{Binding ToggleButtonHoverBackground, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"  />
 					</Trigger>
 					<Trigger Property="IsChecked" Value="True">
 						<Setter 
-							TargetName="Border"
+							TargetName="ToggleBorder"
 							Property="BorderBrush"
 							Value="{Binding ToggleButtonOpenBorderBrush, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"  />
 						<Setter 
@@ -153,7 +141,7 @@
 							Property="Fill" 
 							Value="{Binding ToggleButtonOpenArrowBrush, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"  />
 						<Setter 
-							TargetName="Border" 
+							TargetName="ToggleBorder" 
 							Property="Background" 
 							Value="{Binding ToggleButtonOpenBackground, RelativeSource={RelativeSource AncestorType=controls:AraComboBox}}"  />
 						<Trigger.EnterActions>
@@ -219,17 +207,21 @@
 			</Style>
 		</Style.Resources>
 		<!-- ComboBox -->
+		<Setter Property="ToggleButtonBackground" Value="White"/>
+		<Setter Property="ToggleButtonBorderBrush" Value="White"/>
+		<Setter Property="ToggleButtonHoverBackground" Value="White"/>
+		<Setter Property="ToggleButtonHoverBorderBrush" Value="White"/>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="ComboBox">
 					<Grid>
 						<ToggleButton 
-							x:Name="ToggleButton" 
+							x:Name="PART_ToggleButton" 
 							Template="{StaticResource AraComboBoxToggleButton}" 
 							IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
 							ClickMode="Press" />
 						<TextBlock  
-							x:Name="ContentSite"
+							x:Name="PART_ContentSite"
 							IsHitTestVisible="False"
 							FontSize="{Binding SelectedTextFontSize, RelativeSource={RelativeSource TemplatedParent}}"
 							FontFamily="{Binding SelectedTextFontFamily, RelativeSource={RelativeSource TemplatedParent}}"
@@ -260,7 +252,7 @@
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsEditable" Value="true">
 							<Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
-							<Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
+							<Setter TargetName="PART_ContentSite" Property="Visibility" Value="Hidden"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>

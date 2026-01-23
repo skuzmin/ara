@@ -1,11 +1,17 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using ARA.Animations;
 
 namespace ARA.Controls
 {
 	class AraComboBox : ComboBox
 	{
+		private Border? _toggleButtonBorder;
+
 		#region SelectedTextForegorund
 		public static readonly DependencyProperty SelectedTextForegroundProperty =
 			DependencyProperty.Register(
@@ -430,6 +436,36 @@ namespace ARA.Controls
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraComboBox),
 				new FrameworkPropertyMetadata(typeof(AraComboBox)));
 		}
+
+		#region Animations
+		public override void OnApplyTemplate()
+		{
+			base.OnApplyTemplate();
+            if (GetTemplateChild("PART_ToggleButton") is ToggleButton toggleBtn)
+            {
+				toggleBtn.ApplyTemplate();
+                _toggleButtonBorder = toggleBtn.Template.FindName("ToggleBorder", toggleBtn) as Border;
+				if (_toggleButtonBorder != null) {
+					_toggleButtonBorder.Background = ToggleButtonBackground;
+					_toggleButtonBorder.BorderBrush = ToggleButtonBorderBrush;
+				}
+			}
+        }
+
+		protected override void OnMouseEnter(MouseEventArgs e)
+		{
+			base.OnMouseEnter(e);
+			ColorAnimator.Animate(ToggleButtonHoverBackground, _toggleButtonBorder!, "(Background).(SolidColorBrush.Color)");
+			ColorAnimator.Animate(ToggleButtonHoverBorderBrush, _toggleButtonBorder!, "(BorderBrush).(SolidColorBrush.Color)");
+		}
+
+		protected override void OnMouseLeave(MouseEventArgs e)
+		{
+			base.OnMouseLeave(e);
+			ColorAnimator.Animate(ToggleButtonBackground, _toggleButtonBorder!, "(Background).(SolidColorBrush.Color)");
+			ColorAnimator.Animate(ToggleButtonBorderBrush, _toggleButtonBorder!, "(BorderBrush).(SolidColorBrush.Color)");
+		}
+		#endregion
 	}
 
 }

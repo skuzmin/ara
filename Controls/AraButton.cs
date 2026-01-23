@@ -1,11 +1,15 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using ARA.Animations;
 
 namespace ARA.Controls
 {
 	public class AraButton : Button
 	{
+		private Border? _border;
 
 		#region HoverForeground
 		public static readonly DependencyProperty HoverForegroundProperty =
@@ -117,5 +121,33 @@ namespace ARA.Controls
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraButton),
 				new FrameworkPropertyMetadata(typeof(AraButton)));
 		}
+
+		#region Animations
+		public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+			_border = (Border)GetTemplateChild("Border");
+		}
+
+		protected override void OnMouseEnter(MouseEventArgs e)
+		{
+			base.OnMouseEnter(e);
+			if (!IsSelected)
+			{
+				ColorAnimator.Animate(HoverBackground, _border!, "(Background).(SolidColorBrush.Color)");
+				ColorAnimator.Animate(HoverBorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+			}
+		}
+
+		protected override void OnMouseLeave(MouseEventArgs e)
+		{
+			base.OnMouseLeave(e);
+			if (!IsSelected)
+			{
+				ColorAnimator.Animate(Background, _border!, "(Background).(SolidColorBrush.Color)");
+				ColorAnimator.Animate(BorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+			}
+		}
+		#endregion
 	}
 }
