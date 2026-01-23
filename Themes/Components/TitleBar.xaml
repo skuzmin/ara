@@ -30,10 +30,10 @@
 		<Setter Property="FontSize" Value="20" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
 		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
-		<Setter Property="HoverBackground" Value="{StaticResource TitleBarDefaultButtonHoverBackgroundColor}" />
+		<Setter Property="HoverBackground" Value="{StaticResource TitleBar__DefaultButtonHoverBackgroundColor}" />
 	</Style>
 
 	<Style x:Key="TitleBarCloseButton" TargetType="controls:AraButton" BasedOn="{StaticResource TitleBarDefaultButton}">
-		<Setter Property="HoverBackground" Value="{StaticResource TitleBarCloseButtonHoverBackgroundColor}" />
+		<Setter Property="HoverBackground" Value="{StaticResource TitleBar__CloseButtonHoverBackgroundColor}" />
 	</Style>
 </ResourceDictionary>

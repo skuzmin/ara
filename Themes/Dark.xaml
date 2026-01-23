@@ -6,19 +6,19 @@
 	<SolidColorBrush x:Key="TextColorSecondary" Color="{StaticResource Black}" />
 
 	<!-- TitleBarUserControl -->
-	<SolidColorBrush x:Key="TitleBarBackgroundColor" Color="{StaticResource SpaceBlack}"/>
-	<SolidColorBrush x:Key="TitleBarDefaultButtonHoverBackgroundColor" Color="{StaticResource DarkGray}"/>
-	<SolidColorBrush x:Key="TitleBarCloseButtonHoverBackgroundColor" Color="{StaticResource DarkRed}"/>
+	<SolidColorBrush x:Key="TitleBar__BackgroundColor" Color="{StaticResource SpaceBlack}"/>
+	<SolidColorBrush x:Key="TitleBar__DefaultButtonHoverBackgroundColor" Color="{StaticResource DarkGray}"/>
+	<SolidColorBrush x:Key="TitleBar__CloseButtonHoverBackgroundColor" Color="{StaticResource DarkRed}"/>
 
 	<!-- MainWindow -->
-	<SolidColorBrush x:Key="MainWindowNavigationBackgroundColor" Color="{StaticResource Black}"/>
-	<SolidColorBrush x:Key="MainWindowContainerBackgroundColor" Color="{StaticResource SpaceBlack}"/>
-	<SolidColorBrush x:Key="MainWindowNavigationSelectedButtonBorderColor" Color="{StaticResource White}"/>
+	<SolidColorBrush x:Key="MainWindow__NavigationBackgroundColor" Color="{StaticResource Black}"/>
+	<SolidColorBrush x:Key="MainWindow__ContainerBackgroundColor" Color="{StaticResource SpaceBlack}"/>
+	<SolidColorBrush x:Key="MainWindow__NavigationSelectedButtonBorderColor" Color="{StaticResource White}"/>
 
 	<!-- LoadoutView -->
-	<SolidColorBrush x:Key="LoadoutConfigButtonBackgroundColor" Color="{StaticResource DarkGray}"/>
-	<SolidColorBrush x:Key="LoadoutCheckButtonBackgroundColor" Color="{StaticResource Yellow}" />
-	<SolidColorBrush x:Key="LoadoutCheckButtonHoverBackgroundColor" Color="{StaticResource Orange}" />
+	<SolidColorBrush x:Key="Loadout__ConfigButtonBackgroundColor" Color="{StaticResource DarkGray}"/>
+	<SolidColorBrush x:Key="Loadout__CheckButtonBackgroundColor" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="Loadout__CheckButtonHoverBackgroundColor" Color="{StaticResource Orange}" />
 
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonArrowBrush" Color="{StaticResource Black}" />
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonBackground" Color="{StaticResource White}" />
