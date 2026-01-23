@@ -21,7 +21,7 @@
 		<Setter Property="Height" Value="32" />
 		<Setter Property="Width" Value="32" />
 		<Setter Property="CornerRadius" Value="{StaticResource Radius-2}" />
-		<Setter Property="HoverBackground" Value="{StaticResource Loadout__ConfigButtonBackgroundColor}" />
+		<Setter Property="HoverBackground" Value="{StaticResource Loadout__ConfigButtonHoverBackgroundColor}" />
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 
@@ -89,7 +89,7 @@
 			</Setter.Value>
 		</Setter>
 		<Setter Property="ItemsListCornerRadius" Value="{StaticResource Radius-1}" />
-		<Setter Property="ItemsListMaxHeight" Value="120" />
+		<Setter Property="ItemsListMaxHeight" Value="124" />
 		<Setter Property="ItemsListBorderBrush" Value="{StaticResource LoadoutConfigComboBox__ItemsListBorderBrush}" />
 		<Setter Property="ItemsListBorderThickness" Value="2" />
 		<Setter Property="ListItemHeight" Value="40" />

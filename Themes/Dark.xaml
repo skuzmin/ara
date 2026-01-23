@@ -16,7 +16,7 @@
 	<SolidColorBrush x:Key="MainWindow__NavigationSelectedButtonBorderColor" Color="{StaticResource White}"/>
 
 	<!-- LoadoutView -->
-	<SolidColorBrush x:Key="Loadout__ConfigButtonBackgroundColor" Color="{StaticResource DarkGray}"/>
+	<SolidColorBrush x:Key="Loadout__ConfigButtonHoverBackgroundColor" Color="{StaticResource DarkGray}"/>
 	<SolidColorBrush x:Key="Loadout__CheckButtonBackgroundColor" Color="{StaticResource Yellow}" />
 	<SolidColorBrush x:Key="Loadout__CheckButtonHoverBackgroundColor" Color="{StaticResource Orange}" />
 
