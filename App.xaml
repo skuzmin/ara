@@ -12,10 +12,10 @@
 				<ResourceDictionary Source="/Themes/Primitives/Radiuses.xaml" />
 				<ResourceDictionary Source="/Themes/Primitives/Spacings.xaml" />
 				<ResourceDictionary Source="/Themes/Dark.xaml" />
-				<ResourceDictionary Source="/Themes/Components/TitleBar.xaml" />
-				<ResourceDictionary Source="/Themes/Components/MainWindow.xaml" />
-				<ResourceDictionary Source="/Themes/Components/LoadoutView.xaml" />
-				<ResourceDictionary Source="/Themes/Components/ScrollBar.xaml" />
+				<ResourceDictionary Source="/Themes/Components/TitleBarStyles.xaml" />
+				<ResourceDictionary Source="/Themes/Components/MainWindowStyles.xaml" />
+				<ResourceDictionary Source="/Themes/Components/LoadoutViewStyles.xaml" />
+				<ResourceDictionary Source="/Themes/Components/ScrollBarStyles.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 			<tb:TaskbarIcon x:Key="TrayIcon" 
 				IconSource="/Assets/app.ico"
