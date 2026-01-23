@@ -14,7 +14,7 @@
 						Width="{TemplateBinding Width}"
 						Opacity="0.5"
 						Background="{StaticResource ScrollBar__ThumbBrush}" 
-						CornerRadius="6" />
+						CornerRadius="{StaticResource Radius-1}" />
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsMouseOver" Value="True">
 							<Trigger.EnterActions>

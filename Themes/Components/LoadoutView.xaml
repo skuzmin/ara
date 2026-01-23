@@ -41,18 +41,34 @@
 		<Setter Property="Height" Value="20" />
 		<Setter Property="Width" Value="20" />
 		<Setter Property="SnapsToDevicePixels" Value="True" />
-		<Setter Property="Margin" Value="0,0,4,0" />
+		<Setter Property="Margin">
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-0}"
+					Right="{StaticResource Spacing-1}"
+					Top="{StaticResource Spacing-0}"
+					Bottom="{StaticResource Spacing-0}"/>
+			</Setter.Value>
+		</Setter>
 	</Style>
 
 	<Style x:Key="LoadoutConfigComboBox" TargetType="controls:AraComboBox">
 		<Setter Property="ToggleButtonBackground" Value="{StaticResource LoadoutConfigComboBox__ToggleButtonBackground}" />
 		<Setter Property="ToggleButtonBorderThickness" Value="2" />
-		<Setter Property="ToggleButtonCornerRadius" Value="4" />
+		<Setter Property="ToggleButtonCornerRadius" Value="{StaticResource Radius-1}" />
 		<Setter Property="ToggleButtonBorderBrush" Value="{StaticResource LoadoutConfigComboBox__ToggleButtonBorderBrush}" />
 		<Setter Property="ToggleButtonArrowBrush" Value="{StaticResource LoadoutConfigComboBox__ToggleButtonArrowBrush}" />
 		<Setter Property="ToggleButtonArrowHeight" Value="16" />
 		<Setter Property="ToggleButtonArrowWidth" Value="16" />
-		<Setter Property="ToggleButtonArrowMargin" Value="12,4,12,4" />
+		<Setter Property="ToggleButtonArrowMargin" >
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-3}"
+					Right="{StaticResource Spacing-3}"
+					Top="{StaticResource Spacing-1}"
+					Bottom="{StaticResource Spacing-1}"/>
+			</Setter.Value>
+		</Setter>
 		<Setter Property="ToggleButtonHoverBackground" Value="{StaticResource LoadoutConfigComboBox__ToggleButtonHoverBackground}" />
 		<Setter Property="ToggleButtonHoverBorderBrush" Value="{StaticResource LoadoutConfigComboBox__ToggleButtonHoverBorderBrush}" />
 		<Setter Property="ToggleButtonHoverArrowBrush" Value="{StaticResource LoadoutConfigComboBox__ToggleButtonHoverArrowBrush}" />
@@ -63,15 +79,31 @@
 		<Setter Property="SelectedTextFontSize" Value="20" />
 		<Setter Property="SelectedTextFontFamily" Value="{StaticResource Font-Primary}" />
 		<Setter Property="SelectedTextFontWeight" Value="Medium" />
-		<Setter Property="SelectedTextMargin" Value="12,4,12,4"/>
-		<Setter Property="ItemsListCornerRadius" Value="4" />
+		<Setter Property="SelectedTextMargin">
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-3}"
+					Right="{StaticResource Spacing-3}"
+					Top="{StaticResource Spacing-1}"
+					Bottom="{StaticResource Spacing-1}"/>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="ItemsListCornerRadius" Value="{StaticResource Radius-1}" />
 		<Setter Property="ItemsListMaxHeight" Value="120" />
 		<Setter Property="ItemsListBorderBrush" Value="{StaticResource LoadoutConfigComboBox__ItemsListBorderBrush}" />
 		<Setter Property="ItemsListBorderThickness" Value="2" />
 		<Setter Property="ListItemHeight" Value="40" />
 		<Setter Property="ListItemForeground" Value="{StaticResource LoadoutConfigComboBox__ListItemForeground}" />
 		<Setter Property="ListItemBackground" Value="{StaticResource LoadoutConfigComboBox__ListItemBackground}" />
-		<Setter Property="ListItemMargin" Value="12,4,12,4" />
+		<Setter Property="ListItemMargin">
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-3}"
+					Right="{StaticResource Spacing-3}"
+					Top="{StaticResource Spacing-1}"
+					Bottom="{StaticResource Spacing-1}"/>
+			</Setter.Value>
+		</Setter>
 		<Setter Property="ListItemFontSize" Value="20" />
 		<Setter Property="ListItemFontWeight" Value="Medium" />
 		<Setter Property="ListItemFontFamily" Value="{StaticResource Font-Primary}" />
