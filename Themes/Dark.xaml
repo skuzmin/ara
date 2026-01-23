@@ -24,7 +24,7 @@
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonBackground" Color="{StaticResource White}" />
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonBorderBrush" Color="{StaticResource White}" />
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonHoverBackground" Color="{StaticResource White}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonHoverBorderBrush" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonHoverBorderBrush" Color="{StaticResource Orange}" />
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonHoverArrowBrush" Color="{StaticResource Black}" />
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonOpenBorderBrush" Color="{StaticResource Yellow}" />
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonOpenArrowBrush" Color="{StaticResource Black}" />
