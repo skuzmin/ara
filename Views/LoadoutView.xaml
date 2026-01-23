@@ -42,7 +42,7 @@
 		</Grid>
 
 		<StackPanel Orientation="Horizontal" Grid.Row="4">
-			<TextBlock Text="Preview controls" />
+			<TextBlock Foreground="White">Content Preview</TextBlock>
 		</StackPanel>
 	</Grid>
 </UserControl>

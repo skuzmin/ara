@@ -35,4 +35,7 @@
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ListItemHoverBackground" Color="{StaticResource LightTan}" />
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ListItemSelectedBackground" Color="{StaticResource Yellow}" />
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__SelectedTextForeground" Color="{StaticResource Black}" />
+
+	<!-- ScrollBar -->
+	<SolidColorBrush x:Key="ScrollBar__ThumbBrush" Color="{StaticResource Orange}" />
 </ResourceDictionary>
