@@ -24,6 +24,48 @@
     <None Remove="Assets\Fonts\Oxanium-Regular.ttf" />
     <None Remove="Assets\Icons\check-mark.png" />
     <None Remove="Assets\Icons\config.png" />
+    <None Remove="Assets\Items\Adrenaline_Shot.png" />
+    <None Remove="Assets\Items\Bandage.png" />
+    <None Remove="Assets\Items\Barricade_Kit.png" />
+    <None Remove="Assets\Items\Blaze_Grenade.png" />
+    <None Remove="Assets\Items\Blaze_Grenade_Trap.png" />
+    <None Remove="Assets\Items\Blue_Light_Stick.png" />
+    <None Remove="Assets\Items\Deadline.png" />
+    <None Remove="Assets\Items\Defibrillator.png" />
+    <None Remove="Assets\Items\Door_Blocker.png" />
+    <None Remove="Assets\Items\Explosive_Mine.png" />
+    <None Remove="Assets\Items\Gas_Grenade.png" />
+    <None Remove="Assets\Items\Gas_Mine.png" />
+    <None Remove="Assets\Items\Green_Light_Stick.png" />
+    <None Remove="Assets\Items\Heavy_Fuse_Grenade.png" />
+    <None Remove="Assets\Items\Herbal_Bandage.png" />
+    <None Remove="Assets\Items\Jolt_Mine.png" />
+    <None Remove="Assets\Items\Light_Impact_Grenade.png" />
+    <None Remove="Assets\Items\Lil_Smoke_Grenade.png" />
+    <None Remove="Assets\Items\Lure_Grenade.png" />
+    <None Remove="Assets\Items\Lure_Grenade_Trap.png" />
+    <None Remove="Assets\Items\Noisemaker.png" />
+    <None Remove="Assets\Items\Photoelectric_Cloak.png" />
+    <None Remove="Assets\Items\Pulse_Mine.png" />
+    <None Remove="Assets\Items\Red_Light_Stick.png" />
+    <None Remove="Assets\Items\Remote_Raider_Flare.png" />
+    <None Remove="Assets\Items\Seeker_Grenade.png" />
+    <None Remove="Assets\Items\Shield_Recharger.png" />
+    <None Remove="Assets\Items\Showstopper.png" />
+    <None Remove="Assets\Items\Shrapnel_Grenade.png" />
+    <None Remove="Assets\Items\Smoke_Grenade.png" />
+    <None Remove="Assets\Items\Smoke_Grenade_Trap.png" />
+    <None Remove="Assets\Items\Snap_Blast_Grenade.png" />
+    <None Remove="Assets\Items\Snap_Hook.png" />
+    <None Remove="Assets\Items\Surge_Shield_Recharger.png" />
+    <None Remove="Assets\Items\Tagging_grenade.png" />
+    <None Remove="Assets\Items\Trailblazer.png" />
+    <None Remove="Assets\Items\Trigger_Nade.png" />
+    <None Remove="Assets\Items\Vita_Shot.png" />
+    <None Remove="Assets\Items\Vita_Spray.png" />
+    <None Remove="Assets\Items\Wolfpack.png" />
+    <None Remove="Assets\Items\Yellow_Light_Stick.png" />
+    <None Remove="Assets\Items\Zip_Line.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -63,6 +105,48 @@
     <Resource Include="Assets\Icons\config.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Items\Adrenaline_Shot.png" />
+    <Resource Include="Assets\Items\Bandage.png" />
+    <Resource Include="Assets\Items\Barricade_Kit.png" />
+    <Resource Include="Assets\Items\Blaze_Grenade.png" />
+    <Resource Include="Assets\Items\Blaze_Grenade_Trap.png" />
+    <Resource Include="Assets\Items\Blue_Light_Stick.png" />
+    <Resource Include="Assets\Items\Deadline.png" />
+    <Resource Include="Assets\Items\Defibrillator.png" />
+    <Resource Include="Assets\Items\Door_Blocker.png" />
+    <Resource Include="Assets\Items\Explosive_Mine.png" />
+    <Resource Include="Assets\Items\Gas_Grenade.png" />
+    <Resource Include="Assets\Items\Gas_Mine.png" />
+    <Resource Include="Assets\Items\Green_Light_Stick.png" />
+    <Resource Include="Assets\Items\Heavy_Fuse_Grenade.png" />
+    <Resource Include="Assets\Items\Herbal_Bandage.png" />
+    <Resource Include="Assets\Items\Jolt_Mine.png" />
+    <Resource Include="Assets\Items\Light_Impact_Grenade.png" />
+    <Resource Include="Assets\Items\Lil_Smoke_Grenade.png" />
+    <Resource Include="Assets\Items\Lure_Grenade.png" />
+    <Resource Include="Assets\Items\Lure_Grenade_Trap.png" />
+    <Resource Include="Assets\Items\Noisemaker.png" />
+    <Resource Include="Assets\Items\Photoelectric_Cloak.png" />
+    <Resource Include="Assets\Items\Pulse_Mine.png" />
+    <Resource Include="Assets\Items\Red_Light_Stick.png" />
+    <Resource Include="Assets\Items\Remote_Raider_Flare.png" />
+    <Resource Include="Assets\Items\Seeker_Grenade.png" />
+    <Resource Include="Assets\Items\Shield_Recharger.png" />
+    <Resource Include="Assets\Items\Showstopper.png" />
+    <Resource Include="Assets\Items\Shrapnel_Grenade.png" />
+    <Resource Include="Assets\Items\Smoke_Grenade.png" />
+    <Resource Include="Assets\Items\Smoke_Grenade_Trap.png" />
+    <Resource Include="Assets\Items\Snap_Blast_Grenade.png" />
+    <Resource Include="Assets\Items\Snap_Hook.png" />
+    <Resource Include="Assets\Items\Surge_Shield_Recharger.png" />
+    <Resource Include="Assets\Items\Tagging_grenade.png" />
+    <Resource Include="Assets\Items\Trailblazer.png" />
+    <Resource Include="Assets\Items\Trigger_Nade.png" />
+    <Resource Include="Assets\Items\Vita_Shot.png" />
+    <Resource Include="Assets\Items\Vita_Spray.png" />
+    <Resource Include="Assets\Items\Wolfpack.png" />
+    <Resource Include="Assets\Items\Yellow_Light_Stick.png" />
+    <Resource Include="Assets\Items\Zip_Line.png" />
   </ItemGroup>
 
 </Project>
