@@ -47,6 +47,7 @@
     <None Remove="Assets\Items\Noisemaker.png" />
     <None Remove="Assets\Items\Photoelectric_Cloak.png" />
     <None Remove="Assets\Items\Pulse_Mine.png" />
+    <None Remove="Assets\Items\Raider_Hatch_Key.png" />
     <None Remove="Assets\Items\Red_Light_Stick.png" />
     <None Remove="Assets\Items\Remote_Raider_Flare.png" />
     <None Remove="Assets\Items\Seeker_Grenade.png" />
@@ -128,6 +129,7 @@
     <Resource Include="Assets\Items\Noisemaker.png" />
     <Resource Include="Assets\Items\Photoelectric_Cloak.png" />
     <Resource Include="Assets\Items\Pulse_Mine.png" />
+    <Resource Include="Assets\Items\Raider_Hatch_Key.png" />
     <Resource Include="Assets\Items\Red_Light_Stick.png" />
     <Resource Include="Assets\Items\Remote_Raider_Flare.png" />
     <Resource Include="Assets\Items\Seeker_Grenade.png" />
