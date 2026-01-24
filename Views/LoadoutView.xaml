@@ -10,9 +10,9 @@
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
-			<RowDefinition Height="16" />
+			<RowDefinition Height="12" />
 			<RowDefinition Height="40" />
-			<RowDefinition Height="16" />
+			<RowDefinition Height="20" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
@@ -41,8 +41,24 @@
 			</controls:AraButton>
 		</Grid>
 
-		<StackPanel Orientation="Horizontal" Grid.Row="4">
-			<TextBlock Foreground="White">Content Preview</TextBlock>
+		<StackPanel Orientation="Vertical" Grid.Row="4">
+			<DockPanel HorizontalAlignment="Stretch" Width="Auto" LastChildFill="False">
+				<TextBlock DockPanel.Dock="Left" 
+				   Text="Configuration Preview" 
+				   Foreground="White" 
+				   FontSize="20" 
+				   FontFamily="{StaticResource Font-Primary}"/>
+				<StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+					<TextBlock Text="Status:" 
+					    Foreground="White" 
+					    FontSize="20" 
+						FontFamily="{StaticResource Font-Primary}"/>
+					<TextBlock Text="- -" 
+					   Foreground="White" 
+					   FontSize="20" 
+					   FontFamily="{StaticResource Font-Primary}"/>
+				</StackPanel>
+			</DockPanel>
 		</StackPanel>
 	</Grid>
 </UserControl>
