@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using ARA.Enums;
 using ARA.Models;
 
@@ -6,21 +7,21 @@ namespace ARA.ViewModels.Pages
 {
 	public class LoadoutViewModel : ViewModelBase
 	{
+		public ICommand CheckLoadout { get; }
 		public ObservableCollection<LoadoutConfiguration> LoadoutOptions { get; }
-
-		private LoadoutConfiguration _selectedLoadout;
 		public LoadoutConfiguration SelectedLoadout
 		{
-			get => _selectedLoadout;
+			get => field;
 			set
 			{
-				_selectedLoadout = value;
+                field = value;
 				OnPropertyChanged(nameof(SelectedLoadout));
 			}
 		}
 
 		public LoadoutViewModel()
 		{
+			CheckLoadout = new RelayCommand(OnCheckLoadoutClicked);
 			LoadoutOptions = [
 				new LoadoutConfiguration { Name = "Dam Night Juice", Items = [
 						new GameItem{Icon = GameIcon.Bandage, Quantity = 5 },
@@ -46,7 +47,12 @@ namespace ARA.ViewModels.Pages
 					]
 				}
 			];
-			_selectedLoadout = LoadoutOptions[0];
+			SelectedLoadout = LoadoutOptions[0];
 		}
-	}
+
+        private void OnCheckLoadoutClicked(object obj)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
