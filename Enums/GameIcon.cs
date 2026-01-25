@@ -1,6 +1,6 @@
 ﻿namespace ARA.Enums
 {
-	public enum GameItem
+	public enum GameIcon
 	{
 		Adrenaline_Shot = 1,
 		Bandage,
