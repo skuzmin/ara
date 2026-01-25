@@ -32,6 +32,7 @@
 			<controls:AraComboBox
 				Style="{StaticResource LoadoutConfigComboBox}"
 				ItemsSource="{Binding LoadoutOptions}" 
+				DisplayMemberPath="Name"
 				SelectedItem="{Binding SelectedLoadout, Mode=TwoWay}"/>
 			<controls:AraButton  Grid.Column="2" Style="{StaticResource LoadoutConfigCheckButton}">
 				<StackPanel Orientation="Horizontal">

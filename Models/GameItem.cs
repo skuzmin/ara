@@ -15,9 +15,5 @@ namespace ARA.Models
 		{
 			return Enum.GetValues<GameIcon>().Select(x => new GameItem { Icon = x });
 		}
-		public static GameItem GetById(int id)
-		{
-			return new GameItem { Icon = (Enums.GameIcon)id };
-		}
 	}
 }

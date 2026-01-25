@@ -228,7 +228,7 @@
 							Foreground="{Binding SelectedTextForeground, RelativeSource={RelativeSource TemplatedParent}}"
 							Margin="{Binding SelectedTextMargin, RelativeSource={RelativeSource TemplatedParent}}"
 							VerticalAlignment="Center"
-							Text="{TemplateBinding SelectionBoxItem}" />
+							Text="{TemplateBinding Text}" />
 						<TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
 						<Popup 
 							x:Name="PART_Popup"
