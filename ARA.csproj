@@ -24,6 +24,9 @@
     <None Remove="Assets\Fonts\Oxanium-Regular.ttf" />
     <None Remove="Assets\Icons\check-mark.png" />
     <None Remove="Assets\Icons\config.png" />
+    <None Remove="Assets\Icons\Statuses\fail.png" />
+    <None Remove="Assets\Icons\Statuses\success.png" />
+    <None Remove="Assets\Icons\Statuses\unknown.png" />
     <None Remove="Assets\Items\Adrenaline_Shot.png" />
     <None Remove="Assets\Items\Bandage.png" />
     <None Remove="Assets\Items\Barricade_Kit.png" />
@@ -104,6 +107,13 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Icons\config.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\Statuses\Fail.png" />
+    <Resource Include="Assets\Icons\Statuses\Success.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\Statuses\Unknown.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Items\Adrenaline_Shot.png" />

@@ -14,7 +14,8 @@ namespace ARA.ViewModels.Pages
 			get => field;
 			set
 			{
-                field = value;
+				value.Items.ForEach(x => x.Status = 0);
+				field = value;
 				OnPropertyChanged(nameof(SelectedLoadout));
 			}
 		}
@@ -49,10 +50,19 @@ namespace ARA.ViewModels.Pages
 			];
 			SelectedLoadout = LoadoutOptions[0];
 		}
-
         private void OnCheckLoadoutClicked(object obj)
         {
-            throw new NotImplementedException();
-        }
+			var newItems = SelectedLoadout.Items.Select(item => new GameItem
+			{
+				Icon = item.Icon,
+				Quantity = item.Quantity,
+				Status = (GameItemStatus)new Random().Next(1, 3)
+			})
+			.OrderByDescending(item => item.Status)
+			.ToList();
+
+			SelectedLoadout.Items = newItems;
+			OnPropertyChanged(nameof(SelectedLoadout));
+		}
     }
 }
