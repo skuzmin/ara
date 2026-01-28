@@ -21,7 +21,13 @@ namespace ARA.Helpers
             public IntPtr hbmColor;
         }
 
-        [DllImport("user32.dll")]
+		[DllImport("gdi32.dll")]
+		private static extern bool DeleteObject(IntPtr hObject);
+
+		[DllImport("user32.dll")]
+		private static extern bool DestroyIcon(IntPtr hIcon);
+
+		[DllImport("user32.dll")]
         private static extern IntPtr CreateIconIndirect(ref IconInfo info);
 
         [DllImport("user32.dll")]
@@ -32,16 +38,21 @@ namespace ARA.Helpers
             var streamInfo = Application.GetResourceStream(new Uri(path)) ?? throw new Exception("Resource not found: " + path);
 
             using var stream = streamInfo.Stream;
-            var bitmap = new System.Drawing.Bitmap(stream);
+            using var bitmap = new System.Drawing.Bitmap(stream);
 
             IconInfo info = new();
-            GetIconInfo(bitmap.GetHicon(), ref info);
+			IntPtr iconHandle = bitmap.GetHicon();
+			GetIconInfo(iconHandle, ref info);
             info.xHotspot = xHotspot;
             info.yHotspot = yHotspot;
             info.fIcon = false;
-
             IntPtr cursrPtr = CreateIconIndirect(ref info);
-            SafeFileHandle handle = new(cursrPtr, true);
+
+			DestroyIcon(iconHandle);
+			DeleteObject(info.hbmMask);
+			DeleteObject(info.hbmColor);
+
+			SafeFileHandle handle = new(cursrPtr, true);
             return CursorInteropHelper.Create(handle);
         }
     }
