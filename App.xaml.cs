@@ -1,13 +1,10 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Input;
+using ARA.Helpers;
 using Hardcodet.Wpf.TaskbarNotification;
 
 namespace ARA
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
 		protected override void OnStartup(StartupEventArgs e)
@@ -24,6 +21,8 @@ namespace ARA
 					MainWindow.Activate();
 				};
 			}
+
+			Mouse.OverrideCursor = CursorHelper.CreateCursorFromPng("pack://application:,,,/Assets/cursor.png", 0, 0);
 		}
 	}
 

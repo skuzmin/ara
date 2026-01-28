@@ -13,9 +13,11 @@
 	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 	<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
 	 <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+	 <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\cursor.png" />
     <None Remove="Assets\Fonts\NotoSans-Bold.ttf" />
     <None Remove="Assets\Fonts\NotoSans-Medium.ttf" />
     <None Remove="Assets\Fonts\NotoSans-Regular.ttf" />
@@ -73,6 +75,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\cursor.png" />
     <Resource Include="Assets\Icons\check-mark.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
