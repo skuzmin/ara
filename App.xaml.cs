@@ -5,12 +5,30 @@ using Hardcodet.Wpf.TaskbarNotification;
 
 namespace ARA
 {
-    public partial class App : Application
-    {
+	public partial class App : Application
+	{
+		private static Mutex? _mutex = null;
 		protected override void OnStartup(StartupEventArgs e)
 		{
+            SingleInstanceChecker();
 			base.OnStartup(e);
+			TrayIconInit();
+			Mouse.OverrideCursor = CursorHelper.CreateCursorFromPng("pack://application:,,,/Assets/cursor.png", 0, 0);
+		}
 
+		private static void SingleInstanceChecker()
+		{
+			_mutex = new Mutex(true, "ARA_ArcRaidersAssistant", out bool isFirstInstance);
+			if (!isFirstInstance)
+			{
+				MessageBox.Show("Appllication is already running.", "[ARA] Arc Raiders Assistant", MessageBoxButton.OK, MessageBoxImage.Information);
+				Application.Current.Shutdown();
+				return;
+			}
+		}
+
+		private void TrayIconInit()
+		{
 			if (Resources["TrayIcon"] is TaskbarIcon trayIcon)
 			{
 				trayIcon.Visibility = System.Windows.Visibility.Visible;
@@ -21,9 +39,6 @@ namespace ARA
 					MainWindow.Activate();
 				};
 			}
-
-			Mouse.OverrideCursor = CursorHelper.CreateCursorFromPng("pack://application:,,,/Assets/cursor.png", 0, 0);
 		}
 	}
-
 }
