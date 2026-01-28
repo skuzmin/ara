@@ -4,9 +4,13 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:pages="clr-namespace:ARA.ViewModels.Pages" 
 			 xmlns:controls="clr-namespace:ARA.Controls"
+			 xmlns:converters="clr-namespace:ARA.Converters"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d"
 			 d:DataContext="{d:DesignInstance Type=pages:LoadoutViewModel}">
+	<UserControl.Resources>
+		<converters:StatusToImageConverter x:Key="StatusToImageConverter" />
+	</UserControl.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
@@ -80,7 +84,7 @@
 						<DataGridTemplateColumn Header="Status" Width="Auto">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
-									<controls:LoadoutStatus Height="24" Width="24" Status="{Binding Status}" />
+									<Image Source="{Binding Status, Converter={StaticResource StatusToImageConverter}}" Height="24" Width="24" Stretch="Uniform" />
 								</DataTemplate>
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>
