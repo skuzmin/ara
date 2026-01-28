@@ -20,8 +20,7 @@ namespace ARA
 		{
 			_mutex = new Mutex(true, "ARA_ArcRaidersAssistant", out bool isFirstInstance);
 			if (!isFirstInstance)
-			{
-				MessageBox.Show("Appllication is already running.", "[ARA] Arc Raiders Assistant", MessageBoxButton.OK, MessageBoxImage.Information);
+			{ 
 				Application.Current.Shutdown();
 				return;
 			}
