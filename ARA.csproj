@@ -164,4 +164,10 @@
     <Resource Include="Assets\Items\Zip_Line.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Views\AboutView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>
