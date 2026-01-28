@@ -46,15 +46,10 @@
 			</controls:AraButton>
 		</Grid>
 		<Grid Grid.Row="4">
-			<Border CornerRadius="8" ClipToBounds="True" BorderBrush="White" BorderThickness="2">
-				<Border.Background>
-					<SolidColorBrush Color="#1C1F2F" Opacity="0.5" />
-				</Border.Background>
+			<Border Style="{StaticResource DataGridBorderWrapper}">
 				<DataGrid 
 					x:Name="LoadoutPreview"
-					ItemsSource="{Binding SelectedLoadout.Items}" 
-					VirtualizingPanel.ScrollUnit="Pixel"
-					ScrollViewer.VerticalScrollBarVisibility="Auto">
+					ItemsSource="{Binding SelectedLoadout.Items}">
 					<DataGrid.Columns>
 						<!-- Icon -->
 						<DataGridTemplateColumn Header="Icon" Width="60">

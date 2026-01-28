@@ -2,6 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					xmlns:controls="clr-namespace:ARA.Controls">
 
+	<Style x:Key="DataGridBorderWrapper" TargetType="Border">
+		<Setter Property="CornerRadius" Value="{StaticResource Radius-2}" />
+		<Setter Property="ClipToBounds" Value="True" />
+		<Setter Property="BorderBrush" Value="{StaticResource DataGrid__WrapperBorderBrush}" />
+		<Setter Property="BorderThickness" Value="2" />
+		<Setter Property="Background">
+			<Setter.Value>
+				<SolidColorBrush Color="{StaticResource SpaceBlack}" Opacity="0.5" />
+			</Setter.Value>
+		</Setter>
+	</Style>
+
 	<Style TargetType="{x:Type DataGrid}">
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderThickness" Value="0" />
@@ -15,6 +27,8 @@
 		<Setter Property="CanUserDeleteRows" Value="False" />
 		<Setter Property="CanUserSortColumns" Value="False" />
 		<Setter Property="AutoGenerateColumns" Value="False" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel" />
 	</Style>
 
 	<Style TargetType="{x:Type DataGridColumnHeader}">
@@ -22,9 +36,17 @@
 		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
 		<Setter Property="FontSize" Value="20" />
 		<Setter Property="FontWeight" Value="Medium" />
-		<Setter Property="Background" Value="#000" />
-		<Setter Property="Foreground" Value="White" />
-		<Setter Property="Padding" Value="8 0" />
+		<Setter Property="Background" Value="{StaticResource DataGrid__GridColumnHeaderBackground}" />
+		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="Padding" >
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-2}"
+					Right="{StaticResource Spacing-2}"
+					Top="{StaticResource Spacing-0}"
+					Bottom="{StaticResource Spacing-0}" />
+			</Setter.Value>
+		</Setter>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="DataGridColumnHeader">
@@ -32,9 +54,17 @@
 						Background="{TemplateBinding Background}" 
 						BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-						Padding="{TemplateBinding Padding}"
-						CornerRadius="8,8,0,0">
-						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						Padding="{TemplateBinding Padding}">
+						<Border.CornerRadius>
+							<CornerRadius 
+								TopLeft="{StaticResource Spacing-2}"
+								TopRight="{StaticResource Spacing-2}"
+								BottomRight="{StaticResource Spacing-0}"
+								BottomLeft="{StaticResource Spacing-0}" />
+						</Border.CornerRadius>
+						<ContentPresenter 
+							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 					</Border>
 				</ControlTemplate>
 			</Setter.Value>
@@ -51,7 +81,15 @@
 	</Style>
 
 	<Style TargetType="{x:Type DataGridCell}">
-		<Setter Property="Padding" Value="8 0" />
+		<Setter Property="Padding" >
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-2}"
+					Right="{StaticResource Spacing-2}"
+					Top="{StaticResource Spacing-0}"
+					Bottom="{StaticResource Spacing-0}" />
+			</Setter.Value>
+		</Setter>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DataGridCell}">

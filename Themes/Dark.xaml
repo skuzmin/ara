@@ -38,4 +38,8 @@
 
 	<!-- ScrollBar -->
 	<SolidColorBrush x:Key="ScrollBar__ThumbBrush" Color="{StaticResource Orange}" />
+
+	<!-- Data Grid -->
+	<SolidColorBrush x:Key="DataGrid__WrapperBorderBrush" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="DataGrid__GridColumnHeaderBackground" Color="{StaticResource Black}" />
 </ResourceDictionary>
