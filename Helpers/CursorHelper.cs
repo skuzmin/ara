@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 using Microsoft.Win32.SafeHandles;
+#pragma warning disable SYSLIB1054
 
 namespace ARA.Helpers
 {
