@@ -35,7 +35,8 @@
 			</Grid.ColumnDefinitions>
 			<controls:AraComboBox
 				Style="{StaticResource LoadoutConfigComboBox}"
-				ItemsSource="{Binding LoadoutOptions}" 
+				ItemsSource="{Binding LoadoutOptions}"
+				PlaceholderText="Select Loadout"
 				DisplayMemberPath="Name"
 				SelectedItem="{Binding SelectedLoadout, Mode=TwoWay}"/>
 			<controls:AraButton Grid.Column="2" Style="{StaticResource LoadoutConfigCheckButton}" Command="{Binding CheckLoadout}">

@@ -430,6 +430,35 @@ namespace ARA.Controls.CustomControls
 			set => SetValue(ToggleButtonOpenArrowBrushProperty, value);
 		}
 		#endregion
+
+		#region PlaceholderText
+		public static readonly DependencyProperty PlaceholderTextProperty =
+			DependencyProperty.Register(
+				nameof(PlaceholderText),
+				typeof(string),
+				typeof(AraComboBox),
+				new PropertyMetadata(string.Empty));
+
+		public string PlaceholderText
+		{
+			get { return (string)GetValue(PlaceholderTextProperty); }
+			set { SetValue(PlaceholderTextProperty, value); }
+		}
+		#endregion
+		#region PlaceholderForeground
+		public static readonly DependencyProperty PlaceholderForegroundProperty =
+			DependencyProperty.Register(
+				nameof(PlaceholderForeground),
+				typeof(Brush),
+				typeof(AraComboBox),
+				new PropertyMetadata(Brushes.Gray));
+
+		public Brush PlaceholderForeground
+		{
+			get { return (Brush)GetValue(PlaceholderForegroundProperty); }
+			set { SetValue(PlaceholderForegroundProperty, value); }
+		}
+		#endregion
 		static AraComboBox()
 		{
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraComboBox),

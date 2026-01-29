@@ -109,6 +109,7 @@
 		<Setter Property="ListItemFontFamily" Value="{StaticResource Font-Primary}" />
 		<Setter Property="ListItemHoverBackground" Value="{StaticResource LoadoutConfigComboBox__ListItemHoverBackground}" />
 		<Setter Property="ListItemSelectedBackground" Value="{StaticResource LoadoutConfigComboBox__ListItemSelectedBackground}" />
+		<Setter Property="PlaceholderForeground" Value="{StaticResource LoadoutConfigComboBox__PlaceholderTextForeground}" />
 	</Style>
 
 	<Style x:Key="LoadoutConfigCheckButton" TargetType="controls:AraButton">

@@ -226,10 +226,21 @@
 							IsHitTestVisible="False"
 							FontSize="{Binding SelectedTextFontSize, RelativeSource={RelativeSource TemplatedParent}}"
 							FontFamily="{Binding SelectedTextFontFamily, RelativeSource={RelativeSource TemplatedParent}}"
+							FontWeight="{Binding SelectedTextFontWeight, RelativeSource={RelativeSource TemplatedParent}}"
 							Foreground="{Binding SelectedTextForeground, RelativeSource={RelativeSource TemplatedParent}}"
 							Margin="{Binding SelectedTextMargin, RelativeSource={RelativeSource TemplatedParent}}"
 							VerticalAlignment="Center"
 							Text="{TemplateBinding Text}" />
+						<TextBlock  
+							x:Name="PART_Placeholder"
+							IsHitTestVisible="False"
+							FontSize="{Binding SelectedTextFontSize, RelativeSource={RelativeSource TemplatedParent}}"
+							FontFamily="{Binding SelectedTextFontFamily, RelativeSource={RelativeSource TemplatedParent}}"
+							Foreground="{Binding PlaceholderForeground, RelativeSource={RelativeSource TemplatedParent}}"
+							Margin="{Binding SelectedTextMargin, RelativeSource={RelativeSource TemplatedParent}}"
+							VerticalAlignment="Center"
+							Text="{Binding PlaceholderText, RelativeSource={RelativeSource TemplatedParent}}"
+							Visibility="Collapsed" />
 						<TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
 						<Popup 
 							x:Name="PART_Popup"
@@ -254,6 +265,10 @@
 						<Trigger Property="IsEditable" Value="true">
 							<Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
 							<Setter TargetName="PART_ContentSite" Property="Visibility" Value="Hidden"/>
+						</Trigger>
+						<Trigger Property="SelectedItem" Value="{x:Null}">
+							<Setter TargetName="PART_Placeholder" Property="Visibility" Value="Visible"/>
+							<Setter TargetName="PART_ContentSite" Property="Visibility" Value="Collapsed"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>

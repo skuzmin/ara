@@ -114,7 +114,6 @@ namespace ARA.Controls.CustomControls
 			set => SetValue(IsSelectedProperty, value);
 		}
 		#endregion
-
 		static AraButton()
 		{
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraButton),
