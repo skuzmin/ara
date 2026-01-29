@@ -34,6 +34,7 @@
 				<ColumnDefinition Width="Auto"/>
 			</Grid.ColumnDefinitions>
 			<controls:AraComboBox
+				x:Name="LoadoutComboBox"
 				Style="{StaticResource LoadoutConfigComboBox}"
 				ItemsSource="{Binding LoadoutOptions}"
 				PlaceholderText="Select Loadout"
@@ -56,6 +57,7 @@
 			</controls:AraButton>
 		</Grid>
 		<Grid Grid.Row="4">
+			<!-- Loadout Items Grid -->
 			<Border >
 				<Border.Style>
 					<Style TargetType="Border" BasedOn="{StaticResource DataGridBorderWrapper}">
@@ -105,6 +107,21 @@
 					</DataGrid.Columns>
 				</DataGrid>
 			</Border>
+			<!-- No Loadouts Message -->
+			<StackPanel Orientation="Vertical" >
+				<StackPanel.Style>
+					<Style TargetType="StackPanel">
+						<Setter Property="Visibility" Value="Collapsed"/>
+						<Style.Triggers>
+							<DataTrigger Binding="{Binding ElementName=LoadoutComboBox, Path=Items.Count}" Value="0">
+								<Setter Property="Visibility" Value="Visible" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</StackPanel.Style>
+				<TextBlock Style="{StaticResource NoLoadoutConfigsMessage}" Text="You don't have any Loadouts yet."/>
+				<TextBlock Style="{StaticResource NoLoadoutConfigsMessage}" Text="Use the configuration button [ ⚙️ ] to create your first loadout."/>
+			</StackPanel>
 		</Grid>
 	</Grid>
 </UserControl>
