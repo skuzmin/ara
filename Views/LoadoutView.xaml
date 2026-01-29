@@ -39,7 +39,16 @@
 				PlaceholderText="Select Loadout"
 				DisplayMemberPath="Name"
 				SelectedItem="{Binding SelectedLoadout, Mode=TwoWay}"/>
-			<controls:AraButton Grid.Column="2" Style="{StaticResource LoadoutConfigCheckButton}" Command="{Binding CheckLoadout}">
+			<controls:AraButton Grid.Column="2" Command="{Binding CheckLoadout}">
+				<controls:AraButton.Style>
+					<Style TargetType="controls:AraButton" BasedOn="{StaticResource LoadoutConfigCheckButton}">
+						<Style.Triggers>
+							<DataTrigger Binding="{Binding SelectedLoadout}" Value="{x:Null}">
+								<Setter Property="IsEnabled" Value="False" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</controls:AraButton.Style>
 				<StackPanel Orientation="Horizontal">
 					<Image Style="{StaticResource LoadoutCheckImage}" Source="/Assets/Icons/check-mark.png" />
 					<TextBlock Text="Check" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
