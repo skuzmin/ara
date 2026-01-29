@@ -18,6 +18,14 @@
 		</Setter>
 	</Style>
 
+	<Style x:Key="SelectedMenuPill" TargetType="Border">
+		<Setter Property="Height" Value="40" />
+		<Setter Property="BorderBrush" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="BorderThickness" Value="2" />
+		<Setter Property="CornerRadius" Value="{StaticResource Radius-5}" />
+	</Style>
+
 	<Style x:Key="MainWindowContaier" TargetType="Border">
 		<Setter Property="Background">
 			<Setter.Value>
@@ -43,23 +51,12 @@
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
-		<Setter Property="CornerRadius" Value="{StaticResource Radius-5}" />
 		<Setter Property="SelectedForeground" Value="{StaticResource TextColorPrimary}" />
-		<Setter Property="SelectedBorderBrush" Value="{StaticResource MainWindow__NavigationSelectedButtonBorderColor}" />
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 
 					Left="{StaticResource Spacing-4}"
 					Right="{StaticResource Spacing-4}"
-					Top="{StaticResource Spacing-0}"
-					Bottom="{StaticResource Spacing-0}"/>
-			</Setter.Value>
-		</Setter>
-		<Setter Property="Margin">
-			<Setter.Value>
-				<Thickness 
-					Left="{StaticResource Spacing-0}"
-					Right="{StaticResource Spacing-3}"
 					Top="{StaticResource Spacing-0}"
 					Bottom="{StaticResource Spacing-0}"/>
 			</Setter.Value>
