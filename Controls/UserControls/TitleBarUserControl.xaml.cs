@@ -1,9 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Interop;
 
-namespace ARA.Controls
+namespace ARA.Controls.UserControls
 {
 	public partial class TitleBarUserControl : UserControl
 	{

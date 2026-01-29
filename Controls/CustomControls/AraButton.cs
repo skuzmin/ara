@@ -2,10 +2,9 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using ARA.Animations;
 
-namespace ARA.Controls
+namespace ARA.Controls.CustomControls
 {
 	public class AraButton : Button
 	{

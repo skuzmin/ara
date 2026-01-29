@@ -4,7 +4,7 @@
     <_LastSelectedProfileId>D:\Projects\ara\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="Controls\TitleBarUserControl.xaml.cs">
+    <Compile Update="Controls\UserControls\TitleBarUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\LoadoutView.xaml.cs">

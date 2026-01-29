@@ -1,7 +1,7 @@
-﻿<UserControl x:Class="ARA.Controls.TitleBarUserControl"
+﻿<UserControl x:Class="ARA.Controls.UserControls.TitleBarUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="clr-namespace:ARA.Controls">
+             xmlns:controls="clr-namespace:ARA.Controls.CustomControls">
 	<Grid Background="{StaticResource TitleBar__BackgroundColor}" MouseLeftButtonDown="WindowDrag_MouseLeftButtonDown">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="Auto"/>
