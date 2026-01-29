@@ -9,12 +9,12 @@ namespace ARA.ViewModels.Pages
 	{
 		public ICommand CheckLoadout { get; }
 		public ObservableCollection<LoadoutConfiguration> LoadoutOptions { get; }
-		public LoadoutConfiguration SelectedLoadout
+		public LoadoutConfiguration? SelectedLoadout
 		{
 			get => field;
 			set
 			{
-				value.Items.ForEach(x => x.Status = 0);
+				value?.Items.ForEach(x => x.Status = 0);
 				field = value;
 				OnPropertyChanged(nameof(SelectedLoadout));
 			}
@@ -22,6 +22,7 @@ namespace ARA.ViewModels.Pages
 
 		public LoadoutViewModel()
 		{
+			SelectedLoadout = null;
 			CheckLoadout = new RelayCommand(OnCheckLoadoutClicked);
 			LoadoutOptions = [
 				new LoadoutConfiguration { Name = "Dam Night Juice", Items = [
@@ -48,10 +49,14 @@ namespace ARA.ViewModels.Pages
 					]
 				}
 			];
-			SelectedLoadout = LoadoutOptions[0];
 		}
         private void OnCheckLoadoutClicked(object obj)
         {
+			if (SelectedLoadout == null)
+			{
+				return;
+			}
+
 			var newItems = SelectedLoadout.Items.Select(item => new GameItem
 			{
 				Icon = item.Icon,

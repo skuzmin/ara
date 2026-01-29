@@ -46,7 +46,16 @@
 			</controls:AraButton>
 		</Grid>
 		<Grid Grid.Row="4">
-			<Border Style="{StaticResource DataGridBorderWrapper}">
+			<Border >
+				<Border.Style>
+					<Style TargetType="Border" BasedOn="{StaticResource DataGridBorderWrapper}">
+						<Style.Triggers>
+							<DataTrigger Binding="{Binding SelectedLoadout}" Value="{x:Null}">
+								<Setter Property="Visibility" Value="Hidden"/>
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</Border.Style>
 				<DataGrid 
 					x:Name="LoadoutPreview"
 					ItemsSource="{Binding SelectedLoadout.Items}">
