@@ -10,10 +10,10 @@ namespace ARA
 	{
 		public required AraButton ActiveButton;
 
-		public MainWindow()
+		public MainWindow(MainViewModel vm)
 		{
 			InitializeComponent();
-			DataContext = new MainViewModel();
+			DataContext = vm;
 			Loaded += (s, e) => InitPillPosition();
 		}
 

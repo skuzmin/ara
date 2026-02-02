@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ARA.Enums;
+using ARA.Interfaces;
 using ARA.Models;
 
 namespace ARA.ViewModels.Pages
@@ -20,7 +21,7 @@ namespace ARA.ViewModels.Pages
 			}
 		}
 
-		public LoadoutViewModel()
+		public LoadoutViewModel(IConfigurations config)
 		{
 			SelectedLoadout = null;
 			CheckLoadout = new RelayCommand(OnCheckLoadoutClicked);

@@ -1,5 +1,7 @@
 ﻿using System.Windows.Input;
+using ARA.Interfaces;
 using ARA.ViewModels.Pages;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ARA.ViewModels.Shell
 {
@@ -26,12 +28,12 @@ namespace ARA.ViewModels.Shell
 		public bool IsSettingsSelected => CurrentPage is SettingsViewModel;
 		public bool IsAboutSelected => CurrentPage is AboutViewModel;
 
-		public MainViewModel()
+		public MainViewModel(IServiceProvider services)
 		{
-			ShowLoadoutCommand = new RelayCommand(_ => CurrentPage = new LoadoutViewModel());
-			ShowSettingsCommand = new RelayCommand(_ => CurrentPage = new SettingsViewModel());
-			ShowAboutCommand = new RelayCommand(_ => CurrentPage = new AboutViewModel());
-			CurrentPage = new LoadoutViewModel();
+			ShowLoadoutCommand = new RelayCommand(_ => CurrentPage = services.GetRequiredService<LoadoutViewModel>());
+			ShowSettingsCommand = new RelayCommand(_ => CurrentPage = services.GetRequiredService<SettingsViewModel>());
+			ShowAboutCommand = new RelayCommand(_ => CurrentPage = services.GetRequiredService<AboutViewModel>());
+			CurrentPage = services.GetRequiredService<LoadoutViewModel>();
 		}
 	}
 }
