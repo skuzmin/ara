@@ -23,7 +23,9 @@
 		<StackPanel Orientation="Horizontal" Grid.Row="0">
 			<TextBlock Style="{StaticResource LoadoutViewTitle}" Text="Loadout Checker" />
 			<controls:AraButton Style="{StaticResource LoadoutConfigButton}">
-				<Image Style="{StaticResource LoadoutConfigImage}" Source="/Assets/Icons/config.png" />
+				<controls:AraButton.Children>
+					<Image Style="{StaticResource LoadoutConfigImage}" Source="/Assets/Icons/config.png" />
+				</controls:AraButton.Children>
 			</controls:AraButton>
 		</StackPanel>
 
@@ -41,6 +43,10 @@
 				DisplayMemberPath="Name"
 				SelectedItem="{Binding SelectedLoadout, Mode=TwoWay}"/>
 			<controls:AraButton Grid.Column="2" Command="{Binding CheckLoadout}">
+				<controls:AraButton.Children>
+					<Image Style="{StaticResource LoadoutCheckImage}" Source="/Assets/Icons/check-mark.png" />
+					<TextBlock Text="Check" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
+				</controls:AraButton.Children>
 				<controls:AraButton.Style>
 					<Style TargetType="controls:AraButton" BasedOn="{StaticResource LoadoutConfigCheckButton}">
 						<Style.Triggers>
@@ -50,10 +56,6 @@
 						</Style.Triggers>
 					</Style>
 				</controls:AraButton.Style>
-				<StackPanel Orientation="Horizontal">
-					<Image Style="{StaticResource LoadoutCheckImage}" Source="/Assets/Icons/check-mark.png" />
-					<TextBlock Text="Check" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
-				</StackPanel>
 			</controls:AraButton>
 		</Grid>
 		<Grid Grid.Row="4">

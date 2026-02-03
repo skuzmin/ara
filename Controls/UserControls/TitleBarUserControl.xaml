@@ -13,8 +13,16 @@
 			<TextBlock Style="{StaticResource TitleBarText}" Text="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}, FallbackValue='[ARA] Arc Raiders Assistant'}" />
 		</StackPanel>
 		<StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-			<controls:AraButton Style="{StaticResource TitleBarDefaultButton}" Content="🗕" Click="Minimize_Click" />
-			<controls:AraButton Style="{StaticResource TitleBarCloseButton}" Content="✕" Click="Close_Click" />
+			<controls:AraButton Style="{StaticResource TitleBarDefaultButton}" Click="Minimize_Click" >
+				<controls:AraButton.Children>
+					<TextBlock Text="🗕" />
+				</controls:AraButton.Children>
+			</controls:AraButton>
+			<controls:AraButton Style="{StaticResource TitleBarCloseButton}" Click="Close_Click">
+				<controls:AraButton.Children>
+					<TextBlock Text="✕" />
+				</controls:AraButton.Children>
+			</controls:AraButton>
 		</StackPanel>
 	</Grid>
 </UserControl>

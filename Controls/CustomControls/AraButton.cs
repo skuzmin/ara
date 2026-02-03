@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -9,7 +10,22 @@ namespace ARA.Controls.CustomControls
 	public class AraButton : Button
 	{
 		private Border? _border;
+		private List<TextBlock> _textBlocks;
 
+		#region Children
+		public ObservableCollection<UIElement> Children
+		{
+			get { return (ObservableCollection<UIElement>)GetValue(ChildrenProperty); }
+			set { SetValue(ChildrenProperty, value); }
+		}
+
+		public static readonly DependencyProperty ChildrenProperty =
+		DependencyProperty.Register(
+			nameof(Children),
+			typeof(ObservableCollection<UIElement>),
+			typeof(AraButton),
+			new PropertyMetadata(null));
+		#endregion
 		#region HoverForeground
 		public static readonly DependencyProperty HoverForegroundProperty =
 			DependencyProperty.Register(
@@ -107,7 +123,7 @@ namespace ARA.Controls.CustomControls
 				nameof(IsSelected),
 				typeof(bool),
 				typeof(AraButton),
-				new PropertyMetadata(false));
+				new PropertyMetadata(false, OnIsSelectedChanged));
 		public bool IsSelected
 		{
 			get => (bool)GetValue(IsSelectedProperty);
@@ -120,12 +136,33 @@ namespace ARA.Controls.CustomControls
 				new FrameworkPropertyMetadata(typeof(AraButton)));
 		}
 
-		#region Animations
-		public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-			_border = (Border)GetTemplateChild("Border");
+		public AraButton()
+		{
+			Children = [];
+			_textBlocks = [];
 		}
+
+		#region Animations
+		private static void OnIsSelectedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+		{
+			var button = (AraButton)d;
+			bool isSelected = (bool)e.NewValue;
+			var targetColor = isSelected ? button.SelectedForeground : button.Foreground;
+			foreach (var tb in button._textBlocks)
+			{
+				ColorAnimator.Animate(targetColor, tb, "(Foreground).(SolidColorBrush.Color)");
+			}
+		}
+		public override void OnApplyTemplate()
+		{
+			base.OnApplyTemplate();
+			_border = (Border)GetTemplateChild("Border");
+			_textBlocks = [.. Children.OfType<TextBlock>()];
+            foreach (var tb in _textBlocks)
+            {
+				tb.Foreground = this.Foreground.Clone();
+            }
+        }
 
 		protected override void OnMouseEnter(MouseEventArgs e)
 		{
@@ -134,6 +171,10 @@ namespace ARA.Controls.CustomControls
 			{
 				ColorAnimator.Animate(HoverBackground, _border!, "(Background).(SolidColorBrush.Color)");
 				ColorAnimator.Animate(HoverBorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+				foreach (var tb in _textBlocks)
+				{
+					ColorAnimator.Animate(HoverForeground, tb, "(Foreground).(SolidColorBrush.Color)");
+				}
 			}
 		}
 
@@ -144,6 +185,10 @@ namespace ARA.Controls.CustomControls
 			{
 				ColorAnimator.Animate(Background, _border!, "(Background).(SolidColorBrush.Color)");
 				ColorAnimator.Animate(BorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+				foreach (var tb in _textBlocks)
+				{
+					ColorAnimator.Animate(Foreground, tb, "(Foreground).(SolidColorBrush.Color)");
+				}
 			}
 		}
 		#endregion

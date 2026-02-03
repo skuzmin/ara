@@ -50,8 +50,10 @@
 		<Setter Property="BorderThickness" Value="2" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Foreground" Value="{StaticResource MainWindow__NavigationButtonForeground}" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
 		<Setter Property="SelectedForeground" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="HoverForeground" Value="{StaticResource TextColorPrimary}" />
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 
