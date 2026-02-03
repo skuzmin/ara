@@ -34,7 +34,7 @@ namespace ARA
 			// Services
 			services.AddSingleton<IConfigurations, ConfigurationService>();
 			// ViewModels
-			services.AddTransient<MainViewModel>();
+			services.AddSingleton<MainViewModel>();
 			services.AddTransient<LoadoutViewModel>();
 			services.AddTransient<SettingsViewModel>();
 			services.AddTransient<AboutViewModel>();
@@ -56,7 +56,7 @@ namespace ARA
 		{
 			if (Resources["TrayIcon"] is TaskbarIcon trayIcon)
 			{
-				trayIcon.Visibility = System.Windows.Visibility.Visible;
+				trayIcon.Visibility = Visibility.Visible;
 				trayIcon.TrayMouseDoubleClick += (s, args) =>
 				{
 					MainWindow?.Show();

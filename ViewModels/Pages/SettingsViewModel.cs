@@ -1,4 +1,6 @@
-﻿namespace ARA.ViewModels.Pages
+﻿using ARA.Enums;
+
+namespace ARA.ViewModels.Pages
 {
 	public class SettingsViewModel : ViewModelBase
 	{

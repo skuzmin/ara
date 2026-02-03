@@ -21,7 +21,7 @@ namespace ARA.ViewModels.Pages
 			}
 		}
 
-		public LoadoutViewModel(IConfigurations config)
+        public LoadoutViewModel(IConfigurations config)
 		{
 			SelectedLoadout = null;
 			CheckLoadout = new RelayCommand(OnCheckLoadoutClicked);

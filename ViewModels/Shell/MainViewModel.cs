@@ -1,5 +1,4 @@
 ﻿using System.Windows.Input;
-using ARA.Interfaces;
 using ARA.ViewModels.Pages;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,6 +23,7 @@ namespace ARA.ViewModels.Shell
 		public ICommand ShowLoadoutCommand { get; }
 		public ICommand ShowSettingsCommand { get; }
 		public ICommand ShowAboutCommand { get; }
+
 		public bool IsLoadoutSelected => CurrentPage is LoadoutViewModel;
 		public bool IsSettingsSelected => CurrentPage is SettingsViewModel;
 		public bool IsAboutSelected => CurrentPage is AboutViewModel;
