@@ -32,7 +32,7 @@ namespace ARA
         private static void ConfigureServices(IServiceCollection services)
 		{
 			// Services
-			services.AddSingleton<IConfigurations, ConfigurationService>();
+			services.AddSingleton<IAraConfigurations, ConfigurationService>();
 			// ViewModels
 			services.AddSingleton<MainViewModel>();
 			services.AddTransient<LoadoutViewModel>();

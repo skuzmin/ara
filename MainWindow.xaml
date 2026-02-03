@@ -38,17 +38,17 @@
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 				<Border x:Name="SelectionPill" Style="{StaticResource SelectedMenuPill}"/>
-				<controls:AraButton Grid.Column="0" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding IsLoadoutSelected}" Content="Loadout" Command="{Binding ShowLoadoutCommand}" Click="Navigation_Click">
+				<controls:AraButton Grid.Column="0" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding IsLoadoutSelected}" Command="{Binding ShowLoadoutCommand}" Click="Navigation_Click">
 					<controls:AraButton.Children>
 						<TextBlock Text="Loadout" />
 					</controls:AraButton.Children>
 				</controls:AraButton>
-				<controls:AraButton Grid.Column="2" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding IsSettingsSelected}" Content="Stash" Command="{Binding ShowSettingsCommand}" Click="Navigation_Click">
+				<controls:AraButton Grid.Column="2" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding IsSettingsSelected}" Command="{Binding ShowSettingsCommand}" Click="Navigation_Click">
 					<controls:AraButton.Children>
 						<TextBlock Text="Settings" />
 					</controls:AraButton.Children>
 				</controls:AraButton>
-				<controls:AraButton Grid.Column="4" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding IsAboutSelected}" Content="About" Command="{Binding ShowAboutCommand}" Click="Navigation_Click">
+				<controls:AraButton Grid.Column="4" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding IsAboutSelected}" Command="{Binding ShowAboutCommand}" Click="Navigation_Click">
 					<controls:AraButton.Children>
 						<TextBlock Text="About" />
 					</controls:AraButton.Children>
