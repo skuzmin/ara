@@ -19,6 +19,7 @@ namespace ARA
 		{
 			base.OnStartup(e);
 			SingleInstanceChecker();
+			FilesHelper.FilesDirectoryInit();
 
 			var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
