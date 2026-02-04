@@ -7,6 +7,7 @@ using ARA.ViewModels.Pages;
 using ARA.ViewModels.Shell;
 using Hardcodet.Wpf.TaskbarNotification;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace ARA
 {
@@ -33,6 +34,7 @@ namespace ARA
 		{
 			// Services
 			services.AddSingleton<IAraConfigurations, ConfigurationService>();
+			services.AddSingleton<ILogger, AraLogger>();
 			// ViewModels
 			services.AddSingleton<MainViewModel>();
 			services.AddTransient<LoadoutViewModel>();

@@ -2,6 +2,7 @@
 using System.Text.Json;
 using ARA.Interfaces;
 using ARA.Models;
+using Microsoft.Extensions.Logging;
 
 namespace ARA.Services
 {
@@ -9,11 +10,13 @@ namespace ARA.Services
 	{
 		private readonly JsonSerializerOptions _jsonOptions;
 		private readonly string _configFilePath;
+		private readonly ILogger _logger;
 		private AraConfigurations _configurations;
 		public AraConfigurations Configurations => _configurations;
 
-		public ConfigurationService()
+		public ConfigurationService(ILogger logger)
 		{
+			_logger = logger;
 			string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 			_configFilePath = Path.Combine(appDataPath, "ARA", "configurations.json");
 			_configurations = new AraConfigurations();
@@ -26,33 +29,38 @@ namespace ARA.Services
 
 		public void InitConfig()
 		{
-			try
+			using (_logger.BeginScope(new { SccopeId = 111 }))
 			{
-				string? directory = Path.GetDirectoryName(_configFilePath);
-				if (!string.IsNullOrEmpty(directory))
+                _logger.LogInformation("Test {a} - Test {b} lololo", 1, 2);
+				try
 				{
-					Directory.CreateDirectory(directory);
-				}
-				else
-				{
-					throw new ArgumentException("Invalid config path!");
-				}
+					string? directory = Path.GetDirectoryName(_configFilePath);
+					if (!string.IsNullOrEmpty(directory))
+					{
+						Directory.CreateDirectory(directory);
+					}
+					else
+					{
+						throw new ArgumentException("Invalid config path!");
+					}
+					_logger.LogCritical("pewpew");
 
-				if (File.Exists(_configFilePath))
-				{
-					string json = File.ReadAllText(_configFilePath);
-					_configurations = JsonSerializer.Deserialize<AraConfigurations>(json) ?? throw new InvalidOperationException("Config file is corrupted!");
+					if (File.Exists(_configFilePath))
+					{
+						string json = File.ReadAllText(_configFilePath);
+						_configurations = JsonSerializer.Deserialize<AraConfigurations>(json) ?? throw new InvalidOperationException("Config file is corrupted!");
+					}
+					else
+					{
+						SaveConfig();
+					}
+					_logger.LogError("Error");
 				}
-				else
+				catch (Exception ex)
 				{
 					SaveConfig();
+					//throw new InvalidOperationException($"Failed to initialize configuration: {ex.Message}", ex);
 				}
-			}
-			catch (Exception ex)
-			{
-				SaveConfig();
-				// add logger
-				//throw new InvalidOperationException($"Failed to initialize configuration: {ex.Message}", ex);
 			}
 		}
 
