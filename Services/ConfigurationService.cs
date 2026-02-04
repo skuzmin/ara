@@ -28,16 +28,20 @@ namespace ARA.Services
 		{
 			try
 			{
-				string directory = Path.GetDirectoryName(_configFilePath) ?? throw new ArgumentException("Wrong config path!");
-				if (!Directory.Exists(directory))
+				string? directory = Path.GetDirectoryName(_configFilePath);
+				if (!string.IsNullOrEmpty(directory))
 				{
 					Directory.CreateDirectory(directory);
+				}
+				else
+				{
+					throw new ArgumentException("Invalid config path!");
 				}
 
 				if (File.Exists(_configFilePath))
 				{
 					string json = File.ReadAllText(_configFilePath);
-					_configurations = JsonSerializer.Deserialize<AraConfigurations>(json) ?? throw new NullReferenceException("Config file is corrupted!");
+					_configurations = JsonSerializer.Deserialize<AraConfigurations>(json) ?? throw new InvalidOperationException("Config file is corrupted!");
 				}
 				else
 				{
@@ -46,7 +50,6 @@ namespace ARA.Services
 			}
 			catch (Exception ex)
 			{
-				_configurations = new AraConfigurations();
 				SaveConfig();
 				// add logger
 				//throw new InvalidOperationException($"Failed to initialize configuration: {ex.Message}", ex);
