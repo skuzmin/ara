@@ -3,11 +3,14 @@ using System.Windows.Input;
 using ARA.Enums;
 using ARA.Interfaces;
 using ARA.Models;
+using Microsoft.Extensions.Logging;
 
 namespace ARA.ViewModels.Pages
 {
 	public class LoadoutViewModel : ViewModelBase
 	{
+		private readonly ILogger _logger;
+		private readonly IAraConfigurations _config;
 		public ICommand CheckLoadout { get; }
 		public ObservableCollection<LoadoutConfiguration> LoadoutOptions { get; }
 		public LoadoutConfiguration? SelectedLoadout
@@ -15,14 +18,20 @@ namespace ARA.ViewModels.Pages
 			get => field;
 			set
 			{
-				value?.Items.ForEach(x => x.Status = 0);
+				if (value != null)
+				{
+					_logger.LogInformation("Change loadout to: {loadout}", value.Name);
+					value.Items.ForEach(x => x.Status = 0);
+				}
 				field = value;
 				OnPropertyChanged(nameof(SelectedLoadout));
 			}
 		}
 
-        public LoadoutViewModel(IAraConfigurations config)
+		public LoadoutViewModel(IAraConfigurations config, ILogger logger)
 		{
+			_logger = logger;
+			_config = config;
 			SelectedLoadout = null;
 			CheckLoadout = new RelayCommand(OnCheckLoadoutClicked);
 			LoadoutOptions = [
@@ -51,8 +60,8 @@ namespace ARA.ViewModels.Pages
 				}
 			];
 		}
-        private void OnCheckLoadoutClicked(object obj)
-        {
+		private void OnCheckLoadoutClicked(object obj)
+		{
 			if (SelectedLoadout == null)
 			{
 				return;
@@ -68,7 +77,8 @@ namespace ARA.ViewModels.Pages
 			.ToList();
 
 			SelectedLoadout.Items = newItems;
+			_logger.LogInformation("Loadout Check");
 			OnPropertyChanged(nameof(SelectedLoadout));
 		}
-    }
+	}
 }

@@ -26,12 +26,8 @@ namespace ARA.Services
 
 		public void InitConfig()
 		{
-
-			_logger.LogInformation("Test {a} - Test {b} lololo", 1, 2);
 			try
 			{
-				_logger.LogCritical("pewpew");
-
 				if (File.Exists(Constants.ConfigFilePath))
 				{
 					string json = File.ReadAllText(Constants.ConfigFilePath);
@@ -41,12 +37,11 @@ namespace ARA.Services
 				{
 					SaveConfig();
 				}
-				_logger.LogError("Error");
 			}
 			catch (Exception ex)
 			{
 				SaveConfig();
-				//throw new InvalidOperationException($"Failed to initialize configuration: {ex.Message}", ex);
+				_logger.LogError("Error during ConfigurationService Init: {Message}", ex.Message);
 			}
 
 		}

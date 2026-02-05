@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Text;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Primitives;
 
 namespace ARA.Services
 {
@@ -25,11 +24,6 @@ namespace ARA.Services
 
 		public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
 		{
-			if (!IsEnabled(logLevel))
-			{
-				return;
-			}
-
 			string message;
 			if (formatter != null)
 			{
@@ -48,16 +42,8 @@ namespace ARA.Services
 				var scopePath = string.Join(" => ", scopes.Reverse());
 				logBuilder.Append($"{scopePath} | ");
 			}
-			if (eventId.Id != 0)
-			{
-				logBuilder.Append($"[EventId: {eventId.Id}] | ");
-			}
 			logBuilder.Append($"DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss} | ");
-			logBuilder.Append($"Message: {message} | ");
-			if (exception != null)
-			{
-				logBuilder.Append($"Exception: {exception.Message}");
-			}
+			logBuilder.Append($"Message: {message} ");
 
 			lock (_lock)
 			{

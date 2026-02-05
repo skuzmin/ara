@@ -1,12 +1,14 @@
 ﻿using System.Windows.Input;
 using ARA.ViewModels.Pages;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace ARA.ViewModels.Shell
 {
 	public class MainViewModel : ViewModelBase
 	{
 		private readonly IServiceProvider _services;
+		private readonly ILogger _logger;
 		private ViewModelBase? _currentPage;
 		public ViewModelBase? CurrentPage
 		{
@@ -27,8 +29,9 @@ namespace ARA.ViewModels.Shell
 		public bool IsSettingsSelected => CurrentPage is SettingsViewModel;
 		public bool IsAboutSelected => CurrentPage is AboutViewModel;
 
-		public MainViewModel(IServiceProvider services)
+		public MainViewModel(IServiceProvider services, ILogger logger)
 		{
+			_logger = logger;
 			_services = services;
 			ShowLoadoutCommand = new RelayCommand(_ => NavigateToPage<LoadoutViewModel>());
 			ShowSettingsCommand = new RelayCommand(_ => NavigateToPage<SettingsViewModel>());
@@ -38,6 +41,7 @@ namespace ARA.ViewModels.Shell
 
 		private void NavigateToPage<TViewModel>() where TViewModel : ViewModelBase
 		{
+			_logger.LogInformation("Naviage to page: {page}", typeof(TViewModel).Name);
 			CurrentPage = _services.GetRequiredService<TViewModel>();
 		}
 	}

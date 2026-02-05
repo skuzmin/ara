@@ -3,29 +3,31 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using ARA.Controls.CustomControls;
 using ARA.ViewModels.Shell;
+using Microsoft.Extensions.Logging;
 
 namespace ARA
 {
-    public partial class MainWindow : AraWindow
+	public partial class MainWindow : AraWindow
 	{
 		public required AraButton ActiveButton;
 
-		public MainWindow(MainViewModel vm)
+		public MainWindow(MainViewModel vm, ILogger logger)
 		{
 			InitializeComponent();
 			DataContext = vm;
 			Loaded += (s, e) => InitPillPosition();
+			logger.LogInformation("App Start");
 		}
 
-        private void Navigation_Click(object sender, RoutedEventArgs e)
-        {
+		private void Navigation_Click(object sender, RoutedEventArgs e)
+		{
 			var button = (AraButton)sender;
-			if(ActiveButton == button)
+			if (ActiveButton == button)
 			{
 				return;
 			}
 			ActiveButton = button;
-			
+
 			Point buttonPosition = button.TransformToAncestor(NavbarGrid).Transform(new Point(0, 0));
 
 			var positionAnimation = new DoubleAnimation
@@ -48,7 +50,7 @@ namespace ARA
 		private void InitPillPosition()
 		{
 			var selectedButton = NavbarGrid.Children.OfType<AraButton>().FirstOrDefault(b => b.IsSelected);
-			if (selectedButton != null) 
+			if (selectedButton != null)
 			{
 				Point position = selectedButton.TransformToAncestor(NavbarGrid).Transform(new Point(0, 0));
 				SelectionPill.Width = selectedButton.ActualWidth;
