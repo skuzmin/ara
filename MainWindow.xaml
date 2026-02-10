@@ -14,6 +14,9 @@
 		<DataTemplate DataType="{x:Type viewmodels:LoadoutViewModel}">
 			<views:LoadoutView />
 		</DataTemplate>
+		<DataTemplate DataType="{x:Type viewmodels:LoadoutConfigsViewModel}">
+			<views:LoadoutConfigsView />
+		</DataTemplate>
 		<DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
 			<views:SettingsView />
 		</DataTemplate>

@@ -25,6 +25,7 @@ namespace ARA.ViewModels.Shell
 		public ICommand ShowLoadoutCommand { get; }
 		public ICommand ShowSettingsCommand { get; }
 		public ICommand ShowAboutCommand { get; }
+		public ICommand ShowLoadoutConfigsCommand { get; }
 		public bool IsLoadoutSelected => CurrentPage is LoadoutViewModel;
 		public bool IsSettingsSelected => CurrentPage is SettingsViewModel;
 		public bool IsAboutSelected => CurrentPage is AboutViewModel;
@@ -34,6 +35,7 @@ namespace ARA.ViewModels.Shell
 			_logger = logger;
 			_services = services;
 			ShowLoadoutCommand = new RelayCommand(_ => NavigateToPage<LoadoutViewModel>());
+			ShowLoadoutConfigsCommand = new RelayCommand(_ => NavigateToPage<LoadoutConfigsViewModel>());
 			ShowSettingsCommand = new RelayCommand(_ => NavigateToPage<SettingsViewModel>());
 			ShowAboutCommand = new RelayCommand(_ => NavigateToPage<AboutViewModel>());
 			NavigateToPage<LoadoutViewModel>();

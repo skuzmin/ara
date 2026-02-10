@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="ARA.Views.LoadoutConfigsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 mc:Ignorable="d"
+			 xmlns:pages="clr-namespace:ARA.ViewModels.Pages" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=pages:SettingsViewModel}">
+	<StackPanel>
+		<TextBlock Text="TEST" />
+	</StackPanel>
+</UserControl>
