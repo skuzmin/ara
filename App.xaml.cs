@@ -22,7 +22,7 @@ namespace ARA
 			FilesHelper.FilesDirectoryInit();
 
 			var serviceCollection = new ServiceCollection();
-            ConfigureServices(serviceCollection);
+			ConfigureServices(serviceCollection);
 			_serviceProvider = serviceCollection.BuildServiceProvider();
 
 			TrayIconInit();
@@ -31,11 +31,12 @@ namespace ARA
 			_serviceProvider.GetService<MainWindow>()!.Show();
 		}
 
-        private static void ConfigureServices(IServiceCollection services)
+		private static void ConfigureServices(IServiceCollection services)
 		{
 			// Services
 			services.AddSingleton<IAraConfigurations, ConfigurationService>();
 			services.AddSingleton<ILogger, AraLogger>();
+			services.AddSingleton<IAraNavigation, NavigationService>();
 			// ViewModels
 			services.AddSingleton<MainViewModel>();
 			services.AddTransient<LoadoutViewModel>();
@@ -50,7 +51,7 @@ namespace ARA
 		{
 			_mutex = new Mutex(true, "ARA_ArcRaidersAssistant", out bool isFirstInstance);
 			if (!isFirstInstance)
-			{ 
+			{
 				Application.Current.Shutdown();
 				return;
 			}
@@ -70,14 +71,14 @@ namespace ARA
 			}
 		}
 
-        protected override void OnExit(ExitEventArgs e)
-        {
+		protected override void OnExit(ExitEventArgs e)
+		{
 			_mutex?.Dispose();
 			if (_serviceProvider is IDisposable disposable)
 			{
 				disposable.Dispose();
 			}
 			base.OnExit(e);
-        }
+		}
 	}
 }

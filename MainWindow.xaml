@@ -7,6 +7,7 @@
 			 xmlns:shell="clr-namespace:ARA.ViewModels.Shell"
 			 xmlns:viewmodels="clr-namespace:ARA.ViewModels.Pages"
 			 xmlns:controls="clr-namespace:ARA.Controls.CustomControls"
+			 xmlns:enums="clr-namespace:ARA.Enums"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DataContext="{d:DesignInstance Type=shell:MainViewModel}" mc:Ignorable="d" x:Class="ARA.MainWindow"
 			 WindowStartupLocation="CenterScreen"
              Title="[ARA] Arc Raiders Assistant" d:DesignHeight="480" d:DesignWidth="640">
@@ -41,17 +42,17 @@
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 				<Border x:Name="SelectionPill" Style="{StaticResource SelectedMenuPill}"/>
-				<controls:AraButton Grid.Column="0" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding IsLoadoutSelected}" Command="{Binding ShowLoadoutCommand}" Click="Navigation_Click">
+				<controls:AraButton Grid.Column="0" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding Navigation.IsLoadoutSelected}" Command="{Binding Navigation.NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.Loadout}" Click="Navigation_Click">
 					<controls:AraButton.Children>
 						<TextBlock Text="Loadout" />
 					</controls:AraButton.Children>
 				</controls:AraButton>
-				<controls:AraButton Grid.Column="2" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding IsSettingsSelected}" Command="{Binding ShowSettingsCommand}" Click="Navigation_Click">
+				<controls:AraButton Grid.Column="2" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding Navigation.IsSettingsSelected}" Command="{Binding Navigation.NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.Settings}" Click="Navigation_Click">
 					<controls:AraButton.Children>
 						<TextBlock Text="Settings" />
 					</controls:AraButton.Children>
 				</controls:AraButton>
-				<controls:AraButton Grid.Column="4" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding IsAboutSelected}" Command="{Binding ShowAboutCommand}" Click="Navigation_Click">
+				<controls:AraButton Grid.Column="4" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding Navigation.IsAboutSelected}" Command="{Binding Navigation.NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.About}" Click="Navigation_Click">
 					<controls:AraButton.Children>
 						<TextBlock Text="About" />
 					</controls:AraButton.Children>
@@ -59,7 +60,7 @@
 			</Grid>
 		</Border>
 		<Border Grid.Row="1" Style="{StaticResource MainWindowContaier}">
-			<ContentPresenter Content="{Binding CurrentPage}"/>
+			<ContentPresenter Content="{Binding Navigation.CurrentPage}"/>
 		</Border>
 	</Grid>
 </local:AraWindow>

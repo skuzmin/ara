@@ -5,6 +5,7 @@
 			 xmlns:pages="clr-namespace:ARA.ViewModels.Pages" 
 			 xmlns:controls="clr-namespace:ARA.Controls.CustomControls"
 			 xmlns:converters="clr-namespace:ARA.Converters"
+			 xmlns:enums="clr-namespace:ARA.Enums"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d"
 			 d:DataContext="{d:DesignInstance Type=pages:LoadoutViewModel}">
@@ -22,7 +23,7 @@
 
 		<StackPanel Orientation="Horizontal" Grid.Row="0">
 			<TextBlock Style="{StaticResource LoadoutViewTitle}" Text="Loadout Checker" />
-			<controls:AraButton Style="{StaticResource LoadoutConfigButton}">
+			<controls:AraButton Style="{StaticResource LoadoutConfigButton}" Command="{Binding Navigation.NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.LoadoutConfigs}">
 				<controls:AraButton.Children>
 					<Image Style="{StaticResource LoadoutConfigImage}" Source="/Assets/Icons/config.png" />
 				</controls:AraButton.Children>

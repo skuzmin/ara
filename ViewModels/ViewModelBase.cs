@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using ARA.Enums;
 
 namespace ARA.ViewModels
 {

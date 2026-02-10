@@ -73,7 +73,11 @@
 					</Border>
 
 					<ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter TargetName="Border" Property="Opacity" Value="0.5"/>
+						</Trigger>
 						<Trigger Property="customControls:AraButton.IsSelected" Value="True">
+							<Setter TargetName="Border" Property="Opacity" Value="1"/>
 							<Setter TargetName="Border"
                                 Property="Background"
                                 Value="{Binding SelectedBackground,
@@ -82,12 +86,6 @@
                                 Property="BorderBrush"
                                 Value="{Binding SelectedBorderBrush,
                                         RelativeSource={RelativeSource TemplatedParent}}"/>
-						</Trigger>
-
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter TargetName="Border"
-                                Property="Opacity"
-                                Value="0.5"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>

@@ -11,6 +11,7 @@ namespace ARA.ViewModels.Pages
 	{
 		private readonly ILogger _logger;
 		private readonly IAraConfigurations _config;
+		public IAraNavigation Navigation { get; }
 		public ICommand CheckLoadout { get; }
 		public ObservableCollection<LoadoutConfiguration> LoadoutOptions { get; }
 		public LoadoutConfiguration? SelectedLoadout
@@ -20,7 +21,9 @@ namespace ARA.ViewModels.Pages
 			{
 				if (value != null)
 				{
+#pragma warning disable CA1873
 					_logger.LogInformation("Change loadout to: {loadout}", value.Name);
+#pragma warning restore CA1873
 					value.Items.ForEach(x => x.Status = 0);
 				}
 				field = value;
@@ -28,10 +31,11 @@ namespace ARA.ViewModels.Pages
 			}
 		}
 
-		public LoadoutViewModel(IAraConfigurations config, ILogger logger)
+		public LoadoutViewModel(IAraConfigurations config, ILogger logger, IAraNavigation navigation)
 		{
 			_logger = logger;
 			_config = config;
+			Navigation = navigation;
 			SelectedLoadout = null;
 			CheckLoadout = new RelayCommand(OnCheckLoadoutClicked);
 			LoadoutOptions = [

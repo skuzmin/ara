@@ -1,50 +1,14 @@
-﻿using System.Windows.Input;
-using ARA.ViewModels.Pages;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+﻿using ARA.Interfaces;
 
 namespace ARA.ViewModels.Shell
 {
 	public class MainViewModel : ViewModelBase
 	{
-		private readonly IServiceProvider _services;
-		private readonly ILogger _logger;
-		private ViewModelBase? _currentPage;
-		public ViewModelBase? CurrentPage
+		public IAraNavigation Navigation { get; }
+		public MainViewModel(IAraNavigation navigation)
 		{
-			get => _currentPage;
-			set
-			{
-				_currentPage = value;
-				OnPropertyChanged(nameof(CurrentPage));
-				OnPropertyChanged(nameof(IsLoadoutSelected));
-				OnPropertyChanged(nameof(IsSettingsSelected));
-				OnPropertyChanged(nameof(IsAboutSelected));
-			}
-		}
-		public ICommand ShowLoadoutCommand { get; }
-		public ICommand ShowSettingsCommand { get; }
-		public ICommand ShowAboutCommand { get; }
-		public ICommand ShowLoadoutConfigsCommand { get; }
-		public bool IsLoadoutSelected => CurrentPage is LoadoutViewModel;
-		public bool IsSettingsSelected => CurrentPage is SettingsViewModel;
-		public bool IsAboutSelected => CurrentPage is AboutViewModel;
-
-		public MainViewModel(IServiceProvider services, ILogger logger)
-		{
-			_logger = logger;
-			_services = services;
-			ShowLoadoutCommand = new RelayCommand(_ => NavigateToPage<LoadoutViewModel>());
-			ShowLoadoutConfigsCommand = new RelayCommand(_ => NavigateToPage<LoadoutConfigsViewModel>());
-			ShowSettingsCommand = new RelayCommand(_ => NavigateToPage<SettingsViewModel>());
-			ShowAboutCommand = new RelayCommand(_ => NavigateToPage<AboutViewModel>());
-			NavigateToPage<LoadoutViewModel>();
-		}
-
-		private void NavigateToPage<TViewModel>() where TViewModel : ViewModelBase
-		{
-			_logger.LogInformation("Naviage to page: {page}", typeof(TViewModel).Name);
-			CurrentPage = _services.GetRequiredService<TViewModel>();
+			Navigation = navigation;
+			Navigation.NavigateToDefaultPage();
 		}
 	}
 }
