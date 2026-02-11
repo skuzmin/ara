@@ -4,8 +4,30 @@
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d"
 			 xmlns:pages="clr-namespace:ARA.ViewModels.Pages" 
-			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=pages:SettingsViewModel}">
-	<StackPanel>
-		<TextBlock Foreground="White" FontSize="24" Text="TEST" />
-	</StackPanel>
+			 xmlns:controls="clr-namespace:ARA.Controls.CustomControls"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=pages:LoadoutConfigsViewModel}">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40" />
+			<RowDefinition Height="12" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="12" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+
+			<controls:AraButton Grid.Column="0" Style="{StaticResource PageTitleButton}" Command="{Binding BackCommand}">
+				<controls:AraButton.Children>
+					<Image Style="{StaticResource LoadoutConfigImage}" Source="/Assets/Icons/chevron-left.png" />
+				</controls:AraButton.Children>
+			</controls:AraButton>
+			<TextBlock Grid.Column="2" Style="{StaticResource PageTitle}" Text="Loadout Configurations" />
+		</Grid>
+	</Grid>
 </UserControl>

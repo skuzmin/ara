@@ -25,6 +25,7 @@
     <None Remove="Assets\Fonts\Oxanium-Medium.ttf" />
     <None Remove="Assets\Fonts\Oxanium-Regular.ttf" />
     <None Remove="Assets\Icons\check-mark.png" />
+    <None Remove="Assets\Icons\chevron-left.png" />
     <None Remove="Assets\Icons\config.png" />
     <None Remove="Assets\Icons\Statuses\fail.png" />
     <None Remove="Assets\Icons\Statuses\success.png" />
@@ -109,6 +110,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Fonts\Oxanium-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\chevron-left.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Icons\config.png">
