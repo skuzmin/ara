@@ -7,10 +7,12 @@ namespace ARA.ViewModels.Pages
 	public class LoadoutConfigsViewModel : ViewModelBase
 	{
 		public ICommand BackCommand { get; }
+		public ICommand ConfigDetailsCommand { get; }
 
 		public LoadoutConfigsViewModel(IAraNavigation navigations)
 		{
 			BackCommand = new RelayCommand(_ => navigations.NavigateToPage(AraPage.Loadout));
+			ConfigDetailsCommand = new RelayCommand(_ => navigations.NavigateToPage(AraPage.LoadoutConfigDetails));
 		}
 	}
 }

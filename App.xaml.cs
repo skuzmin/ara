@@ -41,6 +41,7 @@ namespace ARA
 			services.AddSingleton<MainViewModel>();
 			services.AddTransient<LoadoutViewModel>();
 			services.AddTransient<LoadoutConfigsViewModel>();
+			services.AddTransient<LoadoutConfigDetailsViewModel>();
 			services.AddTransient<SettingsViewModel>();
 			services.AddTransient<AboutViewModel>();
 			// Views

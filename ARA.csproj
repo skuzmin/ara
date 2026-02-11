@@ -178,6 +178,9 @@
     <Compile Update="Views\AboutView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\LoadoutConfigDetailsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\LoadoutConfigsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

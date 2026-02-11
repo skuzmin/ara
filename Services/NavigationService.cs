@@ -57,6 +57,9 @@ namespace ARA.Services
 				case AraPage.LoadoutConfigs:
 					GoToPage<LoadoutConfigsViewModel>();
 					break;
+				case AraPage.LoadoutConfigDetails:
+					GoToPage<LoadoutConfigDetailsViewModel>();
+					break;
 				case AraPage.Settings:
 					GoToPage<SettingsViewModel>();
 					break;
