@@ -4,6 +4,9 @@
 	<!-- General-->
 	<SolidColorBrush x:Key="TextColorPrimary" Color="{StaticResource White}" />
 	<SolidColorBrush x:Key="TextColorSecondary" Color="{StaticResource Black}" />
+	<SolidColorBrush x:Key="PrimaryButton__BackgroundColor" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="PrimaryButton__HoverBackgroundColor" Color="{StaticResource Orange}" />
+	<SolidColorBrush x:Key="PageTitleButton__HoverBackgroundColor" Color="{StaticResource DarkGray}"/>
 
 	<!-- TitleBarUserControl -->
 	<SolidColorBrush x:Key="TitleBar__BackgroundColor" Color="{StaticResource SpaceBlack}"/>
@@ -17,10 +20,6 @@
 	<SolidColorBrush x:Key="MainWindow__NavigationButtonForeground" Color="{StaticResource DarkGray}"/>
 
 	<!-- LoadoutView -->
-	<SolidColorBrush x:Key="Loadout__ConfigButtonHoverBackgroundColor" Color="{StaticResource DarkGray}"/>
-	<SolidColorBrush x:Key="Loadout__CheckButtonBackgroundColor" Color="{StaticResource Yellow}" />
-	<SolidColorBrush x:Key="Loadout__CheckButtonHoverBackgroundColor" Color="{StaticResource Orange}" />
-
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonArrowBrush" Color="{StaticResource Black}" />
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonBackground" Color="{StaticResource White}" />
 	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonBorderBrush" Color="{StaticResource White}" />

@@ -6,21 +6,6 @@
 		<Setter Property="SnapsToDevicePixels" Value="True" />
 	</Style>
 
-	<Style x:Key="LoadoutCheckImage" TargetType="Image">
-		<Setter Property="Height" Value="20" />
-		<Setter Property="Width" Value="20" />
-		<Setter Property="SnapsToDevicePixels" Value="True" />
-		<Setter Property="Margin">
-			<Setter.Value>
-				<Thickness 
-					Left="{StaticResource Spacing-0}"
-					Right="{StaticResource Spacing-1}"
-					Top="{StaticResource Spacing-0}"
-					Bottom="{StaticResource Spacing-0}"/>
-			</Setter.Value>
-		</Setter>
-	</Style>
-
 	<Style x:Key="LoadoutConfigComboBox" TargetType="controls:AraComboBox">
 		<Setter Property="ToggleButtonBackground" Value="{StaticResource LoadoutConfigComboBox__ToggleButtonBackground}" />
 		<Setter Property="ToggleButtonBorderThickness" Value="2" />
@@ -79,26 +64,6 @@
 		<Setter Property="ListItemHoverBackground" Value="{StaticResource LoadoutConfigComboBox__ListItemHoverBackground}" />
 		<Setter Property="ListItemSelectedBackground" Value="{StaticResource LoadoutConfigComboBox__ListItemSelectedBackground}" />
 		<Setter Property="PlaceholderForeground" Value="{StaticResource LoadoutConfigComboBox__PlaceholderTextForeground}" />
-	</Style>
-
-	<Style x:Key="LoadoutConfigCheckButton" TargetType="controls:AraButton">
-		<Setter Property="Foreground" Value="{StaticResource TextColorSecondary}" />
-		<Setter Property="HoverForeground" Value="{StaticResource TextColorSecondary}" />
-		<Setter Property="Background" Value="{StaticResource Loadout__CheckButtonBackgroundColor}" />
-		<Setter Property="HoverBackground" Value="{StaticResource Loadout__CheckButtonHoverBackgroundColor}" />
-		<Setter Property="CornerRadius" Value="{StaticResource Radius-1}" />
-		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
-		<Setter Property="FontSize" Value="24" />
-		<Setter Property="FontWeight" Value="Medium" />
-		<Setter Property="Padding">
-			<Setter.Value>
-				<Thickness 
-					Left="{StaticResource Spacing-2}"
-					Right="{StaticResource Spacing-2}"
-					Top="{StaticResource Spacing-1}"
-					Bottom="{StaticResource Spacing-1}"/>
-			</Setter.Value>
-		</Setter>
 	</Style>
 
 	<Style x:Key="NoLoadoutConfigsMessage" TargetType="TextBlock">

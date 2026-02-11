@@ -27,6 +27,7 @@
     <None Remove="Assets\Icons\check-mark.png" />
     <None Remove="Assets\Icons\chevron-left.png" />
     <None Remove="Assets\Icons\config.png" />
+    <None Remove="Assets\Icons\plus.png" />
     <None Remove="Assets\Icons\Statuses\fail.png" />
     <None Remove="Assets\Icons\Statuses\success.png" />
     <None Remove="Assets\Icons\Statuses\unknown.png" />
@@ -116,6 +117,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Icons\config.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\plus.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Icons\Statuses\Fail.png" />

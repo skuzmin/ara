@@ -29,5 +29,13 @@
 			</controls:AraButton>
 			<TextBlock Grid.Column="2" Style="{StaticResource PageTitle}" Text="Loadout Configurations" />
 		</Grid>
+
+		<controls:AraButton Grid.Row="2" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Right">
+			<controls:AraButton.Children>
+				<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/plus.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,8,0" />
+				<TextBlock Text="New" />
+			</controls:AraButton.Children>
+		</controls:AraButton>
+
 	</Grid>
 </UserControl>
