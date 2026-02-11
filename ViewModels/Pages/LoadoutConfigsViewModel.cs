@@ -4,15 +4,9 @@ using ARA.Interfaces;
 
 namespace ARA.ViewModels.Pages
 {
-	public class LoadoutConfigsViewModel : ViewModelBase
+	public class LoadoutConfigsViewModel(IAraNavigation navigations) : ViewModelBase
 	{
-		public ICommand BackCommand { get; }
-		public ICommand ConfigDetailsCommand { get; }
-
-		public LoadoutConfigsViewModel(IAraNavigation navigations)
-		{
-			BackCommand = new RelayCommand(_ => navigations.NavigateToPage(AraPage.Loadout));
-			ConfigDetailsCommand = new RelayCommand(_ => navigations.NavigateToPage(AraPage.LoadoutConfigDetails));
-		}
-	}
+        public ICommand BackCommand { get; } = new RelayCommand(_ => navigations.NavigateToPage(AraPage.Loadout));
+        public ICommand ConfigDetailsCommand { get; } = new RelayCommand(_ => navigations.NavigateToPage(AraPage.LoadoutConfigDetails));
+    }
 }
