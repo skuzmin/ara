@@ -7,6 +7,6 @@ namespace ARA.Interfaces
 		AraConfigurations Configurations { get; }
 		void InitConfig();
 		void SaveConfig();
-		void UpdateConfig(AraConfigurations configuration);
+		public void RemoveLoadoutConfigById(Guid Id);
 	}
 }

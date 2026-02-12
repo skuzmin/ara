@@ -75,10 +75,21 @@ namespace ARA.Services
 
 		}
 
-		public void UpdateConfig(AraConfigurations configurations)
+		public void RemoveLoadoutConfigById(Guid id)
 		{
-			_configurations = configurations;
-			SaveConfig();
+			var itemToRemove = _configurations.LoadoutConfigurations.FirstOrDefault(x => x.Id == id);
+			if (itemToRemove != null)
+			{
+				_configurations.LoadoutConfigurations.Remove(itemToRemove);
+#pragma warning disable CA1873 // Avoid potentially expensive logging
+                _logger.LogInformation("Deleted Loadout configuration: {Name}", itemToRemove.Name);
+#pragma warning restore CA1873 // Avoid potentially expensive logging
+                SaveConfig();
+			}
+			else
+			{
+				_logger.LogWarning("Fail to delete Configuration with Id: {Id}", id);
+			}
 		}
 
 		public void SaveConfig()

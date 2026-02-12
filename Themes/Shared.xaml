@@ -49,4 +49,9 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+
+	<Style x:Key="SecondaryButton" TargetType="controls:AraButton" BasedOn="{StaticResource PrimaryButton}">
+		<Setter Property="Background" Value="{StaticResource SecondaryButton__BackgroundColor}" />
+		<Setter Property="HoverBackground" Value="{StaticResource SecondaryButton__HoverBackgroundColor}" />
+	</Style>
 </ResourceDictionary>

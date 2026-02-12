@@ -6,6 +6,8 @@
 	<SolidColorBrush x:Key="TextColorSecondary" Color="{StaticResource Black}" />
 	<SolidColorBrush x:Key="PrimaryButton__BackgroundColor" Color="{StaticResource Yellow}" />
 	<SolidColorBrush x:Key="PrimaryButton__HoverBackgroundColor" Color="{StaticResource Orange}" />
+	<SolidColorBrush x:Key="SecondaryButton__BackgroundColor" Color="{StaticResource DarkGray}" />
+	<SolidColorBrush x:Key="SecondaryButton__HoverBackgroundColor" Color="{StaticResource LightTan}" />
 	<SolidColorBrush x:Key="PageTitleButton__HoverBackgroundColor" Color="{StaticResource DarkGray}"/>
 
 	<!-- TitleBarUserControl -->
@@ -43,4 +45,7 @@
 	<!-- Data Grid -->
 	<SolidColorBrush x:Key="DataGrid__WrapperBorderBrush" Color="{StaticResource White}" />
 	<SolidColorBrush x:Key="DataGrid__GridColumnHeaderBackground" Color="{StaticResource Black}" />
+
+	<!-- Dialog -->
+	<SolidColorBrush x:Key="Dialog__Background" Color="{StaticResource SpaceBlack}" />
 </ResourceDictionary>

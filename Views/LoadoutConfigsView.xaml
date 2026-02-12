@@ -76,12 +76,19 @@
 											<ColumnDefinition Width="8" />
 											<ColumnDefinition Width="Auto" />
 										</Grid.ColumnDefinitions>
-										<controls:AraButton Grid.Column="0" Style="{StaticResource PageTitleButton}" Command="{Binding DataContext.ConfigDetailsCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}">
+										<controls:AraButton 
+											Grid.Column="0" 
+											Style="{StaticResource PageTitleButton}" 
+											Command="{Binding DataContext.ConfigDetailsCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}">
 											<controls:AraButton.Children>
 												<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/DataGrid/Edit.png" />
 											</controls:AraButton.Children>
 										</controls:AraButton>
-										<controls:AraButton Grid.Column="2" Style="{StaticResource PageTitleButton}" Command="{Binding DataContext.ConfigDetailsCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}">
+										<controls:AraButton 
+											Grid.Column="2" 
+											Style="{StaticResource PageTitleButton}" 
+											Command="{Binding DataContext.DeleteConfigCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+											CommandParameter="{Binding}">
 											<controls:AraButton.Children>
 												<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/DataGrid/Delete.png" />
 											</controls:AraButton.Children>

@@ -7,6 +7,9 @@
     <Compile Update="Controls\UserControls\TitleBarUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Dialogs\ConfirmationDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\LoadoutView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
