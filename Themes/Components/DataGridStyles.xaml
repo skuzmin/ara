@@ -14,6 +14,8 @@
 	</Style>
 
 	<Style TargetType="{x:Type DataGrid}">
+		<Setter Property="SelectionMode" Value="Single" />
+		<Setter Property="SelectionUnit" Value="CellOrRowHeader" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderThickness" Value="0" />
 		<Setter Property="BorderBrush" Value="{x:Null}" />
@@ -71,12 +73,12 @@
 	</Style>
 
 	<Style TargetType="{x:Type DataGridRow}">
+		<Setter Property="MinHeight" Value="40" />
 		<Setter Property="FontSize" Value="16" />
 		<Setter Property="FontWeight" Value="Medium" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
 		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
-		<Setter Property="IsHitTestVisible" Value="False" />
 	</Style>
 
 	<Style TargetType="{x:Type DataGridCell}">
@@ -96,6 +98,30 @@
 						<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left"/>
 					</Border>
 				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsSelected" Value="True">
+				<Setter Property="Background" Value="{Binding Background,RelativeSource={RelativeSource TemplatedParent}}"/>
+			</Trigger>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" Value="{Binding Background,RelativeSource={RelativeSource TemplatedParent}}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+
+	<Style x:Key="DataGridNoItemsMessage" TargetType="TextBlock">
+		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
+		<Setter Property="FontSize" Value="20" />
+		<Setter Property="TextAlignment" Value="Center" />
+		<Setter Property="Foreground" Value="{StaticResource  TextColorPrimary}" />
+		<Setter Property="Margin">
+			<Setter.Value>
+				<Thickness 
+				Left="{StaticResource Spacing-0}"
+				Right="{StaticResource Spacing-0}"
+				Top="{StaticResource Spacing-8}"
+				Bottom="{StaticResource Spacing-0}"/>
 			</Setter.Value>
 		</Setter>
 	</Style>

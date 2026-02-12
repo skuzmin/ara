@@ -21,6 +21,11 @@
 			<tb:TaskbarIcon x:Key="TrayIcon" 
 				IconSource="/Assets/app.ico"
 				ToolTipText="ARA" />
+			<!-- ComboBoxItem binding fix: https://stackoverflow.com/questions/18096050/wpf-combobox-leaks-memory -->
+			<Style TargetType="ComboBoxItem">
+				<Setter Property="HorizontalContentAlignment" Value="Left" />
+				<Setter Property="VerticalContentAlignment" Value="Center" />
+			</Style>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

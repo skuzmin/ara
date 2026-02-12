@@ -24,7 +24,7 @@
 
 			<controls:AraButton Grid.Column="0" Style="{StaticResource PageTitleButton}" Command="{Binding BackCommand}">
 				<controls:AraButton.Children>
-					<Image Style="{StaticResource LoadoutConfigImage}" Source="/Assets/Icons/chevron-left.png" />
+					<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/chevron-left.png" />
 				</controls:AraButton.Children>
 			</controls:AraButton>
 			<TextBlock Grid.Column="2" Style="{StaticResource PageTitle}" Text="Loadout Configuration Details" />

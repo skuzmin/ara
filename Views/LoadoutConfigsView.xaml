@@ -10,8 +10,6 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
 			<RowDefinition Height="12" />
-			<RowDefinition Height="40" />
-			<RowDefinition Height="20" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
@@ -20,22 +18,96 @@
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition Width="12" />
 				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 
 			<controls:AraButton Grid.Column="0" Style="{StaticResource PageTitleButton}" Command="{Binding BackCommand}">
 				<controls:AraButton.Children>
-					<Image Style="{StaticResource LoadoutConfigImage}" Source="/Assets/Icons/chevron-left.png" />
+					<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/chevron-left.png" />
 				</controls:AraButton.Children>
 			</controls:AraButton>
 			<TextBlock Grid.Column="2" Style="{StaticResource PageTitle}" Text="Loadout Configurations" />
+			<controls:AraButton Grid.Column="4" Style="{StaticResource PrimaryButton}" Command="{Binding ConfigDetailsCommand}">
+				<controls:AraButton.Children>
+					<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/plus.png" />
+					<TextBlock Text="New" Margin="4 0 0 0"/>
+				</controls:AraButton.Children>
+			</controls:AraButton>
 		</Grid>
 
-		<controls:AraButton Grid.Row="2" Style="{StaticResource PrimaryButton}" Command="{Binding ConfigDetailsCommand}" HorizontalAlignment="Right">
-			<controls:AraButton.Children>
-				<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/plus.png" />
-				<TextBlock Text="New" />
-			</controls:AraButton.Children>
-		</controls:AraButton>
-
+		<Grid Grid.Row="2">
+			<!-- Loadout Items Grid -->
+			<Border >
+				<Border.Style>
+					<Style TargetType="Border" BasedOn="{StaticResource DataGridBorderWrapper}">
+						<Style.Triggers>
+							<DataTrigger Binding="{Binding LoadoutConfigurations.Count}" Value="0">
+								<Setter Property="Visibility" Value="Hidden"/>
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</Border.Style>
+				<DataGrid x:Name="LoadoutPreview" ItemsSource="{Binding LoadoutConfigurations}">
+					<DataGrid.Columns>
+						<!-- Name -->
+						<DataGridTemplateColumn Header="Name" Width="*">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding Name}"/>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
+						<!-- Quantity -->
+						<DataGridTemplateColumn Header="Items" Width="Auto">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding Items.Count}"/>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
+						<!-- Status -->
+						<DataGridTemplateColumn Header="Actions" Width="Auto">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate>
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="Auto" />
+											<ColumnDefinition Width="8" />
+											<ColumnDefinition Width="Auto" />
+										</Grid.ColumnDefinitions>
+										<controls:AraButton Grid.Column="0" Style="{StaticResource PageTitleButton}" Command="{Binding DataContext.ConfigDetailsCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}">
+											<controls:AraButton.Children>
+												<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/DataGrid/Edit.png" />
+											</controls:AraButton.Children>
+										</controls:AraButton>
+										<controls:AraButton Grid.Column="2" Style="{StaticResource PageTitleButton}" Command="{Binding DataContext.ConfigDetailsCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}">
+											<controls:AraButton.Children>
+												<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/DataGrid/Delete.png" />
+											</controls:AraButton.Children>
+										</controls:AraButton>
+									</Grid>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
+					</DataGrid.Columns>
+				</DataGrid>
+			</Border>
+			<!-- No Configurations Message -->
+			<StackPanel Orientation="Vertical" >
+				<StackPanel.Style>
+					<Style TargetType="StackPanel">
+						<Setter Property="Visibility" Value="Collapsed"/>
+						<Style.Triggers>
+							<DataTrigger Binding="{Binding LoadoutConfigurations.Count}" Value="0">
+								<Setter Property="Visibility" Value="Visible" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</StackPanel.Style>
+				<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="You don't have any Loadout Configurations yet."/>
+				<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="Use the button [ + New ] to create your first configuration."/>
+			</StackPanel>
+		</Grid>
 	</Grid>
 </UserControl>

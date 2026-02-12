@@ -31,7 +31,7 @@
 			<TextBlock Grid.Column="0" Style="{StaticResource PageTitle}" Text="Loadout Checker" />
 			<controls:AraButton Grid.Column="2" Style="{StaticResource PageTitleButton}" Command="{Binding Navigation.NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.LoadoutConfigs}">
 				<controls:AraButton.Children>
-					<Image Style="{StaticResource LoadoutConfigImage}" Source="/Assets/Icons/config.png" />
+					<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/config.png" />
 				</controls:AraButton.Children>
 			</controls:AraButton>
 		</Grid>
@@ -52,7 +52,7 @@
 			<controls:AraButton Grid.Column="2" Command="{Binding CheckLoadout}">
 				<controls:AraButton.Children>
 					<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/check-mark.png" />
-					<TextBlock Text="Check" />
+					<TextBlock Text="Check" Margin="4 0 0 0"/>
 				</controls:AraButton.Children>
 				<controls:AraButton.Style>
 					<Style TargetType="controls:AraButton" BasedOn="{StaticResource PrimaryButton}">
@@ -128,8 +128,8 @@
 						</Style.Triggers>
 					</Style>
 				</StackPanel.Style>
-				<TextBlock Style="{StaticResource NoLoadoutConfigsMessage}" Text="You don't have any Loadouts yet."/>
-				<TextBlock Style="{StaticResource NoLoadoutConfigsMessage}" Text="Use the configuration button [ ⚙️ ] to create your first loadout."/>
+				<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="You don't have any Loadouts yet."/>
+				<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="Use the configuration button [ ⚙️ ] to create your first loadout."/>
 			</StackPanel>
 		</Grid>
 	</Grid>

@@ -2,10 +2,6 @@
 					xmlns:controls="clr-namespace:ARA.Controls.CustomControls"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-	<Style x:Key="LoadoutConfigImage" TargetType="Image">
-		<Setter Property="SnapsToDevicePixels" Value="True" />
-	</Style>
-
 	<Style x:Key="LoadoutConfigComboBox" TargetType="controls:AraComboBox">
 		<Setter Property="ToggleButtonBackground" Value="{StaticResource LoadoutConfigComboBox__ToggleButtonBackground}" />
 		<Setter Property="ToggleButtonBorderThickness" Value="2" />
@@ -66,19 +62,4 @@
 		<Setter Property="PlaceholderForeground" Value="{StaticResource LoadoutConfigComboBox__PlaceholderTextForeground}" />
 	</Style>
 
-	<Style x:Key="NoLoadoutConfigsMessage" TargetType="TextBlock">
-		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
-		<Setter Property="FontSize" Value="20" />
-		<Setter Property="TextAlignment" Value="Center" />
-		<Setter Property="Foreground" Value="{StaticResource  TextColorPrimary}" />
-		<Setter Property="Margin">
-			<Setter.Value>
-				<Thickness 
-					Left="{StaticResource Spacing-0}"
-					Right="{StaticResource Spacing-0}"
-					Top="{StaticResource Spacing-8}"
-					Bottom="{StaticResource Spacing-0}"/>
-			</Setter.Value>
-		</Setter>
-	</Style>
 </ResourceDictionary>
