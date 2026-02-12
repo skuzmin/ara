@@ -1,13 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					xmlns:local="clr-namespace:ARA"
+					xmlns:system="clr-namespace:System;assembly=mscorlib"
 					xmlns:customControls="clr-namespace:ARA.Controls.CustomControls"
 					xmlns:userControls="clr-namespace:ARA.Controls.UserControls">
 
 	<!--ARA Window-->
 	<Style TargetType="{x:Type local:AraWindow}">
-		<Setter Property="Height" Value="480"/>
-		<Setter Property="Width" Value="640"/>
+		<Style.Resources>
+			<system:Double x:Key="WindowHeight">480</system:Double>
+			<system:Double x:Key="WindowWidth">640</system:Double>
+		</Style.Resources>
+
+		<Setter Property="Height" Value="{StaticResource WindowHeight}"/>
+		<Setter Property="Width" Value="{StaticResource WindowWidth}"/>
 		<Setter Property="ResizeMode" Value="NoResize"/>
 		<Setter Property="Topmost" Value="True"/>
 		<Setter Property="WindowStyle" Value="None"/>
@@ -18,7 +24,11 @@
 				<ControlTemplate TargetType="{x:Type local:AraWindow}">
 					<Grid Background="Transparent">
 						<Grid.Clip>
-							<RectangleGeometry RadiusX="8" RadiusY="8" Rect="0,0,640,480" />
+							<RectangleGeometry RadiusX="8" RadiusY="8" >
+								<RectangleGeometry.Rect>
+									<Rect Height="{StaticResource WindowHeight}" Width="{StaticResource WindowWidth}" />
+								</RectangleGeometry.Rect>
+							</RectangleGeometry>
 						</Grid.Clip>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="32"/>
