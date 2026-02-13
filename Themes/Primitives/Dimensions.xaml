@@ -2,8 +2,8 @@
 					xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-	<sys:Double x:Key="MainWindowWidth">800</sys:Double>
-	<sys:Double x:Key="MainWindowHeight">600</sys:Double>
+	<sys:Double x:Key="MainWindowWidth">640</sys:Double>
+	<sys:Double x:Key="MainWindowHeight">480</sys:Double>
 	<sys:Double x:Key="ConfirmationDialogWidth">480</sys:Double>
 	<sys:Double x:Key="ConfirmationDialogHeight">152</sys:Double>
 </ResourceDictionary>
