@@ -9,11 +9,13 @@
 	<SolidColorBrush x:Key="SecondaryButton__BackgroundColor" Color="{StaticResource DarkGray}" />
 	<SolidColorBrush x:Key="SecondaryButton__HoverBackgroundColor" Color="{StaticResource LightTan}" />
 	<SolidColorBrush x:Key="PageTitleButton__HoverBackgroundColor" Color="{StaticResource DarkGray}"/>
+	<SolidColorBrush x:Key="AraWindow__BorderBrush" Color="{StaticResource White}"/>
 
 	<!-- TitleBarUserControl -->
 	<SolidColorBrush x:Key="TitleBar__BackgroundColor" Color="{StaticResource SpaceBlack}"/>
 	<SolidColorBrush x:Key="TitleBar__DefaultButtonHoverBackgroundColor" Color="{StaticResource DarkGray}"/>
 	<SolidColorBrush x:Key="TitleBar__CloseButtonHoverBackgroundColor" Color="{StaticResource DarkRed}"/>
+	<SolidColorBrush x:Key="TitleBar__ConfirmationBackgroundColor" Color="{StaticResource Black}"/>
 
 	<!-- MainWindow -->
 	<SolidColorBrush x:Key="MainWindow__NavigationBackgroundColor" Color="{StaticResource Black}"/>

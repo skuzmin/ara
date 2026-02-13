@@ -10,9 +10,8 @@
 			 xmlns:enums="clr-namespace:ARA.Enums"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DataContext="{d:DesignInstance Type=shell:MainViewModel}" mc:Ignorable="d" x:Class="ARA.MainWindow"
 			 WindowStartupLocation="CenterScreen"
-			 Height="{StaticResource MainWindowHeight}"
-			 Width="{StaticResource MainWindowWidth}"
-             Title="[ARA] Arc Raiders Assistant" d:DesignHeight="480" d:DesignWidth="640">
+			 Style="{StaticResource AraWindow_Window}"
+             Title="[ARA] Arc Raiders Assistant">
 	<local:AraWindow.Resources>
 		<DataTemplate DataType="{x:Type viewmodels:LoadoutViewModel}">
 			<views:LoadoutView />

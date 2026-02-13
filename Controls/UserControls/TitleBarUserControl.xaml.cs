@@ -6,6 +6,21 @@ namespace ARA.Controls.UserControls
 {
 	public partial class TitleBarUserControl : UserControl
 	{
+		#region MinimizeButtonDisplay
+		public static readonly DependencyProperty MinimizeButtonDisplayProperty =
+			DependencyProperty.Register(
+				nameof(MinimizeButtonDisplay),
+				typeof(Visibility),
+				typeof(TitleBarUserControl),
+				new FrameworkPropertyMetadata(
+					Visibility.Visible,
+					FrameworkPropertyMetadataOptions.AffectsRender));
+		public Visibility MinimizeButtonDisplay
+		{
+			get => (Visibility)GetValue(MinimizeButtonDisplayProperty);
+			set => SetValue(MinimizeButtonDisplayProperty, value);
+		}
+		#endregion
 		public TitleBarUserControl()
 		{
 			InitializeComponent();

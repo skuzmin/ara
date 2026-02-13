@@ -4,7 +4,7 @@ using ARA.Models;
 namespace ARA.Dialogs
 {
 
-	public partial class ConfirmationDialog : Window
+	public partial class ConfirmationDialog : AraWindow
 	{
 		public ConfirmationDialog(ConfirmationDialogConfig config)
 		{

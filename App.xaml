@@ -28,6 +28,12 @@
 				<Setter Property="HorizontalContentAlignment" Value="Left" />
 				<Setter Property="VerticalContentAlignment" Value="Center" />
 			</Style>
+			<!-- AraWindow -->
+			<Style x:Key="AraWindow_Window" TargetType="local:AraWindow">
+				<Setter Property="TitleBarBackground" Value="{StaticResource TitleBar__BackgroundColor}" />
+				<Setter Property="Height" Value="{StaticResource MainWindowHeight}" />
+				<Setter Property="Width" Value="{StaticResource MainWindowWidth}" />
+			</Style>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

@@ -15,17 +15,19 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type local:AraWindow}">
-					<Grid Background="Transparent">
-						<Grid.Clip>
-							<RectangleGeometry RadiusX="8" RadiusY="8" Rect="{Binding ClipRect, RelativeSource={RelativeSource TemplatedParent}}"/>
-						</Grid.Clip>
-						<Grid.RowDefinitions>
-							<RowDefinition Height="32"/>
-							<RowDefinition Height="*"/>
-						</Grid.RowDefinitions>
-						<userControls:TitleBarUserControl Grid.Row="0"/>
-						<ContentPresenter Grid.Row="1"/>
-					</Grid>
+					<Border BorderBrush="{DynamicResource AraWindow__BorderBrush}" CornerRadius="4" BorderThickness="{TemplateBinding BorderThickness}">
+						<Grid Background="Transparent">
+							<Grid.Clip>
+								<RectangleGeometry RadiusX="8" RadiusY="8" Rect="{Binding ClipRect, RelativeSource={RelativeSource TemplatedParent}}"/>
+							</Grid.Clip>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="32"/>
+								<RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
+							<userControls:TitleBarUserControl Grid.Row="0" Background="{TemplateBinding TitleBarBackground}" MinimizeButtonDisplay="{Binding MinimizeButtonDisplay, RelativeSource={RelativeSource TemplatedParent}}"/>
+							<ContentPresenter Grid.Row="1"/>
+						</Grid>
+					</Border>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>

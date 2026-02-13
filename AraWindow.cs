@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace ARA
 {
@@ -19,7 +20,36 @@ namespace ARA
 			set => SetValue(ClipRectProperty, value);
 		}
 		#endregion
-
+		#region MinimizeButtonDisplay
+		public static readonly DependencyProperty MinimizeButtonDisplayProperty =
+			DependencyProperty.Register(
+				nameof(MinimizeButtonDisplay),
+				typeof(Visibility),
+				typeof(AraWindow),
+				new FrameworkPropertyMetadata(
+					Visibility.Visible,
+					FrameworkPropertyMetadataOptions.AffectsRender));
+		public Visibility MinimizeButtonDisplay
+		{
+			get => (Visibility)GetValue(MinimizeButtonDisplayProperty);
+			set => SetValue(MinimizeButtonDisplayProperty, value);
+		}
+		#endregion
+		#region TitleBarBackground
+		public static readonly DependencyProperty TitleBarBackgroundProperty =
+			DependencyProperty.Register(
+				nameof(TitleBarBackground),
+				typeof(Brush),
+				typeof(AraWindow),
+				new FrameworkPropertyMetadata(
+					Brushes.Transparent,
+					FrameworkPropertyMetadataOptions.AffectsRender));
+		public Brush TitleBarBackground
+		{
+			get => (Brush)GetValue(TitleBarBackgroundProperty);
+			set => SetValue(TitleBarBackgroundProperty, value);
+		}
+		#endregion
 		static AraWindow()
 		{
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraWindow),
