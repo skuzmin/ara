@@ -1,15 +1,25 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Style x:Key="Dialog__MainContainer" TargetType="Border">
-		<Setter Property="Padding" Value="12" />
+		<Setter Property="Padding" Value="16" />
 		<Setter Property="Background" Value="{StaticResource Dialog__Background}" />
 	</Style>
 
 	<Style x:Key="Dialog__Message" TargetType="TextBlock">
 		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
-		<Setter Property="FontSize" Value="24" />
+		<Setter Property="FontSize" Value="16" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
 		<Setter Property="FontWeight" Value="Medium" />
 		<Setter Property="TextWrapping" Value="Wrap" />
+		<Setter Property="TextAlignment" Value="Center" />
+		<Setter Property="Margin">
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-0}"
+					Top="{StaticResource Spacing-0}"  
+					Right="{StaticResource Spacing-0}"
+					Bottom="{StaticResource Spacing-2}" />
+			</Setter.Value>
+		</Setter>
 	</Style>
 </ResourceDictionary>

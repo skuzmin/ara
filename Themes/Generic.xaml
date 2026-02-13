@@ -7,13 +7,6 @@
 
 	<!--ARA Window-->
 	<Style TargetType="{x:Type local:AraWindow}">
-		<Style.Resources>
-			<system:Double x:Key="WindowHeight">480</system:Double>
-			<system:Double x:Key="WindowWidth">640</system:Double>
-		</Style.Resources>
-
-		<Setter Property="Height" Value="{StaticResource WindowHeight}"/>
-		<Setter Property="Width" Value="{StaticResource WindowWidth}"/>
 		<Setter Property="ResizeMode" Value="NoResize"/>
 		<Setter Property="Topmost" Value="True"/>
 		<Setter Property="WindowStyle" Value="None"/>
@@ -24,11 +17,7 @@
 				<ControlTemplate TargetType="{x:Type local:AraWindow}">
 					<Grid Background="Transparent">
 						<Grid.Clip>
-							<RectangleGeometry RadiusX="8" RadiusY="8" >
-								<RectangleGeometry.Rect>
-									<Rect Height="{StaticResource WindowHeight}" Width="{StaticResource WindowWidth}" />
-								</RectangleGeometry.Rect>
-							</RectangleGeometry>
+							<RectangleGeometry RadiusX="8" RadiusY="8" Rect="{Binding ClipRect, RelativeSource={RelativeSource TemplatedParent}}"/>
 						</Grid.Clip>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="32"/>

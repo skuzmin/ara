@@ -7,5 +7,6 @@
 		public string CancelButtonText { get; set; } = "";
 		public string ConfirmButtonText { get; set; } = "";
 		public string Message { get; set; } = "";
+		public string SubMessage { get; set; } = "";
 	}
 }

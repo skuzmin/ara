@@ -1,6 +1,4 @@
-﻿using ARA.Enums;
-
-namespace ARA.ViewModels.Pages
+﻿namespace ARA.ViewModels.Pages
 {
 	public class AboutViewModel : ViewModelBase
 	{

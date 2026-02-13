@@ -5,7 +5,6 @@ using ARA.Dialogs;
 using ARA.Enums;
 using ARA.Interfaces;
 using ARA.Models;
-using Microsoft.Extensions.Logging;
 
 namespace ARA.ViewModels.Pages
 {
@@ -31,15 +30,16 @@ namespace ARA.ViewModels.Pages
 			var dialogConfig = new ConfirmationDialogConfig
 			{
 				Title = "Delete Configuration",
-				Message = $"Are you sure you want to delete configuration: {data.Name} ?",
+				Message = $"Are you sure you want to delete configuration ?",
+				SubMessage = $"[{data.Name}]",
 				ConfirmButtonText = "Delete",
 				CancelButtonText = "Cancel"
 			};
-            var dialog = new ConfirmationDialog(dialogConfig)
-            {
-                Owner = Application.Current.MainWindow
-            };
-            var result = dialog.ShowDialog();
+			var dialog = new ConfirmationDialog(dialogConfig)
+			{
+				Owner = Application.Current.MainWindow
+			};
+			var result = dialog.ShowDialog();
 			if (result == true)
 			{
 				_configurations.RemoveLoadoutConfigById(data.Id);

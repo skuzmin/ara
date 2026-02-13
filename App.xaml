@@ -6,6 +6,7 @@
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Themes/Primitives/Dimensions.xaml" />
 				<ResourceDictionary Source="/Themes/Primitives/Colors.xaml" />
 				<ResourceDictionary Source="/Themes/Primitives/Fonts.xaml" />
 				<ResourceDictionary Source="/Themes/Primitives/Radiuses.xaml" />

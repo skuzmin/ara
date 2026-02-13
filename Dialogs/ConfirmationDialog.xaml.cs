@@ -11,14 +11,15 @@ namespace ARA.Dialogs
 			InitializeComponent();
 			MaxWidth = config.MaxWidth;
 			Title = config.Title;
-			MessageEl.Text = config.Message;
+			MainMessageEl.Text = config.Message;
+			SubMessageEl.Text = config.SubMessage;
 			ConfirmTextEl.Text = config.ConfirmButtonText;
 			CancelTextEl.Text = config.CancelButtonText;
 		}
 
 		private void ConfirmButton_Click(object sender, RoutedEventArgs e)
 		{
-			this.DialogResult = true;
+			DialogResult = true;
 		}
 	}
 }

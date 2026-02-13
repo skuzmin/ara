@@ -135,7 +135,6 @@ namespace ARA.Controls.CustomControls
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraButton),
 				new FrameworkPropertyMetadata(typeof(AraButton)));
 		}
-
 		public AraButton()
 		{
 			Children = [];
