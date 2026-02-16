@@ -81,9 +81,7 @@ namespace ARA.Services
 			if (itemToRemove != null)
 			{
 				_configurations.LoadoutConfigurations.Remove(itemToRemove);
-#pragma warning disable CA1873 // Avoid potentially expensive logging
                 _logger.LogInformation("Deleted Loadout configuration: {Name}", itemToRemove.Name);
-#pragma warning restore CA1873 // Avoid potentially expensive logging
                 SaveConfig();
 			}
 			else

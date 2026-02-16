@@ -10,9 +10,9 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
 			<RowDefinition Height="12" />
-			<RowDefinition Height="40" />
-			<RowDefinition Height="20" />
 			<RowDefinition Height="*" />
+			<RowDefinition Height="12" />
+			<RowDefinition Height="40" />
 		</Grid.RowDefinitions>
 
 		<Grid Grid.Row="0">
@@ -30,5 +30,107 @@
 			<TextBlock Grid.Column="2" Style="{StaticResource PageTitle}" Text="Loadout Configuration Details" />
 		</Grid>
 
+		<ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="16" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="16" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<!-- Name -->
+				<StackPanel Grid.Row="0">
+					<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=NameTextBox}">Name</Label>
+					<TextBox Height="40" x:Name="NameTextBox" />
+				</StackPanel>
+
+				<!-- Zone -->
+				<GroupBox Grid.Row="2" Header="Zone" Foreground="White" FontSize="18" Padding="12">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="40"/>
+							<RowDefinition Height="12"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+
+						<controls:AraButton Grid.Row="0" Style="{StaticResource SecondaryButton}">
+							<controls:AraButton.Children>
+								<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/zone.png" />
+								<TextBlock Text="Select Zone" Margin="4 0 0 0"/>
+							</controls:AraButton.Children>
+						</controls:AraButton>
+						<Grid Grid.Row="2">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="12" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="12" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="12" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+
+							<StackPanel Grid.Column="0">
+								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=X}">X</Label>
+								<TextBox Height="40" x:Name="X" />
+							</StackPanel>
+							<StackPanel Grid.Column="2">
+								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=Y}">Y</Label>
+								<TextBox Height="40" x:Name="Y" />
+							</StackPanel>
+							<StackPanel Grid.Column="4">
+								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=Width}">Width</Label>
+								<TextBox Height="40" x:Name="Width" />
+							</StackPanel>
+							<StackPanel Grid.Column="6">
+								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=Height}">Height</Label>
+								<TextBox Height="40" x:Name="Height" />
+							</StackPanel>
+						</Grid>
+					</Grid>
+				</GroupBox>
+
+				<!-- Items -->
+				<GroupBox Grid.Row="4" Header="Items" Foreground="White" FontSize="18" Padding="12">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="12"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+						<controls:AraComboBox
+							x:Name="ItemsComboBox"
+							Style="{StaticResource LoadoutConfigComboBox}"
+							PlaceholderText="Select Item"
+							ItemsSource="{Binding ItemsList}"
+							DisplayMemberPath="Name"
+							SelectedItem="{Binding SelectedItem, Mode=TwoWay}"/>
+						<controls:AraButton Grid.Column="2">
+							<controls:AraButton.Children>
+								<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/plus.png" />
+								<TextBlock Text="Add" Margin="4 0 0 0"/>
+							</controls:AraButton.Children>
+							<controls:AraButton.Style>
+								<Style TargetType="controls:AraButton" BasedOn="{StaticResource SecondaryButton}">
+									<Style.Triggers>
+										<DataTrigger Binding="{Binding SelectedItem}" Value="{x:Null}">
+											<Setter Property="IsEnabled" Value="False" />
+										</DataTrigger>
+									</Style.Triggers>
+								</Style>
+							</controls:AraButton.Style>
+						</controls:AraButton>
+					</Grid>
+				</GroupBox>
+			</Grid>
+		</ScrollViewer>
+
+		<controls:AraButton Grid.Row="4" HorizontalAlignment="Right" Style="{StaticResource PrimaryButton}">
+			<controls:AraButton.Children>
+				<TextBlock Text="Save" />
+			</controls:AraButton.Children>
+		</controls:AraButton>
 	</Grid>
 </UserControl>

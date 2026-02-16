@@ -86,9 +86,7 @@ namespace ARA.Services
 
 		private void GoToPage<TViewModel>() where TViewModel : ViewModelBase
 		{
-#pragma warning disable CA1873
 			_logger.LogInformation("Naviage to page: {page}", typeof(TViewModel).Name);
-#pragma warning restore CA1873
 			CurrentPage = _services.GetRequiredService<TViewModel>();
 		}
 

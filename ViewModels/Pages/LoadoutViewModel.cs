@@ -21,9 +21,7 @@ namespace ARA.ViewModels.Pages
 			{
 				if (value != null)
 				{
-#pragma warning disable CA1873
 					_logger.LogInformation("Change loadout to: {loadout}", value.Name);
-#pragma warning restore CA1873
 					value.Items.ForEach(x => x.Status = 0);
 				}
 				field = value;
