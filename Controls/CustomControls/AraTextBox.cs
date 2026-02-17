@@ -2,12 +2,15 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using ARA.Animations;
 using ARA.Enums;
 
 namespace ARA.Controls.CustomControls
 {
 	public partial class AraTextBox : TextBox
 	{
+		private Border? _border;
 		#region CornerRadius
 		public static readonly DependencyProperty CornerRadiusProperty =
 			DependencyProperty.Register(
@@ -19,6 +22,19 @@ namespace ARA.Controls.CustomControls
 		{
 			get => (CornerRadius)GetValue(CornerRadiusProperty);
 			set => SetValue(CornerRadiusProperty, value);
+		}
+		#endregion
+		#region HoverBorderBrush
+		public static readonly DependencyProperty HoverBorderBrushProperty =
+			DependencyProperty.Register(
+				nameof(HoverBorderBrush),
+				typeof(Brush),
+				typeof(AraTextBox),
+				new PropertyMetadata(Brushes.Transparent));
+		public Brush HoverBorderBrush
+		{
+			get => (Brush)GetValue(HoverBorderBrushProperty);
+			set => SetValue(HoverBorderBrushProperty, value);
 		}
 		#endregion
 		#region InputType
@@ -38,6 +54,12 @@ namespace ARA.Controls.CustomControls
 		{
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraTextBox),
 				new FrameworkPropertyMetadata(typeof(AraTextBox)));
+		}
+
+		public AraTextBox()
+		{
+			GotKeyboardFocus += OnGotKeyboardFocus;
+			LostKeyboardFocus += OnLostKeyboardFocus;
 		}
 		#region TypeValidation
 		private static void OnInputTypeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -79,6 +101,37 @@ namespace ARA.Controls.CustomControls
 
 		[GeneratedRegex("[^0-9]+")]
 		private static partial Regex NumericRegex();
+		#endregion
+		#region Animations
+		public override void OnApplyTemplate()
+		{
+			base.OnApplyTemplate();
+			_border = (Border)GetTemplateChild("TextBoxBorder");
+		}
+		protected override void OnMouseEnter(MouseEventArgs e)
+		{
+			if (!IsKeyboardFocused)
+			{
+				base.OnMouseEnter(e);
+				ColorAnimator.Animate(HoverBorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+			}
+		}
+		protected override void OnMouseLeave(MouseEventArgs e)
+		{
+			if (!IsKeyboardFocused)
+			{
+				base.OnMouseLeave(e);
+				ColorAnimator.Animate(BorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+			}
+		}
+		private void OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+		{
+			ColorAnimator.Animate(HoverBorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+		}
+		private void OnLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+		{
+			ColorAnimator.Animate(BorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+		}
 		#endregion
 	}
 }

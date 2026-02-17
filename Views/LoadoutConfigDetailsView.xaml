@@ -43,8 +43,8 @@
 
 				<!-- Name -->
 				<StackPanel Grid.Row="0">
-					<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=NameTextBox}">Name</Label>
-					<controls:AraTextBox Height="40" x:Name="NameTextBox" Background="White" CornerRadius="8" InputType="{x:Static enums:TextBoxInputType.Number}"/>
+					<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=NameTextBox}">Name</Label>
+					<controls:AraTextBox x:Name="NameTextBox" Style="{StaticResource AraTextBox}" MaxLength="50"/>
 				</StackPanel>
 
 				<!-- Zone -->
@@ -52,7 +52,7 @@
 					<Grid>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="40"/>
-							<RowDefinition Height="12"/>
+							<RowDefinition Height="16"/>
 							<RowDefinition Height="Auto"/>
 						</Grid.RowDefinitions>
 
@@ -74,20 +74,20 @@
 							</Grid.ColumnDefinitions>
 
 							<StackPanel Grid.Column="0">
-								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=X}">X</Label>
-								<TextBox Height="40" x:Name="X" />
+								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=X}">X</Label>
+								<controls:AraTextBox x:Name="X" Style="{StaticResource AraTextBox}" InputType="{x:Static enums:TextBoxInputType.Number}" MaxLength="10"/>
 							</StackPanel>
 							<StackPanel Grid.Column="2">
-								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=Y}">Y</Label>
-								<TextBox Height="40" x:Name="Y" />
+								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=Y}">Y</Label>
+								<controls:AraTextBox x:Name="Y" Style="{StaticResource AraTextBox}" InputType="{x:Static enums:TextBoxInputType.Number}" MaxLength="10"/>
 							</StackPanel>
 							<StackPanel Grid.Column="4">
-								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=ZoneWidth}">Width</Label>
-								<TextBox Height="40" x:Name="ZoneWidth" />
+								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneWidth}">Width</Label>
+								<controls:AraTextBox x:Name="ZoneWidth" Style="{StaticResource AraTextBox}" InputType="{x:Static enums:TextBoxInputType.Number}" MaxLength="10"/>
 							</StackPanel>
 							<StackPanel Grid.Column="6">
-								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=ZoneHeight}">Height</Label>
-								<TextBox Height="40" x:Name="ZoneHeight" />
+								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneHeight}">Height</Label>
+								<controls:AraTextBox x:Name="ZoneHeight" Style="{StaticResource AraTextBox}" InputType="{x:Static enums:TextBoxInputType.Number}" MaxLength="10"/>
 							</StackPanel>
 						</Grid>
 					</Grid>

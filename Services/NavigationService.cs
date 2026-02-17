@@ -29,7 +29,7 @@ namespace ARA.Services
 				CommandManager.InvalidateRequerySuggested();
 			}
 		}
-		public bool IsLoadoutSelected => CurrentPage is LoadoutViewModel || CurrentPage is LoadoutConfigsViewModel;
+		public bool IsLoadoutSelected => CurrentPage is LoadoutViewModel || CurrentPage is LoadoutConfigsViewModel || CurrentPage is LoadoutConfigDetailsViewModel;
 		public bool IsSettingsSelected => CurrentPage is SettingsViewModel;
 		public bool IsAboutSelected => CurrentPage is AboutViewModel;
 

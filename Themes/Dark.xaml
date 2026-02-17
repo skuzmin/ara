@@ -50,4 +50,8 @@
 
 	<!-- Dialog -->
 	<SolidColorBrush x:Key="Dialog__Background" Color="{StaticResource SpaceBlack}" />
+
+	<!-- TextBox -->
+	<SolidColorBrush x:Key="TextBox__Background" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="TextBox_HoverBorderBrush" Color="{StaticResource Orange}" />
 </ResourceDictionary>

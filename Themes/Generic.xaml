@@ -151,10 +151,10 @@
 							<BeginStoryboard>
 								<Storyboard>
 									<DoubleAnimation
-									Storyboard.TargetName="ArrowRotation"
-									Storyboard.TargetProperty="Angle"
-									To="180"
-									Duration="0:0:0.15" />
+										Storyboard.TargetName="ArrowRotation"
+										Storyboard.TargetProperty="Angle"
+										To="180"
+										Duration="0:0:0.15" />
 								</Storyboard>
 							</BeginStoryboard>
 						</Trigger.EnterActions>
@@ -163,10 +163,10 @@
 							<BeginStoryboard>
 								<Storyboard>
 									<DoubleAnimation
-									Storyboard.TargetName="ArrowRotation"
-									Storyboard.TargetProperty="Angle"
-									To="0"
-									Duration="0:0:0.15" />
+										Storyboard.TargetName="ArrowRotation"
+										Storyboard.TargetProperty="Angle"
+										To="0"
+										Duration="0:0:0.15" />
 								</Storyboard>
 							</BeginStoryboard>
 						</Trigger.ExitActions>
@@ -284,10 +284,12 @@
 
 	<!--Ara TextBox -->
 	<Style TargetType="{x:Type customControls:AraTextBox}">
+		<Setter Property="HoverBorderBrush" Value="Transparent"/>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type customControls:AraTextBox}">
-					<Border CornerRadius="{TemplateBinding CornerRadius}"
+					<Border x:Name="TextBoxBorder"
+						CornerRadius="{TemplateBinding CornerRadius}"
 						BorderThickness="{TemplateBinding BorderThickness}"
 						BorderBrush="{TemplateBinding BorderBrush}"
 						Background="{TemplateBinding Background}">
