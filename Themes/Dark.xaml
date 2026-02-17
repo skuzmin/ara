@@ -23,23 +23,23 @@
 	<SolidColorBrush x:Key="MainWindow__NavigationSelectedButtonBorderColor" Color="{StaticResource White}"/>
 	<SolidColorBrush x:Key="MainWindow__NavigationButtonForeground" Color="{StaticResource DarkGray}"/>
 
-	<!-- LoadoutView -->
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonArrowBrush" Color="{StaticResource Black}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonBackground" Color="{StaticResource White}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonBorderBrush" Color="{StaticResource White}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonHoverBackground" Color="{StaticResource White}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonHoverBorderBrush" Color="{StaticResource Orange}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonHoverArrowBrush" Color="{StaticResource Black}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonOpenBorderBrush" Color="{StaticResource Yellow}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonOpenArrowBrush" Color="{StaticResource Black}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ToggleButtonOpenBackground" Color="{StaticResource White}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ItemsListBorderBrush" Color="{StaticResource White}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ListItemForeground" Color="{StaticResource Black}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ListItemBackground" Color="{StaticResource White}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ListItemHoverBackground" Color="{StaticResource LightTan}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__ListItemSelectedBackground" Color="{StaticResource Yellow}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__SelectedTextForeground" Color="{StaticResource Black}" />
-	<SolidColorBrush x:Key="LoadoutConfigComboBox__PlaceholderTextForeground" Color="{StaticResource SpaceBlack}" />
+	<!-- ComboBox -->
+	<SolidColorBrush x:Key="ToggleButtonArrowBrush" Color="{StaticResource Black}" />
+	<SolidColorBrush x:Key="ToggleButtonBackground" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="ToggleButtonBorderBrush" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="ToggleButtonHoverBackground" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="ToggleButtonHoverBorderBrush" Color="{StaticResource Orange}" />
+	<SolidColorBrush x:Key="ToggleButtonHoverArrowBrush" Color="{StaticResource Black}" />
+	<SolidColorBrush x:Key="ToggleButtonOpenBorderBrush" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="ToggleButtonOpenArrowBrush" Color="{StaticResource Black}" />
+	<SolidColorBrush x:Key="ToggleButtonOpenBackground" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="ItemsListBorderBrush" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="ListItemForeground" Color="{StaticResource Black}" />
+	<SolidColorBrush x:Key="ListItemBackground" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="ListItemHoverBackground" Color="{StaticResource LightTan}" />
+	<SolidColorBrush x:Key="ListItemSelectedBackground" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="SelectedTextForeground" Color="{StaticResource Black}" />
+	<SolidColorBrush x:Key="PlaceholderTextForeground" Color="{StaticResource SpaceBlack}" />
 	
 	<!-- ScrollBar -->
 	<SolidColorBrush x:Key="ScrollBar__ThumbBrush" Color="{StaticResource Orange}" />

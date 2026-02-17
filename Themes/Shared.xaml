@@ -62,4 +62,64 @@
 	<Style x:Key="SecondarySmallButton" TargetType="controls:AraButton" BasedOn="{StaticResource SecondaryButton}">
 		<Setter Property="FontSize" Value="16" />
 	</Style>
+
+	<Style x:Key="AraComboBox" TargetType="controls:AraComboBox">
+		<Setter Property="ToggleButtonBackground" Value="{StaticResource ToggleButtonBackground}" />
+		<Setter Property="ToggleButtonBorderThickness" Value="2" />
+		<Setter Property="ToggleButtonCornerRadius" Value="{StaticResource Radius-1}" />
+		<Setter Property="ToggleButtonBorderBrush" Value="{StaticResource ToggleButtonBorderBrush}" />
+		<Setter Property="ToggleButtonArrowBrush" Value="{StaticResource ToggleButtonArrowBrush}" />
+		<Setter Property="ToggleButtonArrowHeight" Value="16" />
+		<Setter Property="ToggleButtonArrowWidth" Value="16" />
+		<Setter Property="ToggleButtonArrowMargin" >
+			<Setter.Value>
+				<Thickness 
+				Left="{StaticResource Spacing-3}"
+				Right="{StaticResource Spacing-3}"
+				Top="{StaticResource Spacing-1}"
+				Bottom="{StaticResource Spacing-1}"/>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="ToggleButtonHoverBackground" Value="{StaticResource ToggleButtonHoverBackground}" />
+		<Setter Property="ToggleButtonHoverBorderBrush" Value="{StaticResource ToggleButtonHoverBorderBrush}" />
+		<Setter Property="ToggleButtonHoverArrowBrush" Value="{StaticResource ToggleButtonHoverArrowBrush}" />
+		<Setter Property="ToggleButtonOpenBorderBrush" Value="{StaticResource ToggleButtonOpenBorderBrush}" />
+		<Setter Property="ToggleButtonOpenArrowBrush" Value="{StaticResource ToggleButtonOpenArrowBrush}" />
+		<Setter Property="ToggleButtonOpenBackground" Value="{StaticResource ToggleButtonOpenBackground}" />
+		<Setter Property="SelectedTextForeground" Value="{StaticResource SelectedTextForeground}" />
+		<Setter Property="SelectedTextFontSize" Value="20" />
+		<Setter Property="SelectedTextFontFamily" Value="{StaticResource Font-Primary}" />
+		<Setter Property="SelectedTextFontWeight" Value="Medium" />
+		<Setter Property="SelectedTextMargin">
+			<Setter.Value>
+				<Thickness 
+				Left="{StaticResource Spacing-3}"
+				Right="{StaticResource Spacing-3}"
+				Top="{StaticResource Spacing-1}"
+				Bottom="{StaticResource Spacing-1}"/>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="ItemsListCornerRadius" Value="{StaticResource Radius-1}" />
+		<Setter Property="ItemsListMaxHeight" Value="124" />
+		<Setter Property="ItemsListBorderBrush" Value="{StaticResource ItemsListBorderBrush}" />
+		<Setter Property="ItemsListBorderThickness" Value="2" />
+		<Setter Property="ListItemHeight" Value="40" />
+		<Setter Property="ListItemForeground" Value="{StaticResource ListItemForeground}" />
+		<Setter Property="ListItemBackground" Value="{StaticResource ListItemBackground}" />
+		<Setter Property="ListItemMargin">
+			<Setter.Value>
+				<Thickness 
+				Left="{StaticResource Spacing-3}"
+				Right="{StaticResource Spacing-3}"
+				Top="{StaticResource Spacing-1}"
+				Bottom="{StaticResource Spacing-1}"/>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="ListItemFontSize" Value="20" />
+		<Setter Property="ListItemFontWeight" Value="Medium" />
+		<Setter Property="ListItemFontFamily" Value="{StaticResource Font-Primary}" />
+		<Setter Property="ListItemHoverBackground" Value="{StaticResource ListItemHoverBackground}" />
+		<Setter Property="ListItemSelectedBackground" Value="{StaticResource ListItemSelectedBackground}" />
+		<Setter Property="PlaceholderForeground" Value="{StaticResource PlaceholderTextForeground}" />
+	</Style>
 </ResourceDictionary>

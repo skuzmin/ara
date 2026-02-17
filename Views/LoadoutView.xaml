@@ -44,7 +44,7 @@
 			</Grid.ColumnDefinitions>
 			<controls:AraComboBox
 				x:Name="LoadoutComboBox"
-				Style="{StaticResource LoadoutConfigComboBox}"
+				Style="{StaticResource AraComboBox}"
 				ItemsSource="{Binding LoadoutOptions}"
 				PlaceholderText="Select Loadout"
 				DisplayMemberPath="Name"

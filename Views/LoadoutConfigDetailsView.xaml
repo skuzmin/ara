@@ -103,7 +103,7 @@
 						</Grid.ColumnDefinitions>
 						<controls:AraComboBox
 							x:Name="ItemsComboBox"
-							Style="{StaticResource LoadoutConfigComboBox}"
+							Style="{StaticResource AraComboBox}"
 							PlaceholderText="Select Item"
 							ItemsSource="{Binding ItemsList}"
 							DisplayMemberPath="Name"
