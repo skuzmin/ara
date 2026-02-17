@@ -5,6 +5,7 @@
 			 mc:Ignorable="d"
 			 xmlns:pages="clr-namespace:ARA.ViewModels.Pages" 
 			 xmlns:controls="clr-namespace:ARA.Controls.CustomControls"
+			 xmlns:enums="clr-namespace:ARA.Enums"
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=pages:LoadoutConfigDetailsViewModel}">
 	<Grid>
 		<Grid.RowDefinitions>
@@ -43,7 +44,7 @@
 				<!-- Name -->
 				<StackPanel Grid.Row="0">
 					<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=NameTextBox}">Name</Label>
-					<TextBox Height="40" x:Name="NameTextBox" />
+					<controls:AraTextBox Height="40" x:Name="NameTextBox" Background="White" CornerRadius="8" InputType="{x:Static enums:TextBoxInputType.Number}"/>
 				</StackPanel>
 
 				<!-- Zone -->
@@ -81,12 +82,12 @@
 								<TextBox Height="40" x:Name="Y" />
 							</StackPanel>
 							<StackPanel Grid.Column="4">
-								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=Width}">Width</Label>
-								<TextBox Height="40" x:Name="Width" />
+								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=ZoneWidth}">Width</Label>
+								<TextBox Height="40" x:Name="ZoneWidth" />
 							</StackPanel>
 							<StackPanel Grid.Column="6">
-								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=Height}">Height</Label>
-								<TextBox Height="40" x:Name="Height" />
+								<Label FontSize="18" Padding="0 0 0 4" Foreground="White" Target="{Binding ElementName=ZoneHeight}">Height</Label>
+								<TextBox Height="40" x:Name="ZoneHeight" />
 							</StackPanel>
 						</Grid>
 					</Grid>
