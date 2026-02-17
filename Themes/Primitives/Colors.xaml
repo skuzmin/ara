@@ -6,7 +6,7 @@
 	<Color x:Key="Orange">#FF6600</Color>
 	<Color x:Key="Yellow">#FFD700</Color>
 	<Color x:Key="Blue">#00BFFF</Color>
-	<Color x:Key="DarkGray">#A9A9A9</Color>
+	<Color x:Key="DarkGray">#8A8F98</Color>
 	<Color x:Key="DarkRed">#8b0000</Color>
-	<Color x:Key="LightTan">#CAC0A3</Color>
+	<Color x:Key="LightTan">#B0B6C0</Color>
 </ResourceDictionary>
