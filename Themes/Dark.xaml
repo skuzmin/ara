@@ -10,6 +10,7 @@
 	<SolidColorBrush x:Key="SecondaryButton__HoverBackgroundColor" Color="{StaticResource LightTan}" />
 	<SolidColorBrush x:Key="PageTitleButton__HoverBackgroundColor" Color="{StaticResource DarkGray}"/>
 	<SolidColorBrush x:Key="AraWindow__BorderBrush" Color="{StaticResource White}"/>
+	<SolidColorBrush x:Key="PlaceholderTextForeground" Color="{StaticResource SpaceBlack}" />
 
 	<!-- TitleBarUserControl -->
 	<SolidColorBrush x:Key="TitleBar__BackgroundColor" Color="{StaticResource SpaceBlack}"/>
@@ -39,7 +40,6 @@
 	<SolidColorBrush x:Key="ListItemHoverBackground" Color="{StaticResource LightTan}" />
 	<SolidColorBrush x:Key="ListItemSelectedBackground" Color="{StaticResource Yellow}" />
 	<SolidColorBrush x:Key="SelectedTextForeground" Color="{StaticResource Black}" />
-	<SolidColorBrush x:Key="PlaceholderTextForeground" Color="{StaticResource SpaceBlack}" />
 	
 	<!-- ScrollBar -->
 	<SolidColorBrush x:Key="ScrollBar__ThumbBrush" Color="{StaticResource Orange}" />

@@ -50,6 +50,36 @@ namespace ARA.Controls.CustomControls
 			set => SetValue(InputTypeProperty, value);
 		}
 		#endregion
+
+		#region PlaceholderText
+		public static readonly DependencyProperty PlaceholderTextProperty =
+			DependencyProperty.Register(
+				nameof(PlaceholderText),
+				typeof(string),
+				typeof(AraTextBox),
+				new PropertyMetadata(string.Empty));
+
+		public string PlaceholderText
+		{
+			get { return (string)GetValue(PlaceholderTextProperty); }
+			set { SetValue(PlaceholderTextProperty, value); }
+		}
+		#endregion
+		#region PlaceholderForeground
+		public static readonly DependencyProperty PlaceholderForegroundProperty =
+			DependencyProperty.Register(
+				nameof(PlaceholderForeground),
+				typeof(Brush),
+				typeof(AraTextBox),
+				new PropertyMetadata(Brushes.Gray));
+
+		public Brush PlaceholderForeground
+		{
+			get { return (Brush)GetValue(PlaceholderForegroundProperty); }
+			set { SetValue(PlaceholderForegroundProperty, value); }
+		}
+		#endregion
+
 		static AraTextBox()
 		{
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraTextBox),
