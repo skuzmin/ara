@@ -105,6 +105,7 @@
 							x:Name="ItemsComboBox"
 							IsEditable="True"
 							StaysOpenOnEdit="True"
+							IsTextSearchEnabled="False"
 							Style="{StaticResource AraComboBox}"
 							PlaceholderText="Select Item"
 							ItemsSource="{Binding ItemsList}"

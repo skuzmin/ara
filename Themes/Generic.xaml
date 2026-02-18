@@ -299,10 +299,14 @@
 							</MultiDataTrigger.Conditions>
 							<Setter TargetName="PART_Placeholder" Property="Visibility" Value="Visible"/>
 						</MultiDataTrigger>
-						<DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Items.Count}" Value="0">
+						<MultiDataTrigger>
+							<MultiDataTrigger.Conditions>
+								<Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Items.Count}" Value="0" />
+								<Condition Binding="{Binding ElementName=PART_EditableTextBox, Path=Text}" Value="" />
+							</MultiDataTrigger.Conditions>
 							<Setter Property="IsEnabled" Value="False"/>
 							<Setter Property="Opacity" Value="0.5"/>
-						</DataTrigger>
+						</MultiDataTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>

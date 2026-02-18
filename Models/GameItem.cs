@@ -1,9 +1,10 @@
 ﻿using ARA.Enums;
+using ARA.Interfaces;
 
 namespace ARA.Models
 {
-    public class GameItem
-    {
+	public class GameItem : IFilterable
+	{
 		public GameIcon Icon { get; set; }
 		public int Quantity { get; set; } = 1;
 		public GameItemStatus Status { get; set; } = GameItemStatus.Unknown;

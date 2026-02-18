@@ -2,9 +2,11 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using ARA.Animations;
+using ARA.Interfaces;
 
 namespace ARA.Controls.CustomControls
 {
@@ -492,7 +494,9 @@ namespace ARA.Controls.CustomControls
 			DetachTextBoxEvents();
 			_editableTextBox = GetTemplateChild("PART_EditableTextBox") as TextBox;
 			AttachTextBoxEvents();
+
 		}
+
 		private void InitToggleButtonBorder()
 		{
 			if (GetTemplateChild("PART_ToggleButton") is ToggleButton toggleBtn)
@@ -517,7 +521,8 @@ namespace ARA.Controls.CustomControls
 			_editableTextBox.GotKeyboardFocus -= OnGotKeyboardFocus;
 			_editableTextBox.LostKeyboardFocus -= OnLostKeyboardFocus;
 			_editableTextBox.PreviewTextInput -= OnTextBoxTextChanged;
-			_editableTextBox.PreviewKeyUp -= OnTextBoxUpDown;
+			_editableTextBox.PreviewKeyUp -= OnTextBoxKeyDown;
+			_editableTextBox.SelectionChanged -= OnTextBoxSelectionChanged;
 		}
 		private void AttachTextBoxEvents()
 		{
@@ -530,7 +535,8 @@ namespace ARA.Controls.CustomControls
 			_editableTextBox.GotKeyboardFocus += OnGotKeyboardFocus;
 			_editableTextBox.LostKeyboardFocus += OnLostKeyboardFocus;
 			_editableTextBox.PreviewTextInput += OnTextBoxTextChanged;
-			_editableTextBox.PreviewKeyUp += OnTextBoxUpDown;
+			_editableTextBox.PreviewKeyDown += OnTextBoxKeyDown;
+			_editableTextBox.SelectionChanged += OnTextBoxSelectionChanged;
 		}
 		#endregion
 
@@ -544,7 +550,7 @@ namespace ARA.Controls.CustomControls
 				Text = currentText;
 			}
 		}
-		private void OnTextBoxUpDown(object sender, KeyEventArgs e)
+		private void OnTextBoxKeyDown(object sender, KeyEventArgs e)
 		{
 			switch (e.Key)
 			{
@@ -552,14 +558,6 @@ namespace ARA.Controls.CustomControls
 				case Key.Back:
 				case Key.Delete:
 					CleanSelectedItem();
-					break;
-
-				case Key.Up:
-				case Key.Down:
-					if (!IsDropDownOpen)
-					{
-						IsDropDownOpen = true;
-					}
 					break;
 			}
 		}
@@ -571,8 +569,34 @@ namespace ARA.Controls.CustomControls
 			}
 			CleanSelectedItem();
 		}
+		private void ApplyFilter(string filterText)
+		{
+			ICollectionView view = CollectionViewSource.GetDefaultView(ItemsSource);
+			if (view == null)
+			{
+				return;
+			}
+
+			if (string.IsNullOrEmpty(filterText))
+			{
+				view.Filter = null;
+			}
+			else
+			{
+				view?.Filter = item => item is IFilterable i && i.Name.Contains(filterText, StringComparison.OrdinalIgnoreCase);
+			}
+
+			IsDropDownOpen = view!.Cast<object>().Any();
+		}
 		private void CleanSelectedItem()
 		{
+			if (SelectedItem != null)
+			{
+				int caret = _editableTextBox!.CaretIndex;
+				SelectedItem = null;
+				_editableTextBox.CaretIndex = caret;
+				_editableTextBox.SelectionLength = 0;
+			}
 			Dispatcher.InvokeAsync(() =>
 			{
 
@@ -582,6 +606,8 @@ namespace ARA.Controls.CustomControls
 					return;
 				}
 
+				ApplyFilter(currentText);
+
 				if (SelectedItem != null && _editableTextBox != null)
 				{
 					int caretPosition = _editableTextBox.CaretIndex;
@@ -590,6 +616,43 @@ namespace ARA.Controls.CustomControls
 				}
 				_lastText = currentText;
 			});
+		}
+		private void OnTextBoxSelectionChanged(object sender, RoutedEventArgs e)
+		{
+			if (_editableTextBox!.SelectionLength > 0)
+			{
+				_editableTextBox.SelectionLength = 0;
+				_editableTextBox.CaretIndex = _editableTextBox.Text.Length;
+			}
+		}
+		protected override void OnPreviewKeyDown(KeyEventArgs e)
+		{
+			switch (e.Key)
+			{
+				case Key.Up:
+				case Key.Down:
+					if (!IsDropDownOpen)
+					{
+						IsDropDownOpen = true;
+						e.Handled = true;
+					}
+					else if (SelectedItem == null)
+					{
+						if (Items.Count > 0)
+						{
+							SelectedIndex = e.Key == Key.Down ? 0 : Items.Count - 1;
+							e.Handled = true;
+						}
+					}
+					else
+					{
+						base.OnPreviewKeyDown(e);
+					}
+					break;
+				default:
+					base.OnPreviewKeyDown(e);
+					break;
+			}
 		}
 		protected override void OnDropDownOpened(EventArgs e)
 		{
