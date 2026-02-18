@@ -496,7 +496,6 @@ namespace ARA.Controls.CustomControls
 			AttachTextBoxEvents();
 
 		}
-
 		private void InitToggleButtonBorder()
 		{
 			if (GetTemplateChild("PART_ToggleButton") is ToggleButton toggleBtn)
@@ -541,15 +540,6 @@ namespace ARA.Controls.CustomControls
 		#endregion
 
 		#region AutoComplete
-		protected override void OnSelectionChanged(SelectionChangedEventArgs e)
-		{
-			string currentText = Text;
-			base.OnSelectionChanged(e);
-			if (IsEditable && string.IsNullOrEmpty(Text) && !string.IsNullOrEmpty(currentText))
-			{
-				Text = currentText;
-			}
-		}
 		private void OnTextBoxKeyDown(object sender, KeyEventArgs e)
 		{
 			switch (e.Key)
@@ -625,6 +615,19 @@ namespace ARA.Controls.CustomControls
 				_editableTextBox.CaretIndex = _editableTextBox.Text.Length;
 			}
 		}
+		private void OnMouseDownOutsideDropdown(object sender, MouseButtonEventArgs e)
+		{
+			IsDropDownOpen = false;
+		}
+		protected override void OnSelectionChanged(SelectionChangedEventArgs e)
+		{
+			string currentText = Text;
+			base.OnSelectionChanged(e);
+			if (IsEditable && string.IsNullOrEmpty(Text) && !string.IsNullOrEmpty(currentText))
+			{
+				Text = currentText;
+			}
+		}
 		protected override void OnPreviewKeyDown(KeyEventArgs e)
 		{
 			switch (e.Key)
@@ -663,10 +666,6 @@ namespace ARA.Controls.CustomControls
 		{
 			base.OnDropDownClosed(e);
 			Mouse.RemovePreviewMouseDownOutsideCapturedElementHandler(this, OnMouseDownOutsideDropdown);
-		}
-		private void OnMouseDownOutsideDropdown(object sender, MouseButtonEventArgs e)
-		{
-			IsDropDownOpen = false;
 		}
 		#endregion
 
