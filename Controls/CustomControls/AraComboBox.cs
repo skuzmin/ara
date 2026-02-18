@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
@@ -10,6 +11,8 @@ namespace ARA.Controls.CustomControls
 	class AraComboBox : ComboBox
 	{
 		private Border? _toggleButtonBorder;
+		private TextBox? _editableTextBox;
+		private string _lastText = string.Empty;
 
 		#region SelectedTextForegorund
 		public static readonly DependencyProperty SelectedTextForegroundProperty =
@@ -459,41 +462,196 @@ namespace ARA.Controls.CustomControls
 			set { SetValue(PlaceholderForegroundProperty, value); }
 		}
 		#endregion
+
+		#region TextBoxMargin
+		public static readonly DependencyProperty TextBoxMarginProperty =
+			DependencyProperty.Register(
+				nameof(TextBoxMargin),
+				typeof(Thickness),
+				typeof(AraComboBox),
+				new PropertyMetadata(new Thickness(0)));
+		public Thickness TextBoxMargin
+		{
+			get => (Thickness)GetValue(TextBoxMarginProperty);
+			set => SetValue(TextBoxMarginProperty, value);
+		}
+		#endregion
+
+		#region Init
 		static AraComboBox()
 		{
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraComboBox),
 				new FrameworkPropertyMetadata(typeof(AraComboBox)));
+			IsTextSearchEnabledProperty.OverrideMetadata(typeof(AraComboBox),
+				new FrameworkPropertyMetadata(false));
 		}
-
-		#region Animations
 		public override void OnApplyTemplate()
 		{
 			base.OnApplyTemplate();
-            if (GetTemplateChild("PART_ToggleButton") is ToggleButton toggleBtn)
-            {
+			InitToggleButtonBorder();
+			DetachTextBoxEvents();
+			_editableTextBox = GetTemplateChild("PART_EditableTextBox") as TextBox;
+			AttachTextBoxEvents();
+		}
+		private void InitToggleButtonBorder()
+		{
+			if (GetTemplateChild("PART_ToggleButton") is ToggleButton toggleBtn)
+			{
 				toggleBtn.ApplyTemplate();
-                _toggleButtonBorder = toggleBtn.Template.FindName("ToggleBorder", toggleBtn) as Border;
-				if (_toggleButtonBorder != null) {
+				_toggleButtonBorder = toggleBtn.Template.FindName("ToggleBorder", toggleBtn) as Border;
+				if (_toggleButtonBorder != null)
+				{
 					_toggleButtonBorder.Background = ToggleButtonBackground;
 					_toggleButtonBorder.BorderBrush = ToggleButtonBorderBrush;
 				}
 			}
-        }
+		}
+		private void DetachTextBoxEvents()
+		{
+			if (_editableTextBox == null)
+			{
+				return;
+			}
 
+			_editableTextBox.PreviewMouseLeftButtonDown -= OnTextBoxClicked;
+			_editableTextBox.GotKeyboardFocus -= OnGotKeyboardFocus;
+			_editableTextBox.LostKeyboardFocus -= OnLostKeyboardFocus;
+			_editableTextBox.PreviewTextInput -= OnTextBoxTextChanged;
+			_editableTextBox.PreviewKeyUp -= OnTextBoxUpDown;
+		}
+		private void AttachTextBoxEvents()
+		{
+			if (_editableTextBox == null)
+			{
+				return;
+			}
+
+			_editableTextBox.PreviewMouseLeftButtonDown += OnTextBoxClicked;
+			_editableTextBox.GotKeyboardFocus += OnGotKeyboardFocus;
+			_editableTextBox.LostKeyboardFocus += OnLostKeyboardFocus;
+			_editableTextBox.PreviewTextInput += OnTextBoxTextChanged;
+			_editableTextBox.PreviewKeyUp += OnTextBoxUpDown;
+		}
+		#endregion
+
+		#region AutoComplete
+		protected override void OnSelectionChanged(SelectionChangedEventArgs e)
+		{
+			string currentText = Text;
+			base.OnSelectionChanged(e);
+			if (IsEditable && string.IsNullOrEmpty(Text) && !string.IsNullOrEmpty(currentText))
+			{
+				Text = currentText;
+			}
+		}
+		private void OnTextBoxUpDown(object sender, KeyEventArgs e)
+		{
+			switch (e.Key)
+			{
+				case Key.Space:
+				case Key.Back:
+				case Key.Delete:
+					CleanSelectedItem();
+					break;
+
+				case Key.Up:
+				case Key.Down:
+					if (!IsDropDownOpen)
+					{
+						IsDropDownOpen = true;
+					}
+					break;
+			}
+		}
+		private void OnTextBoxTextChanged(object sender, TextCompositionEventArgs e)
+		{
+			if (e.Text == "\r" || e.Text == "\n")
+			{
+				return;
+			}
+			CleanSelectedItem();
+		}
+		private void CleanSelectedItem()
+		{
+			Dispatcher.InvokeAsync(() =>
+			{
+
+				var currentText = _editableTextBox?.Text ?? string.Empty;
+				if (currentText == _lastText)
+				{
+					return;
+				}
+
+				if (SelectedItem != null && _editableTextBox != null)
+				{
+					int caretPosition = _editableTextBox.CaretIndex;
+					SelectedItem = null;
+					_editableTextBox.CaretIndex = caretPosition;
+				}
+				_lastText = currentText;
+			});
+		}
+		protected override void OnDropDownOpened(EventArgs e)
+		{
+			base.OnDropDownOpened(e);
+			Mouse.AddPreviewMouseDownOutsideCapturedElementHandler(this, OnMouseDownOutsideDropdown);
+		}
+		protected override void OnDropDownClosed(EventArgs e)
+		{
+			base.OnDropDownClosed(e);
+			Mouse.RemovePreviewMouseDownOutsideCapturedElementHandler(this, OnMouseDownOutsideDropdown);
+		}
+		private void OnMouseDownOutsideDropdown(object sender, MouseButtonEventArgs e)
+		{
+			IsDropDownOpen = false;
+		}
+		#endregion
+
+		#region Animations
 		protected override void OnMouseEnter(MouseEventArgs e)
 		{
 			base.OnMouseEnter(e);
-			ColorAnimator.Animate(ToggleButtonHoverBackground, _toggleButtonBorder!, "(Background).(SolidColorBrush.Color)");
-			ColorAnimator.Animate(ToggleButtonHoverBorderBrush, _toggleButtonBorder!, "(BorderBrush).(SolidColorBrush.Color)");
+			if (_editableTextBox != null && !_editableTextBox.IsKeyboardFocused)
+			{
+				ColorAnimator.Animate(ToggleButtonHoverBackground, _toggleButtonBorder!, "(Background).(SolidColorBrush.Color)");
+				ColorAnimator.Animate(ToggleButtonHoverBorderBrush, _toggleButtonBorder!, "(BorderBrush).(SolidColorBrush.Color)");
+			}
 		}
-
 		protected override void OnMouseLeave(MouseEventArgs e)
 		{
 			base.OnMouseLeave(e);
+			if (_editableTextBox != null && !_editableTextBox.IsKeyboardFocused)
+			{
+				ColorAnimator.Animate(ToggleButtonBackground, _toggleButtonBorder!, "(Background).(SolidColorBrush.Color)");
+				ColorAnimator.Animate(ToggleButtonBorderBrush, _toggleButtonBorder!, "(BorderBrush).(SolidColorBrush.Color)");
+			}
+		}
+		private void OnTextBoxClicked(object sender, MouseButtonEventArgs e)
+		{
+			if (_editableTextBox != null && _editableTextBox.IsKeyboardFocused)
+			{
+				IsDropDownOpen = true;
+			}
+		}
+		private void OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+		{
+			if (_editableTextBox != null && _editableTextBox.IsKeyboardFocused)
+			{
+				IsDropDownOpen = true;
+			}
+			ColorAnimator.Animate(ToggleButtonHoverBackground, _toggleButtonBorder!, "(Background).(SolidColorBrush.Color)");
+			ColorAnimator.Animate(ToggleButtonHoverBorderBrush, _toggleButtonBorder!, "(BorderBrush).(SolidColorBrush.Color)");
+
+		}
+		private void OnLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+		{
+			if (_editableTextBox != null && !IsKeyboardFocusWithin)
+			{
+				IsDropDownOpen = false;
+			}
 			ColorAnimator.Animate(ToggleButtonBackground, _toggleButtonBorder!, "(Background).(SolidColorBrush.Color)");
 			ColorAnimator.Animate(ToggleButtonBorderBrush, _toggleButtonBorder!, "(BorderBrush).(SolidColorBrush.Color)");
 		}
 		#endregion
 	}
-
 }

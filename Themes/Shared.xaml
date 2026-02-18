@@ -88,7 +88,7 @@
 		<Setter Property="ToggleButtonOpenBackground" Value="{StaticResource ToggleButtonOpenBackground}" />
 		<Setter Property="SelectedTextForeground" Value="{StaticResource SelectedTextForeground}" />
 		<Setter Property="SelectedTextFontSize" Value="20" />
-		<Setter Property="SelectedTextFontFamily" Value="{StaticResource Font-Primary}" />
+		<Setter Property="SelectedTextFontFamily" Value="{StaticResource Font-Secondary}" />
 		<Setter Property="SelectedTextFontWeight" Value="Medium" />
 		<Setter Property="SelectedTextMargin">
 			<Setter.Value>
@@ -117,10 +117,19 @@
 		</Setter>
 		<Setter Property="ListItemFontSize" Value="20" />
 		<Setter Property="ListItemFontWeight" Value="Medium" />
-		<Setter Property="ListItemFontFamily" Value="{StaticResource Font-Primary}" />
+		<Setter Property="ListItemFontFamily" Value="{StaticResource Font-Secondary}" />
 		<Setter Property="ListItemHoverBackground" Value="{StaticResource ListItemHoverBackground}" />
 		<Setter Property="ListItemSelectedBackground" Value="{StaticResource ListItemSelectedBackground}" />
 		<Setter Property="PlaceholderForeground" Value="{StaticResource PlaceholderTextForeground}" />
+		<Setter Property="TextBoxMargin">
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-3}"
+					Right="{StaticResource Spacing-7}"
+					Top="{StaticResource Spacing-0}"
+					Bottom="{StaticResource Spacing-0}"/>
+			</Setter.Value>
+		</Setter>
 	</Style>
 
 	<Style x:Key="AraTextBox" TargetType="controls:AraTextBox">

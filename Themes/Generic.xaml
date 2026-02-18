@@ -208,6 +208,16 @@
 					</Setter.Value>
 				</Setter>
 			</Style>
+			<!-- ComboBoxTextBox -->
+			<ControlTemplate x:Key="AraComboBoxTextBox" TargetType="TextBox">
+				<Border Background="Transparent" BorderThickness="0">
+					<ScrollViewer x:Name="PART_ContentHost" 
+                          Margin="0" 
+                          Focusable="False"
+                          HorizontalScrollBarVisibility="Hidden"
+                          VerticalScrollBarVisibility="Hidden"/>
+				</Border>
+			</ControlTemplate>
 		</Style.Resources>
 		<!-- ComboBox -->
 		<Setter Property="ToggleButtonBackground" Value="White"/>
@@ -244,7 +254,17 @@
 							Opacity="0.7"
 							Text="{Binding PlaceholderText, RelativeSource={RelativeSource TemplatedParent}}"
 							Visibility="Collapsed" />
-						<TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+						<TextBox 
+							x:Name="PART_EditableTextBox"
+							Template="{StaticResource AraComboBoxTextBox}"
+							FontSize="{Binding SelectedTextFontSize, RelativeSource={RelativeSource TemplatedParent}}"
+							FontFamily="{Binding SelectedTextFontFamily, RelativeSource={RelativeSource TemplatedParent}}"
+							FontWeight="{Binding SelectedTextFontWeight, RelativeSource={RelativeSource TemplatedParent}}"
+							Foreground="{Binding SelectedTextForeground, RelativeSource={RelativeSource TemplatedParent}}"
+							Margin="{Binding TextBoxMargin, RelativeSource={RelativeSource TemplatedParent}}"
+							VerticalAlignment="Center"
+							Visibility="Hidden" 
+							IsReadOnly="{TemplateBinding IsReadOnly}"/>
 						<Popup 
 							x:Name="PART_Popup"
 							IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
@@ -265,14 +285,20 @@
 						</Popup>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsEditable" Value="true">
+						<Trigger Property="IsEditable" Value="True">
 							<Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
-							<Setter TargetName="PART_ContentSite" Property="Visibility" Value="Hidden"/>
-						</Trigger>
-						<Trigger Property="SelectedItem" Value="{x:Null}">
-							<Setter TargetName="PART_Placeholder" Property="Visibility" Value="Visible"/>
 							<Setter TargetName="PART_ContentSite" Property="Visibility" Value="Collapsed"/>
 						</Trigger>
+						<Trigger Property="SelectedItem" Value="{x:Null}">
+							<Setter TargetName="PART_ContentSite" Property="Visibility" Value="Collapsed"/>
+						</Trigger>
+						<MultiDataTrigger>
+							<MultiDataTrigger.Conditions>
+								<Condition Binding="{Binding ElementName=PART_EditableTextBox, Path=Text}" Value="" />
+								<Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=SelectedItem}" Value="{x:Null}" />
+							</MultiDataTrigger.Conditions>
+							<Setter TargetName="PART_Placeholder" Property="Visibility" Value="Visible"/>
+						</MultiDataTrigger>
 						<DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Items.Count}" Value="0">
 							<Setter Property="IsEnabled" Value="False"/>
 							<Setter Property="Opacity" Value="0.5"/>

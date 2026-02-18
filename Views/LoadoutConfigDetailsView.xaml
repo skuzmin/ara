@@ -103,6 +103,8 @@
 						</Grid.ColumnDefinitions>
 						<controls:AraComboBox
 							x:Name="ItemsComboBox"
+							IsEditable="True"
+							StaysOpenOnEdit="True"
 							Style="{StaticResource AraComboBox}"
 							PlaceholderText="Select Item"
 							ItemsSource="{Binding ItemsList}"
