@@ -157,11 +157,11 @@ namespace ARA.Controls.CustomControls
 			base.OnApplyTemplate();
 			_border = (Border)GetTemplateChild("Border");
 			_textBlocks = [.. Children.OfType<TextBlock>()];
-            foreach (var tb in _textBlocks)
-            {
+			foreach (var tb in _textBlocks)
+			{
 				tb.Foreground = this.Foreground.Clone();
-            }
-        }
+			}
+		}
 
 		protected override void OnMouseEnter(MouseEventArgs e)
 		{
@@ -190,6 +190,35 @@ namespace ARA.Controls.CustomControls
 				}
 			}
 		}
+
+		protected override void OnGotKeyboardFocus(KeyboardFocusChangedEventArgs e)
+		{
+			base.OnGotKeyboardFocus(e);
+			if (!IsSelected && !IsMouseOver)
+			{
+				ColorAnimator.Animate(HoverBackground, _border!, "(Background).(SolidColorBrush.Color)");
+				ColorAnimator.Animate(HoverBorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+				foreach (var tb in _textBlocks)
+				{
+					ColorAnimator.Animate(HoverForeground, tb, "(Foreground).(SolidColorBrush.Color)");
+				}
+			}
+		}
+
+		protected override void OnLostKeyboardFocus(KeyboardFocusChangedEventArgs e)
+		{
+			base.OnLostKeyboardFocus(e);
+			if (!IsSelected && !IsMouseOver)
+			{
+				ColorAnimator.Animate(Background, _border!, "(Background).(SolidColorBrush.Color)");
+				ColorAnimator.Animate(BorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+				foreach (var tb in _textBlocks)
+				{
+					ColorAnimator.Animate(Foreground, tb, "(Foreground).(SolidColorBrush.Color)");
+				}
+			}
+		}
+
 		#endregion
 	}
 }
