@@ -630,32 +630,32 @@ namespace ARA.Controls.CustomControls
 		}
 		protected override void OnPreviewKeyDown(KeyEventArgs e)
 		{
-			switch (e.Key)
+			if (e.Key != Key.Up && e.Key != Key.Down)
 			{
-				case Key.Up:
-				case Key.Down:
-					if (!IsDropDownOpen)
-					{
-						IsDropDownOpen = true;
-						e.Handled = true;
-					}
-					else if (SelectedItem == null)
-					{
-						if (Items.Count > 0)
-						{
-							SelectedIndex = e.Key == Key.Down ? 0 : Items.Count - 1;
-							e.Handled = true;
-						}
-					}
-					else
-					{
-						base.OnPreviewKeyDown(e);
-					}
-					break;
-				default:
-					base.OnPreviewKeyDown(e);
-					break;
+				base.OnPreviewKeyDown(e);
+				return;
 			}
+
+			if (!IsDropDownOpen)
+			{
+				IsDropDownOpen = true;
+				e.Handled = true;
+				return;
+			}
+
+			if (IsEditable && SelectedItem != null)
+			{
+				base.OnPreviewKeyDown(e);
+				return;
+			}
+
+			if (Items.Count > 0)
+			{
+				SelectedIndex = e.Key == Key.Down
+					? Math.Min(SelectedIndex + 1, Items.Count - 1)
+					: Math.Max(SelectedIndex - 1, 0);
+			}
+			e.Handled = true;
 		}
 		protected override void OnDropDownOpened(EventArgs e)
 		{
