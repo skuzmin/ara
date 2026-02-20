@@ -24,37 +24,11 @@ namespace ARA.Services
 				WriteIndented = true
 			};
 			InitConfig();
-
-
-			_configurations.LoadoutConfigurations = [
-				new LoadoutConfiguration { Name = "Dam Night Juice", Items = [
-						new GameItem{Icon = GameIcon.Bandage, Quantity = 5 },
-						new GameItem{Icon = GameIcon.Shield_Recharger, Quantity = 5 },
-						new GameItem{Icon = GameIcon.Door_Blocker, Quantity = 3 },
-						new GameItem{Icon = GameIcon.Heavy_Fuse_Grenade, Quantity = 2 },
-						new GameItem{Icon = GameIcon.Adrenaline_Shot, Quantity = 3 },
-					]
-				},
-				new LoadoutConfiguration { Name = "Blue Gate", Items = [
-						new GameItem{Icon = GameIcon.Bandage, Quantity = 5 },
-						new GameItem{Icon = GameIcon.Shield_Recharger, Quantity = 5 },
-						new GameItem{Icon = GameIcon.Barricade_Kit, Quantity = 3 },
-						new GameItem{Icon = GameIcon.Lil_Smoke_Grenade, Quantity = 2 },
-						new GameItem{Icon = GameIcon.Adrenaline_Shot, Quantity = 3 },
-					]
-				},
-				new LoadoutConfiguration { Name = "Stela Montis Poor", Items = [
-						new GameItem{Icon = GameIcon.Bandage, Quantity = 3 },
-						new GameItem{Icon = GameIcon.Shield_Recharger, Quantity = 3 },
-						new GameItem{Icon = GameIcon.Lil_Smoke_Grenade, Quantity = 2 },
-						new GameItem{Icon = GameIcon.Raider_Hatch_Key, Quantity = 1 },
-					]
-				}
-			];
 		}
 
 		public void SaveConfig()
 		{
+			_configurations.LoadoutConfigurations.Sort((a, b) => a.Name.CompareTo(b.Name));
 			string json = JsonSerializer.Serialize(_configurations, _jsonOptions);
 			File.WriteAllText(Constants.ConfigFilePath, json);
 		}
@@ -82,20 +56,14 @@ namespace ARA.Services
 		}
 
 		#region LoadoutConfig
-		public LoadoutConfiguration GetCurrentLoadoutConfig()
+		public LoadoutConfiguration? GetCurrentLoadoutConfig()
 		{
-			return _loadoutConfiguration ?? new LoadoutConfiguration();
+			return _loadoutConfiguration;
 		}
 
-		public void SetCurrentConfigurationById(Guid id)
+		public void SetCurrentLoadoutConfig(LoadoutConfiguration? loadout)
 		{
-			var config = _configurations.LoadoutConfigurations.FirstOrDefault(x => x.Id == id);
-			_loadoutConfiguration = config ?? new LoadoutConfiguration();
-		}
-
-		public void SetCurrentConfigurationAsNew()
-		{
-			_loadoutConfiguration = null;
+			_loadoutConfiguration = loadout;
 		}
 
 		public void RemoveLoadoutConfigById(Guid id)
@@ -109,7 +77,27 @@ namespace ARA.Services
 			}
 			else
 			{
-				_logger.LogWarning("Fail to delete Configuration with Id: {Id}", id);
+				_logger.LogError("Failed to delete Configuration with Id: {Id}", id);
+			}
+		}
+
+		public void CreateLoadoutConfig(LoadoutConfiguration loadout)
+		{
+			_configurations.LoadoutConfigurations.Add(loadout);
+			SaveConfig();
+		}
+
+		public void UpdateLoadoutConfig(LoadoutConfiguration loadout)
+		{
+			var index = _configurations.LoadoutConfigurations.FindIndex(x => x.Id == loadout.Id);
+			if (index >= 0)
+			{
+				_configurations.LoadoutConfigurations[index] = loadout;
+				SaveConfig();
+			}
+			else
+			{
+				_logger.LogError("Failed to update Configuration with Id: {Id}", loadout.Id);
 			}
 		}
 		#endregion

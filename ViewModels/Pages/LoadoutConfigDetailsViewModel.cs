@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using ARA.Enums;
 using ARA.Interfaces;
@@ -11,6 +12,8 @@ namespace ARA.ViewModels.Pages
 	{
 		private readonly ILogger _logger;
 		private readonly IAraNavigation _navigation;
+		private readonly IAraConfigurations _configurations;
+		private readonly Boolean _isNewLoadout;
 		public ICommand BackCommand { get; }
 		public ICommand SaveLoadoutConfigurationCommand { get; }
 		public ObservableCollection<GameItem> ItemsList { get; }
@@ -34,16 +37,29 @@ namespace ARA.ViewModels.Pages
 		{
 			_logger = logger;
 			_navigation = navigation;
-			LoadoutConfiguration = configurations.GetCurrentLoadoutConfig();
-			Title = string.IsNullOrEmpty(LoadoutConfiguration.Name) ? "New Configuration" : LoadoutConfiguration.Name;
+			_configurations = configurations;
+
+			var loadoutConfig = _configurations.GetCurrentLoadoutConfig();
+			_isNewLoadout = loadoutConfig == null;
+			LoadoutConfiguration = loadoutConfig ?? new LoadoutConfiguration();
+			Title = _isNewLoadout ? "New Configuration" : LoadoutConfiguration.Name;
+			ItemsList = new ObservableCollection<GameItem>(GameItem.GetList());
+
 			BackCommand = new RelayCommand(_ => navigation.NavigateToPage(AraPage.LoadoutConfigs));
 			SaveLoadoutConfigurationCommand = new RelayCommand(_ => SaveLoadoutConfiguration());
-			ItemsList = new ObservableCollection<GameItem>(GameItem.GetList());
 		}
 
 		private void SaveLoadoutConfiguration()
 		{
-			//_navigation.NavigateToPage(AraPage.LoadoutConfigs);
+			if (_isNewLoadout)
+			{
+				_configurations.CreateLoadoutConfig(LoadoutConfiguration);
+			}
+			else
+			{
+				_configurations.UpdateLoadoutConfig(LoadoutConfiguration);
+			}
+			_navigation.NavigateToPage(AraPage.LoadoutConfigs);
 		}
 	}
 }

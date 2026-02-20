@@ -80,7 +80,7 @@
 											Grid.Column="0" 
 											Style="{StaticResource PageTitleButton}" 
 											Command="{Binding DataContext.EditConfigCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-											CommandParameter="{Binding Id}">
+											CommandParameter="{Binding}">
 											<controls:AraButton.Children>
 												<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/DataGrid/Edit.png" />
 											</controls:AraButton.Children>
