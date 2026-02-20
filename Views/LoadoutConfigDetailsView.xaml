@@ -151,7 +151,7 @@
 			</Grid>
 		</ScrollViewer>
 
-		<controls:AraButton Grid.Row="4" HorizontalAlignment="Right" Style="{StaticResource PrimaryButton}">
+		<controls:AraButton Grid.Row="4" Command="{Binding SaveLoadoutConfigurationCommand}" HorizontalAlignment="Right" Style="{StaticResource PrimaryButton}">
 			<controls:AraButton.Children>
 				<TextBlock Text="Save" />
 			</controls:AraButton.Children>
