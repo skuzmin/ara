@@ -12,6 +12,7 @@ namespace ARA.Services
 		private readonly JsonSerializerOptions _jsonOptions;
 		private readonly ILogger _logger;
 		private AraConfigurations _configurations;
+		private LoadoutConfiguration? _loadoutConfiguration;
 		public AraConfigurations Configurations => _configurations;
 
 		public ConfigurationService(ILogger logger)
@@ -23,7 +24,6 @@ namespace ARA.Services
 				WriteIndented = true
 			};
 			InitConfig();
-
 
 
 			_configurations.LoadoutConfigurations = [
@@ -53,6 +53,12 @@ namespace ARA.Services
 			];
 		}
 
+		public void SaveConfig()
+		{
+			string json = JsonSerializer.Serialize(_configurations, _jsonOptions);
+			File.WriteAllText(Constants.ConfigFilePath, json);
+		}
+
 		public void InitConfig()
 		{
 			try
@@ -75,25 +81,37 @@ namespace ARA.Services
 
 		}
 
+		#region LoadoutConfig
+		public LoadoutConfiguration GetCurrentLoadoutConfig()
+		{
+			return _loadoutConfiguration ?? new LoadoutConfiguration();
+		}
+
+		public void SetCurrentConfigurationById(Guid id)
+		{
+			var config = _configurations.LoadoutConfigurations.FirstOrDefault(x => x.Id == id);
+			_loadoutConfiguration = config ?? new LoadoutConfiguration();
+		}
+
+		public void SetCurrentConfigurationAsNew()
+		{
+			_loadoutConfiguration = null;
+		}
+
 		public void RemoveLoadoutConfigById(Guid id)
 		{
 			var itemToRemove = _configurations.LoadoutConfigurations.FirstOrDefault(x => x.Id == id);
 			if (itemToRemove != null)
 			{
 				_configurations.LoadoutConfigurations.Remove(itemToRemove);
-                _logger.LogInformation("Deleted Loadout configuration: {Name}", itemToRemove.Name);
-                SaveConfig();
+				_logger.LogInformation("Deleted Loadout configuration: {Name}", itemToRemove.Name);
+				SaveConfig();
 			}
 			else
 			{
 				_logger.LogWarning("Fail to delete Configuration with Id: {Id}", id);
 			}
 		}
-
-		public void SaveConfig()
-		{
-			string json = JsonSerializer.Serialize(_configurations, _jsonOptions);
-			File.WriteAllText(Constants.ConfigFilePath, json);
-		}
+		#endregion
 	}
 }

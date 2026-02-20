@@ -28,7 +28,7 @@
 				</controls:AraButton.Children>
 			</controls:AraButton>
 			<TextBlock Grid.Column="2" Style="{StaticResource PageTitle}" Text="Loadout Configurations" />
-			<controls:AraButton Grid.Column="4" Style="{StaticResource PrimaryButton}" Command="{Binding ConfigDetailsCommand}">
+			<controls:AraButton Grid.Column="4" Style="{StaticResource PrimaryButton}" Command="{Binding NewConfigCommand}">
 				<controls:AraButton.Children>
 					<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/plus.png" />
 					<TextBlock Text="New" Margin="4 0 0 0"/>
@@ -79,7 +79,8 @@
 										<controls:AraButton 
 											Grid.Column="0" 
 											Style="{StaticResource PageTitleButton}" 
-											Command="{Binding DataContext.ConfigDetailsCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}">
+											Command="{Binding DataContext.EditConfigCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+											CommandParameter="{Binding Id}">
 											<controls:AraButton.Children>
 												<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/DataGrid/Edit.png" />
 											</controls:AraButton.Children>

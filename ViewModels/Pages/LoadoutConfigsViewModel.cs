@@ -11,18 +11,34 @@ namespace ARA.ViewModels.Pages
 	public class LoadoutConfigsViewModel : ViewModelBase
 	{
 		private readonly IAraConfigurations _configurations;
+		private readonly IAraNavigation _navigation;
 		public ObservableCollection<LoadoutConfiguration> LoadoutConfigurations { get; set; }
 		public ICommand BackCommand { get; }
-		public ICommand ConfigDetailsCommand { get; }
+		public ICommand NewConfigCommand { get; }
+		public ICommand EditConfigCommand { get; }
 		public ICommand DeleteConfigCommand { get; }
 
-		public LoadoutConfigsViewModel(IAraNavigation navigations, IAraConfigurations configurations)
+		public LoadoutConfigsViewModel(IAraNavigation navigation, IAraConfigurations configurations)
 		{
 			_configurations = configurations;
+			_navigation = navigation;
 			LoadoutConfigurations = new ObservableCollection<LoadoutConfiguration>(_configurations.Configurations.LoadoutConfigurations);
-			BackCommand = new RelayCommand(_ => navigations.NavigateToPage(AraPage.Loadout));
-			ConfigDetailsCommand = new RelayCommand(_ => navigations.NavigateToPage(AraPage.LoadoutConfigDetails));
+			BackCommand = new RelayCommand(_ => navigation.NavigateToPage(AraPage.Loadout));
+			NewConfigCommand = new RelayCommand(_ => NewConfiguration());
+			EditConfigCommand = new RelayCommand(id => EditConfiguration((Guid)id));
 			DeleteConfigCommand = new RelayCommand(data => DeleteConfiguration((LoadoutConfiguration)data));
+		}
+
+		private void NewConfiguration()
+		{
+			_configurations.SetCurrentConfigurationAsNew();
+			_navigation.NavigateToPage(AraPage.LoadoutConfigDetails);
+		}
+
+		private void EditConfiguration(Guid id)
+		{
+			_configurations.SetCurrentConfigurationById(id);
+			_navigation.NavigateToPage(AraPage.LoadoutConfigDetails);
 		}
 
 		private void DeleteConfiguration(LoadoutConfiguration data)
