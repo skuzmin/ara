@@ -116,36 +116,117 @@
 				<!-- Items -->
 				<GroupBox Grid.Row="4" Header="Items" Foreground="White" FontSize="18" Padding="12">
 					<Grid>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="*"/>
-							<ColumnDefinition Width="12"/>
-							<ColumnDefinition Width="Auto"/>
-						</Grid.ColumnDefinitions>
-						<controls:AraComboBox
-							x:Name="ItemsComboBox"
-							IsEditable="True"
-							StaysOpenOnEdit="True"
-							IsTextSearchEnabled="False"
-							Style="{StaticResource AraComboBox}"
-							PlaceholderText="Select Item"
-							ItemsSource="{Binding ItemsList}"
-							DisplayMemberPath="Name"
-							SelectedItem="{Binding SelectedItem, Mode=TwoWay}"/>
-						<controls:AraButton Grid.Column="2">
-							<controls:AraButton.Children>
-								<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/plus.png" />
-								<TextBlock Text="Add" Margin="4 0 0 0"/>
-							</controls:AraButton.Children>
-							<controls:AraButton.Style>
-								<Style TargetType="controls:AraButton" BasedOn="{StaticResource SecondaryButton}">
-									<Style.Triggers>
-										<DataTrigger Binding="{Binding SelectedItem}" Value="{x:Null}">
-											<Setter Property="IsEnabled" Value="False" />
-										</DataTrigger>
-									</Style.Triggers>
-								</Style>
-							</controls:AraButton.Style>
-						</controls:AraButton>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="12" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+
+						<Grid Grid.Row="0">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="12"/>
+								<ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
+							<controls:AraComboBox
+								x:Name="ItemsComboBox"
+								IsEditable="True"
+								StaysOpenOnEdit="True"
+								IsTextSearchEnabled="False"
+								Style="{StaticResource AraComboBox}"
+								PlaceholderText="Select Item"
+								ItemsSource="{Binding ItemsList}"
+								DisplayMemberPath="Name"
+								SelectedItem="{Binding SelectedItem, Mode=TwoWay}"/>
+							<controls:AraButton Grid.Column="2" Command="{Binding AddItemCommand}">
+								<controls:AraButton.Children>
+									<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/plus.png" />
+									<TextBlock Text="Add" Margin="4 0 0 0"/>
+								</controls:AraButton.Children>
+								<controls:AraButton.Style>
+									<Style TargetType="controls:AraButton" BasedOn="{StaticResource SecondaryButton}">
+										<Style.Triggers>
+											<DataTrigger Binding="{Binding SelectedItem}" Value="{x:Null}">
+												<Setter Property="IsEnabled" Value="False" />
+											</DataTrigger>
+										</Style.Triggers>
+									</Style>
+								</controls:AraButton.Style>
+							</controls:AraButton>
+						</Grid>
+
+						<Grid Grid.Row="2">
+							<!-- Loadout Items Grid -->
+							<Border >
+								<Border.Style>
+									<Style TargetType="Border" BasedOn="{StaticResource DataGridBorderWrapper}">
+										<Style.Triggers>
+											<DataTrigger Binding="{Binding SelectedItemsList.Count}" Value="0">
+												<Setter Property="Visibility" Value="Hidden"/>
+											</DataTrigger>
+										</Style.Triggers>
+									</Style>
+								</Border.Style>
+								<DataGrid x:Name="LoadoutPreview" ItemsSource="{Binding SelectedItemsList}">
+									<DataGrid.Columns>
+										<!-- Icon -->
+										<DataGridTemplateColumn Header="Icon" Width="60">
+											<DataGridTemplateColumn.CellTemplate>
+												<DataTemplate>
+													<Image Source="{Binding Path}" Height="48" Stretch="Uniform" VerticalAlignment="Center"/>
+												</DataTemplate>
+											</DataGridTemplateColumn.CellTemplate>
+										</DataGridTemplateColumn>
+										<!-- Name -->
+										<DataGridTemplateColumn Header="Name" Width="*">
+											<DataGridTemplateColumn.CellTemplate>
+												<DataTemplate>
+													<TextBlock Text="{Binding Name}"/>
+												</DataTemplate>
+											</DataGridTemplateColumn.CellTemplate>
+										</DataGridTemplateColumn>
+										<!-- Quantity -->
+										<DataGridTemplateColumn Header="Quantity" Width="Auto">
+											<DataGridTemplateColumn.CellTemplate>
+												<DataTemplate>
+													<TextBlock Text="{Binding Quantity}"/>
+												</DataTemplate>
+											</DataGridTemplateColumn.CellTemplate>
+										</DataGridTemplateColumn>
+										<!-- Actions -->
+										<DataGridTemplateColumn Header="Actions" Width="Auto">
+											<DataGridTemplateColumn.CellTemplate>
+												<DataTemplate>
+													<controls:AraButton 
+														Style="{StaticResource PageTitleButton}" 
+														Command="{Binding DataContext.RemoveItemCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+														CommandParameter="{Binding Id}">
+														<controls:AraButton.Children>
+															<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/DataGrid/Edit.png" />
+														</controls:AraButton.Children>
+													</controls:AraButton>
+												</DataTemplate>
+											</DataGridTemplateColumn.CellTemplate>
+										</DataGridTemplateColumn>
+									</DataGrid.Columns>
+								</DataGrid>
+							</Border>
+							<!-- No Configurations Message -->
+							<StackPanel Orientation="Vertical" >
+								<StackPanel.Style>
+									<Style TargetType="StackPanel">
+										<Setter Property="Visibility" Value="Collapsed"/>
+										<Style.Triggers>
+											<DataTrigger Binding="{Binding SelectedItemsList.Count}" Value="0">
+												<Setter Property="Visibility" Value="Visible" />
+											</DataTrigger>
+										</Style.Triggers>
+									</Style>
+								</StackPanel.Style>
+								<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="You don't have any Loadout Items yet."/>
+								<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="Use the combobox and button [ Add ] to add your first item."/>
+							</StackPanel>
+						</Grid>
 					</Grid>
 				</GroupBox>
 			</Grid>
