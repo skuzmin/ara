@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using ARA.ViewModels.Pages;
 
 namespace ARA.Views
 {
@@ -10,6 +11,13 @@ namespace ARA.Views
 		{
 			InitializeComponent();
 			LoadoutPreview.PreviewMouseWheel += DataGrid_PreviewMouseWheel;
+			DataContextChanged += (s, e) =>
+			{
+				if (DataContext is LoadoutConfigDetailsViewModel vm)
+				{
+					vm.ResetComboBox = () => ItemsComboBox.Reset();
+				}
+			};
 		}
 
 		private void DataGrid_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

@@ -21,6 +21,7 @@ namespace ARA.ViewModels.Pages
 		public ObservableCollection<GameItem> SelectedItemsList { get; }
 		public LoadoutConfiguration LoadoutConfiguration { get; }
 		public string Title { get; }
+		public Action? ResetComboBox { get; set; }
 		public GameItem? SelectedItem
 		{
 			get => field;
@@ -76,7 +77,7 @@ namespace ARA.ViewModels.Pages
 
 			SelectedItemsList.Add(item);
 			ItemsList.Remove(item);
-			SelectedItem = null;
+			ResetComboBox?.Invoke();
 			_logger.LogInformation("Add {item} to {loadout}", item.Name, LoadoutConfiguration.Name);
 		}
 

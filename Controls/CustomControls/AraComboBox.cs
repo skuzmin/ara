@@ -540,6 +540,12 @@ namespace ARA.Controls.CustomControls
 		#endregion
 
 		#region AutoComplete
+		public void Reset()
+		{
+			Text = "";
+			SelectedItem = null;
+			Focus();
+		}
 		private void OnTextBoxKeyDown(object sender, KeyEventArgs e)
 		{
 			switch (e.Key)

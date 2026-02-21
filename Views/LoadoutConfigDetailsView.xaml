@@ -128,6 +128,7 @@
 								<ColumnDefinition Width="12"/>
 								<ColumnDefinition Width="Auto"/>
 							</Grid.ColumnDefinitions>
+
 							<controls:AraComboBox
 								x:Name="ItemsComboBox"
 								IsEditable="True"
@@ -147,6 +148,7 @@
 									</DataTemplate>
 								</controls:AraComboBox.ItemTemplate>
 							</controls:AraComboBox>
+
 							<controls:AraButton Grid.Column="2" Command="{Binding AddItemCommand}">
 								<controls:AraButton.Children>
 									<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/plus.png" />
