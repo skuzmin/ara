@@ -200,9 +200,9 @@
 													<controls:AraButton 
 														Style="{StaticResource PageTitleButton}" 
 														Command="{Binding DataContext.RemoveItemCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-														CommandParameter="{Binding Id}">
+														CommandParameter="{Binding}">
 														<controls:AraButton.Children>
-															<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/DataGrid/Edit.png" />
+															<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/DataGrid/Delete.png" />
 														</controls:AraButton.Children>
 													</controls:AraButton>
 												</DataTemplate>

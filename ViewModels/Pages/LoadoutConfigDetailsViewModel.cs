@@ -17,7 +17,7 @@ namespace ARA.ViewModels.Pages
 		public ICommand AddItemCommand { get; }
 		public ICommand RemoveItemCommand { get; }
 		public ICommand SaveLoadoutConfigurationCommand { get; }
-		public ObservableCollection<GameItem> ItemsList { get; }
+		public ObservableCollection<GameItem> ItemsList { get; set; }
 		public ObservableCollection<GameItem> SelectedItemsList { get; }
 		public LoadoutConfiguration LoadoutConfiguration { get; }
 		public string Title { get; }
@@ -40,10 +40,13 @@ namespace ARA.ViewModels.Pages
 			_isNewLoadout = loadoutConfig == null;
 			LoadoutConfiguration = loadoutConfig ?? new LoadoutConfiguration();
 			Title = _isNewLoadout ? "New Configuration" : LoadoutConfiguration.Name;
-			ItemsList = new ObservableCollection<GameItem>(GameItem.GetList());
+
+			var allGameItems = GameItem.GetList();
+			var filteredList = allGameItems.Where(a => !LoadoutConfiguration.Items.Any(b => b.Id == a.Id)).ToList();
+			ItemsList = new ObservableCollection<GameItem>(filteredList);
 			SelectedItemsList = new ObservableCollection<GameItem>(LoadoutConfiguration.Items);
 			AddItemCommand = new RelayCommand(_ => AddItem());
-			RemoveItemCommand = new RelayCommand(id => RemoveItem((Guid)id));
+			RemoveItemCommand = new RelayCommand(item => RemoveItem((GameItem)item));
 			BackCommand = new RelayCommand(_ => navigation.NavigateToPage(AraPage.LoadoutConfigs));
 			SaveLoadoutConfigurationCommand = new RelayCommand(_ => SaveLoadoutConfiguration());
 		}
@@ -65,12 +68,15 @@ namespace ARA.ViewModels.Pages
 		private void AddItem()
 		{
 			SelectedItemsList.Add(SelectedItem!);
+			ItemsList.Remove(SelectedItem!);
 			SelectedItem = null;
 		}
 
-		private void RemoveItem(Guid Id)
+		private void RemoveItem(GameItem item)
 		{
-
+			SelectedItemsList.Remove(item);
+			ItemsList.Add(item);
+			ItemsList = new ObservableCollection<GameItem>(ItemsList.OrderBy(x => x.Name));
 		}
 	}
 }
