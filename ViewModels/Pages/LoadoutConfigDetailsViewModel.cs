@@ -32,19 +32,21 @@ namespace ARA.ViewModels.Pages
 		}
 		public LoadoutConfigDetailsViewModel(IAraNavigation navigation, IAraConfigurations configurations, ILogger logger)
 		{
+			// Services(DI)
 			_logger = logger;
 			_navigation = navigation;
 			_configurations = configurations;
-
+			// Basic data
 			var loadoutConfig = _configurations.GetCurrentLoadoutConfig();
 			_isNewLoadout = loadoutConfig == null;
 			LoadoutConfiguration = loadoutConfig ?? new LoadoutConfiguration();
 			Title = _isNewLoadout ? "New Configuration" : LoadoutConfiguration.Name;
-
+			// Init lists for Combobox/DataGrid
 			var allGameItems = GameItem.GetList();
 			var filteredList = allGameItems.Where(a => !LoadoutConfiguration.Items.Any(b => b.Id == a.Id)).ToList();
 			ItemsList = new ObservableCollection<GameItem>(filteredList);
 			SelectedItemsList = new ObservableCollection<GameItem>(LoadoutConfiguration.Items);
+			// Commands
 			AddItemCommand = new RelayCommand(_ => AddItem());
 			RemoveItemCommand = new RelayCommand(item => RemoveItem((GameItem)item));
 			BackCommand = new RelayCommand(_ => navigation.NavigateToPage(AraPage.LoadoutConfigs));
@@ -67,16 +69,27 @@ namespace ARA.ViewModels.Pages
 
 		private void AddItem()
 		{
-			SelectedItemsList.Add(SelectedItem!);
-			ItemsList.Remove(SelectedItem!);
+			if (SelectedItem is not { } item)
+			{
+				return;
+			}
+
+			SelectedItemsList.Add(item);
+			ItemsList.Remove(item);
 			SelectedItem = null;
+			_logger.LogInformation("Add {item} to {loadout}", item.Name, LoadoutConfiguration.Name);
 		}
 
 		private void RemoveItem(GameItem item)
 		{
 			SelectedItemsList.Remove(item);
-			ItemsList.Add(item);
-			ItemsList = new ObservableCollection<GameItem>(ItemsList.OrderBy(x => x.Name));
+			ItemsList = new ObservableCollection<GameItem>(
+				ItemsList
+					.Append(item)
+					.OrderBy(x => x.Name)
+			);
+			OnPropertyChanged(nameof(ItemsList));
+			_logger.LogInformation("Remove {item} from {loadout}", item.Name, LoadoutConfiguration.Name);
 		}
 	}
 }

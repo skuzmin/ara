@@ -83,6 +83,7 @@ namespace ARA.Services
 
 		public void CreateLoadoutConfig(LoadoutConfiguration loadout)
 		{
+			_logger.LogInformation("Create new Loadout: {loadout}", loadout.Name);
 			_configurations.LoadoutConfigurations.Add(loadout);
 			SaveConfig();
 		}
@@ -92,6 +93,7 @@ namespace ARA.Services
 			var index = _configurations.LoadoutConfigurations.FindIndex(x => x.Id == loadout.Id);
 			if (index >= 0)
 			{
+				_logger.LogInformation("Update Loadout: {loadout}", loadout.Name);
 				_configurations.LoadoutConfigurations[index] = loadout;
 				SaveConfig();
 			}
