@@ -135,9 +135,18 @@
 								IsTextSearchEnabled="False"
 								Style="{StaticResource AraComboBox}"
 								PlaceholderText="Select Item"
+								TextSearch.TextPath="Name"
 								ItemsSource="{Binding ItemsList}"
-								DisplayMemberPath="Name"
-								SelectedItem="{Binding SelectedItem, Mode=TwoWay}"/>
+								SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+								<controls:AraComboBox.ItemTemplate>
+									<DataTemplate>
+										<StackPanel Orientation="Horizontal">
+											<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
+											<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
+										</StackPanel>
+									</DataTemplate>
+								</controls:AraComboBox.ItemTemplate>
+							</controls:AraComboBox>
 							<controls:AraButton Grid.Column="2" Command="{Binding AddItemCommand}">
 								<controls:AraButton.Children>
 									<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/plus.png" />
