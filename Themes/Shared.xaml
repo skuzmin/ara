@@ -170,4 +170,19 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+
+	<Style x:Key="AraGroupBox" TargetType="GroupBox">
+		<Setter Property="FontSize" Value="18" />
+		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
+		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="Padding">
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-3}"
+					Top="{StaticResource Spacing-3}"
+					Right="{StaticResource Spacing-3}"
+					Bottom="{StaticResource Spacing-3}" />
+			</Setter.Value>
+		</Setter>
+	</Style>
 </ResourceDictionary>

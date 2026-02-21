@@ -1,12 +1,30 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ARA.Views
 {
-    public partial class LoadoutConfigDetailsView : UserControl
-    {
-        public LoadoutConfigDetailsView()
-        {
-            InitializeComponent();
-        }
-    }
+	public partial class LoadoutConfigDetailsView : UserControl
+	{
+		public LoadoutConfigDetailsView()
+		{
+			InitializeComponent();
+			LoadoutPreview.PreviewMouseWheel += DataGrid_PreviewMouseWheel;
+		}
+
+		private void DataGrid_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+		{
+			if (!e.Handled)
+			{
+				e.Handled = true;
+				var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta)
+				{
+					RoutedEvent = UIElement.MouseWheelEvent,
+					Source = sender
+				};
+				var parent = ((Control)sender).Parent as UIElement;
+				parent?.RaiseEvent(eventArg);
+			}
+		}
+	}
 }

@@ -48,7 +48,7 @@
 				</StackPanel>
 
 				<!-- Zone -->
-				<GroupBox Grid.Row="2" Header="Zone" Foreground="White" FontSize="18" Padding="12">
+				<GroupBox Grid.Row="2" Header="Zone" Style="{StaticResource AraGroupBox}">
 					<Grid>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="40"/>
@@ -114,7 +114,7 @@
 				</GroupBox>
 
 				<!-- Items -->
-				<GroupBox Grid.Row="4" Header="Items" Foreground="White" FontSize="18" Padding="12">
+				<GroupBox Grid.Row="4" Header="Items" Style="{StaticResource AraGroupBox}">
 					<Grid>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto" />
@@ -157,7 +157,7 @@
 
 						<Grid Grid.Row="2">
 							<!-- Loadout Items Grid -->
-							<Border >
+							<Border>
 								<Border.Style>
 									<Style TargetType="Border" BasedOn="{StaticResource DataGridBorderWrapper}">
 										<Style.Triggers>

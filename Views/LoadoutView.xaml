@@ -67,7 +67,7 @@
 		</Grid>
 		<Grid Grid.Row="4">
 			<!-- Loadout Items Grid -->
-			<Border >
+			<Border>
 				<Border.Style>
 					<Style TargetType="Border" BasedOn="{StaticResource DataGridBorderWrapper}">
 						<Style.Triggers>

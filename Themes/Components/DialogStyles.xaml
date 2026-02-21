@@ -11,8 +11,16 @@
 	</Style>
 
 	<Style x:Key="Dialog__MainContainer" TargetType="Border">
-		<Setter Property="Padding" Value="16" />
 		<Setter Property="Background" Value="{StaticResource Dialog__Background}" />
+		<Setter Property="Padding">
+			<Setter.Value>
+				<Thickness 
+				Left="{StaticResource Spacing-4}"
+				Top="{StaticResource Spacing-4}"
+				Right="{StaticResource Spacing-4}"
+				Bottom="{StaticResource Spacing-4}" />
+			</Setter.Value>
+		</Setter>
 	</Style>
 
 	<Style x:Key="Dialog__Message" TargetType="TextBlock">
