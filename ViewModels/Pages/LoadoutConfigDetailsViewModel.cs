@@ -21,6 +21,8 @@ namespace ARA.ViewModels.Pages
 		public ObservableCollection<GameItem> SelectedItemsList { get; }
 		public LoadoutConfiguration LoadoutConfiguration { get; }
 		public string Title { get; }
+		public string Name { get; set; }
+		public ScreenCoordinates Coordinates { get; set; }
 		public Action? ResetComboBox { get; set; }
 		public GameItem? SelectedItem
 		{
@@ -45,6 +47,8 @@ namespace ARA.ViewModels.Pages
 			// Init lists for Combobox/DataGrid
 			var allGameItems = GameItem.GetList();
 			var filteredList = allGameItems.Where(a => !LoadoutConfiguration.Items.Any(b => b.Id == a.Id)).ToList();
+			Name = LoadoutConfiguration.Name;
+			Coordinates = LoadoutConfiguration.Coordinates.Clone();
 			ItemsList = new ObservableCollection<GameItem>(filteredList);
 			SelectedItemsList = new ObservableCollection<GameItem>(LoadoutConfiguration.Items);
 			// Commands
@@ -57,6 +61,8 @@ namespace ARA.ViewModels.Pages
 		private void SaveLoadoutConfiguration()
 		{
 			LoadoutConfiguration.Items = [.. SelectedItemsList];
+			LoadoutConfiguration.Name = Name;
+			LoadoutConfiguration.Coordinates = Coordinates;
 			if (_isNewLoadout)
 			{
 				_configurations.CreateLoadoutConfig(LoadoutConfiguration);
