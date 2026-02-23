@@ -18,8 +18,8 @@
 				<Thickness 
 					Left="{StaticResource Spacing-1}"
 					Right="{StaticResource Spacing-1}"
-					Top="{StaticResource Spacing-1}"
-					Bottom="{StaticResource Spacing-1}"/>
+					Top="{StaticResource Spacing-0}"
+					Bottom="{StaticResource Spacing-0}"/>
 			</Setter.Value>
 		</Setter>
 	</Style>
