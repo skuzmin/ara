@@ -3,12 +3,14 @@ using System.Windows.Input;
 using ARA.Enums;
 using ARA.Interfaces;
 using ARA.Models;
+using ARA.Views;
 using Microsoft.Extensions.Logging;
 
 namespace ARA.ViewModels.Pages
 {
 	public class LoadoutConfigDetailsViewModel : ViewModelBase
 	{
+		private readonly IMainWindow _windowService;
 		private readonly ILogger _logger;
 		private readonly IAraNavigation _navigation;
 		private readonly IAraConfigurations _configurations;
@@ -17,6 +19,7 @@ namespace ARA.ViewModels.Pages
 		public ICommand AddItemCommand { get; }
 		public ICommand RemoveItemCommand { get; }
 		public ICommand SaveLoadoutConfigurationCommand { get; }
+		public ICommand SelectRegionCommand { get; }
 		public ObservableCollection<GameItem> ItemsList { get; set; }
 		public ObservableCollection<GameItem> SelectedItemsList { get; }
 		public LoadoutConfiguration LoadoutConfiguration { get; }
@@ -33,12 +36,13 @@ namespace ARA.ViewModels.Pages
 				OnPropertyChanged(nameof(SelectedItem));
 			}
 		}
-		public LoadoutConfigDetailsViewModel(IAraNavigation navigation, IAraConfigurations configurations, ILogger logger)
+		public LoadoutConfigDetailsViewModel(IAraNavigation navigation, IAraConfigurations configurations, ILogger logger, IMainWindow windowService)
 		{
 			// Services(DI)
 			_logger = logger;
 			_navigation = navigation;
 			_configurations = configurations;
+			_windowService = windowService;
 			// Basic data
 			var loadoutConfig = _configurations.GetCurrentLoadoutConfig();
 			_isNewLoadout = loadoutConfig == null;
@@ -56,6 +60,20 @@ namespace ARA.ViewModels.Pages
 			RemoveItemCommand = new RelayCommand(item => RemoveItem((GameItem)item));
 			BackCommand = new RelayCommand(_ => navigation.NavigateToPage(AraPage.LoadoutConfigs));
 			SaveLoadoutConfigurationCommand = new RelayCommand(_ => SaveLoadoutConfiguration());
+			SelectRegionCommand = new RelayCommand(_ => SelectRegion());
+		}
+
+		private void SelectRegion()
+		{
+			_windowService.HideMainWindow();
+			var overlay = new OverlayWindow(Coordinates);
+			overlay.OnSave += coordinates =>
+            {
+				Coordinates = coordinates;
+				OnPropertyChanged(nameof(Coordinates));
+			};
+			overlay.Closed += (s, args) => _windowService.ShowMainWindow();
+			overlay.Show();
 		}
 
 		private void SaveLoadoutConfiguration()

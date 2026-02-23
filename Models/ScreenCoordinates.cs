@@ -2,10 +2,10 @@
 {
 	public class ScreenCoordinates
 	{
-		public int X { get; set; } = 0;
-		public int Y { get; set; } = 0;
-		public int Height { get; set; } = 300;
-		public int Width { get; set; } = 300;
+		public double X { get; set; } = 0;
+		public double Y { get; set; } = 0;
+		public double Height { get; set; } = 300;
+		public double Width { get; set; } = 300;
 
 		public ScreenCoordinates Clone()
 		{

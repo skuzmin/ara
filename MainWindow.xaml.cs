@@ -2,6 +2,7 @@
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using ARA.Controls.CustomControls;
+using ARA.Helpers;
 using ARA.ViewModels.Shell;
 using Microsoft.Extensions.Logging;
 
@@ -15,7 +16,8 @@ namespace ARA
 		{
 			InitializeComponent();
 			DataContext = vm;
-			Loaded += (s, e) => InitPillPosition();
+			Loaded += InitPillPosition;
+			Cursor = CursorHelper.CreateCursorFromPng("pack://application:,,,/Assets/Cursors/Cursor.png", 0, 0);
 			logger.LogInformation("App Start");
 		}
 
@@ -47,7 +49,7 @@ namespace ARA
 			SelectionPill.BeginAnimation(FrameworkElement.WidthProperty, widthAnimation);
 		}
 
-		private void InitPillPosition()
+		private void InitPillPosition(object sender, RoutedEventArgs e)
 		{
 			var selectedButton = NavbarGrid.Children.OfType<AraButton>().FirstOrDefault(b => b.IsSelected);
 			if (selectedButton != null)

@@ -1,0 +1,35 @@
+﻿<Window x:Class="ARA.Views.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ARA.Views"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="#01000000"
+        Topmost="True"
+        WindowState="Maximized">
+	<Canvas x:Name="OverlayCanvas" 
+            MouseMove="OverlayCanvas_MouseMove"
+            MouseUp="OverlayCanvas_MouseUp">
+		<Border x:Name="SelectionBorder"
+            BorderBrush="DodgerBlue"
+            BorderThickness="2"
+            Background="#330000ff">
+			<Canvas x:Name="HandleCanvas" />
+		</Border>
+
+		<StackPanel x:Name="LabelPanel" Orientation="Horizontal">
+			<TextBlock Text="Enter to save" 
+                Foreground="LightGreen"
+                FontWeight="Bold"
+                FontSize="16"
+                Margin="0 0 16 0" />
+			<TextBlock Text="Esc to cancel"
+                Foreground="Red"
+                FontWeight="Bold"
+                FontSize="16" />
+		</StackPanel>
+	</Canvas>
+</Window>

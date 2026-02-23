@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using ARA.Interfaces;
 using ARA.ViewModels.Pages;
 
 namespace ARA.Views

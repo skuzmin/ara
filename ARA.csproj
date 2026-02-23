@@ -80,7 +80,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\cursor.png" />
+    <Resource Include="Assets\Cursors\Cursor.png" />
     <Resource Include="Assets\Icons\check-mark.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

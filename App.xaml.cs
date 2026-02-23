@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Input;
 using ARA.Helpers;
 using ARA.Interfaces;
 using ARA.Services;
@@ -26,7 +25,6 @@ namespace ARA
 			_serviceProvider = serviceCollection.BuildServiceProvider();
 
 			TrayIconInit();
-			Mouse.OverrideCursor = CursorHelper.CreateCursorFromPng("pack://application:,,,/Assets/cursor.png", 0, 0);
 
 			_serviceProvider.GetService<MainWindow>()!.Show();
 		}
@@ -37,6 +35,7 @@ namespace ARA
 			services.AddSingleton<IAraConfigurations, ConfigurationService>();
 			services.AddSingleton<ILogger, AraLogger>();
 			services.AddSingleton<IAraNavigation, NavigationService>();
+			services.AddSingleton<IMainWindow, MainWindowService>();
 			// ViewModels
 			services.AddSingleton<MainViewModel>();
 			services.AddTransient<LoadoutViewModel>();
