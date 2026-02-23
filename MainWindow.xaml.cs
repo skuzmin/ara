@@ -17,7 +17,7 @@ namespace ARA
 			InitializeComponent();
 			DataContext = vm;
 			Loaded += InitPillPosition;
-			Cursor = CursorHelper.CreateCursorFromPng("pack://application:,,,/Assets/Cursors/Cursor.png", 0, 0);
+			Cursor = App.AppCursor;
 			logger.LogInformation("App Start");
 		}
 

@@ -13,7 +13,6 @@ namespace ARA.Views
 	{
 		public event Action<ScreenCoordinates>? OnSave;
 		private double _x, _y, _width, _height;
-		private double _startX, _startY, _startW, _startH;
 		private Point _dragStart;
 		private DragMode _activeHandle = DragMode.None;
 		public OverlayWindow(ScreenCoordinates coordinates)
@@ -26,7 +25,7 @@ namespace ARA.Views
 
 			KeyDown += OnKeyDown;
 			Loaded += OnLoaded;
-			Cursor = CursorHelper.CreateCursorFromPng("pack://application:,,,/Assets/Cursors/Cursor.png", 0, 0);
+			Cursor = App.AppCursor;
 		}
 
 		private void OnLoaded(object sender, RoutedEventArgs e)
@@ -103,8 +102,6 @@ namespace ARA.Views
 			{
 				_activeHandle = mode;
 				_dragStart = e.GetPosition(OverlayCanvas);
-				_startX = _x; _startY = _y;
-				_startW = _width; _startH = _height;
 				rect.CaptureMouse();
 				e.Handled = true;
 			}
@@ -121,6 +118,7 @@ namespace ARA.Views
 			ApplyResize(_activeHandle, dx, dy);
 			UpdatePositions();
 			e.Handled = true;
+			_dragStart = pos;
 		}
 
 		private void Handle_MouseUp(object sender, MouseButtonEventArgs e)
@@ -133,16 +131,50 @@ namespace ARA.Views
 		{
 			switch (mode)
 			{
-				case DragMode.ResizeSE: _width = Math.Max(20, _startW + dx); _height = Math.Max(20, _startH + dy); break;
-				case DragMode.ResizeSW: _x = _startX + dx; _width = Math.Max(20, _startW - dx); _height = Math.Max(20, _startH + dy); break;
-				case DragMode.ResizeNE: _y = _startY + dy; _width = Math.Max(20, _startW + dx); _height = Math.Max(20, _startH - dy); break;
-				case DragMode.ResizeNW: _x = _startX + dx; _y = _startY + dy; _width = Math.Max(20, _startW - dx); _height = Math.Max(20, _startH - dy); break;
-				case DragMode.ResizeE: _width = Math.Max(20, _startW + dx); break;
-				case DragMode.ResizeW: _x = _startX + dx; _width = Math.Max(20, _startW - dx); break;
-				case DragMode.ResizeS: _height = Math.Max(20, _startH + dy); break;
-				case DragMode.ResizeN: _y = _startY + dy; _height = Math.Max(20, _startH - dy); break;
+				case DragMode.ResizeE:
+					_width = Math.Max(20, _width + dx);
+					break;
+
+				case DragMode.ResizeW:
+					_x += dx;
+					_width = Math.Max(20, _width - dx);
+					break;
+
+				case DragMode.ResizeS:
+					_height = Math.Max(20, _height + dy);
+					break;
+
+				case DragMode.ResizeN:
+					_y += dy;
+					_height = Math.Max(20, _height - dy);
+					break;
+
+				case DragMode.ResizeSE:
+					_width = Math.Max(20, _width + dx);
+					_height = Math.Max(20, _height + dy);
+					break;
+
+				case DragMode.ResizeSW:
+					_x += dx;
+					_width = Math.Max(20, _width - dx);
+					_height = Math.Max(20, _height + dy);
+					break;
+
+				case DragMode.ResizeNE:
+					_y += dy;
+					_width = Math.Max(20, _width + dx);
+					_height = Math.Max(20, _height - dy);
+					break;
+
+				case DragMode.ResizeNW:
+					_x += dx;
+					_y += dy;
+					_width = Math.Max(20, _width - dx);
+					_height = Math.Max(20, _height - dy);
+					break;
 			}
 		}
+
 
 		private static Cursor GetCursor(DragMode mode) => mode switch
 		{

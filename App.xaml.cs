@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using ARA.Helpers;
 using ARA.Interfaces;
 using ARA.Services;
@@ -14,6 +15,7 @@ namespace ARA
 	{
 		private static Mutex? _mutex = null;
 		private IServiceProvider? _serviceProvider;
+		public static Cursor? AppCursor { get; private set; }
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			base.OnStartup(e);
@@ -25,6 +27,7 @@ namespace ARA
 			_serviceProvider = serviceCollection.BuildServiceProvider();
 
 			TrayIconInit();
+			AppCursor = CursorHelper.CreateCursorFromPng("pack://application:,,,/Assets/Cursors/Cursor.png", 0, 0);
 
 			_serviceProvider.GetService<MainWindow>()!.Show();
 		}
