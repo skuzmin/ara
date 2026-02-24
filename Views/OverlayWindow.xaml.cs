@@ -4,7 +4,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using ARA.Enums;
-using ARA.Helpers;
 using ARA.Models;
 
 namespace ARA.Views
@@ -12,6 +11,8 @@ namespace ARA.Views
 	public partial class OverlayWindow : Window
 	{
 		public event Action<ScreenCoordinates>? OnSave;
+		private const double MinSize = 20d;
+		private const double HandleSize = 12d;
 		private double _x, _y, _width, _height;
 		private Point _dragStart;
 		private DragMode _activeHandle = DragMode.None;
@@ -25,6 +26,13 @@ namespace ARA.Views
 
 			KeyDown += OnKeyDown;
 			Loaded += OnLoaded;
+
+			OverlayCanvas.MouseDown += OverlayCanvas_MouseDown;
+			OverlayCanvas.MouseMove += OverlayCanvas_MouseMove;
+			OverlayCanvas.MouseUp += OverlayCanvas_MouseUp;
+
+			SelectionBorder.Cursor = GetCursor(DragMode.Move);
+
 			Cursor = App.AppCursor;
 		}
 
@@ -46,8 +54,8 @@ namespace ARA.Views
 
 				var rect = new Rectangle
 				{
-					Width = 12,
-					Height = 12,
+					Width = HandleSize,
+					Height = HandleSize,
 					Fill = Brushes.White,
 					Stroke = Brushes.DodgerBlue,
 					StrokeThickness = 1,
@@ -70,8 +78,9 @@ namespace ARA.Views
 			SelectionBorder.Width = _width;
 			SelectionBorder.Height = _height;
 
-			Canvas.SetLeft(LabelPanel, _x);
-			Canvas.SetTop(LabelPanel, _y + _height + 8);
+			Canvas.SetLeft(LabelAnchor, _x);
+			Canvas.SetTop(LabelAnchor, _y + _height + 8);
+			LabelAnchor.Width = _width;
 
 			var positions = GetHandlePositions();
 			foreach (var handle in OverlayCanvas.Children.OfType<Rectangle>())
@@ -131,50 +140,72 @@ namespace ARA.Views
 		{
 			switch (mode)
 			{
+				case DragMode.Move:
+					_x += dx;
+					_y += dy;
+					break;
+
 				case DragMode.ResizeE:
-					_width = Math.Max(20, _width + dx);
+					_width = Math.Max(MinSize, _width + dx);
 					break;
 
 				case DragMode.ResizeW:
-					_x += dx;
-					_width = Math.Max(20, _width - dx);
+					_width = Math.Max(MinSize, _width - dx);
+					if (_width != MinSize)
+					{
+						_x += dx;
+					}
 					break;
 
 				case DragMode.ResizeS:
-					_height = Math.Max(20, _height + dy);
+					_height = Math.Max(MinSize, _height + dy);
 					break;
 
 				case DragMode.ResizeN:
-					_y += dy;
-					_height = Math.Max(20, _height - dy);
+					_height = Math.Max(MinSize, _height - dy);
+					if (_height != MinSize)
+					{
+						_y += dy;
+					}
 					break;
 
 				case DragMode.ResizeSE:
-					_width = Math.Max(20, _width + dx);
-					_height = Math.Max(20, _height + dy);
+					_width = Math.Max(MinSize, _width + dx);
+					_height = Math.Max(MinSize, _height + dy);
 					break;
 
 				case DragMode.ResizeSW:
-					_x += dx;
-					_width = Math.Max(20, _width - dx);
-					_height = Math.Max(20, _height + dy);
+					_width = Math.Max(MinSize, _width - dx);
+					_height = Math.Max(MinSize, _height + dy);
+					if (_width != MinSize)
+					{
+						_x += dx;
+					}
 					break;
 
 				case DragMode.ResizeNE:
-					_y += dy;
-					_width = Math.Max(20, _width + dx);
-					_height = Math.Max(20, _height - dy);
+					_width = Math.Max(MinSize, _width + dx);
+					_height = Math.Max(MinSize, _height - dy);
+					if (_height != MinSize)
+					{
+						_y += dy;
+					}
 					break;
 
 				case DragMode.ResizeNW:
-					_x += dx;
-					_y += dy;
-					_width = Math.Max(20, _width - dx);
-					_height = Math.Max(20, _height - dy);
+					_width = Math.Max(MinSize, _width - dx);
+					_height = Math.Max(MinSize, _height - dy);
+					if (_width != MinSize)
+					{
+						_x += dx;
+					}
+					if (_height != MinSize)
+					{
+						_y += dy;
+					}
 					break;
 			}
 		}
-
 
 		private static Cursor GetCursor(DragMode mode) => mode switch
 		{
@@ -182,17 +213,40 @@ namespace ARA.Views
 			DragMode.ResizeNE or DragMode.ResizeSW => Cursors.SizeNESW,
 			DragMode.ResizeN or DragMode.ResizeS => Cursors.SizeNS,
 			DragMode.ResizeW or DragMode.ResizeE => Cursors.SizeWE,
+			DragMode.Move => Cursors.SizeAll,
 			_ => Cursors.Arrow,
 		};
 
+		private void OverlayCanvas_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			if (e.LeftButton == MouseButtonState.Pressed)
+			{
+				_activeHandle = DragMode.Move;
+				_dragStart = e.GetPosition(OverlayCanvas);
+				e.Handled = true;
+			}
+		}
+
 		private void OverlayCanvas_MouseMove(object sender, MouseEventArgs e)
 		{
+			if (_activeHandle == DragMode.None || e.LeftButton != MouseButtonState.Pressed)
+			{
+				return;
+			}
 
+			var pos = e.GetPosition(OverlayCanvas);
+			var dx = pos.X - _dragStart.X;
+			var dy = pos.Y - _dragStart.Y;
+
+			ApplyResize(_activeHandle, dx, dy);
+			UpdatePositions();
+			e.Handled = true;
+			_dragStart = pos;
 		}
 
 		private void OverlayCanvas_MouseUp(object sender, MouseButtonEventArgs e)
 		{
-
+			_activeHandle = DragMode.None;
 		}
 
 		private void OnKeyDown(object sender, KeyEventArgs e)

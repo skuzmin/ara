@@ -10,26 +10,25 @@
         Background="#01000000"
         Topmost="True"
         WindowState="Maximized">
-	<Canvas x:Name="OverlayCanvas" 
-            MouseMove="OverlayCanvas_MouseMove"
-            MouseUp="OverlayCanvas_MouseUp">
+	<Canvas x:Name="OverlayCanvas">
 		<Border x:Name="SelectionBorder"
             BorderBrush="DodgerBlue"
             BorderThickness="2"
-            Background="#330000ff">
-			<Canvas x:Name="HandleCanvas" />
+            Background="#330000ff" />
+		<Border x:Name="LabelAnchor">
+			<StackPanel x:Name="LabelPanel" 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+				<TextBlock Text="Enter to save" 
+                    Foreground="LightGreen"
+                    FontWeight="Bold"
+                    FontSize="16"
+                    Margin="0 0 16 0" />
+				<TextBlock Text="Esc to cancel"
+                    Foreground="Red"
+                    FontWeight="Bold"
+                    FontSize="16" />
+			</StackPanel>
 		</Border>
-
-		<StackPanel x:Name="LabelPanel" Orientation="Horizontal">
-			<TextBlock Text="Enter to save" 
-                Foreground="LightGreen"
-                FontWeight="Bold"
-                FontSize="16"
-                Margin="0 0 16 0" />
-			<TextBlock Text="Esc to cancel"
-                Foreground="Red"
-                FontWeight="Bold"
-                FontSize="16" />
-		</StackPanel>
 	</Canvas>
 </Window>
