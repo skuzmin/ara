@@ -8,5 +8,8 @@
 	<Color x:Key="Blue">#00BFFF</Color>
 	<Color x:Key="DarkGray">#8A8F98</Color>
 	<Color x:Key="DarkRed">#8b0000</Color>
+	<Color x:Key="DarkGreen">#008B00</Color>
 	<Color x:Key="LightTan">#B0B6C0</Color>
+	<Color x:Key="TransparentWhite">#01000000</Color>
+	<Color x:Key="TransparentOrange">#26FF6600</Color>
 </ResourceDictionary>

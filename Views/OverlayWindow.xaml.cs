@@ -32,7 +32,6 @@ namespace ARA.Views
 			OverlayCanvas.MouseUp += OverlayCanvas_MouseUp;
 
 			SelectionBorder.Cursor = GetCursor(DragMode.Move);
-
 			Cursor = App.AppCursor;
 		}
 

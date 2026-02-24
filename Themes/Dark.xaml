@@ -54,4 +54,11 @@
 	<!-- TextBox -->
 	<SolidColorBrush x:Key="TextBox__Background" Color="{StaticResource White}" />
 	<SolidColorBrush x:Key="TextBox_HoverBorderBrush" Color="{StaticResource Orange}" />
+
+	<!-- OverlayWindow-->
+	<SolidColorBrush x:Key="OverlayWindow__Background" Color="{StaticResource TransparentWhite}" />
+	<SolidColorBrush x:Key="OverlayWindow__ZoneBorderBrush" Color="{StaticResource Orange}" />
+	<SolidColorBrush x:Key="OverlayWindow__ZoneBackground" Color="{StaticResource TransparentOrange}" />
+	<SolidColorBrush x:Key="OverlayWindow__LabelSave" Color="{StaticResource DarkGreen}" />
+	<SolidColorBrush x:Key="OverlayWindow__LabelCancel" Color="{StaticResource DarkRed}" />
 </ResourceDictionary>

@@ -5,29 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ARA.Views"
         mc:Ignorable="d"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        Background="#01000000"
-        Topmost="True"
-        WindowState="Maximized">
+        Style="{StaticResource OverlayWindow}">
 	<Canvas x:Name="OverlayCanvas">
-		<Border x:Name="SelectionBorder"
-            BorderBrush="DodgerBlue"
-            BorderThickness="2"
-            Background="#330000ff" />
+		<Border x:Name="SelectionBorder" Style="{StaticResource SelectionZone}"/>
 		<Border x:Name="LabelAnchor">
 			<StackPanel x:Name="LabelPanel" 
                         Orientation="Horizontal"
                         HorizontalAlignment="Center">
-				<TextBlock Text="Enter to save" 
-                    Foreground="LightGreen"
-                    FontWeight="Bold"
-                    FontSize="16"
-                    Margin="0 0 16 0" />
-				<TextBlock Text="Esc to cancel"
-                    Foreground="Red"
-                    FontWeight="Bold"
-                    FontSize="16" />
+				<TextBlock Text="Enter to save" Style="{StaticResource OverlayLabelSave}"/>
+				<TextBlock Text="Esc to cancel" Style="{StaticResource OverlayLabelCancel}"/>
 			</StackPanel>
 		</Border>
 	</Canvas>

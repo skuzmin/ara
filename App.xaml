@@ -17,6 +17,7 @@
 				<ResourceDictionary Source="/Themes/Components/TitleBarStyles.xaml" />
 				<ResourceDictionary Source="/Themes/Components/DataGridStyles.xaml" />
 				<ResourceDictionary Source="/Themes/Components/MainWindowStyles.xaml" />
+				<ResourceDictionary Source="/Themes/Components/OverlayWindowStyles.xaml" />
 				<ResourceDictionary Source="/Themes/Components/ScrollBarStyles.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 			<tb:TaskbarIcon x:Key="TrayIcon" 
