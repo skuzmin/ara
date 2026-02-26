@@ -178,6 +178,7 @@
 			<Style TargetType="{x:Type ComboBoxItem}">
 				<Setter Property="OverridesDefaultStyle" Value="True"/>
 				<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+				<Setter Property="Cursor" Value="{x:Static local:App.AppCursor}" />
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="{x:Type ComboBoxItem}">
