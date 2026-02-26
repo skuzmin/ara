@@ -32,7 +32,7 @@ namespace ARA.ViewModels.Pages
 			{
 				field = value;
 				OnPropertyChanged(nameof(Name));
-				Validate(LoadoutValidationField.Name);
+				TextBoxValidate(LoadoutValidationField.Name);
 			}
 		}
 		public double? CoordinatesX
@@ -42,7 +42,7 @@ namespace ARA.ViewModels.Pages
 			{
 				field = value;
 				OnPropertyChanged(nameof(CoordinatesX));
-				Validate(LoadoutValidationField.CoordinatesX);
+				TextBoxValidate(LoadoutValidationField.CoordinatesX);
 			}
 		}
 		public double? CoordinatesY
@@ -52,7 +52,7 @@ namespace ARA.ViewModels.Pages
 			{
 				field = value;
 				OnPropertyChanged(nameof(CoordinatesY));
-				Validate(LoadoutValidationField.CoordinatesY);
+				TextBoxValidate(LoadoutValidationField.CoordinatesY);
 			}
 		}
 		public double? CoordinatesHeight
@@ -62,7 +62,7 @@ namespace ARA.ViewModels.Pages
 			{
 				field = value;
 				OnPropertyChanged(nameof(CoordinatesHeight));
-				Validate(LoadoutValidationField.CoordinatesHeight);
+				TextBoxValidate(LoadoutValidationField.CoordinatesHeight);
 			}
 		}
 		public double? CoordinatesWidth
@@ -72,7 +72,7 @@ namespace ARA.ViewModels.Pages
 			{
 				field = value;
 				OnPropertyChanged(nameof(CoordinatesWidth));
-				Validate(LoadoutValidationField.CoordinatesWidth);
+				TextBoxValidate(LoadoutValidationField.CoordinatesWidth);
 			}
 		}
 		public Action? ResetComboBox { get; set; }
@@ -117,7 +117,7 @@ namespace ARA.ViewModels.Pages
 			SelectRegionCommand = new RelayCommand(_ => SelectRegion());
 		}
 
-		private void Validate(LoadoutValidationField field)
+		private void TextBoxValidate(LoadoutValidationField field)
 		{
 			if (!LoadoutValidation.IsValidated)
 			{
@@ -145,6 +145,16 @@ namespace ARA.ViewModels.Pages
 			OnPropertyChanged(nameof(LoadoutValidation));
 		}
 
+		private void ListValidate()
+		{
+			if (!LoadoutValidation.IsValidated)
+			{
+				return;
+			}
+
+			LoadoutValidation.IsItemsListNotValid = SelectedItemsList.Count == 0;
+		}
+
 		private void SelectRegion()
 		{
 			_windowService.HideMainWindow();
@@ -166,8 +176,9 @@ namespace ARA.ViewModels.Pages
 			LoadoutValidation.IsValidated = true;
 			foreach (var value in Enum.GetValues<LoadoutValidationField>())
 			{
-				Validate(value);
+				TextBoxValidate(value);
 			}
+			ListValidate();
 
 			if (!LoadoutValidation.IsValid)
 			{
@@ -198,6 +209,7 @@ namespace ARA.ViewModels.Pages
 			SelectedItemsList.Add(item);
 			ItemsList.Remove(item);
 			ResetComboBox?.Invoke();
+			ListValidate();
 			_logger.LogInformation("Add {item} to {loadout}", item.Name, LoadoutConfiguration.Name);
 		}
 
@@ -210,6 +222,7 @@ namespace ARA.ViewModels.Pages
 					.OrderBy(x => x.Name)
 			);
 			OnPropertyChanged(nameof(ItemsList));
+			ListValidate();
 			_logger.LogInformation("Remove {item} from {loadout}", item.Name, LoadoutConfiguration.Name);
 		}
 	}
