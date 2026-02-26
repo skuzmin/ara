@@ -2,20 +2,20 @@
 {
 	public class ScreenCoordinates
 	{
-		public double X { get; set; } = 100;
-		public double Y { get; set; } = 100;
-		public double Height { get; set; } = 300;
-		public double Width { get; set; } = 300;
+		private const double DefaultCoordinate = 100;
+		private const double DefaultSize = 300;
+		public double X { get; set; } = DefaultCoordinate;
+		public double Y { get; set; } = DefaultCoordinate;
+		public double Height { get; set; } = DefaultSize;
+		public double Width { get; set; } = DefaultSize;
 
-		public ScreenCoordinates Clone()
+		public ScreenCoordinates() { }
+		public ScreenCoordinates(double? x, double? y, double? h, double? w)
 		{
-			return new ScreenCoordinates
-			{
-				X = X,
-				Y = Y,
-				Height = Height,
-				Width = Width
-			};
+			X = x ?? DefaultCoordinate;
+			Y = y ?? DefaultCoordinate;
+			Height = h ?? DefaultSize;
+			Width = w ?? DefaultSize;
 		}
 	}
 }

@@ -44,7 +44,12 @@
 				<!-- Name -->
 				<StackPanel Grid.Row="0">
 					<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=NameTextBox}">Name</Label>
-					<controls:AraTextBox x:Name="NameTextBox" Text="{Binding Name}" PlaceholderText="Name" Style="{StaticResource AraTextBox}" MaxLength="50"/>
+					<controls:AraTextBox x:Name="NameTextBox" 
+						Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" 
+						PlaceholderText="Name" 
+						Style="{StaticResource AraTextBox}"
+						IsError="{Binding LoadoutValidation.IsNameNotValid}"
+						MaxLength="50"/>
 				</StackPanel>
 
 				<!-- Zone -->
@@ -77,36 +82,40 @@
 								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=X}">X</Label>
 								<controls:AraTextBox 
 									x:Name="X" 
-									Text="{Binding Coordinates.X}" 
+									Text="{Binding CoordinatesX, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
 									PlaceholderText="X" Style="{StaticResource AraTextBox}" 
 									InputType="{x:Static enums:TextBoxInputType.Number}" 
+									IsError="{Binding LoadoutValidation.IsCoordinateXNotValid}"
 									MaxLength="10"/>
 							</StackPanel>
 							<StackPanel Grid.Column="2">
 								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=Y}">Y</Label>
 								<controls:AraTextBox 
 									x:Name="Y" 
-									Text="{Binding Coordinates.Y}" 
+									Text="{Binding CoordinatesY, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
 									PlaceholderText="Y" Style="{StaticResource AraTextBox}" 
-									InputType="{x:Static enums:TextBoxInputType.Number}" 
+									InputType="{x:Static enums:TextBoxInputType.Number}"
+									IsError="{Binding LoadoutValidation.IsCoordinateYNotValid}"
 									MaxLength="10"/>
 							</StackPanel>
 							<StackPanel Grid.Column="4">
 								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneWidth}">Width</Label>
 								<controls:AraTextBox 
 									x:Name="ZoneWidth" 
-									Text="{Binding Coordinates.Width}" 
+									Text="{Binding CoordinatesWidth, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
 									PlaceholderText="Zone Width" Style="{StaticResource AraTextBox}" 
 									InputType="{x:Static enums:TextBoxInputType.Number}" 
+									IsError="{Binding LoadoutValidation.IsCoordinateWidthNotValid}"
 									MaxLength="10"/>
 							</StackPanel>
 							<StackPanel Grid.Column="6">
 								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneHeight}">Height</Label>
 								<controls:AraTextBox 
 									x:Name="ZoneHeight" 
-									Text="{Binding Coordinates.Height}" 
+									Text="{Binding CoordinatesHeight, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
 									PlaceholderText="Zone Height" Style="{StaticResource AraTextBox}" 
 									InputType="{x:Static enums:TextBoxInputType.Number}" 
+									IsError="{Binding LoadoutValidation.IsCoordinateHeightNotValid}"
 									MaxLength="10"/>
 							</StackPanel>
 						</Grid>

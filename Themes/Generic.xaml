@@ -345,6 +345,9 @@
 						<Trigger Property="Text" Value="">
 							<Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
 						</Trigger>
+						<Trigger Property="IsError" Value="True">
+							<Setter TargetName="TextBoxBorder" Property="BorderBrush" Value="{Binding ErrorBorderBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>

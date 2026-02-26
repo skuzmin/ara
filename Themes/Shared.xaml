@@ -137,7 +137,7 @@
 		<Setter Property="FontSize" Value="20" />
 		<Setter Property="BorderThickness" Value="2" />
 		<Setter Property="BorderBrush" Value="Transparent" />
-		<Setter Property="HoverBorderBrush" Value="{StaticResource TextBox_HoverBorderBrush}" />
+		<Setter Property="HoverBorderBrush" Value="{StaticResource TextBox__HoverBorderBrush}" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
 		<Setter Property="FontWeight" Value="Medium" />
 		<Setter Property="Foreground" Value="{StaticResource TextColorSecondary}" />
@@ -145,6 +145,7 @@
 		<Setter Property="CornerRadius" Value="{StaticResource Radius-1}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="PlaceholderForeground" Value="{StaticResource PlaceholderTextForeground}" />
+		<Setter Property="ErrorBorderBrush" Value="{StaticResource TextBox__ErrorBorderBrsuh}" />
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 

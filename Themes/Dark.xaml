@@ -40,7 +40,7 @@
 	<SolidColorBrush x:Key="ListItemHoverBackground" Color="{StaticResource LightTan}" />
 	<SolidColorBrush x:Key="ListItemSelectedBackground" Color="{StaticResource Yellow}" />
 	<SolidColorBrush x:Key="SelectedTextForeground" Color="{StaticResource Black}" />
-	
+
 	<!-- ScrollBar -->
 	<SolidColorBrush x:Key="ScrollBar__ThumbBrush" Color="{StaticResource Orange}" />
 
@@ -53,7 +53,8 @@
 
 	<!-- TextBox -->
 	<SolidColorBrush x:Key="TextBox__Background" Color="{StaticResource White}" />
-	<SolidColorBrush x:Key="TextBox_HoverBorderBrush" Color="{StaticResource Orange}" />
+	<SolidColorBrush x:Key="TextBox__HoverBorderBrush" Color="{StaticResource Orange}" />
+	<SolidColorBrush x:Key="TextBox__ErrorBorderBrsuh" Color="{StaticResource Red}" />
 
 	<!-- OverlayWindow-->
 	<SolidColorBrush x:Key="OverlayWindow__Background" Color="{StaticResource TransparentWhite}" />

@@ -252,13 +252,7 @@ namespace ARA.Views
 		{
 			if (e.Key == Key.Enter)
 			{
-				OnSave?.Invoke(new ScreenCoordinates
-				{
-					X = _x,
-					Y = _y,
-					Width = _width,
-					Height = _height
-				});
+				OnSave?.Invoke(new ScreenCoordinates(_x, _y, _height, _width));
 				Close();
 			}
 

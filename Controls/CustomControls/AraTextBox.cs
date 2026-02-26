@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Diagnostics.Eventing.Reader;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -80,6 +81,35 @@ namespace ARA.Controls.CustomControls
 		}
 		#endregion
 
+		#region IsError
+		public static readonly DependencyProperty IsErrorProperty =
+			DependencyProperty.Register(
+				nameof(IsError),
+				typeof(bool),
+				typeof(AraTextBox),
+				new PropertyMetadata(false));
+
+		public bool IsError
+		{
+			get => (bool)GetValue(IsErrorProperty);
+			set => SetValue(IsErrorProperty, value);
+		}
+		#endregion
+		#region ErrorBorderBrush
+		public static readonly DependencyProperty ErrorBorderBrushProperty =
+			DependencyProperty.Register(
+				nameof(ErrorBorderBrush),
+				typeof(Brush),
+				typeof(AraTextBox),
+				new PropertyMetadata(Brushes.Transparent));
+
+		public Brush ErrorBorderBrush
+		{
+			get => (Brush)GetValue(ErrorBorderBrushProperty);
+			set => SetValue(ErrorBorderBrushProperty, value);
+		}
+		#endregion
+
 		static AraTextBox()
 		{
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(AraTextBox),
@@ -140,7 +170,7 @@ namespace ARA.Controls.CustomControls
 		}
 		protected override void OnMouseEnter(MouseEventArgs e)
 		{
-			if (!IsKeyboardFocused)
+			if (!IsKeyboardFocused && !IsError)
 			{
 				base.OnMouseEnter(e);
 				ColorAnimator.Animate(HoverBorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
@@ -148,7 +178,7 @@ namespace ARA.Controls.CustomControls
 		}
 		protected override void OnMouseLeave(MouseEventArgs e)
 		{
-			if (!IsKeyboardFocused)
+			if (!IsKeyboardFocused && !IsError)
 			{
 				base.OnMouseLeave(e);
 				ColorAnimator.Animate(BorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
@@ -156,11 +186,17 @@ namespace ARA.Controls.CustomControls
 		}
 		private void OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
 		{
-			ColorAnimator.Animate(HoverBorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+			if (!IsError)
+			{
+				ColorAnimator.Animate(HoverBorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+			}
 		}
 		private void OnLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
 		{
-			ColorAnimator.Animate(BorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+			if (!IsError)
+			{
+				ColorAnimator.Animate(BorderBrush, _border!, "(BorderBrush).(SolidColorBrush.Color)");
+			}
 		}
 		#endregion
 	}

@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows.Input;
 using ARA.Enums;
 using ARA.Interfaces;
@@ -24,9 +25,58 @@ namespace ARA.ViewModels.Pages
 		public ObservableCollection<GameItem> SelectedItemsList { get; }
 		public LoadoutConfiguration LoadoutConfiguration { get; }
 		public string Title { get; }
-		public string Name { get; set; }
-		public ScreenCoordinates Coordinates { get; set; }
+		public string Name
+		{
+			get => field;
+			set
+			{
+				field = value;
+				OnPropertyChanged(nameof(Name));
+				Validate(LoadoutValidationField.Name);
+			}
+		}
+		public double? CoordinatesX
+		{
+			get => field;
+			set
+			{
+				field = value;
+				OnPropertyChanged(nameof(CoordinatesX));
+				Validate(LoadoutValidationField.CoordinatesX);
+			}
+		}
+		public double? CoordinatesY
+		{
+			get => field;
+			set
+			{
+				field = value;
+				OnPropertyChanged(nameof(CoordinatesY));
+				Validate(LoadoutValidationField.CoordinatesY);
+			}
+		}
+		public double? CoordinatesHeight
+		{
+			get => field;
+			set
+			{
+				field = value;
+				OnPropertyChanged(nameof(CoordinatesHeight));
+				Validate(LoadoutValidationField.CoordinatesHeight);
+			}
+		}
+		public double? CoordinatesWidth
+		{
+			get => field;
+			set
+			{
+				field = value;
+				OnPropertyChanged(nameof(CoordinatesWidth));
+				Validate(LoadoutValidationField.CoordinatesWidth);
+			}
+		}
 		public Action? ResetComboBox { get; set; }
+		public LoadoutConfigurationValidation LoadoutValidation { get; set; }
 		public GameItem? SelectedItem
 		{
 			get => field;
@@ -51,8 +101,12 @@ namespace ARA.ViewModels.Pages
 			// Init lists for Combobox/DataGrid
 			var allGameItems = GameItem.GetList();
 			var filteredList = allGameItems.Where(a => !LoadoutConfiguration.Items.Any(b => b.Id == a.Id)).ToList();
+			LoadoutValidation = new LoadoutConfigurationValidation();
 			Name = LoadoutConfiguration.Name;
-			Coordinates = LoadoutConfiguration.Coordinates.Clone();
+			CoordinatesX = LoadoutConfiguration.Coordinates.X;
+			CoordinatesY = LoadoutConfiguration.Coordinates.Y;
+			CoordinatesHeight = LoadoutConfiguration.Coordinates.Height;
+			CoordinatesWidth = LoadoutConfiguration.Coordinates.Width;
 			ItemsList = new ObservableCollection<GameItem>(filteredList);
 			SelectedItemsList = new ObservableCollection<GameItem>(LoadoutConfiguration.Items);
 			// Commands
@@ -63,14 +117,45 @@ namespace ARA.ViewModels.Pages
 			SelectRegionCommand = new RelayCommand(_ => SelectRegion());
 		}
 
+		private void Validate(LoadoutValidationField field)
+		{
+			if (!LoadoutValidation.IsValidated)
+			{
+				return;
+			}
+
+			switch (field)
+			{
+				case LoadoutValidationField.Name:
+					LoadoutValidation.IsNameNotValid = Name == null || string.IsNullOrEmpty(Name);
+					break;
+				case LoadoutValidationField.CoordinatesX:
+					LoadoutValidation.IsCoordinateXNotValid = CoordinatesX == null;
+					break;
+				case LoadoutValidationField.CoordinatesY:
+					LoadoutValidation.IsCoordinateYNotValid = CoordinatesY == null;
+					break;
+				case LoadoutValidationField.CoordinatesHeight:
+					LoadoutValidation.IsCoordinateHeightNotValid = CoordinatesHeight == null;
+					break;
+				case LoadoutValidationField.CoordinatesWidth:
+					LoadoutValidation.IsCoordinateWidthNotValid = CoordinatesWidth == null;
+					break;
+			}
+			OnPropertyChanged(nameof(LoadoutValidation));
+		}
+
 		private void SelectRegion()
 		{
 			_windowService.HideMainWindow();
-			var overlay = new OverlayWindow(Coordinates);
+			var coordinates = new ScreenCoordinates(CoordinatesX, CoordinatesY, CoordinatesHeight, CoordinatesWidth);
+			var overlay = new OverlayWindow(coordinates);
 			overlay.OnSave += coordinates =>
-            {
-				Coordinates = coordinates;
-				OnPropertyChanged(nameof(Coordinates));
+			{
+				CoordinatesX = coordinates.X;
+				CoordinatesY = coordinates.Y;
+				CoordinatesHeight = coordinates.Height;
+				CoordinatesWidth = coordinates.Width;
 			};
 			overlay.Closed += (s, args) => _windowService.ShowMainWindow();
 			overlay.Show();
@@ -78,9 +163,20 @@ namespace ARA.ViewModels.Pages
 
 		private void SaveLoadoutConfiguration()
 		{
+			LoadoutValidation.IsValidated = true;
+			foreach (var value in Enum.GetValues<LoadoutValidationField>())
+			{
+				Validate(value);
+			}
+
+			if (!LoadoutValidation.IsValid)
+			{
+				return;
+			}
+
 			LoadoutConfiguration.Items = [.. SelectedItemsList];
 			LoadoutConfiguration.Name = Name;
-			LoadoutConfiguration.Coordinates = Coordinates;
+			LoadoutConfiguration.Coordinates = new ScreenCoordinates(CoordinatesX, CoordinatesY, CoordinatesHeight, CoordinatesWidth);
 			if (_isNewLoadout)
 			{
 				_configurations.CreateLoadoutConfig(LoadoutConfiguration);
