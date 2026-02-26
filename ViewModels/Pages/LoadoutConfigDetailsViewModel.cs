@@ -25,6 +25,8 @@ namespace ARA.ViewModels.Pages
 		public ObservableCollection<GameItem> SelectedItemsList { get; }
 		public LoadoutConfiguration LoadoutConfiguration { get; }
 		public string Title { get; }
+		public Action? ResetComboBox { get; set; }
+		public LoadoutConfigurationValidation LoadoutValidation { get; set; }
 		public string Name
 		{
 			get => field;
@@ -75,8 +77,6 @@ namespace ARA.ViewModels.Pages
 				TextBoxValidate(LoadoutValidationField.CoordinatesWidth);
 			}
 		}
-		public Action? ResetComboBox { get; set; }
-		public LoadoutConfigurationValidation LoadoutValidation { get; set; }
 		public GameItem? SelectedItem
 		{
 			get => field;
@@ -86,6 +86,7 @@ namespace ARA.ViewModels.Pages
 				OnPropertyChanged(nameof(SelectedItem));
 			}
 		}
+		public bool IsValid => LoadoutValidation.IsValid;
 		public LoadoutConfigDetailsViewModel(IAraNavigation navigation, IAraConfigurations configurations, ILogger logger, IMainWindow windowService)
 		{
 			// Services(DI)
@@ -143,6 +144,7 @@ namespace ARA.ViewModels.Pages
 					break;
 			}
 			OnPropertyChanged(nameof(LoadoutValidation));
+			OnPropertyChanged(nameof(IsValid));
 		}
 
 		private void ListValidate()
@@ -153,6 +155,8 @@ namespace ARA.ViewModels.Pages
 			}
 
 			LoadoutValidation.IsItemsListNotValid = SelectedItemsList.Count == 0;
+			OnPropertyChanged(nameof(LoadoutValidation));
+			OnPropertyChanged(nameof(IsValid));
 		}
 
 		private void SelectRegion()

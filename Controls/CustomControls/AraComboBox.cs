@@ -494,7 +494,6 @@ namespace ARA.Controls.CustomControls
 			DetachTextBoxEvents();
 			_editableTextBox = GetTemplateChild("PART_EditableTextBox") as TextBox;
 			AttachTextBoxEvents();
-
 		}
 		private void InitToggleButtonBorder()
 		{

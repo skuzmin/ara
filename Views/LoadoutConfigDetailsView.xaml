@@ -243,8 +243,28 @@
 										</Style.Triggers>
 									</Style>
 								</StackPanel.Style>
-								<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="You don't have any Loadout Items yet."/>
-								<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="Use the combobox and button [ Add ] to add your first item."/>
+								<TextBlock Text="You don't have any Loadout Items yet.">
+									<TextBlock.Style>
+										<Style TargetType="TextBlock" BasedOn="{StaticResource DataGridNoItemsMessage}">
+											<Style.Triggers>
+												<DataTrigger Binding="{Binding LoadoutValidation.IsItemsListNotValid}" Value="True">
+													<Setter Property="Foreground" Value="{StaticResource TextColorError}"/>
+												</DataTrigger>
+											</Style.Triggers>
+										</Style>
+									</TextBlock.Style>
+								</TextBlock>
+								<TextBlock Text="Use the combobox and button [ Add ] to add your first item.">
+									<TextBlock.Style>
+										<Style TargetType="TextBlock" BasedOn="{StaticResource DataGridNoItemsMessage}">
+											<Style.Triggers>
+												<DataTrigger Binding="{Binding LoadoutValidation.IsItemsListNotValid}" Value="True">
+													<Setter Property="Foreground" Value="{StaticResource TextColorError}"/>
+												</DataTrigger>
+											</Style.Triggers>
+										</Style>
+									</TextBlock.Style>
+								</TextBlock>
 							</StackPanel>
 						</Grid>
 					</Grid>
@@ -252,10 +272,33 @@
 			</Grid>
 		</ScrollViewer>
 
-		<controls:AraButton Grid.Row="4" Command="{Binding SaveLoadoutConfigurationCommand}" HorizontalAlignment="Right" Style="{StaticResource PrimaryButton}">
-			<controls:AraButton.Children>
-				<TextBlock Text="Save" />
-			</controls:AraButton.Children>
-		</controls:AraButton>
+		<Grid Grid.Row="4">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- Validation Message -->
+			<StackPanel Grid.Column="0" Orientation="Vertical" >
+				<StackPanel.Style>
+					<Style TargetType="StackPanel">
+						<Setter Property="Visibility" Value="Collapsed"/>
+						<Style.Triggers>
+							<DataTrigger Binding="{Binding IsValid}" Value="False">
+								<Setter Property="Visibility" Value="Visible" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</StackPanel.Style>
+				<TextBlock Style="{StaticResource ValidationErrorMessage}" Text="One or more validation errors."/>
+				<TextBlock Style="{StaticResource ValidationErrorMessage}" Text="Fill all required fields and/or add at least one item."/>
+			</StackPanel>
+
+			<controls:AraButton Grid.Column="1" Command="{Binding SaveLoadoutConfigurationCommand}" Style="{StaticResource PrimaryButton}">
+				<controls:AraButton.Children>
+					<TextBlock Text="Save" />
+				</controls:AraButton.Children>
+			</controls:AraButton>
+		</Grid>
 	</Grid>
 </UserControl>

@@ -4,6 +4,7 @@
 	<!-- General-->
 	<SolidColorBrush x:Key="TextColorPrimary" Color="{StaticResource White}" />
 	<SolidColorBrush x:Key="TextColorSecondary" Color="{StaticResource Black}" />
+	<SolidColorBrush x:Key="TextColorError" Color="{StaticResource Red}" />
 	<SolidColorBrush x:Key="PrimaryButton__BackgroundColor" Color="{StaticResource Yellow}" />
 	<SolidColorBrush x:Key="PrimaryButton__HoverBackgroundColor" Color="{StaticResource Orange}" />
 	<SolidColorBrush x:Key="SecondaryButton__BackgroundColor" Color="{StaticResource DarkGray}" />
