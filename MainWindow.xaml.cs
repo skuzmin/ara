@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using ARA.Controls.CustomControls;
@@ -21,6 +22,15 @@ namespace ARA
 			Loaded += InitPillPosition;
 			Cursor = App.AppCursor;
 			logger.LogInformation("App Start");
+		}
+
+		public void NavigateFromTray(AraPage page)
+		{
+			var button = NavbarGrid.Children
+				.OfType<AraButton>()
+				.FirstOrDefault(b => (AraPage)b.Tag == page);
+
+			button?.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
 		}
 
 		private void Navigation_Click(object sender, RoutedEventArgs e)

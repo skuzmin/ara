@@ -11,5 +11,6 @@ namespace ARA.Interfaces
 		public ICommand NavigateToPageCommand { get; }
 		public bool TryNavigateToPage(AraPage page);
 		public void NavigateToDefaultPage();
+		public bool CanNavigateToPage(AraPage page);
 	}
 }

@@ -3,6 +3,7 @@ using System.Windows.Input;
 using ARA.Helpers;
 using ARA.Interfaces;
 using ARA.Services;
+using ARA.ViewModels;
 using ARA.ViewModels.Pages;
 using ARA.ViewModels.Shell;
 using Hardcodet.Wpf.TaskbarNotification;
@@ -41,6 +42,7 @@ namespace ARA
 			services.AddSingleton<IMainWindow, MainWindowService>();
 			// ViewModels
 			services.AddSingleton<MainViewModel>();
+			services.AddSingleton<TrayIconModel>();
 			services.AddTransient<LoadoutViewModel>();
 			services.AddTransient<LoadoutConfigsViewModel>();
 			services.AddTransient<LoadoutConfigDetailsViewModel>();
@@ -62,15 +64,16 @@ namespace ARA
 
 		private void TrayIconInit()
 		{
+			if(_serviceProvider == null)
+			{
+				return;
+			}
+
 			if (Resources["TrayIcon"] is TaskbarIcon trayIcon)
 			{
+				var navigationService = _serviceProvider.GetService<IAraNavigation>();
 				trayIcon.Visibility = Visibility.Visible;
-				trayIcon.TrayMouseDoubleClick += (s, args) =>
-				{
-					MainWindow?.Show();
-					MainWindow!.WindowState = WindowState.Normal;
-					MainWindow.Activate();
-				};
+				trayIcon.DataContext = new TrayIconModel(navigationService!);
 			}
 		}
 

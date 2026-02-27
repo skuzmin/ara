@@ -79,7 +79,7 @@ namespace ARA.Services
 			return true;
 		}
 
-		private bool CanNavigateToPage(AraPage page)
+		public bool CanNavigateToPage(AraPage page)
 		{
 			return page switch
 			{
