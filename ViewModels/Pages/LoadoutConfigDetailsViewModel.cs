@@ -35,6 +35,7 @@ namespace ARA.ViewModels.Pages
 			set
 			{
 				field = value;
+				IsEdited = true;
 				OnPropertyChanged(nameof(Name));
 				TextBoxValidate(LoadoutValidationField.Name);
 			}
@@ -45,6 +46,7 @@ namespace ARA.ViewModels.Pages
 			set
 			{
 				field = value;
+				IsEdited = true;
 				OnPropertyChanged(nameof(CoordinatesX));
 				TextBoxValidate(LoadoutValidationField.CoordinatesX);
 			}
@@ -55,6 +57,7 @@ namespace ARA.ViewModels.Pages
 			set
 			{
 				field = value;
+				IsEdited = true;
 				OnPropertyChanged(nameof(CoordinatesY));
 				TextBoxValidate(LoadoutValidationField.CoordinatesY);
 			}
@@ -65,6 +68,7 @@ namespace ARA.ViewModels.Pages
 			set
 			{
 				field = value;
+				IsEdited = true;
 				OnPropertyChanged(nameof(CoordinatesHeight));
 				TextBoxValidate(LoadoutValidationField.CoordinatesHeight);
 			}
@@ -75,6 +79,7 @@ namespace ARA.ViewModels.Pages
 			set
 			{
 				field = value;
+				IsEdited = true;
 				OnPropertyChanged(nameof(CoordinatesWidth));
 				TextBoxValidate(LoadoutValidationField.CoordinatesWidth);
 			}
@@ -123,7 +128,6 @@ namespace ARA.ViewModels.Pages
 
 		private void TextBoxValidate(LoadoutValidationField field)
 		{
-			IsEdited = true;
 			if (!LoadoutValidation.IsValidated)
 			{
 				return;
@@ -153,7 +157,6 @@ namespace ARA.ViewModels.Pages
 
 		private void ListValidate()
 		{
-			IsEdited = true;
 			if (!LoadoutValidation.IsValidated)
 			{
 				return;
@@ -238,7 +241,7 @@ namespace ARA.ViewModels.Pages
 			{
 				return;
 			}
-
+			IsEdited = true;
 			SelectedItemsList.Add(item);
 			ItemsList.Remove(item);
 			ResetComboBox?.Invoke();
@@ -248,6 +251,7 @@ namespace ARA.ViewModels.Pages
 
 		private void RemoveItem(GameItem item)
 		{
+			IsEdited = true;
 			SelectedItemsList.Remove(item);
 			ItemsList = new ObservableCollection<GameItem>(
 				ItemsList
