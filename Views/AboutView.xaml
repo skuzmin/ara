@@ -5,8 +5,52 @@
 			 mc:Ignorable="d"
 			 xmlns:pages="clr-namespace:ARA.ViewModels.Pages" 
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=pages:AboutViewModel}">
-	<StackPanel Margin="4">
-		<TextBlock Text="{Binding Title}" Foreground="White" FontSize="24" Margin="0,0,0,4"/>
-		<TextBlock Text="About about about..." Foreground="White" Margin="0,0,0,4"/>
-	</StackPanel>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="12"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0" Style="{StaticResource PageTitle}" Text="About"/>
+
+		<ScrollViewer Focusable="False" Grid.Row="2" VerticalScrollBarVisibility="Auto">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="12" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<GroupBox Grid.Row="0" Header="Info" Style="{StaticResource AraGroupBox}">
+					<StackPanel Orientation="Vertical">
+						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Name:"/>
+							<TextBlock Style="{StaticResource AraTextBlock}" Text="Arc Raiders Assistant"/>
+						</StackPanel>
+						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Version:"/>
+							<TextBlock Style="{StaticResource AraTextBlock}" Text="1.0.0"/>
+						</StackPanel>
+						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Repository:"/>
+							<TextBlock Style="{StaticResource AraTextBlock}">
+								<Hyperlink Style="{StaticResource AraHyperlink}" NavigateUri="https://github.com/skuzmin/ara" RequestNavigate="Hyperlink_RequestNavigate">
+									https://github.com/skuzmin/ara
+								</Hyperlink>
+							</TextBlock>
+						</StackPanel>
+						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Tech stack"/>
+							<TextBlock Style="{StaticResource AraTextBlock}" Text=".NET/WPF/C#"/>
+						</StackPanel>
+					</StackPanel>
+				</GroupBox>
+
+				<GroupBox Grid.Row="2" Header="FAQ" Style="{StaticResource AraGroupBox}">
+					<TextBlock Text="No questions have been asked yet."/>
+				</GroupBox>
+			</Grid>
+		</ScrollViewer>
+	</Grid>
 </UserControl>

@@ -63,4 +63,8 @@
 	<SolidColorBrush x:Key="OverlayWindow__ZoneBackground" Color="{StaticResource TransparentOrange}" />
 	<SolidColorBrush x:Key="OverlayWindow__LabelSave" Color="{StaticResource DarkGreen}" />
 	<SolidColorBrush x:Key="OverlayWindow__LabelCancel" Color="{StaticResource DarkRed}" />
+
+	<!-- Hyperlink -->
+	<SolidColorBrush x:Key="Hyperlink__Foreground" Color="{StaticResource Blue}" />
+	<SolidColorBrush x:Key="Hyperlink__HoverForeground" Color="{StaticResource DarkGreen}" />
 </ResourceDictionary>

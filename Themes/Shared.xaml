@@ -186,4 +186,36 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+
+	<Style x:Key="AraStackRow" TargetType="StackPanel">
+		<Setter Property="Margin">
+			<Setter.Value>
+				<Thickness 
+					Left="{StaticResource Spacing-0}"
+					Top="{StaticResource Spacing-1}"
+					Right="{StaticResource Spacing-0}"
+					Bottom="{StaticResource Spacing-1}" />
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="AraTextBlock" TargetType="TextBlock">
+		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
+		<Setter Property="FontSize" Value="18" />
+		<Setter Property="FontWeight" Value="Normal" />
+		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
+	</Style>
+
+	<Style x:Key="AraStackRowLabel" TargetType="TextBlock" BasedOn="{StaticResource AraTextBlock}">
+		<Setter Property="MinWidth" Value="100" />
+	</Style>
+
+	<Style x:Key="AraHyperlink" TargetType="Hyperlink">
+		<Setter Property="Foreground" Value="{StaticResource Hyperlink__Foreground}" />
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Foreground" Value="{StaticResource Hyperlink__HoverForeground}" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
 </ResourceDictionary>

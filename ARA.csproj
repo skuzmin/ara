@@ -29,6 +29,10 @@
     <None Remove="Assets\Icons\config.png" />
     <None Remove="Assets\Icons\DataGrid\delete.png" />
     <None Remove="Assets\Icons\DataGrid\edit.png" />
+    <None Remove="Assets\Icons\Flags\Flag-GB.png" />
+    <None Remove="Assets\Icons\Flags\Flag-UA.png" />
+    <None Remove="Assets\Icons\Mode\Mode-Dark.png" />
+    <None Remove="Assets\Icons\Mode\Mode-Light.png" />
     <None Remove="Assets\Icons\plus.png" />
     <None Remove="Assets\Icons\Statuses\fail.png" />
     <None Remove="Assets\Icons\Statuses\success.png" />
@@ -126,6 +130,18 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Icons\DataGrid\Edit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\Flags\Flag-GB.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\Flags\Flag-UA.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\Mode\Mode-Dark.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\Mode\Mode-Light.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Icons\plus.png">
