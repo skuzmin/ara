@@ -46,17 +46,17 @@
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 				<Border x:Name="SelectionPill" Style="{StaticResource SelectedMenuPill}"/>
-				<controls:AraButton Grid.Column="0" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding Navigation.IsLoadoutSelected}" Command="{Binding Navigation.NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.Loadout}" Click="Navigation_Click">
+				<controls:AraButton Grid.Column="0" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding Navigation.IsLoadoutSelected}" Tag="{x:Static enums:AraPage.Loadout}" Click="Navigation_Click">
 					<controls:AraButton.Children>
 						<TextBlock Text="Loadout" />
 					</controls:AraButton.Children>
 				</controls:AraButton>
-				<controls:AraButton Grid.Column="2" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding Navigation.IsSettingsSelected}" Command="{Binding Navigation.NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.Settings}" Click="Navigation_Click">
+				<controls:AraButton Grid.Column="2" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding Navigation.IsSettingsSelected}" Tag="{x:Static enums:AraPage.Settings}" Click="Navigation_Click">
 					<controls:AraButton.Children>
 						<TextBlock Text="Settings" />
 					</controls:AraButton.Children>
 				</controls:AraButton>
-				<controls:AraButton Grid.Column="4" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding Navigation.IsAboutSelected}" Command="{Binding Navigation.NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.About}" Click="Navigation_Click">
+				<controls:AraButton Grid.Column="4" Style="{StaticResource MainWindowNavigationButton}" IsSelected="{Binding Navigation.IsAboutSelected}" Tag="{x:Static enums:AraPage.About}" Click="Navigation_Click">
 					<controls:AraButton.Children>
 						<TextBlock Text="About" />
 					</controls:AraButton.Children>

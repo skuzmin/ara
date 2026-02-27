@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
+using System.Windows;
 using System.Windows.Input;
+using ARA.Dialogs;
 using ARA.Enums;
 using ARA.Interfaces;
 using ARA.Models;
@@ -25,6 +26,7 @@ namespace ARA.ViewModels.Pages
 		public ObservableCollection<GameItem> SelectedItemsList { get; }
 		public LoadoutConfiguration LoadoutConfiguration { get; }
 		public string Title { get; }
+		public bool IsEdited { get; set; }
 		public Action? ResetComboBox { get; set; }
 		public LoadoutConfigurationValidation LoadoutValidation { get; set; }
 		public string Name
@@ -110,16 +112,18 @@ namespace ARA.ViewModels.Pages
 			CoordinatesWidth = LoadoutConfiguration.Coordinates.Width;
 			ItemsList = new ObservableCollection<GameItem>(filteredList);
 			SelectedItemsList = new ObservableCollection<GameItem>(LoadoutConfiguration.Items);
+			IsEdited = false;
 			// Commands
 			AddItemCommand = new RelayCommand(_ => AddItem());
 			RemoveItemCommand = new RelayCommand(item => RemoveItem((GameItem)item));
-			BackCommand = new RelayCommand(_ => navigation.NavigateToPage(AraPage.LoadoutConfigs));
+			BackCommand = new RelayCommand(_ => navigation.TryNavigateToPage(AraPage.LoadoutConfigs));
 			SaveLoadoutConfigurationCommand = new RelayCommand(_ => SaveLoadoutConfiguration());
 			SelectRegionCommand = new RelayCommand(_ => SelectRegion());
 		}
 
 		private void TextBoxValidate(LoadoutValidationField field)
 		{
+			IsEdited = true;
 			if (!LoadoutValidation.IsValidated)
 			{
 				return;
@@ -149,6 +153,7 @@ namespace ARA.ViewModels.Pages
 
 		private void ListValidate()
 		{
+			IsEdited = true;
 			if (!LoadoutValidation.IsValidated)
 			{
 				return;
@@ -157,6 +162,30 @@ namespace ARA.ViewModels.Pages
 			LoadoutValidation.IsItemsListNotValid = SelectedItemsList.Count == 0;
 			OnPropertyChanged(nameof(LoadoutValidation));
 			OnPropertyChanged(nameof(IsValid));
+		}
+
+		public override bool CanNavigateAway()
+		{
+			if (!IsEdited)
+			{
+				return true;
+			}
+
+			var dialogConfig = new ConfirmationDialogConfig
+			{
+				Title = "Unsaved changes",
+				Message = $"All unsaved changes will be lost.",
+				SubMessage = "Are you sure you want to discard changes?",
+				ConfirmButtonText = "Discard",
+				CancelButtonText = "Cancel"
+			};
+
+			var result = new ConfirmationDialog(dialogConfig)
+			{
+				Owner = Application.Current.MainWindow
+			}.ShowDialog();
+
+			return result ?? false;
 		}
 
 		private void SelectRegion()
@@ -188,7 +217,7 @@ namespace ARA.ViewModels.Pages
 			{
 				return;
 			}
-
+			IsEdited = false;
 			LoadoutConfiguration.Items = [.. SelectedItemsList];
 			LoadoutConfiguration.Name = Name;
 			LoadoutConfiguration.Coordinates = new ScreenCoordinates(CoordinatesX, CoordinatesY, CoordinatesHeight, CoordinatesWidth);
@@ -200,7 +229,7 @@ namespace ARA.ViewModels.Pages
 			{
 				_configurations.UpdateLoadoutConfig(LoadoutConfiguration);
 			}
-			_navigation.NavigateToPage(AraPage.LoadoutConfigs);
+			_navigation.TryNavigateToPage(AraPage.LoadoutConfigs);
 		}
 
 		private void AddItem()

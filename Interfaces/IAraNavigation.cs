@@ -9,7 +9,7 @@ namespace ARA.Interfaces
 	{
 		public ViewModelBase? CurrentPage { get; set; }
 		public ICommand NavigateToPageCommand { get; }
-		public void NavigateToPage(AraPage page);
+		public bool TryNavigateToPage(AraPage page);
 		public void NavigateToDefaultPage();
 	}
 }

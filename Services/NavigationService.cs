@@ -38,7 +38,7 @@ namespace ARA.Services
 			_logger = logger;
 			_services = services;
 			NavigateToPageCommand = new RelayCommand(
-				page => NavigateToPage((AraPage)page),
+				page => TryNavigateToPage((AraPage)page),
 				canExecute: page => CanNavigateToPage((AraPage)page));
 		}
 
@@ -47,8 +47,13 @@ namespace ARA.Services
 			GoToPage<LoadoutViewModel>();
 		}
 
-		public void NavigateToPage(AraPage page)
+		public bool TryNavigateToPage(AraPage page)
 		{
+			if (CurrentPage == null || !CurrentPage.CanNavigateAway())
+			{
+				return false;
+			}
+
 			switch (page)
 			{
 				case AraPage.Loadout:
@@ -70,6 +75,8 @@ namespace ARA.Services
 					NavigateToDefaultPage();
 					break;
 			}
+
+			return true;
 		}
 
 		private bool CanNavigateToPage(AraPage page)

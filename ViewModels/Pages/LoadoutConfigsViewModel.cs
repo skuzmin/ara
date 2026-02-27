@@ -24,7 +24,7 @@ namespace ARA.ViewModels.Pages
 			_configurations = configurations;
 			_navigation = navigation;
 			LoadoutConfigurations = new ObservableCollection<LoadoutConfiguration>(_configurations.Configurations.LoadoutConfigurations);
-			BackCommand = new RelayCommand(_ => navigation.NavigateToPage(AraPage.Loadout));
+			BackCommand = new RelayCommand(_ => navigation.TryNavigateToPage(AraPage.Loadout));
 			NewConfigCommand = new RelayCommand(_ => NewConfiguration());
 			EditConfigCommand = new RelayCommand(item => EditConfiguration((LoadoutConfiguration)item));
 			DeleteConfigCommand = new RelayCommand(data => DeleteConfiguration((LoadoutConfiguration)data));
@@ -33,13 +33,13 @@ namespace ARA.ViewModels.Pages
 		private void NewConfiguration()
 		{
 			_configurations.SetCurrentLoadoutConfig(null);
-			_navigation.NavigateToPage(AraPage.LoadoutConfigDetails);
+			_navigation.TryNavigateToPage(AraPage.LoadoutConfigDetails);
 		}
 
 		private void EditConfiguration(LoadoutConfiguration loadout)
 		{
 			_configurations.SetCurrentLoadoutConfig(loadout);
-			_navigation.NavigateToPage(AraPage.LoadoutConfigDetails);
+			_navigation.TryNavigateToPage(AraPage.LoadoutConfigDetails);
 		}
 
 		private void DeleteConfiguration(LoadoutConfiguration data)

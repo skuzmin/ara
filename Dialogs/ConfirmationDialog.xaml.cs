@@ -3,12 +3,12 @@ using ARA.Models;
 
 namespace ARA.Dialogs
 {
-
 	public partial class ConfirmationDialog : AraWindow
 	{
 		public ConfirmationDialog(ConfirmationDialogConfig config)
 		{
 			InitializeComponent();
+			Cursor = App.AppCursor;
 			MaxWidth = config.MaxWidth;
 			Title = config.Title;
 			MainMessageEl.Text = config.Message;

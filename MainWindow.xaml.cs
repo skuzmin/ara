@@ -1,9 +1,8 @@
 ﻿using System.Windows;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using ARA.Controls.CustomControls;
-using ARA.Helpers;
+using ARA.Enums;
 using ARA.ViewModels.Shell;
 using Microsoft.Extensions.Logging;
 
@@ -12,9 +11,11 @@ namespace ARA
 	public partial class MainWindow : AraWindow
 	{
 		public required AraButton ActiveButton;
+		private readonly MainViewModel _vm;
 
 		public MainWindow(MainViewModel vm, ILogger logger)
 		{
+			_vm = vm;
 			InitializeComponent();
 			DataContext = vm;
 			Loaded += InitPillPosition;
@@ -29,8 +30,15 @@ namespace ARA
 			{
 				return;
 			}
-			ActiveButton = button;
 
+			var page = (AraPage)button.Tag;
+			var result = _vm.Navigation.TryNavigateToPage(page);
+			if (!result)
+			{
+				return;
+			}
+
+			ActiveButton = button;
 			Point buttonPosition = button.TransformToAncestor(NavbarGrid).Transform(new Point(0, 0));
 
 			var positionAnimation = new DoubleAnimation
