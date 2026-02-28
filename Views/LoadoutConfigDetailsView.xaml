@@ -294,7 +294,16 @@
 				<TextBlock Style="{StaticResource ValidationErrorMessage}" Text="Fill all required fields and/or add at least one item."/>
 			</StackPanel>
 
-			<controls:AraButton Grid.Column="1" Command="{Binding SaveLoadoutConfigurationCommand}" Style="{StaticResource PrimaryButton}">
+			<controls:AraButton Grid.Column="1" Command="{Binding SaveLoadoutConfigurationCommand}">
+				<controls:AraButton.Style>
+					<Style TargetType="controls:AraButton" BasedOn="{StaticResource PrimaryButton}">
+						<Style.Triggers>
+							<DataTrigger Binding="{Binding IsEdited}" Value="False">
+								<Setter Property="IsEnabled" Value="False" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</controls:AraButton.Style>
 				<controls:AraButton.Children>
 					<TextBlock Text="Save" />
 				</controls:AraButton.Children>

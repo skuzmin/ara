@@ -26,9 +26,17 @@ namespace ARA.ViewModels.Pages
 		public ObservableCollection<GameItem> SelectedItemsList { get; }
 		public LoadoutConfiguration LoadoutConfiguration { get; }
 		public string Title { get; }
-		public bool IsEdited { get; set; }
 		public Action? ResetComboBox { get; set; }
 		public LoadoutConfigurationValidation LoadoutValidation { get; set; }
+		public bool IsEdited
+		{
+			get => field;
+			set
+			{
+				field = value;
+				OnPropertyChanged(nameof(IsEdited));
+			}
+		}
 		public string Name
 		{
 			get => field;

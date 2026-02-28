@@ -12,5 +12,7 @@ namespace ARA.Interfaces
 		public void CreateLoadoutConfig(LoadoutConfiguration loadout);
 		public void UpdateLoadoutConfig(LoadoutConfiguration loadout);
 		public void RemoveLoadoutConfigById(Guid Id);
+		public SettingsConfiguration GetSettingsConfiguration();
+		public void UpdateSettings(SettingsConfiguration settings);
 	}
 }

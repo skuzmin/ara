@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Text.Json;
-using ARA.Enums;
 using ARA.Interfaces;
 using ARA.Models;
 using Microsoft.Extensions.Logging;
@@ -26,6 +25,7 @@ namespace ARA.Services
 			InitConfig();
 		}
 
+		#region General
 		public void SaveConfig()
 		{
 			_configurations.LoadoutConfigurations.Sort((a, b) => a.Name.CompareTo(b.Name));
@@ -54,6 +54,20 @@ namespace ARA.Services
 			}
 
 		}
+		#endregion
+
+		#region SettingsConfig
+		public SettingsConfiguration GetSettingsConfiguration()
+		{
+			return _configurations.SettingsConfiguration;
+		}
+
+		public void UpdateSettings(SettingsConfiguration settings)
+		{
+			_configurations.SettingsConfiguration = settings;
+			SaveConfig();
+		}
+		#endregion
 
 		#region LoadoutConfig
 		public LoadoutConfiguration? GetCurrentLoadoutConfig()

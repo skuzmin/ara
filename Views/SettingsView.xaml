@@ -3,10 +3,80 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d"
+			 xmlns:local="clr-namespace:ARA"
 			 xmlns:pages="clr-namespace:ARA.ViewModels.Pages" 
+			 xmlns:controls="clr-namespace:ARA.Controls.CustomControls"
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=pages:SettingsViewModel}">
-	<StackPanel Margin="4">
-		<TextBlock Text="{Binding Title}" Foreground="White" FontSize="24" Margin="0,0,0,4"/>
-		<TextBlock Text="Settings content here" Foreground="White" Margin="0,0,0,4"/>
-	</StackPanel>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40" />
+			<RowDefinition Height="12" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="24" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="40" />
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0" Style="{StaticResource PageTitle}" Text="Settings"/>
+
+		<StackPanel Grid.Row="2" Orientation="Vertical">
+			<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+				<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Theme:"/>
+				<controls:AraComboBox
+					x:Name="ThemesComboBox"
+					Style="{StaticResource AraComboBox}"
+					ItemsSource="{x:Static local:Constants.Themes}"
+					SelectedItem="{Binding SelectedTheme, Mode=TwoWay}">
+					<controls:AraComboBox.ItemTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Horizontal">
+								<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
+								<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
+							</StackPanel>
+						</DataTemplate>
+					</controls:AraComboBox.ItemTemplate>
+				</controls:AraComboBox>
+			</StackPanel>
+
+			<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+				<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Language:"/>
+				<controls:AraComboBox
+					x:Name="LanguagesComboBox"
+					Style="{StaticResource AraComboBox}"
+					ItemsSource="{x:Static local:Constants.Languages}"
+					SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}">
+					<controls:AraComboBox.ItemTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Horizontal">
+								<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
+								<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
+							</StackPanel>
+						</DataTemplate>
+					</controls:AraComboBox.ItemTemplate>
+				</controls:AraComboBox>
+			</StackPanel>
+		</StackPanel>
+
+		<controls:AraButton Grid.Row="4" Command="{Binding OpenConfigFolderCommand}" Style="{StaticResource SecondarySmallButton}" HorizontalAlignment="Left">
+			<controls:AraButton.Children>
+				<TextBlock Text="Open configuration file location" />
+			</controls:AraButton.Children>
+		</controls:AraButton>
+
+		<controls:AraButton Grid.Row="6" Command="{Binding SaveSettingsCommand}" HorizontalAlignment="Right">
+			<controls:AraButton.Style>
+				<Style TargetType="controls:AraButton" BasedOn="{StaticResource PrimaryButton}">
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding IsEdited}" Value="False">
+							<Setter Property="IsEnabled" Value="False" />
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</controls:AraButton.Style>
+			<controls:AraButton.Children>
+				<TextBlock Text="Save" />
+			</controls:AraButton.Children>
+		</controls:AraButton>
+	</Grid>
 </UserControl>
