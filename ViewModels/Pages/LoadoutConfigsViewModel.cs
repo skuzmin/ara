@@ -52,11 +52,8 @@ namespace ARA.ViewModels.Pages
 				ConfirmButtonText = "Delete",
 				CancelButtonText = "Cancel"
 			};
-			var dialog = new ConfirmationDialog(dialogConfig)
-			{
-				Owner = Application.Current.MainWindow
-			};
-			var result = dialog.ShowDialog();
+			var result = new ConfirmationDialog(dialogConfig).ShowDialog();
+
 			if (result == true)
 			{
 				_configurations.RemoveLoadoutConfigById(data.Id);

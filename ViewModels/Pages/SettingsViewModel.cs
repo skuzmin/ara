@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
@@ -45,12 +46,19 @@ namespace ARA.ViewModels.Pages
 		public ICommand SaveSettingsCommand { get; }
 		public SettingsViewModel(IAraConfigurations configurations)
 		{
+			Init(configurations.GetSettingsConfiguration());
 			_configurations = configurations;
-			SelectedLanguage = Constants.Languages[0];
-			SelectedTheme = Constants.Themes[0];
 			OpenConfigFolderCommand = new RelayCommand(_ => Process.Start("explorer.exe", Path.GetDirectoryName(Constants.ConfigFilePath)!));
 			SaveSettingsCommand = new RelayCommand(_ => SaveSettings());
 			IsEdited = false;
+		}
+
+		[MemberNotNull(nameof(SelectedLanguage))]
+		[MemberNotNull(nameof(SelectedTheme))]
+		private void Init(SettingsConfiguration config)
+		{
+			SelectedLanguage = Constants.Languages.FirstOrDefault(l => l.Id == config.Language) ?? Constants.Languages[0];
+			SelectedTheme = Constants.Themes.FirstOrDefault(l => l.Id == config.Theme) ?? Constants.Themes[0];
 		}
 
 		private void SaveSettings()
@@ -75,11 +83,7 @@ namespace ARA.ViewModels.Pages
 				CancelButtonText = "Cancel"
 			};
 
-			var result = new ConfirmationDialog(dialogConfig)
-			{
-				Owner = Application.Current.MainWindow
-			}.ShowDialog();
-
+			var result = new ConfirmationDialog(dialogConfig).ShowDialog();
 			return result ?? false;
 		}
 	}

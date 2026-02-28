@@ -191,10 +191,7 @@ namespace ARA.ViewModels.Pages
 				CancelButtonText = "Cancel"
 			};
 
-			var result = new ConfirmationDialog(dialogConfig)
-			{
-				Owner = Application.Current.MainWindow
-			}.ShowDialog();
+			var result = new ConfirmationDialog(dialogConfig).ShowDialog();
 
 			return result ?? false;
 		}

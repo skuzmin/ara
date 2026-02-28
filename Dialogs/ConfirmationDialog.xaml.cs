@@ -8,6 +8,7 @@ namespace ARA.Dialogs
 		public ConfirmationDialog(ConfirmationDialogConfig config)
 		{
 			InitializeComponent();
+			Owner = Application.Current.MainWindow;
 			Cursor = App.AppCursor;
 			MaxWidth = config.MaxWidth;
 			Title = config.Title;
