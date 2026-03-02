@@ -1,8 +1,5 @@
-﻿using System.Configuration;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Windows;
 using System.Windows.Input;
 using ARA.Dialogs;
 using ARA.Interfaces;
@@ -12,7 +9,8 @@ namespace ARA.ViewModels.Pages
 {
 	public class SettingsViewModel : ViewModelBase
 	{
-		private readonly IAraConfigurations _configurations;
+		private readonly IAraThemes _themes;
+		private readonly IAraTranslation _translations;
 		public bool IsEdited
 		{
 			get => field;
@@ -22,16 +20,18 @@ namespace ARA.ViewModels.Pages
 				OnPropertyChanged(nameof(IsEdited));
 			}
 		}
-		public SettingsItem SelectedLanguage
+		public SettingsItem SelectedLocale
 		{
 			get => field;
 			set
 			{
 				field = value;
 				IsEdited = true;
-				OnPropertyChanged(nameof(SelectedLanguage));
+				OnPropertyChanged(nameof(SelectedLocale));
 			}
 		}
+		public List<SettingsItem> Themes { get; set; }
+		public List<SettingsItem> Locales { get; set; }
 		public SettingsItem SelectedTheme
 		{
 			get => field;
@@ -44,27 +44,24 @@ namespace ARA.ViewModels.Pages
 		}
 		public ICommand OpenConfigFolderCommand { get; }
 		public ICommand SaveSettingsCommand { get; }
-		public SettingsViewModel(IAraConfigurations configurations)
+		public SettingsViewModel(IAraThemes themes, IAraTranslation translations)
 		{
-			Init(configurations.GetSettingsConfiguration());
-			_configurations = configurations;
+			_themes = themes;
+			_translations = translations;
 			OpenConfigFolderCommand = new RelayCommand(_ => Process.Start("explorer.exe", Path.GetDirectoryName(Constants.ConfigFilePath)!));
 			SaveSettingsCommand = new RelayCommand(_ => SaveSettings());
+			SelectedTheme = _themes.GetTheme();
+			SelectedLocale = _translations.GetLocale();
+			Themes = _themes.GetThemes();
+			Locales = _translations.GetLocales();
 			IsEdited = false;
-		}
-
-		[MemberNotNull(nameof(SelectedLanguage))]
-		[MemberNotNull(nameof(SelectedTheme))]
-		private void Init(SettingsConfiguration config)
-		{
-			SelectedLanguage = Constants.Languages.FirstOrDefault(l => l.Id == config.Language) ?? Constants.Languages[0];
-			SelectedTheme = Constants.Themes.FirstOrDefault(l => l.Id == config.Theme) ?? Constants.Themes[0];
 		}
 
 		private void SaveSettings()
 		{
 			IsEdited = false;
-			_configurations.UpdateSettings(new SettingsConfiguration() { Language = SelectedLanguage.Id, Theme = SelectedTheme.Id });
+			_themes.UpdateTheme(SelectedTheme);
+			_translations.UpdateLocale(SelectedLocale);
 		}
 
 		public override bool CanNavigateAway()

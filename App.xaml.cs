@@ -38,6 +38,8 @@ namespace ARA
 			// Services
 			services.AddSingleton<IAraConfigurations, ConfigurationService>();
 			services.AddSingleton<ILogger, AraLogger>();
+			services.AddSingleton<IAraThemes, ThemesService>();
+			services.AddSingleton<IAraTranslation, TranslationService>();
 			services.AddSingleton<IAraNavigation, NavigationService>();
 			services.AddSingleton<IMainWindow, MainWindowService>();
 			// ViewModels
@@ -64,7 +66,7 @@ namespace ARA
 
 		private void TrayIconInit()
 		{
-			if(_serviceProvider == null)
+			if (_serviceProvider == null)
 			{
 				return;
 			}

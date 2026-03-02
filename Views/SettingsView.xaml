@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d"
-			 xmlns:local="clr-namespace:ARA"
 			 xmlns:pages="clr-namespace:ARA.ViewModels.Pages" 
 			 xmlns:controls="clr-namespace:ARA.Controls.CustomControls"
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=pages:SettingsViewModel}">
@@ -26,7 +25,7 @@
 				<controls:AraComboBox
 					x:Name="ThemesComboBox"
 					Style="{StaticResource AraComboBox}"
-					ItemsSource="{x:Static local:Constants.Themes}"
+					ItemsSource="{Binding Themes}"
 					SelectedItem="{Binding SelectedTheme, Mode=TwoWay}">
 					<controls:AraComboBox.ItemTemplate>
 						<DataTemplate>
@@ -44,8 +43,8 @@
 				<controls:AraComboBox
 					x:Name="LanguagesComboBox"
 					Style="{StaticResource AraComboBox}"
-					ItemsSource="{x:Static local:Constants.Languages}"
-					SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}">
+					ItemsSource="{Binding Locales}"
+					SelectedItem="{Binding SelectedLocale, Mode=TwoWay}">
 					<controls:AraComboBox.ItemTemplate>
 						<DataTemplate>
 							<StackPanel Orientation="Horizontal">
