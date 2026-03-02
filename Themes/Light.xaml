@@ -1,0 +1,71 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<sys:String x:Key="Title">AppThemeDictionary</sys:String>
+
+	<!-- General -->
+	<SolidColorBrush x:Key="TextColorPrimary" Color="{StaticResource DarkText}" />
+	<SolidColorBrush x:Key="TextColorSecondary" Color="{StaticResource White}" />
+	<SolidColorBrush x:Key="TextColorError" Color="{StaticResource Red}" />
+	<SolidColorBrush x:Key="PrimaryButton__BackgroundColor" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="PrimaryButton__HoverBackgroundColor" Color="{StaticResource Orange}" />
+	<SolidColorBrush x:Key="SecondaryButton__BackgroundColor" Color="{StaticResource LightBorder}" />
+	<SolidColorBrush x:Key="SecondaryButton__HoverBackgroundColor" Color="{StaticResource LightNavigation}" />
+	<SolidColorBrush x:Key="PageTitleButton__HoverBackgroundColor" Color="{StaticResource LightBorder}"/>
+	<SolidColorBrush x:Key="AraWindow__BorderBrush" Color="{StaticResource LightBorder}"/>
+	<SolidColorBrush x:Key="PlaceholderTextForeground" Color="{StaticResource MutedText}" />
+
+	<!-- TitleBarUserControl -->
+	<SolidColorBrush x:Key="TitleBar__BackgroundColor" Color="{StaticResource LightNavigation}"/>
+	<SolidColorBrush x:Key="TitleBar__DefaultButtonHoverBackgroundColor" Color="{StaticResource LightBorder}"/>
+	<SolidColorBrush x:Key="TitleBar__CloseButtonHoverBackgroundColor" Color="{StaticResource DarkRed}"/>
+	<SolidColorBrush x:Key="TitleBar__ConfirmationBackgroundColor" Color="{StaticResource LightSurface}"/>
+
+	<!-- MainWindow -->
+	<SolidColorBrush x:Key="MainWindow__NavigationBackgroundColor" Opacity="0.95" Color="{StaticResource LightNavigation}"/>
+	<SolidColorBrush x:Key="MainWindow__ContainerBackgroundColor" Opacity="0.95" Color="{StaticResource LightBackground}"/>
+	<SolidColorBrush x:Key="MainWindow__NavigationButtonForeground" Color="{StaticResource MutedText}"/>
+
+	<!-- ComboBox -->
+	<SolidColorBrush x:Key="ToggleButtonArrowBrush" Color="{StaticResource DarkText}" />
+	<SolidColorBrush x:Key="ToggleButtonBackground" Color="{StaticResource LightSurface}" />
+	<SolidColorBrush x:Key="ToggleButtonBorderBrush" Color="{StaticResource LightBorder}" />
+	<SolidColorBrush x:Key="ToggleButtonHoverBackground" Color="{StaticResource LightSurface}" />
+	<SolidColorBrush x:Key="ToggleButtonHoverBorderBrush" Color="{StaticResource Orange}" />
+	<SolidColorBrush x:Key="ToggleButtonHoverArrowBrush" Color="{StaticResource DarkText}" />
+	<SolidColorBrush x:Key="ToggleButtonOpenBorderBrush" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="ToggleButtonOpenArrowBrush" Color="{StaticResource DarkText}" />
+	<SolidColorBrush x:Key="ToggleButtonOpenBackground" Color="{StaticResource LightSurface}" />
+	<SolidColorBrush x:Key="ItemsListBorderBrush" Color="{StaticResource LightBorder}" />
+	<SolidColorBrush x:Key="ListItemForeground" Color="{StaticResource DarkText}" />
+	<SolidColorBrush x:Key="ListItemBackground" Color="{StaticResource LightSurface}" />
+	<SolidColorBrush x:Key="ListItemHoverBackground" Color="{StaticResource LightNavigation}" />
+	<SolidColorBrush x:Key="ListItemSelectedBackground" Color="{StaticResource Yellow}" />
+	<SolidColorBrush x:Key="SelectedTextForeground" Color="{StaticResource DarkText}" />
+
+	<!-- ScrollBar -->
+	<SolidColorBrush x:Key="ScrollBar__ThumbBrush" Color="{StaticResource Orange}" />
+
+	<!-- Data Grid -->
+	<SolidColorBrush x:Key="DataGrid__WrapperBorderBrush" Color="{StaticResource LightBorder}" />
+	<SolidColorBrush x:Key="DataGrid__GridColumnHeaderBackground" Color="{StaticResource LightNavigation}" />
+
+	<!-- Dialog -->
+	<SolidColorBrush x:Key="Dialog__Background" Color="{StaticResource LightSurface}" />
+
+	<!-- TextBox -->
+	<SolidColorBrush x:Key="TextBox__Background" Color="{StaticResource LightSurface}" />
+	<SolidColorBrush x:Key="TextBox__HoverBorderBrush" Color="{StaticResource Orange}" />
+	<SolidColorBrush x:Key="TextBox__ErrorBorderBrsuh" Color="{StaticResource Red}" />
+
+	<!-- OverlayWindow -->
+	<SolidColorBrush x:Key="OverlayWindow__Background" Color="{StaticResource TransparentLightBorder}" />
+	<SolidColorBrush x:Key="OverlayWindow__ZoneBorderBrush" Color="{StaticResource Orange}" />
+	<SolidColorBrush x:Key="OverlayWindow__ZoneBackground" Color="{StaticResource TransparentBlack}" />
+	<SolidColorBrush x:Key="OverlayWindow__LabelSave" Color="{StaticResource DarkGreen}" />
+	<SolidColorBrush x:Key="OverlayWindow__LabelCancel" Color="{StaticResource DarkRed}" />
+
+	<!-- Hyperlink -->
+	<SolidColorBrush x:Key="Hyperlink__Foreground" Color="{StaticResource Blue}" />
+	<SolidColorBrush x:Key="Hyperlink__HoverForeground" Color="{StaticResource DarkGreen}" />
+</ResourceDictionary>

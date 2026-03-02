@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Input;
 using ARA.Helpers;
 using ARA.Interfaces;
@@ -30,6 +31,7 @@ namespace ARA
 			TrayIconInit();
 			AppCursor = CursorHelper.CreateCursorFromPng("pack://application:,,,/Assets/Cursors/Cursor.png", 0, 0);
 
+			_serviceProvider.GetService<IAraThemes>()!.ActivateTheme();
 			_serviceProvider.GetService<MainWindow>()!.Show();
 		}
 

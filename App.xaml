@@ -10,7 +10,6 @@
 				<ResourceDictionary Source="/Themes/Primitives/Fonts.xaml" />
 				<ResourceDictionary Source="/Themes/Primitives/Radiuses.xaml" />
 				<ResourceDictionary Source="/Themes/Primitives/Spacings.xaml" />
-				<ResourceDictionary Source="/Themes/Dark.xaml" />
 				<ResourceDictionary Source="/Themes/Shared.xaml" />
 				<ResourceDictionary Source="/Themes/Components/DialogStyles.xaml" />
 				<ResourceDictionary Source="/Themes/Components/TitleBarStyles.xaml" />

@@ -4,6 +4,7 @@
 	<Style TargetType="{x:Type Thumb}">
 		<Setter Property="OverridesDefaultStyle" Value="True" />
 		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="Cursor" Value="{Binding Source={x:Static Application.Current}, Path=AppCursor}"/>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Thumb}">
@@ -53,20 +54,26 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ScrollBar}">
-					<Grid SnapsToDevicePixels="True" Background="Transparent">
+					<Grid SnapsToDevicePixels="True" Background="Transparent" Cursor="{Binding Source={x:Static Application.Current}, Path=AppCursor}">
 						<Track x:Name="PART_Track" 
-						IsDirectionReversed="True"
-						IsEnabled="{TemplateBinding IsMouseOver}"
-						HorizontalAlignment="Center"
-						Width="8">
+							IsDirectionReversed="True"
+							IsEnabled="{TemplateBinding IsMouseOver}"
+							HorizontalAlignment="Center"
+							Width="8">
 							<Track.DecreaseRepeatButton>
-								<RepeatButton Style="{x:Null}" Opacity="0" Command="{x:Static ScrollBar.PageUpCommand}"/>
+								<RepeatButton 
+									Style="{x:Null}" 
+									Opacity="0"  
+									Command="{x:Static ScrollBar.PageUpCommand}"/>
 							</Track.DecreaseRepeatButton>
 							<Track.Thumb>
 								<Thumb />
 							</Track.Thumb>
 							<Track.IncreaseRepeatButton>
-								<RepeatButton Style="{x:Null}" Opacity="0" Command="{x:Static ScrollBar.PageDownCommand}"/>
+								<RepeatButton 
+									Style="{x:Null}" 
+									Opacity="0"  
+									Command="{x:Static ScrollBar.PageDownCommand}"/>
 							</Track.IncreaseRepeatButton>
 						</Track>
 					</Grid>
