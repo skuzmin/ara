@@ -9,6 +9,7 @@ namespace ARA.Services
 		private readonly IAraConfigurations _configurationService;
 		private readonly SettingsConfiguration _configurations;
 		private SettingsItem _theme;
+		public event Action? ThemeChanged;
 		public ThemesService(IAraConfigurations configurationService)
 		{
 			_configurationService = configurationService;
@@ -31,7 +32,7 @@ namespace ARA.Services
 			var uri = new Uri($"Themes/{_theme.Name}.xaml", UriKind.Relative);
 			var mergedDictionaries = Application.Current.Resources.MergedDictionaries;
 			var dictionary = mergedDictionaries.FirstOrDefault(d =>
-				d.Contains("Title") && d["Title"] as string == "AppThemeDictionary");
+				d.Contains("__Title") && d["__Title"] as string == "AppThemeDictionary");
 
 			if (dictionary != null)
 			{
@@ -39,6 +40,7 @@ namespace ARA.Services
 			}
 
 			mergedDictionaries.Add(new ResourceDictionary { Source = uri });
+			ThemeChanged?.Invoke();
 		}
 
 		public void UpdateTheme(SettingsItem theme)

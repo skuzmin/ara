@@ -43,10 +43,10 @@
 
 				<!-- Name -->
 				<StackPanel Grid.Row="0">
-					<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=NameTextBox}">Name</Label>
+					<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=NameTextBox}" Content="{DynamicResource LoadoutConfigDetails.Name}"/>
 					<controls:AraTextBox x:Name="NameTextBox" 
 						Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" 
-						PlaceholderText="Name" 
+						PlaceholderText="{DynamicResource LoadoutConfigDetails.Name.Placeholder}" 
 						Style="{StaticResource AraTextBox}"
 						IsError="{Binding LoadoutValidation.IsNameNotValid}"
 						MaxLength="50"/>
@@ -64,7 +64,7 @@
 						<controls:AraButton Grid.Row="0" Style="{StaticResource SecondaryButton}" Command="{Binding SelectRegionCommand}">
 							<controls:AraButton.Children>
 								<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/zone.png" />
-								<TextBlock Text="Select Zone" Margin="4 0 0 0"/>
+								<TextBlock Text="{DynamicResource LoadoutConfigDetails.Zone.Button}" Margin="4 0 0 0"/>
 							</controls:AraButton.Children>
 						</controls:AraButton>
 						<Grid Grid.Row="2">
@@ -79,41 +79,45 @@
 							</Grid.ColumnDefinitions>
 
 							<StackPanel Grid.Column="0">
-								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=X}">X</Label>
+								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=X}" Content="{DynamicResource LoadoutConfigDetails.Zone.X}"/>
 								<controls:AraTextBox 
 									x:Name="X" 
 									Text="{Binding CoordinatesX, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
-									PlaceholderText="X" Style="{StaticResource AraTextBox}" 
+									PlaceholderText="{DynamicResource LoadoutConfigDetails.Zone.X.Placeholder}" 
+									Style="{StaticResource AraTextBox}" 
 									InputType="{x:Static enums:TextBoxInputType.Number}" 
 									IsError="{Binding LoadoutValidation.IsCoordinateXNotValid}"
 									MaxLength="10"/>
 							</StackPanel>
 							<StackPanel Grid.Column="2">
-								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=Y}">Y</Label>
+								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=Y}" Content="{DynamicResource LoadoutConfigDetails.Zone.Y}"/>
 								<controls:AraTextBox 
 									x:Name="Y" 
 									Text="{Binding CoordinatesY, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
-									PlaceholderText="Y" Style="{StaticResource AraTextBox}" 
+									PlaceholderText="{DynamicResource LoadoutConfigDetails.Zone.Y.Placeholder}" 
+									Style="{StaticResource AraTextBox}" 
 									InputType="{x:Static enums:TextBoxInputType.Number}"
 									IsError="{Binding LoadoutValidation.IsCoordinateYNotValid}"
 									MaxLength="10"/>
 							</StackPanel>
 							<StackPanel Grid.Column="4">
-								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneWidth}">Width</Label>
+								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneWidth}" Content="{DynamicResource LoadoutConfigDetails.Zone.Width}"/>
 								<controls:AraTextBox 
 									x:Name="ZoneWidth" 
 									Text="{Binding CoordinatesWidth, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
-									PlaceholderText="Zone Width" Style="{StaticResource AraTextBox}" 
+									PlaceholderText="{DynamicResource LoadoutConfigDetails.Zone.Width.Placeholder}" 
+									Style="{StaticResource AraTextBox}" 
 									InputType="{x:Static enums:TextBoxInputType.Number}" 
 									IsError="{Binding LoadoutValidation.IsCoordinateWidthNotValid}"
 									MaxLength="10"/>
 							</StackPanel>
 							<StackPanel Grid.Column="6">
-								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneHeight}">Height</Label>
+								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneHeight}" Content="{DynamicResource LoadoutConfigDetails.Zone.Height}"/>
 								<controls:AraTextBox 
 									x:Name="ZoneHeight" 
 									Text="{Binding CoordinatesHeight, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
-									PlaceholderText="Zone Height" Style="{StaticResource AraTextBox}" 
+									PlaceholderText="{DynamicResource LoadoutConfigDetails.Zone.Width.Placeholder}" 
+									Style="{StaticResource AraTextBox}" 
 									InputType="{x:Static enums:TextBoxInputType.Number}" 
 									IsError="{Binding LoadoutValidation.IsCoordinateHeightNotValid}"
 									MaxLength="10"/>
@@ -123,7 +127,7 @@
 				</GroupBox>
 
 				<!-- Items -->
-				<GroupBox Grid.Row="4" Header="Items" Style="{StaticResource AraGroupBox}">
+				<GroupBox Grid.Row="4" Header="{DynamicResource LoadoutConfigDetails.Items}" Style="{StaticResource AraGroupBox}">
 					<Grid>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto" />
@@ -144,7 +148,7 @@
 								StaysOpenOnEdit="True"
 								IsTextSearchEnabled="False"
 								Style="{StaticResource AraComboBox}"
-								PlaceholderText="Select Item"
+								PlaceholderText="{DynamicResource LoadoutConfigDetails.Items.Placeholder}"
 								TextSearch.TextPath="Name"
 								ItemsSource="{Binding ItemsList}"
 								SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
@@ -161,7 +165,7 @@
 							<controls:AraButton Grid.Column="2" Command="{Binding AddItemCommand}">
 								<controls:AraButton.Children>
 									<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/plus.png" />
-									<TextBlock Text="Add" Margin="4 0 0 0"/>
+									<TextBlock Text="{DynamicResource LoadoutConfigDetails.Items.Button}" Margin="4 0 0 0"/>
 								</controls:AraButton.Children>
 								<controls:AraButton.Style>
 									<Style TargetType="controls:AraButton" BasedOn="{StaticResource SecondaryButton}">
@@ -190,7 +194,7 @@
 								<DataGrid x:Name="LoadoutPreview" ItemsSource="{Binding SelectedItemsList}">
 									<DataGrid.Columns>
 										<!-- Icon -->
-										<DataGridTemplateColumn Header="Icon" Width="60">
+										<DataGridTemplateColumn Header="{DynamicResource LoadoutConfigDetails.Items.Grid.Icon}" Width="60">
 											<DataGridTemplateColumn.CellTemplate>
 												<DataTemplate>
 													<Image Source="{Binding Path}" Height="48" Stretch="Uniform" VerticalAlignment="Center"/>
@@ -198,7 +202,7 @@
 											</DataGridTemplateColumn.CellTemplate>
 										</DataGridTemplateColumn>
 										<!-- Name -->
-										<DataGridTemplateColumn Header="Name" Width="*">
+										<DataGridTemplateColumn Header="{DynamicResource LoadoutConfigDetails.Items.Grid.Name}" Width="*">
 											<DataGridTemplateColumn.CellTemplate>
 												<DataTemplate>
 													<TextBlock Text="{Binding Name}"/>
@@ -206,7 +210,7 @@
 											</DataGridTemplateColumn.CellTemplate>
 										</DataGridTemplateColumn>
 										<!-- Quantity -->
-										<DataGridTemplateColumn Header="Quantity" Width="Auto">
+										<DataGridTemplateColumn Header="{DynamicResource LoadoutConfigDetails.Items.Grid.Quantity}" Width="Auto">
 											<DataGridTemplateColumn.CellTemplate>
 												<DataTemplate>
 													<TextBlock Text="{Binding Quantity}"/>
@@ -214,7 +218,7 @@
 											</DataGridTemplateColumn.CellTemplate>
 										</DataGridTemplateColumn>
 										<!-- Actions -->
-										<DataGridTemplateColumn Header="Actions" Width="Auto">
+										<DataGridTemplateColumn Header="{DynamicResource LoadoutConfigDetails.Items.Grid.Actions}" Width="Auto">
 											<DataGridTemplateColumn.CellTemplate>
 												<DataTemplate>
 													<controls:AraButton 
@@ -243,7 +247,7 @@
 										</Style.Triggers>
 									</Style>
 								</StackPanel.Style>
-								<TextBlock Text="You don't have any Loadout Items yet.">
+								<TextBlock Text="{DynamicResource LoadoutConfigDetails.Items.Grid.EmptyTitle}">
 									<TextBlock.Style>
 										<Style TargetType="TextBlock" BasedOn="{StaticResource DataGridNoItemsMessage}">
 											<Style.Triggers>
@@ -254,7 +258,7 @@
 										</Style>
 									</TextBlock.Style>
 								</TextBlock>
-								<TextBlock Text="Use the combobox and button [ Add ] to add your first item.">
+								<TextBlock Text="{DynamicResource LoadoutConfigDetails.Items.Grid.EmptySubTitle}">
 									<TextBlock.Style>
 										<Style TargetType="TextBlock" BasedOn="{StaticResource DataGridNoItemsMessage}">
 											<Style.Triggers>
@@ -290,8 +294,8 @@
 						</Style.Triggers>
 					</Style>
 				</StackPanel.Style>
-				<TextBlock Style="{StaticResource ValidationErrorMessage}" Text="One or more validation errors."/>
-				<TextBlock Style="{StaticResource ValidationErrorMessage}" Text="Fill all required fields and/or add at least one item."/>
+				<TextBlock Style="{StaticResource ValidationErrorMessage}" Text="{DynamicResource LoadoutConfigDetails.Items.Grid.ValidationTitle}"/>
+				<TextBlock Style="{StaticResource ValidationErrorMessage}" Text="{DynamicResource LoadoutConfigDetails.Items.Grid.ValidationSubTitle}"/>
 			</StackPanel>
 
 			<controls:AraButton Grid.Column="1" Command="{Binding SaveLoadoutConfigurationCommand}">
@@ -305,7 +309,7 @@
 					</Style>
 				</controls:AraButton.Style>
 				<controls:AraButton.Children>
-					<TextBlock Text="Save" />
+					<TextBlock Text="{DynamicResource General.Save}" />
 				</controls:AraButton.Children>
 			</controls:AraButton>
 		</Grid>

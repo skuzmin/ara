@@ -17,11 +17,11 @@
 			<RowDefinition Height="40" />
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" Style="{StaticResource PageTitle}" Text="Settings"/>
+		<TextBlock Grid.Row="0" Style="{StaticResource PageTitle}" Text="{DynamicResource Settings.Title}"/>
 
 		<StackPanel Grid.Row="2" Orientation="Vertical">
 			<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
-				<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Theme:"/>
+				<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource Settings.Title}"/>
 				<controls:AraComboBox
 					x:Name="ThemesComboBox"
 					Style="{StaticResource AraComboBox}"
@@ -39,7 +39,7 @@
 			</StackPanel>
 
 			<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
-				<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Language:"/>
+				<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource Settings.Language}"/>
 				<controls:AraComboBox
 					x:Name="LanguagesComboBox"
 					Style="{StaticResource AraComboBox}"
@@ -59,7 +59,7 @@
 
 		<controls:AraButton Grid.Row="4" Command="{Binding OpenConfigFolderCommand}" Style="{StaticResource SecondarySmallButton}" HorizontalAlignment="Left">
 			<controls:AraButton.Children>
-				<TextBlock Text="Open configuration file location" />
+				<TextBlock Text="{DynamicResource Settings.Button}" />
 			</controls:AraButton.Children>
 		</controls:AraButton>
 
@@ -74,7 +74,7 @@
 				</Style>
 			</controls:AraButton.Style>
 			<controls:AraButton.Children>
-				<TextBlock Text="Save" />
+				<TextBlock Text="{DynamicResource General.Save}" />
 			</controls:AraButton.Children>
 		</controls:AraButton>
 	</Grid>

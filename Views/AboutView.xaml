@@ -12,7 +12,7 @@
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" Style="{StaticResource PageTitle}" Text="About"/>
+		<TextBlock Grid.Row="0" Style="{StaticResource PageTitle}" Text="{DynamicResource About.Title}"/>
 
 		<ScrollViewer Focusable="False" Grid.Row="2" VerticalScrollBarVisibility="Auto">
 			<Grid>
@@ -22,18 +22,18 @@
 					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
 
-				<GroupBox Grid.Row="0" Header="Info" Style="{StaticResource AraGroupBox}">
+				<GroupBox Grid.Row="0" Header="{DynamicResource About.Info}" Style="{StaticResource AraGroupBox}">
 					<StackPanel Orientation="Vertical">
 						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
-							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Name:"/>
+							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource About.Name}"/>
 							<TextBlock Style="{StaticResource AraTextBlock}" Text="Arc Raiders Assistant"/>
 						</StackPanel>
 						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
-							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Version:"/>
+							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource About.Version}"/>
 							<TextBlock Style="{StaticResource AraTextBlock}" Text="1.0.0"/>
 						</StackPanel>
 						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
-							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Repository:"/>
+							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource About.Repository}"/>
 							<TextBlock Style="{StaticResource AraTextBlock}">
 								<Hyperlink Style="{StaticResource AraHyperlink}" NavigateUri="https://github.com/skuzmin/ara" RequestNavigate="Hyperlink_RequestNavigate">
 									https://github.com/skuzmin/ara
@@ -41,14 +41,14 @@
 							</TextBlock>
 						</StackPanel>
 						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
-							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="Tech stack"/>
+							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource About.Stack}"/>
 							<TextBlock Style="{StaticResource AraTextBlock}" Text=".NET/WPF/C#"/>
 						</StackPanel>
 					</StackPanel>
 				</GroupBox>
 
-				<GroupBox Grid.Row="2" Header="FAQ" Style="{StaticResource AraGroupBox}">
-					<TextBlock Text="No questions have been asked yet."/>
+				<GroupBox Grid.Row="2" Header="{DynamicResource About.FAQ}" Style="{StaticResource AraGroupBox}">
+					<TextBlock Text="{DynamicResource About.FAQ.1}"/>
 				</GroupBox>
 			</Grid>
 		</ScrollViewer>

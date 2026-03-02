@@ -27,11 +27,11 @@
 					<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/chevron-left.png" />
 				</controls:AraButton.Children>
 			</controls:AraButton>
-			<TextBlock Grid.Column="2" Style="{StaticResource PageTitle}" Text="Loadout Configurations" />
+			<TextBlock Grid.Column="2" Style="{StaticResource PageTitle}" Text="{DynamicResource LoadoutConfig.Title}" />
 			<controls:AraButton Grid.Column="4" Style="{StaticResource PrimaryButton}" Command="{Binding NewConfigCommand}">
 				<controls:AraButton.Children>
 					<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/plus.png" />
-					<TextBlock Text="New" Margin="4 0 0 0"/>
+					<TextBlock Text="{DynamicResource LoadoutConfig.Button}" Margin="4 0 0 0"/>
 				</controls:AraButton.Children>
 			</controls:AraButton>
 		</Grid>
@@ -51,7 +51,7 @@
 				<DataGrid x:Name="LoadoutPreview" ItemsSource="{Binding LoadoutConfigurations}">
 					<DataGrid.Columns>
 						<!-- Name -->
-						<DataGridTemplateColumn Header="Name" Width="*">
+						<DataGridTemplateColumn Header="{DynamicResource LoadoutConfig.Grid.Name}" Width="*">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
 									<TextBlock Text="{Binding Name}"/>
@@ -59,7 +59,7 @@
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>
 						<!-- Quantity -->
-						<DataGridTemplateColumn Header="Items" Width="Auto">
+						<DataGridTemplateColumn Header="{DynamicResource LoadoutConfig.Grid.Items}" Width="Auto">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
 									<TextBlock Text="{Binding Items.Count}"/>
@@ -67,7 +67,7 @@
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>
 						<!-- Actions -->
-						<DataGridTemplateColumn Header="Actions" Width="Auto">
+						<DataGridTemplateColumn Header="{DynamicResource LoadoutConfig.Grid.Actions}" Width="Auto">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
 									<Grid>
@@ -113,8 +113,8 @@
 						</Style.Triggers>
 					</Style>
 				</StackPanel.Style>
-				<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="You don't have any Loadout Configurations yet."/>
-				<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="Use the button [ + New ] to create your first configuration."/>
+				<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="{DynamicResource LoadoutConfig.Grid.EmptyTitle}"/>
+				<TextBlock Style="{StaticResource DataGridNoItemsMessage}" Text="{DynamicResource LoadoutConfig.Grid.EmptySubTitle}"/>
 			</StackPanel>
 		</Grid>
 	</Grid>

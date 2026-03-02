@@ -159,7 +159,8 @@ namespace ARA.Controls.CustomControls
 			_textBlocks = [.. Children.OfType<TextBlock>()];
 			foreach (var tb in _textBlocks)
 			{
-				tb.Foreground = this.Foreground.Clone();
+				var currentBrush = IsSelected ? SelectedForeground : Foreground;
+				tb.Foreground = currentBrush.Clone();
 			}
 		}
 
@@ -218,7 +219,6 @@ namespace ARA.Controls.CustomControls
 				}
 			}
 		}
-
 		#endregion
 	}
 }

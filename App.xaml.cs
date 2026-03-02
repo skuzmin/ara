@@ -31,8 +31,20 @@ namespace ARA
 			TrayIconInit();
 			AppCursor = CursorHelper.CreateCursorFromPng("pack://application:,,,/Assets/Cursors/Cursor.png", 0, 0);
 
-			_serviceProvider.GetService<IAraThemes>()!.ActivateTheme();
+			var themes = _serviceProvider.GetService<IAraThemes>()!;
+			themes.ActivateTheme();
+			themes.ThemeChanged += ReloadMainWindow;
+
 			_serviceProvider.GetService<MainWindow>()!.Show();
+		}
+
+		private void ReloadMainWindow()
+		{
+			var oldWindow = Application.Current.MainWindow;
+			var newWindow = _serviceProvider!.GetRequiredService<MainWindow>()!;
+			Application.Current.MainWindow = newWindow;
+			newWindow.Show();
+			oldWindow?.Close();
 		}
 
 		private static void ConfigureServices(IServiceCollection services)
@@ -53,7 +65,7 @@ namespace ARA
 			services.AddTransient<SettingsViewModel>();
 			services.AddTransient<AboutViewModel>();
 			// Views
-			services.AddSingleton<MainWindow>();
+			services.AddTransient<MainWindow>();
 		}
 
 		private static void SingleInstanceChecker()

@@ -6,14 +6,15 @@
         xmlns:local="clr-namespace:ARA.Views"
         mc:Ignorable="d"
         Style="{StaticResource OverlayWindow}">
+
 	<Canvas x:Name="OverlayCanvas">
 		<Border x:Name="SelectionBorder" Style="{StaticResource SelectionZone}"/>
 		<Border x:Name="LabelAnchor">
 			<StackPanel x:Name="LabelPanel" 
                         Orientation="Horizontal"
                         HorizontalAlignment="Center">
-				<TextBlock Text="Enter to save" Style="{StaticResource OverlayLabelSave}"/>
-				<TextBlock Text="Esc to cancel" Style="{StaticResource OverlayLabelCancel}"/>
+				<TextBlock Text="{DynamicResource Overlay.Enter}" Style="{StaticResource OverlayLabelSave}"/>
+				<TextBlock Text="{DynamicResource Overlay.Esc}" Style="{StaticResource OverlayLabelCancel}"/>
 			</StackPanel>
 		</Border>
 	</Canvas>

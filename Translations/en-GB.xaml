@@ -1,0 +1,71 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<sys:String x:Key="__Title">AppTranslationsDictionary</sys:String>
+
+	<sys:String x:Key="General.Save">Save</sys:String>
+
+	<sys:String x:Key="Nav.Loadout">Loadout</sys:String>
+	<sys:String x:Key="Nav.Settings">Settings</sys:String>
+	<sys:String x:Key="Nav.About">About</sys:String>
+
+	<sys:String x:Key="Loadout.Title">Loadout Checker</sys:String>
+	<sys:String x:Key="Loadout.Placeholder">Select Loadout</sys:String>
+	<sys:String x:Key="Loadout.Button">Check</sys:String>
+	<sys:String x:Key="Loadout.Grid.Icon">Icon</sys:String>
+	<sys:String x:Key="Loadout.Grid.Name">Name</sys:String>
+	<sys:String x:Key="Loadout.Grid.Quantity">Quantity</sys:String>
+	<sys:String x:Key="Loadout.Grid.Status">Status</sys:String>
+	<sys:String x:Key="Loadout.Grid.EmptyTitle">You don't have any Loadouts yet.</sys:String>
+	<sys:String x:Key="Loadout.Grid.EmptySubTitle">Use the configuration button [ ⚙️ ] to create your first loadout.</sys:String>
+
+	<sys:String x:Key="Overlay.Enter">Enter to save</sys:String>
+	<sys:String x:Key="Overlay.Esc">Esc to cancel</sys:String>
+
+	<sys:String x:Key="Settings.Title">Settings</sys:String>
+	<sys:String x:Key="Settings.Theme">Theme:</sys:String>
+	<sys:String x:Key="Settings.Language">Language:</sys:String>
+	<sys:String x:Key="Settings.Button">Open configuration file location</sys:String>
+
+	<sys:String x:Key="About.Title">About</sys:String>
+	<sys:String x:Key="About.Info">Info</sys:String>
+	<sys:String x:Key="About.Name">Name:</sys:String>
+	<sys:String x:Key="About.Version">Version:</sys:String>
+	<sys:String x:Key="About.Repository">Repository:</sys:String>
+	<sys:String x:Key="About.Stack">Tech stack:</sys:String>
+	<sys:String x:Key="About.FAQ">FAQ</sys:String>
+	<sys:String x:Key="About.FAQ.1">No questions have been asked yet.</sys:String>
+
+	<sys:String x:Key="LoadoutConfig.Title">Loadout Configurations</sys:String>
+	<sys:String x:Key="LoadoutConfig.Button">New</sys:String>
+	<sys:String x:Key="LoadoutConfig.Grid.Name">Name</sys:String>
+	<sys:String x:Key="LoadoutConfig.Grid.Items">Items</sys:String>
+	<sys:String x:Key="LoadoutConfig.Grid.Actions">Actions</sys:String>
+	<sys:String x:Key="LoadoutConfig.Grid.EmptyTitle">You don't have any Loadout Configurations yet.</sys:String>
+	<sys:String x:Key="LoadoutConfig.Grid.EmptySubTitle">Use the button [ + New ] to create your first configuration.</sys:String>
+
+	<sys:String x:Key="LoadoutConfigDetails.Name">Name</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Name.Placeholder">Name</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone">Zone</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Button">Select Zone</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.X">X</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.X.Placeholder">X</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Y">Y</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Y.Placeholder">Y</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Width">Width</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Width.Placeholder">Zone Width</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Height">Height</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Height.Placeholder">Zone Height</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items">Items</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Placeholder">Select Item</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Button">Add</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.Icon">Icon</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.Name">Name</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.Quantity">Quantity</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.Actions">Actions</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.EmptyTitle">You don't have any Loadout Items yet.</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.EmptySubTitle">Use the combobox and button [ Add ] to add your first item.</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.ValidationTitle">One or more validation errors.</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.ValidationSubTitle">Fill all required fields and/or add at least one item.</sys:String>
+</ResourceDictionary>
