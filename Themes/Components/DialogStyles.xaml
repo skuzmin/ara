@@ -5,13 +5,13 @@
 		<Setter Property="SizeToContent" Value="WidthAndHeight" />
 		<Setter Property="MinimizeButtonDisplay" Value="Collapsed" />
 		<Setter Property="BorderThickness" Value="2" />
-		<Setter Property="TitleBarBackground" Value="{StaticResource TitleBar__ConfirmationBackgroundColor}" />
+		<Setter Property="TitleBarBackground" Value="{DynamicResource TitleBar__ConfirmationBackgroundColor}" />
 		<Setter Property="Height" Value="{StaticResource ConfirmationDialogHeight}" />
 		<Setter Property="Width" Value="{StaticResource ConfirmationDialogWidth}" />
 	</Style>
 
 	<Style x:Key="Dialog__MainContainer" TargetType="Border">
-		<Setter Property="Background" Value="{StaticResource Dialog__Background}" />
+		<Setter Property="Background" Value="{DynamicResource Dialog__Background}" />
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 
@@ -24,7 +24,7 @@
 	</Style>
 
 	<Style x:Key="Dialog__Message" TargetType="TextBlock">
-		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}" />
 		<Setter Property="FontSize" Value="16" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
 		<Setter Property="FontWeight" Value="Medium" />

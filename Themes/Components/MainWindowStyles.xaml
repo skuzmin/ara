@@ -2,11 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:ARA.Controls.CustomControls">
 	<Style x:Key="MainWindowNavigation" TargetType="Border">
-		<Setter Property="Background">
-			<Setter.Value>
-				<SolidColorBrush Color="{Binding Source={StaticResource MainWindow__NavigationBackgroundColor}, Path=Color}" Opacity="0.9"/>
-			</Setter.Value>
-		</Setter>
+		<Setter Property="Background" Value="{DynamicResource MainWindow__NavigationBackgroundColor}"/>
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 
@@ -20,18 +16,14 @@
 
 	<Style x:Key="SelectedMenuPill" TargetType="Border">
 		<Setter Property="Height" Value="40" />
-		<Setter Property="BorderBrush" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource TextColorPrimary}" />
 		<Setter Property="HorizontalAlignment" Value="Left" />
 		<Setter Property="BorderThickness" Value="2" />
 		<Setter Property="CornerRadius" Value="{StaticResource Radius-5}" />
 	</Style>
 
 	<Style x:Key="MainWindowContaier" TargetType="Border">
-		<Setter Property="Background">
-			<Setter.Value>
-				<SolidColorBrush Color="{Binding Source={StaticResource MainWindow__ContainerBackgroundColor}, Path=Color}" Opacity="0.9"/>
-			</Setter.Value>
-		</Setter>
+		<Setter Property="Background" Value="{DynamicResource MainWindow__ContainerBackgroundColor}"/>
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 
@@ -50,10 +42,10 @@
 		<Setter Property="BorderThickness" Value="2" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="Foreground" Value="{StaticResource MainWindow__NavigationButtonForeground}" />
+		<Setter Property="Foreground" Value="{DynamicResource MainWindow__NavigationButtonForeground}" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
-		<Setter Property="SelectedForeground" Value="{StaticResource TextColorPrimary}" />
-		<Setter Property="HoverForeground" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="SelectedForeground" Value="{DynamicResource TextColorPrimary}" />
+		<Setter Property="HoverForeground" Value="{DynamicResource TextColorPrimary}" />
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 

@@ -3,7 +3,7 @@
 					xmlns:controls="clr-namespace:ARA.Controls.CustomControls">
 
 	<Style x:Key="OverlayWindow" TargetType="Window">
-		<Setter Property="Background" Value="{StaticResource OverlayWindow__Background}" />
+		<Setter Property="Background" Value="{DynamicResource OverlayWindow__Background}" />
 		<Setter Property="WindowStyle" Value="None" />
 		<Setter Property="AllowsTransparency" Value="True" />
 		<Setter Property="Topmost" Value="True" />
@@ -11,9 +11,9 @@
 	</Style>
 
 	<Style x:Key="SelectionZone" TargetType="Border">
-		<Setter Property="BorderBrush" Value="{StaticResource OverlayWindow__ZoneBorderBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource OverlayWindow__ZoneBorderBrush}" />
 		<Setter Property="BorderThickness" Value="2" />
-		<Setter Property="Background" Value="{StaticResource OverlayWindow__ZoneBackground}" />
+		<Setter Property="Background" Value="{DynamicResource OverlayWindow__ZoneBackground}" />
 	</Style>
 
 	<Style x:Key="OverlayLabel" TargetType="TextBlock">
@@ -32,10 +32,10 @@
 	</Style>
 
 	<Style x:Key="OverlayLabelSave" BasedOn="{StaticResource OverlayLabel}" TargetType="TextBlock">
-		<Setter Property="Foreground" Value="{StaticResource OverlayWindow__LabelSave}" />
+		<Setter Property="Foreground" Value="{DynamicResource OverlayWindow__LabelSave}" />
 	</Style>
 
 	<Style x:Key="OverlayLabelCancel" BasedOn="{StaticResource OverlayLabel}" TargetType="TextBlock">
-		<Setter Property="Foreground" Value="{StaticResource OverlayWindow__LabelCancel}" />
+		<Setter Property="Foreground" Value="{DynamicResource OverlayWindow__LabelCancel}" />
 	</Style>
 </ResourceDictionary>

@@ -20,9 +20,8 @@
 	<SolidColorBrush x:Key="TitleBar__ConfirmationBackgroundColor" Color="{StaticResource Black}"/>
 
 	<!-- MainWindow -->
-	<SolidColorBrush x:Key="MainWindow__NavigationBackgroundColor" Color="{StaticResource Black}"/>
-	<SolidColorBrush x:Key="MainWindow__ContainerBackgroundColor" Color="{StaticResource SpaceBlack}"/>
-	<SolidColorBrush x:Key="MainWindow__NavigationSelectedButtonBorderColor" Color="{StaticResource White}"/>
+	<SolidColorBrush x:Key="MainWindow__NavigationBackgroundColor" Opacity="0.9" Color="{StaticResource Black}"/>
+	<SolidColorBrush x:Key="MainWindow__ContainerBackgroundColor" Opacity="0.9" Color="{StaticResource SpaceBlack}"/>
 	<SolidColorBrush x:Key="MainWindow__NavigationButtonForeground" Color="{StaticResource DarkGray}"/>
 
 	<!-- ComboBox -->

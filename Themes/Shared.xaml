@@ -1,8 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					xmlns:controls="clr-namespace:ARA.Controls.CustomControls"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
 	<Style x:Key="PageTitle" TargetType="TextBlock">
-		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}" />
 		<Setter Property="FontSize" Value="24" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
 		<Setter Property="VerticalAlignment" Value="Center" />
@@ -12,7 +13,7 @@
 		<Setter Property="Height" Value="32" />
 		<Setter Property="Width" Value="32" />
 		<Setter Property="CornerRadius" Value="{StaticResource Radius-2}" />
-		<Setter Property="HoverBackground" Value="{StaticResource PageTitleButton__HoverBackgroundColor}" />
+		<Setter Property="HoverBackground" Value="{DynamicResource PageTitleButton__HoverBackgroundColor}" />
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 
@@ -31,10 +32,10 @@
 	</Style>
 
 	<Style x:Key="PrimaryButton" TargetType="controls:AraButton">
-		<Setter Property="Foreground" Value="{StaticResource TextColorSecondary}" />
-		<Setter Property="HoverForeground" Value="{StaticResource TextColorSecondary}" />
-		<Setter Property="Background" Value="{StaticResource PrimaryButton__BackgroundColor}" />
-		<Setter Property="HoverBackground" Value="{StaticResource PrimaryButton__HoverBackgroundColor}" />
+		<Setter Property="Foreground" Value="{DynamicResource TextColorSecondary}" />
+		<Setter Property="HoverForeground" Value="{DynamicResource TextColorSecondary}" />
+		<Setter Property="Background" Value="{DynamicResource PrimaryButton__BackgroundColor}" />
+		<Setter Property="HoverBackground" Value="{DynamicResource PrimaryButton__HoverBackgroundColor}" />
 		<Setter Property="CornerRadius" Value="{StaticResource Radius-1}" />
 		<Setter Property="FontFamily" Value="{DynamicResource Font-Primary}" />
 		<Setter Property="FontSize" Value="24" />
@@ -55,8 +56,8 @@
 	</Style>
 
 	<Style x:Key="SecondaryButton" TargetType="controls:AraButton" BasedOn="{StaticResource PrimaryButton}">
-		<Setter Property="Background" Value="{StaticResource SecondaryButton__BackgroundColor}" />
-		<Setter Property="HoverBackground" Value="{StaticResource SecondaryButton__HoverBackgroundColor}" />
+		<Setter Property="Background" Value="{DynamicResource SecondaryButton__BackgroundColor}" />
+		<Setter Property="HoverBackground" Value="{DynamicResource SecondaryButton__HoverBackgroundColor}" />
 	</Style>
 
 	<Style x:Key="SecondarySmallButton" TargetType="controls:AraButton" BasedOn="{StaticResource SecondaryButton}">
@@ -65,11 +66,11 @@
 
 	<Style x:Key="AraComboBox" TargetType="controls:AraComboBox">
 		<Setter Property="MinWidth" Value="200" />
-		<Setter Property="ToggleButtonBackground" Value="{StaticResource ToggleButtonBackground}" />
+		<Setter Property="ToggleButtonBackground" Value="{DynamicResource ToggleButtonBackground}" />
 		<Setter Property="ToggleButtonBorderThickness" Value="2" />
 		<Setter Property="ToggleButtonCornerRadius" Value="{StaticResource Radius-1}" />
-		<Setter Property="ToggleButtonBorderBrush" Value="{StaticResource ToggleButtonBorderBrush}" />
-		<Setter Property="ToggleButtonArrowBrush" Value="{StaticResource ToggleButtonArrowBrush}" />
+		<Setter Property="ToggleButtonBorderBrush" Value="{DynamicResource ToggleButtonBorderBrush}" />
+		<Setter Property="ToggleButtonArrowBrush" Value="{DynamicResource ToggleButtonArrowBrush}" />
 		<Setter Property="ToggleButtonArrowHeight" Value="16" />
 		<Setter Property="ToggleButtonArrowWidth" Value="16" />
 		<Setter Property="ToggleButtonArrowMargin" >
@@ -81,13 +82,13 @@
 				Bottom="{StaticResource Spacing-1}"/>
 			</Setter.Value>
 		</Setter>
-		<Setter Property="ToggleButtonHoverBackground" Value="{StaticResource ToggleButtonHoverBackground}" />
-		<Setter Property="ToggleButtonHoverBorderBrush" Value="{StaticResource ToggleButtonHoverBorderBrush}" />
-		<Setter Property="ToggleButtonHoverArrowBrush" Value="{StaticResource ToggleButtonHoverArrowBrush}" />
-		<Setter Property="ToggleButtonOpenBorderBrush" Value="{StaticResource ToggleButtonOpenBorderBrush}" />
-		<Setter Property="ToggleButtonOpenArrowBrush" Value="{StaticResource ToggleButtonOpenArrowBrush}" />
-		<Setter Property="ToggleButtonOpenBackground" Value="{StaticResource ToggleButtonOpenBackground}" />
-		<Setter Property="SelectedTextForeground" Value="{StaticResource SelectedTextForeground}" />
+		<Setter Property="ToggleButtonHoverBackground" Value="{DynamicResource ToggleButtonHoverBackground}" />
+		<Setter Property="ToggleButtonHoverBorderBrush" Value="{DynamicResource ToggleButtonHoverBorderBrush}" />
+		<Setter Property="ToggleButtonHoverArrowBrush" Value="{DynamicResource ToggleButtonHoverArrowBrush}" />
+		<Setter Property="ToggleButtonOpenBorderBrush" Value="{DynamicResource ToggleButtonOpenBorderBrush}" />
+		<Setter Property="ToggleButtonOpenArrowBrush" Value="{DynamicResource ToggleButtonOpenArrowBrush}" />
+		<Setter Property="ToggleButtonOpenBackground" Value="{DynamicResource ToggleButtonOpenBackground}" />
+		<Setter Property="SelectedTextForeground" Value="{DynamicResource SelectedTextForeground}" />
 		<Setter Property="SelectedTextFontSize" Value="20" />
 		<Setter Property="SelectedTextFontFamily" Value="{StaticResource Font-Secondary}" />
 		<Setter Property="SelectedTextFontWeight" Value="Medium" />
@@ -102,11 +103,11 @@
 		</Setter>
 		<Setter Property="ItemsListCornerRadius" Value="{StaticResource Radius-1}" />
 		<Setter Property="ItemsListMaxHeight" Value="124" />
-		<Setter Property="ItemsListBorderBrush" Value="{StaticResource ItemsListBorderBrush}" />
+		<Setter Property="ItemsListBorderBrush" Value="{DynamicResource ItemsListBorderBrush}" />
 		<Setter Property="ItemsListBorderThickness" Value="2" />
 		<Setter Property="ListItemHeight" Value="40" />
-		<Setter Property="ListItemForeground" Value="{StaticResource ListItemForeground}" />
-		<Setter Property="ListItemBackground" Value="{StaticResource ListItemBackground}" />
+		<Setter Property="ListItemForeground" Value="{DynamicResource ListItemForeground}" />
+		<Setter Property="ListItemBackground" Value="{DynamicResource ListItemBackground}" />
 		<Setter Property="ListItemMargin">
 			<Setter.Value>
 				<Thickness 
@@ -119,9 +120,9 @@
 		<Setter Property="ListItemFontSize" Value="20" />
 		<Setter Property="ListItemFontWeight" Value="Medium" />
 		<Setter Property="ListItemFontFamily" Value="{StaticResource Font-Secondary}" />
-		<Setter Property="ListItemHoverBackground" Value="{StaticResource ListItemHoverBackground}" />
-		<Setter Property="ListItemSelectedBackground" Value="{StaticResource ListItemSelectedBackground}" />
-		<Setter Property="PlaceholderForeground" Value="{StaticResource PlaceholderTextForeground}" />
+		<Setter Property="ListItemHoverBackground" Value="{DynamicResource ListItemHoverBackground}" />
+		<Setter Property="ListItemSelectedBackground" Value="{DynamicResource ListItemSelectedBackground}" />
+		<Setter Property="PlaceholderForeground" Value="{DynamicResource PlaceholderTextForeground}" />
 		<Setter Property="TextBoxMargin">
 			<Setter.Value>
 				<Thickness 
@@ -138,15 +139,15 @@
 		<Setter Property="FontSize" Value="20" />
 		<Setter Property="BorderThickness" Value="2" />
 		<Setter Property="BorderBrush" Value="Transparent" />
-		<Setter Property="HoverBorderBrush" Value="{StaticResource TextBox__HoverBorderBrush}" />
+		<Setter Property="HoverBorderBrush" Value="{DynamicResource TextBox__HoverBorderBrush}" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
 		<Setter Property="FontWeight" Value="Medium" />
-		<Setter Property="Foreground" Value="{StaticResource TextColorSecondary}" />
-		<Setter Property="Background" Value="{StaticResource TextBox__Background}" />
+		<Setter Property="Foreground" Value="{DynamicResource TextColorSecondary}" />
+		<Setter Property="Background" Value="{DynamicResource TextBox__Background}" />
 		<Setter Property="CornerRadius" Value="{StaticResource Radius-1}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="PlaceholderForeground" Value="{StaticResource PlaceholderTextForeground}" />
-		<Setter Property="ErrorBorderBrush" Value="{StaticResource TextBox__ErrorBorderBrsuh}" />
+		<Setter Property="PlaceholderForeground" Value="{DynamicResource PlaceholderTextForeground}" />
+		<Setter Property="ErrorBorderBrush" Value="{DynamicResource TextBox__ErrorBorderBrsuh}" />
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 
@@ -161,7 +162,7 @@
 	<Style x:Key="AraLabel" TargetType="Label">
 		<Setter Property="FontSize" Value="18" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
-		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}" />
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 
@@ -176,7 +177,7 @@
 	<Style x:Key="AraGroupBox" TargetType="GroupBox">
 		<Setter Property="FontSize" Value="18" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
-		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}" />
 		<Setter Property="Padding">
 			<Setter.Value>
 				<Thickness 
@@ -204,7 +205,7 @@
 		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
 		<Setter Property="FontSize" Value="18" />
 		<Setter Property="FontWeight" Value="Normal" />
-		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}" />
 	</Style>
 
 	<Style x:Key="AraStackRowLabel" TargetType="TextBlock" BasedOn="{StaticResource AraTextBlock}">
@@ -213,10 +214,10 @@
 	</Style>
 
 	<Style x:Key="AraHyperlink" TargetType="Hyperlink">
-		<Setter Property="Foreground" Value="{StaticResource Hyperlink__Foreground}" />
+		<Setter Property="Foreground" Value="{DynamicResource Hyperlink__Foreground}" />
 		<Style.Triggers>
 			<Trigger Property="IsMouseOver" Value="True">
-				<Setter Property="Foreground" Value="{StaticResource Hyperlink__HoverForeground}" />
+				<Setter Property="Foreground" Value="{DynamicResource Hyperlink__HoverForeground}" />
 			</Trigger>
 		</Style.Triggers>
 	</Style>

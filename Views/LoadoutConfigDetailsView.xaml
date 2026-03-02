@@ -248,7 +248,7 @@
 										<Style TargetType="TextBlock" BasedOn="{StaticResource DataGridNoItemsMessage}">
 											<Style.Triggers>
 												<DataTrigger Binding="{Binding LoadoutValidation.IsItemsListNotValid}" Value="True">
-													<Setter Property="Foreground" Value="{StaticResource TextColorError}"/>
+													<Setter Property="Foreground" Value="{DynamicResource TextColorError}"/>
 												</DataTrigger>
 											</Style.Triggers>
 										</Style>
@@ -259,7 +259,7 @@
 										<Style TargetType="TextBlock" BasedOn="{StaticResource DataGridNoItemsMessage}">
 											<Style.Triggers>
 												<DataTrigger Binding="{Binding LoadoutValidation.IsItemsListNotValid}" Value="True">
-													<Setter Property="Foreground" Value="{StaticResource TextColorError}"/>
+													<Setter Property="Foreground" Value="{DynamicResource TextColorError}"/>
 												</DataTrigger>
 											</Style.Triggers>
 										</Style>

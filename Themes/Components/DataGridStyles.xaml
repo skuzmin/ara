@@ -4,7 +4,7 @@
 	<Style x:Key="DataGridBorderWrapper" TargetType="Border">
 		<Setter Property="CornerRadius" Value="{StaticResource Radius-2}" />
 		<Setter Property="ClipToBounds" Value="True" />
-		<Setter Property="BorderBrush" Value="{StaticResource DataGrid__WrapperBorderBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource DataGrid__WrapperBorderBrush}" />
 		<Setter Property="BorderThickness" Value="2" />
 		<Setter Property="Background">
 			<Setter.Value>
@@ -37,8 +37,8 @@
 		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
 		<Setter Property="FontSize" Value="20" />
 		<Setter Property="FontWeight" Value="Medium" />
-		<Setter Property="Background" Value="{StaticResource DataGrid__GridColumnHeaderBackground}" />
-		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="Background" Value="{DynamicResource DataGrid__GridColumnHeaderBackground}" />
+		<Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}" />
 		<Setter Property="Padding" >
 			<Setter.Value>
 				<Thickness 
@@ -78,7 +78,7 @@
 		<Setter Property="FontWeight" Value="Medium" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="FontFamily" Value="{StaticResource Font-Secondary}" />
-		<Setter Property="Foreground" Value="{StaticResource TextColorPrimary}" />
+		<Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}" />
 	</Style>
 
 	<Style TargetType="{x:Type DataGridCell}">
@@ -114,7 +114,7 @@
 		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
 		<Setter Property="FontSize" Value="20" />
 		<Setter Property="TextAlignment" Value="Center" />
-		<Setter Property="Foreground" Value="{StaticResource  TextColorPrimary}" />
+		<Setter Property="Foreground" Value="{DynamicResource  TextColorPrimary}" />
 		<Setter Property="Margin">
 			<Setter.Value>
 				<Thickness 
@@ -130,7 +130,7 @@
 		<Setter Property="FontFamily" Value="{StaticResource Font-Primary}" />
 		<Setter Property="FontSize" Value="16" />
 		<Setter Property="TextAlignment" Value="Center" />
-		<Setter Property="Foreground" Value="{StaticResource TextBox__ErrorBorderBrsuh}" />
+		<Setter Property="Foreground" Value="{DynamicResource TextBox__ErrorBorderBrsuh}" />
 	</Style>
 
 </ResourceDictionary>
