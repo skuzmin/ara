@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using ARA.Helpers;
 using ARA.Interfaces;
 using ARA.Models;
 
@@ -30,16 +31,7 @@ namespace ARA.Services
 		public void ActivateTheme()
 		{
 			var uri = new Uri($"Themes/{_theme.Name}.xaml", UriKind.Relative);
-			var mergedDictionaries = Application.Current.Resources.MergedDictionaries;
-			var dictionary = mergedDictionaries.FirstOrDefault(d =>
-				d.Contains("__Title") && d["__Title"] as string == "AppThemeDictionary");
-
-			if (dictionary != null)
-			{
-				mergedDictionaries.Remove(dictionary);
-			}
-
-			mergedDictionaries.Add(new ResourceDictionary { Source = uri });
+			DictionaryHelper.UpdateMergedDictionary(uri, "AppThemeDictionary");
 			ThemeChanged?.Invoke();
 		}
 
@@ -47,8 +39,8 @@ namespace ARA.Services
 		{
 			_theme = theme;
 			_configurations.Theme = theme.Id;
-			ActivateTheme();
 			_configurationService.UpdateSettings(_configurations);
+			ActivateTheme();
 		}
 	}
 }

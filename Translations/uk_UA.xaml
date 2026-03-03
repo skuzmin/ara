@@ -1,0 +1,72 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<sys:String x:Key="__Title">AppTranslationsDictionary</sys:String>
+
+	<sys:String x:Key="General.Save">Зберегти</sys:String>
+	<sys:String x:Key="General.Exit">Вихід</sys:String>
+
+	<sys:String x:Key="Nav.Loadout">Спорядження</sys:String>
+	<sys:String x:Key="Nav.Settings">Налаштування</sys:String>
+	<sys:String x:Key="Nav.About">Про програму</sys:String>
+
+	<sys:String x:Key="Loadout.Title">Перевірка спорядження</sys:String>
+	<sys:String x:Key="Loadout.Placeholder">Оберіть спорядження</sys:String>
+	<sys:String x:Key="Loadout.Button">Перевірити</sys:String>
+	<sys:String x:Key="Loadout.Grid.Icon">Іконка</sys:String>
+	<sys:String x:Key="Loadout.Grid.Name">Назва</sys:String>
+	<sys:String x:Key="Loadout.Grid.Quantity">Кількість</sys:String>
+	<sys:String x:Key="Loadout.Grid.Status">Статус</sys:String>
+	<sys:String x:Key="Loadout.Grid.EmptyTitle">У вас ще немає жодного спорядження.</sys:String>
+	<sys:String x:Key="Loadout.Grid.EmptySubTitle">Використайте кнопку налаштувань [ ⚙️ ], щоб створити набір спорядження.</sys:String>
+
+	<sys:String x:Key="Overlay.Enter">Enter для збереження</sys:String>
+	<sys:String x:Key="Overlay.Esc">Esc для скасування</sys:String>
+
+	<sys:String x:Key="Settings.Title">Налаштування</sys:String>
+	<sys:String x:Key="Settings.Theme">Тема:</sys:String>
+	<sys:String x:Key="Settings.Language">Мова:</sys:String>
+	<sys:String x:Key="Settings.Button">Відкрити розташування файлу конфігурації</sys:String>
+
+	<sys:String x:Key="About.Title">Про програму</sys:String>
+	<sys:String x:Key="About.Info">Інформація</sys:String>
+	<sys:String x:Key="About.Name">Назва:</sys:String>
+	<sys:String x:Key="About.Version">Версія:</sys:String>
+	<sys:String x:Key="About.Repository">Репозиторій:</sys:String>
+	<sys:String x:Key="About.Stack">Технічний стек:</sys:String>
+	<sys:String x:Key="About.FAQ">Часті запитання</sys:String>
+	<sys:String x:Key="About.FAQ.1">Запитань ще не надходило.</sys:String>
+
+	<sys:String x:Key="LoadoutConfig.Title">Конфігурації спорядження</sys:String>
+	<sys:String x:Key="LoadoutConfig.Button">Нова</sys:String>
+	<sys:String x:Key="LoadoutConfig.Grid.Name">Назва</sys:String>
+	<sys:String x:Key="LoadoutConfig.Grid.Items">Предмети</sys:String>
+	<sys:String x:Key="LoadoutConfig.Grid.Actions">Дії</sys:String>
+	<sys:String x:Key="LoadoutConfig.Grid.EmptyTitle">У вас ще немає жодної набору спорядження.</sys:String>
+	<sys:String x:Key="LoadoutConfig.Grid.EmptySubTitle">Використайте кнопку [ + Нова ], щоб створити першу конфігурацію.</sys:String>
+
+	<sys:String x:Key="LoadoutConfigDetails.Name">Назва</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Name.Placeholder">Назва</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone">Зона</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Button">Обрати зону</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.X">X</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.X.Placeholder">X</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Y">Y</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Y.Placeholder">Y</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Width">Ширина</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Width.Placeholder">Ширина зони</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Height">Висота</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Zone.Height.Placeholder">Висота зони</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items">Предмети</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Placeholder">Оберіть предмет</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Button">Додати</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.Icon">Іконка</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.Name">Назва</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.Quantity">Кількість</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.Actions">Дії</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.EmptyTitle">У вас ще немає жодного предмета спорядження.</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.EmptySubTitle">Використайте випадаючий список і кнопку [ Додати ], щоб додати перший предмет.</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.ValidationTitle">Одна або декілька помилок валідації.</sys:String>
+	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.ValidationSubTitle">Заповніть усі обов'язкові поля та/або додайте щонайменше один предмет.</sys:String>
+</ResourceDictionary>

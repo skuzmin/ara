@@ -35,6 +35,8 @@ namespace ARA
 			themes.ActivateTheme();
 			themes.ThemeChanged += ReloadMainWindow;
 
+			_serviceProvider.GetService<IAraTranslation>()!.SetLocale();
+
 			_serviceProvider.GetService<MainWindow>()!.Show();
 		}
 

@@ -5,6 +5,7 @@
 	<sys:String x:Key="__Title">AppTranslationsDictionary</sys:String>
 
 	<sys:String x:Key="General.Save">Save</sys:String>
+	<sys:String x:Key="General.Exit">Exit</sys:String>
 
 	<sys:String x:Key="Nav.Loadout">Loadout</sys:String>
 	<sys:String x:Key="Nav.Settings">Settings</sys:String>

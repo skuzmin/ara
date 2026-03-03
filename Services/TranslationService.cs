@@ -1,4 +1,6 @@
-﻿using ARA.Interfaces;
+﻿using System.Windows;
+using ARA.Helpers;
+using ARA.Interfaces;
 using ARA.Models;
 
 namespace ARA.Services
@@ -30,11 +32,18 @@ namespace ARA.Services
 			throw new NotImplementedException();
 		}
 
+		public void SetLocale()
+		{
+			var uri = new Uri($"Translations/{_locale.Id}.xaml", UriKind.Relative);
+			DictionaryHelper.UpdateMergedDictionary(uri, "AppTranslationsDictionary");
+		}
+
 		public void UpdateLocale(SettingsItem locale)
 		{
 			_locale = locale;
 			_configurations.Locale = locale.Id;
 			_configurationService.UpdateSettings(_configurations);
+			SetLocale();
 		}
 	}
 }

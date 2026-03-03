@@ -15,11 +15,11 @@
 
 		<tb:TaskbarIcon.ContextMenu>
 			<ContextMenu>
-				<MenuItem Header="Loadout" Command="{Binding NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.Loadout}"/>
-				<MenuItem Header="Settings" Command="{Binding NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.Settings}"/>
-				<MenuItem Header="About" Command="{Binding NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.About}"/>
+				<MenuItem Header="{DynamicResource Nav.Loadout}" Command="{Binding NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.Loadout}"/>
+				<MenuItem Header="{DynamicResource Nav.Settings}" Command="{Binding NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.Settings}"/>
+				<MenuItem Header="{DynamicResource Nav.About}" Command="{Binding NavigateToPageCommand}" CommandParameter="{x:Static enums:AraPage.About}"/>
 				<Separator />
-				<MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
+				<MenuItem Header="{DynamicResource General.Exit}" Command="{Binding ExitCommand}"/>
 			</ContextMenu>
 		</tb:TaskbarIcon.ContextMenu>
 

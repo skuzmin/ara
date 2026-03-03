@@ -8,5 +8,7 @@ namespace ARA.Interfaces
 		public void UpdateLocale(SettingsItem theme);
 		public List<SettingsItem> GetLocales();
 		public string Translate(string key);
+
+		public void SetLocale();
 	}
 }
