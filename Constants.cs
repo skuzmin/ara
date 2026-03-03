@@ -11,13 +11,13 @@ namespace ARA
 		public static string LogFilePath => Path.Combine(_appDataPath, "ARA", "ara.log");
 		public static readonly List<SettingsItem> Locales =
 		[
-			new() {Id = "en_GB", Name = "English", Path = String.Concat(IconPath, "Flags/Flag-GB.png")},
-			new() {Id = "uk_UA", Name = "Ukranian", Path = String.Concat(IconPath, "Flags/Flag-UA.png")}
+			new() {Id = "en_GB", TranslationKey = "Translation.English", Name = "", Path = String.Concat(IconPath, "Flags/Flag-GB.png")},
+			new() {Id = "uk_UA", TranslationKey = "Translation.Ukranian", Name = "", Path = String.Concat(IconPath, "Flags/Flag-UA.png")}
 		];
 		public static readonly List<SettingsItem> Themes =
 		[
-			new() {Id = "dark", Name = "Dark", Path = String.Concat(IconPath, "Mode/Mode-Dark.png")},
-			new() {Id = "light", Name = "Light", Path = String.Concat(IconPath, "Mode/Mode-Light.png")}
+			new() {Id = "Dark", TranslationKey = "Theme.Dark", Name = "", Path = String.Concat(IconPath, "Mode/Mode-Dark.png")},
+			new() {Id = "Light", TranslationKey = "Theme.Light", Name = "", Path = String.Concat(IconPath, "Mode/Mode-Light.png")}
 		];
 	}
 }

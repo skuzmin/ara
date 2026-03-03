@@ -10,7 +10,6 @@ namespace ARA.ViewModels.Pages
 	public class LoadoutViewModel : ViewModelBase
 	{
 		private readonly ILogger _logger;
-		private readonly IAraConfigurations _config;
 		public IAraNavigation Navigation { get; }
 		public ICommand CheckLoadout { get; }
 		public ObservableCollection<LoadoutConfiguration> LoadoutOptions { get; }
@@ -32,7 +31,6 @@ namespace ARA.ViewModels.Pages
 		public LoadoutViewModel(IAraConfigurations config, ILogger logger, IAraNavigation navigation)
 		{
 			_logger = logger;
-			_config = config;
 			Navigation = navigation;
 			SelectedLoadout = null;
 			CheckLoadout = new RelayCommand(OnCheckLoadoutClicked);

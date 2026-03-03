@@ -4,6 +4,7 @@ namespace ARA.Interfaces
 {
     public interface IAraTranslation
     {
+		public event Action? TranslationChanged;
 		public SettingsItem GetLocale();
 		public void UpdateLocale(SettingsItem theme);
 		public List<SettingsItem> GetLocales();

@@ -10,6 +10,8 @@ namespace ARA.Services
 		private readonly IAraConfigurations _configurationService;
 		private readonly SettingsConfiguration _configurations;
 		private SettingsItem _locale;
+		public event Action? TranslationChanged;
+
 		public TranslationService(IAraConfigurations configurationService)
 		{
 			_configurationService = configurationService;
@@ -29,13 +31,14 @@ namespace ARA.Services
 
 		public string Translate(string key)
 		{
-			throw new NotImplementedException();
+			return Application.Current.TryFindResource(key) as string ?? key;
 		}
 
 		public void SetLocale()
 		{
 			var uri = new Uri($"Translations/{_locale.Id}.xaml", UriKind.Relative);
 			DictionaryHelper.UpdateMergedDictionary(uri, "AppTranslationsDictionary");
+			TranslationChanged?.Invoke();
 		}
 
 		public void UpdateLocale(SettingsItem locale)

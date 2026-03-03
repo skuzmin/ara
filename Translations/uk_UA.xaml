@@ -6,6 +6,16 @@
 
 	<sys:String x:Key="General.Save">Зберегти</sys:String>
 	<sys:String x:Key="General.Exit">Вихід</sys:String>
+	<sys:String x:Key="General.Unsaved.Title">Незбережені зміни</sys:String>
+	<sys:String x:Key="General.Unsaved.Message">Всі незбережені зміни буде втрачено.</sys:String>
+	<sys:String x:Key="General.Unsaved.SubMessage">Ви впевнені, що хочете скасувати зміни?</sys:String>
+	<sys:String x:Key="General.Unsaved.ConfirmButton">Скасувати</sys:String>
+	<sys:String x:Key="General.Unsaved.CancelButton">Відмінити</sys:String>
+	<sys:String x:Key="General.Confirmation.Title">Видалити конфігурацію</sys:String>
+	<sys:String x:Key="General.Confirmation.Message">Ви впевнені, що хочете видалити конфігурацію?</sys:String>
+	<sys:String x:Key="General.Confirmation.ConfirmButton">Видалити</sys:String>
+	<sys:String x:Key="General.Confirmation.CancelButton">Відмінити</sys:String>
+
 
 	<sys:String x:Key="Nav.Loadout">Спорядження</sys:String>
 	<sys:String x:Key="Nav.Settings">Налаштування</sys:String>
@@ -28,6 +38,11 @@
 	<sys:String x:Key="Settings.Theme">Тема:</sys:String>
 	<sys:String x:Key="Settings.Language">Мова:</sys:String>
 	<sys:String x:Key="Settings.Button">Відкрити розташування файлу конфігурації</sys:String>
+
+	<sys:String x:Key="Translation.English">Англійська</sys:String>
+	<sys:String x:Key="Translation.Ukranian">Українська</sys:String>
+	<sys:String x:Key="Theme.Dark">Темна</sys:String>
+	<sys:String x:Key="Theme.Light">Світла</sys:String>
 
 	<sys:String x:Key="About.Title">Про програму</sys:String>
 	<sys:String x:Key="About.Info">Інформація</sys:String>

@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using ARA.Helpers;
+﻿using ARA.Helpers;
 using ARA.Interfaces;
 using ARA.Models;
 
@@ -30,7 +29,7 @@ namespace ARA.Services
 
 		public void ActivateTheme()
 		{
-			var uri = new Uri($"Themes/{_theme.Name}.xaml", UriKind.Relative);
+			var uri = new Uri($"Themes/{_theme.Id}.xaml", UriKind.Relative);
 			DictionaryHelper.UpdateMergedDictionary(uri, "AppThemeDictionary");
 			ThemeChanged?.Invoke();
 		}

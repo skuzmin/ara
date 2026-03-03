@@ -11,6 +11,7 @@ namespace ARA.ViewModels.Pages
 {
 	public class LoadoutConfigDetailsViewModel : ViewModelBase
 	{
+		private readonly IAraTranslation _translations;
 		private readonly IMainWindow _windowService;
 		private readonly ILogger _logger;
 		private readonly IAraNavigation _navigation;
@@ -101,9 +102,15 @@ namespace ARA.ViewModels.Pages
 			}
 		}
 		public bool IsValid => LoadoutValidation.IsValid;
-		public LoadoutConfigDetailsViewModel(IAraNavigation navigation, IAraConfigurations configurations, ILogger logger, IMainWindow windowService)
+		public LoadoutConfigDetailsViewModel(
+			IAraNavigation navigation, 
+			IAraConfigurations configurations, 
+			ILogger logger, 
+			IMainWindow windowService,
+			IAraTranslation translation)
 		{
 			// Services(DI)
+			_translations = translation;
 			_logger = logger;
 			_navigation = navigation;
 			_configurations = configurations;
@@ -183,11 +190,11 @@ namespace ARA.ViewModels.Pages
 
 			var dialogConfig = new ConfirmationDialogConfig
 			{
-				Title = "Unsaved changes",
-				Message = $"All unsaved changes will be lost.",
-				SubMessage = "Are you sure you want to discard changes?",
-				ConfirmButtonText = "Discard",
-				CancelButtonText = "Cancel"
+				Title = _translations.Translate("General.Unsaved.Title"),
+				Message = _translations.Translate("General.Unsaved.Message"),
+				SubMessage = _translations.Translate("General.Unsaved.SubMessage"),
+				ConfirmButtonText = _translations.Translate("General.Unsaved.ConfirmButton"),
+				CancelButtonText = _translations.Translate("General.Unsaved.CancelButton")
 			};
 
 			var result = new ConfirmationDialog(dialogConfig).ShowDialog();

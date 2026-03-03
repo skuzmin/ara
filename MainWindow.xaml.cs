@@ -4,6 +4,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using ARA.Controls.CustomControls;
 using ARA.Enums;
+using ARA.Interfaces;
 using ARA.ViewModels.Shell;
 using Microsoft.Extensions.Logging;
 
@@ -14,12 +15,13 @@ namespace ARA
 		public required AraButton ActiveButton;
 		private readonly MainViewModel _vm;
 
-		public MainWindow(MainViewModel vm, ILogger logger)
+		public MainWindow(MainViewModel vm, ILogger logger, IAraTranslation translation)
 		{
 			_vm = vm;
 			InitializeComponent();
 			DataContext = vm;
-			Loaded += InitPillPosition;
+			Loaded += (s, e) => InitPillPosition();
+			translation.TranslationChanged += ReloadPill;
 			Cursor = App.AppCursor;
 			logger.LogInformation("App Start");
 		}
@@ -68,16 +70,34 @@ namespace ARA
 			SelectionPill.BeginAnimation(FrameworkElement.WidthProperty, widthAnimation);
 		}
 
-		private void InitPillPosition(object sender, RoutedEventArgs e)
+		private void ReloadPill()
+		{
+			Application.Current.Dispatcher.InvokeAsync(() =>
+			{
+				var selectedButton = NavbarGrid.Children.OfType<AraButton>().FirstOrDefault(b => b.IsSelected);
+				if (selectedButton == null)
+				{
+					return;
+				}
+
+				InitPillPosition();
+				selectedButton.UpdateLayout();
+
+			}, System.Windows.Threading.DispatcherPriority.Render);
+		}
+
+		private void InitPillPosition()
 		{
 			var selectedButton = NavbarGrid.Children.OfType<AraButton>().FirstOrDefault(b => b.IsSelected);
-			if (selectedButton != null)
+			if (selectedButton == null)
 			{
-				Point position = selectedButton.TransformToAncestor(NavbarGrid).Transform(new Point(0, 0));
-				SelectionPill.Width = selectedButton.ActualWidth;
-				SelectionPill.RenderTransform = new TranslateTransform(position.X, 0);
-				ActiveButton = selectedButton;
+				return;
 			}
+
+			Point position = selectedButton.TransformToAncestor(NavbarGrid).Transform(new Point(0, 0));
+			SelectionPill.Width = selectedButton.ActualWidth;
+			SelectionPill.RenderTransform = new TranslateTransform(position.X, 0);
+			ActiveButton = selectedButton;
 		}
 	}
 }

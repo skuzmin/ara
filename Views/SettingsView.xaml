@@ -21,7 +21,7 @@
 
 		<StackPanel Grid.Row="2" Orientation="Vertical">
 			<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
-				<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource Settings.Title}"/>
+				<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource Settings.Theme}"/>
 				<controls:AraComboBox
 					x:Name="ThemesComboBox"
 					Style="{StaticResource AraComboBox}"

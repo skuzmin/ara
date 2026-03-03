@@ -11,6 +11,7 @@ namespace ARA.ViewModels.Pages
 {
 	public class LoadoutConfigsViewModel : ViewModelBase
 	{
+		private readonly IAraTranslation _translations;
 		private readonly IAraConfigurations _configurations;
 		private readonly IAraNavigation _navigation;
 		public ObservableCollection<LoadoutConfiguration> LoadoutConfigurations { get; set; }
@@ -19,8 +20,9 @@ namespace ARA.ViewModels.Pages
 		public ICommand EditConfigCommand { get; }
 		public ICommand DeleteConfigCommand { get; }
 
-		public LoadoutConfigsViewModel(IAraNavigation navigation, IAraConfigurations configurations)
+		public LoadoutConfigsViewModel(IAraNavigation navigation, IAraConfigurations configurations, IAraTranslation translation)
 		{
+			_translations = translation;
 			_configurations = configurations;
 			_navigation = navigation;
 			LoadoutConfigurations = new ObservableCollection<LoadoutConfiguration>(_configurations.Configurations.LoadoutConfigurations);
@@ -46,11 +48,11 @@ namespace ARA.ViewModels.Pages
 		{
 			var dialogConfig = new ConfirmationDialogConfig
 			{
-				Title = "Delete Configuration",
-				Message = $"Are you sure you want to delete configuration ?",
+				Title = _translations.Translate("General.Confirmation.Title"),
+				Message = _translations.Translate("General.Confirmation.Message"),
 				SubMessage = $"[{data.Name}]",
-				ConfirmButtonText = "Delete",
-				CancelButtonText = "Cancel"
+				ConfirmButtonText = _translations.Translate("General.Confirmation.ConfirmButton"),
+				CancelButtonText = _translations.Translate("General.Confirmation.CancelButton")
 			};
 			var result = new ConfirmationDialog(dialogConfig).ShowDialog();
 

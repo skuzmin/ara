@@ -6,6 +6,15 @@
 
 	<sys:String x:Key="General.Save">Save</sys:String>
 	<sys:String x:Key="General.Exit">Exit</sys:String>
+	<sys:String x:Key="General.Unsaved.Title">Unsaved changes</sys:String>
+	<sys:String x:Key="General.Unsaved.Message">All unsaved changes will be lost.</sys:String>
+	<sys:String x:Key="General.Unsaved.SubMessage">Are you sure you want to discard changes?</sys:String>
+	<sys:String x:Key="General.Unsaved.ConfirmButton">Discard</sys:String>
+	<sys:String x:Key="General.Unsaved.CancelButton">Cancel</sys:String>
+	<sys:String x:Key="General.Confirmation.Title">Delete Configuration</sys:String>
+	<sys:String x:Key="General.Confirmation.Message">Are you sure you want to delete configuration?</sys:String>
+	<sys:String x:Key="General.Confirmation.ConfirmButton">Delete</sys:String>
+	<sys:String x:Key="General.Confirmation.CancelButton">Cancel</sys:String>
 
 	<sys:String x:Key="Nav.Loadout">Loadout</sys:String>
 	<sys:String x:Key="Nav.Settings">Settings</sys:String>
@@ -28,6 +37,11 @@
 	<sys:String x:Key="Settings.Theme">Theme:</sys:String>
 	<sys:String x:Key="Settings.Language">Language:</sys:String>
 	<sys:String x:Key="Settings.Button">Open configuration file location</sys:String>
+
+	<sys:String x:Key="Translation.English">English</sys:String>
+	<sys:String x:Key="Translation.Ukranian">Ukranian</sys:String>
+	<sys:String x:Key="Theme.Dark">Dark</sys:String>
+	<sys:String x:Key="Theme.Light">Light</sys:String>
 
 	<sys:String x:Key="About.Title">About</sys:String>
 	<sys:String x:Key="About.Info">Info</sys:String>
