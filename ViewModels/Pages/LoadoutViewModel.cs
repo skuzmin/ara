@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using ARA.Enums;
+using ARA.Helpers;
 using ARA.Interfaces;
 using ARA.Models;
 using Microsoft.Extensions.Logging;
@@ -36,18 +38,36 @@ namespace ARA.ViewModels.Pages
 			CheckLoadout = new RelayCommand(OnCheckLoadoutClicked);
 			LoadoutOptions = new ObservableCollection<LoadoutConfiguration>(config.Configurations.LoadoutConfigurations);
 		}
-		private void OnCheckLoadoutClicked(object obj)
+		private async void OnCheckLoadoutClicked(object obj)
 		{
 			if (SelectedLoadout == null)
 			{
 				return;
 			}
+			var window = Application.Current.MainWindow;
+			var iconPath = SelectedLoadout.Items.Select(item => item.Path).ToArray();
+
+			//window.WindowState = WindowState.Minimized;
+			//Dictionary<string, bool> results = await Task.Run(() => LoadoutCheckerHelper.CheckIcons(
+			//	(int)SelectedLoadout.Coordinates.X,
+			//	(int)SelectedLoadout.Coordinates.Y,
+			//	(int)SelectedLoadout.Coordinates.Width,
+			//	(int)SelectedLoadout.Coordinates.Height,
+			//	iconPath));
+			//window.WindowState = WindowState.Normal;
+
+			Dictionary<string, bool> results = LoadoutCheckerHelper.CheckIcons(
+				(int)SelectedLoadout.Coordinates.X,
+				(int)SelectedLoadout.Coordinates.Y,
+				(int)SelectedLoadout.Coordinates.Width,
+				(int)SelectedLoadout.Coordinates.Height,
+				iconPath);
 
 			var newItems = SelectedLoadout.Items.Select(item => new GameItem
 			{
 				Icon = item.Icon,
 				Quantity = item.Quantity,
-				Status = (GameItemStatus)new Random().Next(1, 3)
+				Status = results[item.Path] ? GameItemStatus.Success : GameItemStatus.Fail
 			})
 			.OrderByDescending(item => item.Status)
 			.ToList();
