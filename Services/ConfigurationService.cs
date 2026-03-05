@@ -52,11 +52,31 @@ namespace ARA.Services
 				SaveConfig();
 				_logger.LogError("Error during ConfigurationService Init: {Message}", ex.Message);
 			}
-
+			ValidateSettingsConfig();
 		}
 		#endregion
 
 		#region SettingsConfig
+		private void ValidateSettingsConfig()
+		{
+			if (!Constants.Themes.Any(i => i.Id == _configurations.SettingsConfiguration.Theme))
+			{
+				_configurations.SettingsConfiguration.Theme = Constants.Themes[0].Id;
+			}
+			if (!Constants.Locales.Any(i => i.Id == _configurations.SettingsConfiguration.Locale))
+			{
+				_configurations.SettingsConfiguration.Locale = Constants.Locales[0].Id;
+			}
+			if (!Constants.DebugLevels.Any(i => i.Id == _configurations.SettingsConfiguration.DebugLevel))
+			{
+				_configurations.SettingsConfiguration.DebugLevel = Constants.DebugLevels[0].Id;
+			}
+			if (!Constants.CaptureModes.Any(i => i.Id == _configurations.SettingsConfiguration.CaptureMode))
+			{
+				_configurations.SettingsConfiguration.CaptureMode = Constants.CaptureModes[0].Id;
+			}
+		}
+
 		public SettingsConfiguration GetSettingsConfiguration()
 		{
 			return _configurations.SettingsConfiguration;
@@ -66,6 +86,21 @@ namespace ARA.Services
 		{
 			_configurations.SettingsConfiguration = settings;
 			SaveConfig();
+		}
+
+		public SettingsItem GetDebugLevel()
+		{
+			return Constants.DebugLevels.FirstOrDefault(l => l.Id == _configurations.SettingsConfiguration.DebugLevel)!;
+		}
+
+		public SettingsItem GetCaptureMode()
+		{
+			return Constants.CaptureModes.FirstOrDefault(m => m.Id == _configurations.SettingsConfiguration.CaptureMode)!;
+		}
+
+		public bool IsCaptureModeIgnoreARA()
+		{
+			return _configurations.SettingsConfiguration.CaptureMode == "Ignore";
 		}
 		#endregion
 

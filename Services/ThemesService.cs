@@ -7,17 +7,15 @@ namespace ARA.Services
 	public class ThemesService : IAraThemes
 	{
 		private readonly SettingsConfiguration _configurations;
-		private SettingsItem _theme;
 		public event Action? ThemeChanged;
 		public ThemesService(IAraConfigurations configurationService)
 		{
 			_configurations = configurationService.GetSettingsConfiguration();
-			_theme = Constants.Themes.FirstOrDefault(l => l.Id == _configurations.Theme) ?? Constants.Themes[0];
 		}
 
 		public SettingsItem GetTheme()
 		{
-			return _theme;
+			return Constants.Themes.FirstOrDefault(t => t.Id == _configurations.Theme)!;
 		}
 
 		public List<SettingsItem> GetThemes()
@@ -27,15 +25,14 @@ namespace ARA.Services
 
 		public void ActivateTheme()
 		{
-			var uri = new Uri($"Themes/{_theme.Id}.xaml", UriKind.Relative);
+			var uri = new Uri($"Themes/{_configurations.Theme}.xaml", UriKind.Relative);
 			DictionaryHelper.UpdateMergedDictionary(uri, "AppThemeDictionary");
 			ThemeChanged?.Invoke();
 		}
 
-		public void UpdateTheme(SettingsItem theme)
+		public void UpdateTheme(string theme)
 		{
-			_theme = theme;
-			_configurations.Theme = theme.Id;
+			_configurations.Theme = theme;
 			ActivateTheme();
 		}
 	}

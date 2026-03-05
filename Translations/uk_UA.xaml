@@ -6,7 +6,7 @@
 
 	<sys:String x:Key="General.Save">Зберегти</sys:String>
 	<sys:String x:Key="General.Exit">Вихід</sys:String>
-	<sys:String x:Key="General.Default">За замовчуванням</sys:String>
+	<sys:String x:Key="General.Default">Стандартний</sys:String>
 	<sys:String x:Key="General.Unsaved.Title">Незбережені зміни</sys:String>
 	<sys:String x:Key="General.Unsaved.Message">Всі незбережені зміни буде втрачено.</sys:String>
 	<sys:String x:Key="General.Unsaved.SubMessage">Ви впевнені, що хочете скасувати зміни?</sys:String>

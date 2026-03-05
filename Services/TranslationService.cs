@@ -8,18 +8,16 @@ namespace ARA.Services
 	public class TranslationService : IAraTranslation
 	{
 		private readonly SettingsConfiguration _configurations;
-		private SettingsItem _locale;
 		public event Action? TranslationChanged;
 
 		public TranslationService(IAraConfigurations configurationService)
 		{
 			_configurations = configurationService.GetSettingsConfiguration();
-			_locale = Constants.Locales.FirstOrDefault(l => l.Id == _configurations.Locale) ?? Constants.Locales[0];
 		}
 
 		public SettingsItem GetLocale()
 		{
-			return _locale;
+			return Constants.Locales.FirstOrDefault(l => l.Id == _configurations.Locale)!;
 		}
 
 		public List<SettingsItem> GetLocales()
@@ -34,15 +32,14 @@ namespace ARA.Services
 
 		public void SetLocale()
 		{
-			var uri = new Uri($"Translations/{_locale.Id}.xaml", UriKind.Relative);
+			var uri = new Uri($"Translations/{_configurations.Locale}.xaml", UriKind.Relative);
 			DictionaryHelper.UpdateMergedDictionary(uri, "AppTranslationsDictionary");
 			TranslationChanged?.Invoke();
 		}
 
-		public void UpdateLocale(SettingsItem locale)
+		public void UpdateLocale(string locale)
 		{
-			_locale = locale;
-			_configurations.Locale = locale.Id;
+			_configurations.Locale = locale;
 			SetLocale();
 		}
 	}

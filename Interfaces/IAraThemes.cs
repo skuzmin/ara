@@ -6,7 +6,7 @@ namespace ARA.Interfaces
 	{
 		public event Action? ThemeChanged;
 		public SettingsItem GetTheme();
-		public void UpdateTheme(SettingsItem theme);
+		public void UpdateTheme(string theme);
 		public List<SettingsItem> GetThemes();
 		public void ActivateTheme();
 	}

@@ -25,6 +25,8 @@ namespace ARA.ViewModels.Pages
 		}
 		public List<SettingsItem> Themes { get; set; }
 		public List<SettingsItem> Locales { get; set; }
+		public List<SettingsItem> DebugLevels { get; set; }
+		public List<SettingsItem> CaptureModes { get; set; }
 		public double? CoordinatesX
 		{
 			get => field;
@@ -85,6 +87,26 @@ namespace ARA.ViewModels.Pages
 				OnPropertyChanged(nameof(SelectedTheme));
 			}
 		}
+		public SettingsItem? SelectedDebugLevel
+		{
+			get => field;
+			set
+			{
+				field = value;
+				IsEdited = true;
+				OnPropertyChanged(nameof(SelectedDebugLevel));
+			}
+		}
+		public SettingsItem? SelectedCaptureMode
+		{
+			get => field;
+			set
+			{
+				field = value;
+				IsEdited = true;
+				OnPropertyChanged(nameof(SelectedCaptureMode));
+			}
+		}
 		public ICommand SelectRegionCommand { get; }
 		public ICommand OpenConfigFolderCommand { get; }
 		public ICommand SaveSettingsCommand { get; }
@@ -99,6 +121,8 @@ namespace ARA.ViewModels.Pages
 			SelectRegionCommand = new RelayCommand(_ => SelectRegion());
 			Themes = _themes.GetThemes();
 			Locales = _translations.GetLocales();
+			DebugLevels = Constants.DebugLevels;
+			CaptureModes = Constants.CaptureModes;
 			_translations.TranslationChanged += UpdateTranslations;
 			InitCoordinates();
 			UpdateTranslations();
@@ -118,10 +142,16 @@ namespace ARA.ViewModels.Pages
 		{
 			Themes.ForEach(t => t.Name = _translations.Translate(t.TranslationKey));
 			Locales.ForEach(l => l.Name = _translations.Translate(l.TranslationKey));
+			DebugLevels.ForEach(l => l.Name = _translations.Translate(l.TranslationKey));
+			CaptureModes.ForEach(m => m.Name = _translations.Translate(m.TranslationKey));
 			SelectedTheme = null;
 			SelectedTheme = _themes.GetTheme();
 			SelectedLocale = null;
 			SelectedLocale = _translations.GetLocale();
+			SelectedDebugLevel = null;
+			SelectedDebugLevel = _configurations.GetDebugLevel();
+			SelectedCaptureMode = null;
+			SelectedCaptureMode = _configurations.GetCaptureMode();
 			OnPropertyChanged(nameof(Themes));
 			OnPropertyChanged(nameof(Locales));
 			IsEdited = false;
@@ -147,8 +177,11 @@ namespace ARA.ViewModels.Pages
 		{
 			var settings = _configurations.GetSettingsConfiguration();
 			settings.Coordinates = new ScreenCoordinates(CoordinatesX, CoordinatesY, CoordinatesHeight, CoordinatesWidth);
-			_themes.UpdateTheme(SelectedTheme!);
-			_translations.UpdateLocale(SelectedLocale!);
+			settings.DebugLevel = SelectedDebugLevel!.Id;
+			settings.CaptureMode = SelectedCaptureMode!.Id;
+			_themes.UpdateTheme(SelectedTheme!.Id);
+			_translations.UpdateLocale(SelectedLocale!.Id);
+
 			_configurations.UpdateSettings(settings);
 			if (settings.Coordinates.IsDefaultZone())
 			{

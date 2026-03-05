@@ -19,5 +19,15 @@ namespace ARA
 			new() {Id = "Dark", TranslationKey = "Theme.Dark", Name = "", Path = String.Concat(IconPath, "Mode/Mode-Dark.png")},
 			new() {Id = "Light", TranslationKey = "Theme.Light", Name = "", Path = String.Concat(IconPath, "Mode/Mode-Light.png")}
 		];
+		public static readonly List<SettingsItem> DebugLevels =
+		[
+			new() {Id = "Default", TranslationKey = "General.Default", Name = "", Path = ""},
+			new() {Id = "Detailed", TranslationKey = "Debug.Detailed", Name = "", Path = ""}
+		];
+		public static readonly List<SettingsItem> CaptureModes =
+		[
+			new() {Id = "Default", TranslationKey = "General.Default", Name = "", Path = ""},
+			new() {Id = "Ignore", TranslationKey = "CaptureMode.Ignore", Name = "", Path = ""}
+		];
 	}
 }

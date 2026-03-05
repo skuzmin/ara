@@ -44,6 +44,9 @@ namespace ARA
 		{
 			var oldWindow = Application.Current.MainWindow;
 			var newWindow = _serviceProvider!.GetRequiredService<MainWindow>()!;
+			newWindow.Left = oldWindow.Left;
+			newWindow.Top = oldWindow.Top;
+
 			Application.Current.MainWindow = newWindow;
 			newWindow.Show();
 			oldWindow?.Close();

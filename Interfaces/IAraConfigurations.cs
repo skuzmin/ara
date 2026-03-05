@@ -13,6 +13,9 @@ namespace ARA.Interfaces
 		public void UpdateLoadoutConfig(LoadoutConfiguration loadout);
 		public void RemoveLoadoutConfigById(Guid Id);
 		public SettingsConfiguration GetSettingsConfiguration();
+		public SettingsItem GetDebugLevel();
+		public SettingsItem GetCaptureMode();
+		public bool IsCaptureModeIgnoreARA();
 		public void UpdateSettings(SettingsConfiguration settings);
 	}
 }
