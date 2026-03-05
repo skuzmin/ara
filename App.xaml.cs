@@ -69,7 +69,7 @@ namespace ARA
 			services.AddSingleton<GlobalHotKeyService>();
 			// ViewModels
 			services.AddSingleton<MainViewModel>();
-			services.AddSingleton<TrayIconModel>();
+			services.AddSingleton<TrayIconViewModel>();
 			services.AddTransient<LoadoutViewModel>();
 			services.AddTransient<LoadoutConfigsViewModel>();
 			services.AddTransient<LoadoutConfigDetailsViewModel>();
@@ -99,8 +99,9 @@ namespace ARA
 			if (Resources["TrayIcon"] is TaskbarIcon trayIcon)
 			{
 				var navigationService = _serviceProvider.GetService<IAraNavigation>();
+				var mainWindowService = _serviceProvider.GetService<IMainWindow>();
 				trayIcon.Visibility = Visibility.Visible;
-				trayIcon.DataContext = new TrayIconModel(navigationService!);
+				trayIcon.DataContext = new TrayIconViewModel(navigationService!, mainWindowService!);
 			}
 		}
 

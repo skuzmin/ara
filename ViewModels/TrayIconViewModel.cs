@@ -5,37 +5,31 @@ using ARA.Interfaces;
 
 namespace ARA.ViewModels
 {
-	public class TrayIconModel
+	public class TrayIconViewModel
 	{
+		private readonly IMainWindow _mainWindow;
 		public ICommand ShowWindowCommand { get; }
 		public ICommand NavigateToPageCommand { get; }
 		public ICommand ExitCommand { get; }
-		public TrayIconModel(IAraNavigation navigation)
+		public TrayIconViewModel(IAraNavigation navigation, IMainWindow window)
 		{
-			ShowWindowCommand = new RelayCommand(_ => ShowWindow());
+			_mainWindow = window;
+			ShowWindowCommand = new RelayCommand(_ => _mainWindow.ShowMainWindow());
 			ExitCommand = new RelayCommand(_ => Application.Current.Shutdown());
 			NavigateToPageCommand = new RelayCommand(
 				page => NavigateToPage((AraPage)page),
 				canExecute: page => navigation.CanNavigateToPage((AraPage)page));
 		}
 
-		private static void NavigateToPage(AraPage page)
+		private void NavigateToPage(AraPage page)
 		{
 			var _window = (MainWindow)Application.Current.MainWindow;
 			if (_window.Visibility != Visibility.Visible ||
 				_window.WindowState == WindowState.Minimized)
 			{
-				ShowWindow();
+				_mainWindow.ShowMainWindow();
 			}
-
 			_window.NavigateFromTray(page);
-		}
-
-		private static void ShowWindow()
-		{
-			Application.Current.MainWindow.Show();
-			Application.Current.MainWindow.WindowState = WindowState.Normal;
-			Application.Current.MainWindow.Activate();
 		}
 	}
 }
