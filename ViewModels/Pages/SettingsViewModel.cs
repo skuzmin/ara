@@ -4,6 +4,7 @@ using System.Windows.Input;
 using ARA.Dialogs;
 using ARA.Interfaces;
 using ARA.Models;
+using ARA.Views;
 
 namespace ARA.ViewModels.Pages
 {
@@ -11,6 +12,8 @@ namespace ARA.ViewModels.Pages
 	{
 		private readonly IAraThemes _themes;
 		private readonly IAraTranslation _translations;
+		private readonly IMainWindow _windowService;
+		private readonly IAraConfigurations _configurations;
 		public bool IsEdited
 		{
 			get => field;
@@ -22,12 +25,52 @@ namespace ARA.ViewModels.Pages
 		}
 		public List<SettingsItem> Themes { get; set; }
 		public List<SettingsItem> Locales { get; set; }
-		public SettingsItem? SelectedLocale
+		public double? CoordinatesX
 		{
 			get => field;
 			set
 			{
 				field = value;
+				IsEdited = true;
+				OnPropertyChanged(nameof(CoordinatesX));
+			}
+		}
+		public double? CoordinatesY
+		{
+			get => field;
+			set
+			{
+				field = value;
+				IsEdited = true;
+				OnPropertyChanged(nameof(CoordinatesY));
+			}
+		}
+		public double? CoordinatesHeight
+		{
+			get => field;
+			set
+			{
+				field = value;
+				IsEdited = true;
+				OnPropertyChanged(nameof(CoordinatesHeight));
+			}
+		}
+		public double? CoordinatesWidth
+		{
+			get => field;
+			set
+			{
+				field = value;
+				IsEdited = true;
+				OnPropertyChanged(nameof(CoordinatesWidth));
+			}
+		}
+		public SettingsItem? SelectedLocale
+		{
+			get => field;
+			set
+			{
+				field = value ;
 				IsEdited = true;
 				OnPropertyChanged(nameof(SelectedLocale));
 			}
@@ -42,18 +85,32 @@ namespace ARA.ViewModels.Pages
 				OnPropertyChanged(nameof(SelectedTheme));
 			}
 		}
+		public ICommand SelectRegionCommand { get; }
 		public ICommand OpenConfigFolderCommand { get; }
 		public ICommand SaveSettingsCommand { get; }
-		public SettingsViewModel(IAraThemes themes, IAraTranslation translations)
+		public SettingsViewModel(IAraThemes themes, IAraTranslation translations, IAraConfigurations configurations, IMainWindow windowService)
 		{
 			_themes = themes;
 			_translations = translations;
+			_windowService = windowService;
+			_configurations = configurations;
 			OpenConfigFolderCommand = new RelayCommand(_ => Process.Start("explorer.exe", Path.GetDirectoryName(Constants.ConfigFilePath)!));
 			SaveSettingsCommand = new RelayCommand(_ => SaveSettings());
+			SelectRegionCommand = new RelayCommand(_ => SelectRegion());
 			Themes = _themes.GetThemes();
 			Locales = _translations.GetLocales();
 			_translations.TranslationChanged += UpdateTranslations;
+			InitCoordinates();
 			UpdateTranslations();
+		}
+
+		private void InitCoordinates()
+		{
+			var settings = _configurations.GetSettingsConfiguration();
+			CoordinatesX = settings.Coordinates.X;
+			CoordinatesY = settings.Coordinates.Y;
+			CoordinatesHeight = settings.Coordinates.Height;
+			CoordinatesWidth = settings.Coordinates.Width;
 		}
 
 		private void UpdateTranslations()
@@ -69,10 +126,29 @@ namespace ARA.ViewModels.Pages
 			IsEdited = false;
 		}
 
+		private void SelectRegion()
+		{
+			_windowService.HideMainWindow();
+			var coordinates = new ScreenCoordinates(CoordinatesX, CoordinatesY, CoordinatesHeight, CoordinatesWidth);
+			var overlay = new OverlayWindow(coordinates);
+			overlay.OnSave += coordinates =>
+			{
+				CoordinatesX = coordinates.X;
+				CoordinatesY = coordinates.Y;
+				CoordinatesHeight = coordinates.Height;
+				CoordinatesWidth = coordinates.Width;
+			};
+			overlay.Closed += (s, args) => _windowService.ShowMainWindow();
+			overlay.Show();
+		}
+
 		private void SaveSettings()
 		{
+			var settings = _configurations.GetSettingsConfiguration();
+			settings.Coordinates = new ScreenCoordinates(CoordinatesX, CoordinatesY, CoordinatesHeight, CoordinatesWidth);
 			_themes.UpdateTheme(SelectedTheme!);
 			_translations.UpdateLocale(SelectedLocale!);
+			_configurations.UpdateSettings(settings);
 		}
 
 		public override bool CanNavigateAway()

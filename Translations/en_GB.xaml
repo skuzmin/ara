@@ -36,6 +36,16 @@
 	<sys:String x:Key="Settings.Title">Settings</sys:String>
 	<sys:String x:Key="Settings.Theme">Theme:</sys:String>
 	<sys:String x:Key="Settings.Language">Language:</sys:String>
+	<sys:String x:Key="Settings.Zone">Zone</sys:String>
+	<sys:String x:Key="Settings.Zone.Button">Select Zone</sys:String>
+	<sys:String x:Key="Settings.Zone.X">X</sys:String>
+	<sys:String x:Key="Settings.Zone.X.Placeholder">X</sys:String>
+	<sys:String x:Key="Settings.Zone.Y">Y</sys:String>
+	<sys:String x:Key="Settings.Zone.Y.Placeholder">Y</sys:String>
+	<sys:String x:Key="Settings.Zone.Width">Width</sys:String>
+	<sys:String x:Key="Settings.Zone.Width.Placeholder">Zone Width</sys:String>
+	<sys:String x:Key="Settings.Zone.Height">Height</sys:String>
+	<sys:String x:Key="Settings.Zone.Height.Placeholder">Zone Height</sys:String>
 	<sys:String x:Key="Settings.Button">Open configuration file location</sys:String>
 
 	<sys:String x:Key="Translation.English">English</sys:String>
@@ -62,16 +72,6 @@
 
 	<sys:String x:Key="LoadoutConfigDetails.Name">Name</sys:String>
 	<sys:String x:Key="LoadoutConfigDetails.Name.Placeholder">Name</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Zone">Zone</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Zone.Button">Select Zone</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Zone.X">X</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Zone.X.Placeholder">X</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Zone.Y">Y</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Zone.Y.Placeholder">Y</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Zone.Width">Width</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Zone.Width.Placeholder">Zone Width</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Zone.Height">Height</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Zone.Height.Placeholder">Zone Height</sys:String>
 	<sys:String x:Key="LoadoutConfigDetails.Items">Items</sys:String>
 	<sys:String x:Key="LoadoutConfigDetails.Items.Placeholder">Select Item</sys:String>
 	<sys:String x:Key="LoadoutConfigDetails.Items.Button">Add</sys:String>

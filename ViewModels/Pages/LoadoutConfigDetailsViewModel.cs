@@ -4,7 +4,6 @@ using ARA.Dialogs;
 using ARA.Enums;
 using ARA.Interfaces;
 using ARA.Models;
-using ARA.Views;
 using Microsoft.Extensions.Logging;
 
 namespace ARA.ViewModels.Pages
@@ -12,7 +11,6 @@ namespace ARA.ViewModels.Pages
 	public class LoadoutConfigDetailsViewModel : ViewModelBase
 	{
 		private readonly IAraTranslation _translations;
-		private readonly IMainWindow _windowService;
 		private readonly ILogger _logger;
 		private readonly IAraNavigation _navigation;
 		private readonly IAraConfigurations _configurations;
@@ -21,7 +19,6 @@ namespace ARA.ViewModels.Pages
 		public ICommand AddItemCommand { get; }
 		public ICommand RemoveItemCommand { get; }
 		public ICommand SaveLoadoutConfigurationCommand { get; }
-		public ICommand SelectRegionCommand { get; }
 		public ObservableCollection<GameItem> ItemsList { get; set; }
 		public ObservableCollection<GameItem> SelectedItemsList { get; }
 		public LoadoutConfiguration LoadoutConfiguration { get; }
@@ -45,51 +42,7 @@ namespace ARA.ViewModels.Pages
 				field = value;
 				IsEdited = true;
 				OnPropertyChanged(nameof(Name));
-				TextBoxValidate(LoadoutValidationField.Name);
-			}
-		}
-		public double? CoordinatesX
-		{
-			get => field;
-			set
-			{
-				field = value;
-				IsEdited = true;
-				OnPropertyChanged(nameof(CoordinatesX));
-				TextBoxValidate(LoadoutValidationField.CoordinatesX);
-			}
-		}
-		public double? CoordinatesY
-		{
-			get => field;
-			set
-			{
-				field = value;
-				IsEdited = true;
-				OnPropertyChanged(nameof(CoordinatesY));
-				TextBoxValidate(LoadoutValidationField.CoordinatesY);
-			}
-		}
-		public double? CoordinatesHeight
-		{
-			get => field;
-			set
-			{
-				field = value;
-				IsEdited = true;
-				OnPropertyChanged(nameof(CoordinatesHeight));
-				TextBoxValidate(LoadoutValidationField.CoordinatesHeight);
-			}
-		}
-		public double? CoordinatesWidth
-		{
-			get => field;
-			set
-			{
-				field = value;
-				IsEdited = true;
-				OnPropertyChanged(nameof(CoordinatesWidth));
-				TextBoxValidate(LoadoutValidationField.CoordinatesWidth);
+				TextBoxValidate();
 			}
 		}
 		public GameItem? SelectedItem
@@ -105,8 +58,7 @@ namespace ARA.ViewModels.Pages
 		public LoadoutConfigDetailsViewModel(
 			IAraNavigation navigation, 
 			IAraConfigurations configurations, 
-			ILogger logger, 
-			IMainWindow windowService,
+			ILogger logger,
 			IAraTranslation translation)
 		{
 			// Services(DI)
@@ -114,7 +66,6 @@ namespace ARA.ViewModels.Pages
 			_logger = logger;
 			_navigation = navigation;
 			_configurations = configurations;
-			_windowService = windowService;
 			// Basic data
 			var loadoutConfig = _configurations.GetCurrentLoadoutConfig();
 			_isNewLoadout = loadoutConfig == null;
@@ -125,10 +76,6 @@ namespace ARA.ViewModels.Pages
 			var filteredList = allGameItems.Where(a => !LoadoutConfiguration.Items.Any(b => b.Id == a.Id)).ToList();
 			LoadoutValidation = new LoadoutConfigurationValidation();
 			Name = LoadoutConfiguration.Name;
-			CoordinatesX = LoadoutConfiguration.Coordinates.X;
-			CoordinatesY = LoadoutConfiguration.Coordinates.Y;
-			CoordinatesHeight = LoadoutConfiguration.Coordinates.Height;
-			CoordinatesWidth = LoadoutConfiguration.Coordinates.Width;
 			ItemsList = new ObservableCollection<GameItem>(filteredList);
 			SelectedItemsList = new ObservableCollection<GameItem>(LoadoutConfiguration.Items);
 			IsEdited = false;
@@ -137,34 +84,16 @@ namespace ARA.ViewModels.Pages
 			RemoveItemCommand = new RelayCommand(item => RemoveItem((GameItem)item));
 			BackCommand = new RelayCommand(_ => navigation.TryNavigateToPage(AraPage.LoadoutConfigs));
 			SaveLoadoutConfigurationCommand = new RelayCommand(_ => SaveLoadoutConfiguration());
-			SelectRegionCommand = new RelayCommand(_ => SelectRegion());
 		}
 
-		private void TextBoxValidate(LoadoutValidationField field)
+		private void TextBoxValidate()
 		{
 			if (!LoadoutValidation.IsValidated)
 			{
 				return;
 			}
+			LoadoutValidation.IsNameNotValid = Name == null || string.IsNullOrEmpty(Name);
 
-			switch (field)
-			{
-				case LoadoutValidationField.Name:
-					LoadoutValidation.IsNameNotValid = Name == null || string.IsNullOrEmpty(Name);
-					break;
-				case LoadoutValidationField.CoordinatesX:
-					LoadoutValidation.IsCoordinateXNotValid = CoordinatesX == null;
-					break;
-				case LoadoutValidationField.CoordinatesY:
-					LoadoutValidation.IsCoordinateYNotValid = CoordinatesY == null;
-					break;
-				case LoadoutValidationField.CoordinatesHeight:
-					LoadoutValidation.IsCoordinateHeightNotValid = CoordinatesHeight == null;
-					break;
-				case LoadoutValidationField.CoordinatesWidth:
-					LoadoutValidation.IsCoordinateWidthNotValid = CoordinatesWidth == null;
-					break;
-			}
 			OnPropertyChanged(nameof(LoadoutValidation));
 			OnPropertyChanged(nameof(IsValid));
 		}
@@ -202,29 +131,12 @@ namespace ARA.ViewModels.Pages
 			return result ?? false;
 		}
 
-		private void SelectRegion()
-		{
-			_windowService.HideMainWindow();
-			var coordinates = new ScreenCoordinates(CoordinatesX, CoordinatesY, CoordinatesHeight, CoordinatesWidth);
-			var overlay = new OverlayWindow(coordinates);
-			overlay.OnSave += coordinates =>
-			{
-				CoordinatesX = coordinates.X;
-				CoordinatesY = coordinates.Y;
-				CoordinatesHeight = coordinates.Height;
-				CoordinatesWidth = coordinates.Width;
-			};
-			overlay.Closed += (s, args) => _windowService.ShowMainWindow();
-			overlay.Show();
-		}
+		
 
 		private void SaveLoadoutConfiguration()
 		{
 			LoadoutValidation.IsValidated = true;
-			foreach (var value in Enum.GetValues<LoadoutValidationField>())
-			{
-				TextBoxValidate(value);
-			}
+			TextBoxValidate();
 			ListValidate();
 
 			if (!LoadoutValidation.IsValid)
@@ -234,7 +146,6 @@ namespace ARA.ViewModels.Pages
 			IsEdited = false;
 			LoadoutConfiguration.Items = [.. SelectedItemsList];
 			LoadoutConfiguration.Name = Name;
-			LoadoutConfiguration.Coordinates = new ScreenCoordinates(CoordinatesX, CoordinatesY, CoordinatesHeight, CoordinatesWidth);
 			if (_isNewLoadout)
 			{
 				_configurations.CreateLoadoutConfig(LoadoutConfiguration);

@@ -3,12 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d"
+			 xmlns:enums="clr-namespace:ARA.Enums"
 			 xmlns:pages="clr-namespace:ARA.ViewModels.Pages" 
 			 xmlns:controls="clr-namespace:ARA.Controls.CustomControls"
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=pages:SettingsViewModel}">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
+			<RowDefinition Height="12" />
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="12" />
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="24" />
@@ -57,13 +60,82 @@
 			</StackPanel>
 		</StackPanel>
 
-		<controls:AraButton Grid.Row="4" Command="{Binding OpenConfigFolderCommand}" Style="{StaticResource SecondarySmallButton}" HorizontalAlignment="Left">
+		<GroupBox Grid.Row="4" Header="{DynamicResource Settings.Zone}" Style="{StaticResource AraGroupBox}">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="40"/>
+					<RowDefinition Height="16"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+
+				<controls:AraButton Grid.Row="0" Style="{StaticResource SecondaryButton}" Command="{Binding SelectRegionCommand}">
+					<controls:AraButton.Children>
+						<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/zone.png" />
+						<TextBlock Text="{DynamicResource Settings.Zone.Button}" Margin="4 0 0 0"/>
+					</controls:AraButton.Children>
+				</controls:AraButton>
+				<Grid Grid.Row="2">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="8" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="8" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="8" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<StackPanel Grid.Column="0">
+						<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=X}" Content="{DynamicResource Settings.Zone.X}"/>
+						<controls:AraTextBox 
+								x:Name="X" 
+								Text="{Binding CoordinatesX, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
+								PlaceholderText="{DynamicResource Settings.Zone.X.Placeholder}" 
+								Style="{StaticResource AraTextBox}" 
+								InputType="{x:Static enums:TextBoxInputType.Number}"
+								MaxLength="10"/>
+					</StackPanel>
+					<StackPanel Grid.Column="2">
+						<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=Y}" Content="{DynamicResource Settings.Zone.Y}"/>
+						<controls:AraTextBox 
+								x:Name="Y" 
+								Text="{Binding CoordinatesY, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
+								PlaceholderText="{DynamicResource Settings.Zone.Y.Placeholder}" 
+								Style="{StaticResource AraTextBox}" 
+								InputType="{x:Static enums:TextBoxInputType.Number}"
+								MaxLength="10"/>
+					</StackPanel>
+					<StackPanel Grid.Column="4">
+						<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneWidth}" Content="{DynamicResource Settings.Zone.Width}"/>
+						<controls:AraTextBox 
+								x:Name="ZoneWidth" 
+								Text="{Binding CoordinatesWidth, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
+								PlaceholderText="{DynamicResource Settings.Zone.Width.Placeholder}" 
+								Style="{StaticResource AraTextBox}" 
+								InputType="{x:Static enums:TextBoxInputType.Number}" 
+								MaxLength="10"/>
+					</StackPanel>
+					<StackPanel Grid.Column="6">
+						<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneHeight}" Content="{DynamicResource Settings.Zone.Height}"/>
+						<controls:AraTextBox 
+								x:Name="ZoneHeight" 
+								Text="{Binding CoordinatesHeight, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
+								PlaceholderText="{DynamicResource Settings.Zone.Width.Placeholder}" 
+								Style="{StaticResource AraTextBox}" 
+								InputType="{x:Static enums:TextBoxInputType.Number}"
+								MaxLength="10"/>
+					</StackPanel>
+				</Grid>
+			</Grid>
+		</GroupBox>
+
+		<controls:AraButton Grid.Row="6" Command="{Binding OpenConfigFolderCommand}" Style="{StaticResource SecondarySmallButton}" HorizontalAlignment="Left">
 			<controls:AraButton.Children>
 				<TextBlock Text="{DynamicResource Settings.Button}" />
 			</controls:AraButton.Children>
 		</controls:AraButton>
 
-		<controls:AraButton Grid.Row="6" Command="{Binding SaveSettingsCommand}" HorizontalAlignment="Right">
+		<controls:AraButton Grid.Row="8" Command="{Binding SaveSettingsCommand}" HorizontalAlignment="Right">
 			<controls:AraButton.Style>
 				<Style TargetType="controls:AraButton" BasedOn="{StaticResource PrimaryButton}">
 					<Style.Triggers>

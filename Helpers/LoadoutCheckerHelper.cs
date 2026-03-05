@@ -33,7 +33,7 @@ namespace ARA.Helpers
 
 			using var stream = streamInfo.Stream;
 			using var memoryStream = new MemoryStream();
-
+			
 			stream.CopyTo(memoryStream);
 			byte[] bytes = memoryStream.ToArray();
 

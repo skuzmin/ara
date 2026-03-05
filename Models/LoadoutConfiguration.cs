@@ -5,7 +5,6 @@ namespace ARA.Models
     {
         public Guid Id { get; } = Guid.NewGuid();
 		public string Name { get; set; } = "";
-        public ScreenCoordinates Coordinates { get; set; } = new ScreenCoordinates();
         public List<GameItem> Items { get; set; } = [];
     }
 }

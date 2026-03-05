@@ -8,7 +8,6 @@
 		public double Y { get; set; } = DefaultCoordinate;
 		public double Height { get; set; } = DefaultSize;
 		public double Width { get; set; } = DefaultSize;
-
 		public ScreenCoordinates() { }
 		public ScreenCoordinates(double? x, double? y, double? h, double? w)
 		{
@@ -16,6 +15,11 @@
 			Y = y ?? DefaultCoordinate;
 			Height = h ?? DefaultSize;
 			Width = w ?? DefaultSize;
+		}
+
+		public bool IsDefaultZone()
+		{
+			return X == DefaultCoordinate && Y == DefaultCoordinate && Height == DefaultSize && Width == DefaultSize;
 		}
 	}
 }

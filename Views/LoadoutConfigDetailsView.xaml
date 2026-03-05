@@ -5,7 +5,6 @@
 			 mc:Ignorable="d"
 			 xmlns:pages="clr-namespace:ARA.ViewModels.Pages" 
 			 xmlns:controls="clr-namespace:ARA.Controls.CustomControls"
-			 xmlns:enums="clr-namespace:ARA.Enums"
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=pages:LoadoutConfigDetailsViewModel}">
 	<Grid>
 		<Grid.RowDefinitions>
@@ -37,8 +36,6 @@
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="16" />
 					<RowDefinition Height="Auto" />
-					<RowDefinition Height="16" />
-					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
 
 				<!-- Name -->
@@ -52,82 +49,8 @@
 						MaxLength="50"/>
 				</StackPanel>
 
-				<!-- Zone -->
-				<GroupBox Grid.Row="2" Header="Zone" Style="{StaticResource AraGroupBox}">
-					<Grid>
-						<Grid.RowDefinitions>
-							<RowDefinition Height="40"/>
-							<RowDefinition Height="16"/>
-							<RowDefinition Height="Auto"/>
-						</Grid.RowDefinitions>
-
-						<controls:AraButton Grid.Row="0" Style="{StaticResource SecondaryButton}" Command="{Binding SelectRegionCommand}">
-							<controls:AraButton.Children>
-								<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/zone.png" />
-								<TextBlock Text="{DynamicResource LoadoutConfigDetails.Zone.Button}" Margin="4 0 0 0"/>
-							</controls:AraButton.Children>
-						</controls:AraButton>
-						<Grid Grid.Row="2">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="8" />
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="8" />
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="8" />
-								<ColumnDefinition Width="*" />
-							</Grid.ColumnDefinitions>
-
-							<StackPanel Grid.Column="0">
-								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=X}" Content="{DynamicResource LoadoutConfigDetails.Zone.X}"/>
-								<controls:AraTextBox 
-									x:Name="X" 
-									Text="{Binding CoordinatesX, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
-									PlaceholderText="{DynamicResource LoadoutConfigDetails.Zone.X.Placeholder}" 
-									Style="{StaticResource AraTextBox}" 
-									InputType="{x:Static enums:TextBoxInputType.Number}" 
-									IsError="{Binding LoadoutValidation.IsCoordinateXNotValid}"
-									MaxLength="10"/>
-							</StackPanel>
-							<StackPanel Grid.Column="2">
-								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=Y}" Content="{DynamicResource LoadoutConfigDetails.Zone.Y}"/>
-								<controls:AraTextBox 
-									x:Name="Y" 
-									Text="{Binding CoordinatesY, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
-									PlaceholderText="{DynamicResource LoadoutConfigDetails.Zone.Y.Placeholder}" 
-									Style="{StaticResource AraTextBox}" 
-									InputType="{x:Static enums:TextBoxInputType.Number}"
-									IsError="{Binding LoadoutValidation.IsCoordinateYNotValid}"
-									MaxLength="10"/>
-							</StackPanel>
-							<StackPanel Grid.Column="4">
-								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneWidth}" Content="{DynamicResource LoadoutConfigDetails.Zone.Width}"/>
-								<controls:AraTextBox 
-									x:Name="ZoneWidth" 
-									Text="{Binding CoordinatesWidth, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
-									PlaceholderText="{DynamicResource LoadoutConfigDetails.Zone.Width.Placeholder}" 
-									Style="{StaticResource AraTextBox}" 
-									InputType="{x:Static enums:TextBoxInputType.Number}" 
-									IsError="{Binding LoadoutValidation.IsCoordinateWidthNotValid}"
-									MaxLength="10"/>
-							</StackPanel>
-							<StackPanel Grid.Column="6">
-								<Label Style="{StaticResource AraLabel}" Target="{Binding ElementName=ZoneHeight}" Content="{DynamicResource LoadoutConfigDetails.Zone.Height}"/>
-								<controls:AraTextBox 
-									x:Name="ZoneHeight" 
-									Text="{Binding CoordinatesHeight, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" 
-									PlaceholderText="{DynamicResource LoadoutConfigDetails.Zone.Width.Placeholder}" 
-									Style="{StaticResource AraTextBox}" 
-									InputType="{x:Static enums:TextBoxInputType.Number}" 
-									IsError="{Binding LoadoutValidation.IsCoordinateHeightNotValid}"
-									MaxLength="10"/>
-							</StackPanel>
-						</Grid>
-					</Grid>
-				</GroupBox>
-
 				<!-- Items -->
-				<GroupBox Grid.Row="4" Header="{DynamicResource LoadoutConfigDetails.Items}" Style="{StaticResource AraGroupBox}">
+				<GroupBox Grid.Row="2" Header="{DynamicResource LoadoutConfigDetails.Items}" Style="{StaticResource AraGroupBox}">
 					<Grid>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto" />

@@ -12,6 +12,7 @@ namespace ARA.ViewModels.Pages
 	public class LoadoutViewModel : ViewModelBase
 	{
 		private readonly ILogger _logger;
+		private readonly ScreenCoordinates _coordinates;
 		public IAraNavigation Navigation { get; }
 		public ICommand CheckLoadout { get; }
 		public ObservableCollection<LoadoutConfiguration> LoadoutOptions { get; }
@@ -33,6 +34,7 @@ namespace ARA.ViewModels.Pages
 		public LoadoutViewModel(IAraConfigurations config, ILogger logger, IAraNavigation navigation)
 		{
 			_logger = logger;
+			_coordinates = config.GetSettingsConfiguration().Coordinates;
 			Navigation = navigation;
 			SelectedLoadout = null;
 			CheckLoadout = new RelayCommand(OnCheckLoadoutClicked);
@@ -57,10 +59,10 @@ namespace ARA.ViewModels.Pages
 			//window.WindowState = WindowState.Normal;
 
 			Dictionary<string, bool> results = LoadoutCheckerHelper.CheckIcons(
-				(int)SelectedLoadout.Coordinates.X,
-				(int)SelectedLoadout.Coordinates.Y,
-				(int)SelectedLoadout.Coordinates.Width,
-				(int)SelectedLoadout.Coordinates.Height,
+				(int)_coordinates.X,
+				(int)_coordinates.Y,
+				(int)_coordinates.Width,
+				(int)_coordinates.Height,
 				iconPath);
 
 			var newItems = SelectedLoadout.Items.Select(item => new GameItem

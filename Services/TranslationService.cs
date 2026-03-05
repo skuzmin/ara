@@ -7,14 +7,12 @@ namespace ARA.Services
 {
 	public class TranslationService : IAraTranslation
 	{
-		private readonly IAraConfigurations _configurationService;
 		private readonly SettingsConfiguration _configurations;
 		private SettingsItem _locale;
 		public event Action? TranslationChanged;
 
 		public TranslationService(IAraConfigurations configurationService)
 		{
-			_configurationService = configurationService;
 			_configurations = configurationService.GetSettingsConfiguration();
 			_locale = Constants.Locales.FirstOrDefault(l => l.Id == _configurations.Locale) ?? Constants.Locales[0];
 		}
@@ -45,7 +43,6 @@ namespace ARA.Services
 		{
 			_locale = locale;
 			_configurations.Locale = locale.Id;
-			_configurationService.UpdateSettings(_configurations);
 			SetLocale();
 		}
 	}

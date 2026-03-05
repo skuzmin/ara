@@ -131,6 +131,7 @@ namespace ARA.Controls.CustomControls
 		{
 			PreviewTextInput -= NumericValidation;
 			DataObject.RemovePastingHandler(this, OnPaste);
+
 			if (InputType == TextBoxInputType.Number)
 			{
 				PreviewTextInput += NumericValidation;
@@ -142,6 +143,7 @@ namespace ARA.Controls.CustomControls
 			Regex regex = NumericRegex();
 			e.Handled = regex.IsMatch(e.Text);
 		}
+
 		private void OnPaste(object sender, DataObjectPastingEventArgs e)
 		{
 			if (e.DataObject.GetDataPresent(typeof(string)))
