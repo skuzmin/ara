@@ -20,6 +20,8 @@
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="12" />
 					<RowDefinition Height="Auto" />
+					<RowDefinition Height="12" />
+					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
 
 				<GroupBox Grid.Row="0" Header="{DynamicResource About.Info}" Style="{StaticResource AraGroupBox}">
@@ -47,7 +49,20 @@
 					</StackPanel>
 				</GroupBox>
 
-				<GroupBox Grid.Row="2" Header="{DynamicResource About.FAQ}" Style="{StaticResource AraGroupBox}">
+				<GroupBox Grid.Row="2" Header="{DynamicResource About.Hotkeys}" Style="{StaticResource AraGroupBox}">
+					<StackPanel Orientation="Vertical">
+						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+							<TextBlock Style="{StaticResource AraStackRowLabel}" Width="280" Text="{DynamicResource About.Hotkeys.Restore}"/>
+							<TextBlock Style="{StaticResource AraTextBlock}" Text="Ctrl + Alt + O"/>
+						</StackPanel>
+						<!--<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+							<TextBlock Style="{StaticResource AraStackRowLabel}" Width="280" Text="{DynamicResource About.Hotkeys.Egg}"/>
+							<TextBlock Style="{StaticResource AraTextBlock}" Text="Ctrl + Alt + E"/>
+						</StackPanel>-->
+					</StackPanel>
+				</GroupBox>
+
+				<GroupBox Grid.Row="4" Header="{DynamicResource About.FAQ}" Style="{StaticResource AraGroupBox}">
 					<TextBlock Text="{DynamicResource About.FAQ.1}"/>
 				</GroupBox>
 			</Grid>

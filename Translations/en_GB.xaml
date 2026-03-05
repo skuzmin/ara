@@ -68,6 +68,9 @@
 	<sys:String x:Key="About.Version">Version:</sys:String>
 	<sys:String x:Key="About.Repository">Repository:</sys:String>
 	<sys:String x:Key="About.Stack">Tech stack:</sys:String>
+	<sys:String x:Key="About.Hotkeys">Hotkeys</sys:String>
+	<sys:String x:Key="About.Hotkeys.Restore">Show the application window:</sys:String>
+	<sys:String x:Key="About.Hotkeys.Egg">EEGG:</sys:String>
 	<sys:String x:Key="About.FAQ">FAQ</sys:String>
 	<sys:String x:Key="About.FAQ.1">No questions have been asked yet.</sys:String>
 

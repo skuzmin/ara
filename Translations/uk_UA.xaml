@@ -69,6 +69,9 @@
 	<sys:String x:Key="About.Version">Версія:</sys:String>
 	<sys:String x:Key="About.Repository">Репозиторій:</sys:String>
 	<sys:String x:Key="About.Stack">Технічний стек:</sys:String>
+	<sys:String x:Key="About.Hotkeys">Гарячі клавіші</sys:String>
+	<sys:String x:Key="About.Hotkeys.Restore">Показати вікно програми:</sys:String>
+	<sys:String x:Key="About.Hotkeys.Egg">Яйко:</sys:String>
 	<sys:String x:Key="About.FAQ">Часті запитання</sys:String>
 	<sys:String x:Key="About.FAQ.1">Запитань ще не надходило.</sys:String>
 

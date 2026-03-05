@@ -37,19 +37,24 @@ namespace ARA
 
 			_serviceProvider.GetService<IAraTranslation>()!.SetLocale();
 
-			_serviceProvider.GetService<MainWindow>()!.Show();
+			var hotKeyService = _serviceProvider!.GetRequiredService<GlobalHotKeyService>()!;
+			var mainWindow = _serviceProvider.GetService<MainWindow>()!;
+			mainWindow.Show();
+			hotKeyService.Register(mainWindow);
 		}
 
 		private void ReloadMainWindow()
 		{
 			var oldWindow = Application.Current.MainWindow;
 			var newWindow = _serviceProvider!.GetRequiredService<MainWindow>()!;
+			var hotKeyService = _serviceProvider!.GetRequiredService<GlobalHotKeyService>()!;
 			newWindow.Left = oldWindow.Left;
 			newWindow.Top = oldWindow.Top;
 
 			Application.Current.MainWindow = newWindow;
 			newWindow.Show();
 			oldWindow?.Close();
+			hotKeyService.Register(newWindow);
 		}
 
 		private static void ConfigureServices(IServiceCollection services)
@@ -61,6 +66,7 @@ namespace ARA
 			services.AddSingleton<IAraTranslation, TranslationService>();
 			services.AddSingleton<IAraNavigation, NavigationService>();
 			services.AddSingleton<IMainWindow, MainWindowService>();
+			services.AddSingleton<GlobalHotKeyService>();
 			// ViewModels
 			services.AddSingleton<MainViewModel>();
 			services.AddSingleton<TrayIconModel>();

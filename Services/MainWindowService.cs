@@ -13,6 +13,8 @@ namespace ARA.Services
 		public void ShowMainWindow()
 		{
 			Application.Current.MainWindow.Show();
+			Application.Current.MainWindow.WindowState = WindowState.Normal;
+			Application.Current.MainWindow.Activate();
 		}
 	}
 }
