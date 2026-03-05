@@ -8,59 +8,105 @@
 			 xmlns:controls="clr-namespace:ARA.Controls.CustomControls"
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=pages:SettingsViewModel}">
 	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="12" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
 			<RowDefinition Height="12" />
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="12" />
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="24" />
-			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 			<RowDefinition Height="40" />
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" Style="{StaticResource PageTitle}" Text="{DynamicResource Settings.Title}"/>
+		<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource PageTitle}" Text="{DynamicResource Settings.Title}"/>
 
-		<StackPanel Grid.Row="2" Orientation="Vertical">
-			<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
-				<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource Settings.Theme}"/>
-				<controls:AraComboBox
+		<GroupBox Grid.Row="2" Grid.Column="0"  Header="{DynamicResource Settings.General}" Style="{StaticResource AraGroupBox}">
+			<StackPanel Orientation="Vertical">
+				<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+					<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource Settings.Theme}"/>
+					<controls:AraComboBox
 					x:Name="ThemesComboBox"
 					Style="{StaticResource AraComboBox}"
 					ItemsSource="{Binding Themes}"
 					SelectedItem="{Binding SelectedTheme, Mode=TwoWay}">
-					<controls:AraComboBox.ItemTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal">
-								<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
-								<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
-							</StackPanel>
-						</DataTemplate>
-					</controls:AraComboBox.ItemTemplate>
-				</controls:AraComboBox>
-			</StackPanel>
+						<controls:AraComboBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal">
+									<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
+									<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
+								</StackPanel>
+							</DataTemplate>
+						</controls:AraComboBox.ItemTemplate>
+					</controls:AraComboBox>
+				</StackPanel>
 
-			<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
-				<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource Settings.Language}"/>
-				<controls:AraComboBox
+				<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+					<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource Settings.Language}"/>
+					<controls:AraComboBox
 					x:Name="LanguagesComboBox"
 					Style="{StaticResource AraComboBox}"
 					ItemsSource="{Binding Locales}"
 					SelectedItem="{Binding SelectedLocale, Mode=TwoWay}">
-					<controls:AraComboBox.ItemTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal">
-								<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
-								<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
-							</StackPanel>
-						</DataTemplate>
-					</controls:AraComboBox.ItemTemplate>
-				</controls:AraComboBox>
+						<controls:AraComboBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal">
+									<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
+									<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
+								</StackPanel>
+							</DataTemplate>
+						</controls:AraComboBox.ItemTemplate>
+					</controls:AraComboBox>
+				</StackPanel>
 			</StackPanel>
-		</StackPanel>
+		</GroupBox>
 
-		<GroupBox Grid.Row="4" Header="{DynamicResource Settings.Zone}" Style="{StaticResource AraGroupBox}">
+		<GroupBox Grid.Row="2" Grid.Column="2" Header="{DynamicResource Settings.Advanced}" Style="{StaticResource AraGroupBox}">
+			<StackPanel Orientation="Vertical">
+				<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+					<TextBlock Style="{StaticResource AraStackRowLabel}" TextWrapping="Wrap" Text="{DynamicResource Settings.DebugLevel}"/>
+					<controls:AraComboBox
+						x:Name="DebugLevelComboBox"
+						Style="{StaticResource AraComboBox}"
+						ItemsSource="{Binding Themes}"
+						SelectedItem="{Binding SelectedTheme, Mode=TwoWay}">
+						<controls:AraComboBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal">
+									<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
+									<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
+								</StackPanel>
+							</DataTemplate>
+						</controls:AraComboBox.ItemTemplate>
+					</controls:AraComboBox>
+				</StackPanel>
+
+				<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
+					<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource Settings.CaptureMode}"/>
+					<controls:AraComboBox
+						x:Name="CaptureModeComboBox"
+						Style="{StaticResource AraComboBox}"
+						ItemsSource="{Binding Locales}"
+						SelectedItem="{Binding SelectedLocale, Mode=TwoWay}">
+						<controls:AraComboBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal">
+									<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
+									<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
+								</StackPanel>
+							</DataTemplate>
+						</controls:AraComboBox.ItemTemplate>
+					</controls:AraComboBox>
+				</StackPanel>
+			</StackPanel>
+		</GroupBox>
+
+		<GroupBox Grid.Row="4" Grid.ColumnSpan="3" Header="{DynamicResource Settings.Zone}" Style="{StaticResource AraGroupBox}">
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="40"/>
@@ -129,25 +175,33 @@
 			</Grid>
 		</GroupBox>
 
-		<controls:AraButton Grid.Row="6" Command="{Binding OpenConfigFolderCommand}" Style="{StaticResource SecondarySmallButton}" HorizontalAlignment="Left">
-			<controls:AraButton.Children>
-				<TextBlock Text="{DynamicResource Settings.Button}" />
-			</controls:AraButton.Children>
-		</controls:AraButton>
+		<Grid Grid.Row="6" Grid.ColumnSpan="3">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
 
-		<controls:AraButton Grid.Row="8" Command="{Binding SaveSettingsCommand}" HorizontalAlignment="Right">
-			<controls:AraButton.Style>
-				<Style TargetType="controls:AraButton" BasedOn="{StaticResource PrimaryButton}">
-					<Style.Triggers>
-						<DataTrigger Binding="{Binding IsEdited}" Value="False">
-							<Setter Property="IsEnabled" Value="False" />
-						</DataTrigger>
-					</Style.Triggers>
-				</Style>
-			</controls:AraButton.Style>
-			<controls:AraButton.Children>
-				<TextBlock Text="{DynamicResource General.Save}" />
-			</controls:AraButton.Children>
-		</controls:AraButton>
+			<controls:AraButton Grid.Column="0" Command="{Binding OpenConfigFolderCommand}" Style="{StaticResource SecondarySmallButton}" HorizontalAlignment="Left">
+				<controls:AraButton.Children>
+					<TextBlock Text="{DynamicResource Settings.Button}" />
+				</controls:AraButton.Children>
+			</controls:AraButton>
+
+			<controls:AraButton Grid.Column="2" Command="{Binding SaveSettingsCommand}" HorizontalAlignment="Right">
+				<controls:AraButton.Style>
+					<Style TargetType="controls:AraButton" BasedOn="{StaticResource PrimaryButton}">
+						<Style.Triggers>
+							<DataTrigger Binding="{Binding IsEdited}" Value="False">
+								<Setter Property="IsEnabled" Value="False" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</controls:AraButton.Style>
+				<controls:AraButton.Children>
+					<TextBlock Text="{DynamicResource General.Save}" />
+				</controls:AraButton.Children>
+			</controls:AraButton>
+		</Grid>
 	</Grid>
 </UserControl>

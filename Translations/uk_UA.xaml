@@ -6,6 +6,7 @@
 
 	<sys:String x:Key="General.Save">Зберегти</sys:String>
 	<sys:String x:Key="General.Exit">Вихід</sys:String>
+	<sys:String x:Key="General.Default">За замовчуванням</sys:String>
 	<sys:String x:Key="General.Unsaved.Title">Незбережені зміни</sys:String>
 	<sys:String x:Key="General.Unsaved.Message">Всі незбережені зміни буде втрачено.</sys:String>
 	<sys:String x:Key="General.Unsaved.SubMessage">Ви впевнені, що хочете скасувати зміни?</sys:String>
@@ -37,8 +38,12 @@
 	<sys:String x:Key="Overlay.Esc">Esc для скасування</sys:String>
 
 	<sys:String x:Key="Settings.Title">Налаштування</sys:String>
+	<sys:String x:Key="Settings.General">Загальні</sys:String>
+	<sys:String x:Key="Settings.Advanced">Розширені</sys:String>
 	<sys:String x:Key="Settings.Theme">Тема:</sys:String>
 	<sys:String x:Key="Settings.Language">Мова:</sys:String>
+	<sys:String x:Key="Settings.DebugLevel">Рівень налагодження:</sys:String>
+	<sys:String x:Key="Settings.CaptureMode">Режим захоплення:</sys:String>
 	<sys:String x:Key="Settings.Zone">Зона</sys:String>
 	<sys:String x:Key="Settings.Zone.Button">Обрати зону</sys:String>
 	<sys:String x:Key="Settings.Zone.X">X</sys:String>
@@ -55,6 +60,8 @@
 	<sys:String x:Key="Translation.Ukranian">Українська</sys:String>
 	<sys:String x:Key="Theme.Dark">Темна</sys:String>
 	<sys:String x:Key="Theme.Light">Світла</sys:String>
+	<sys:String x:Key="Debug.Detailed">Детальний</sys:String>
+	<sys:String x:Key="CaptureMode.Ignore">Ігнорувати [ARA]</sys:String>
 
 	<sys:String x:Key="About.Title">Про програму</sys:String>
 	<sys:String x:Key="About.Info">Інформація</sys:String>

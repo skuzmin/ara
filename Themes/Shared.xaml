@@ -65,6 +65,7 @@
 	</Style>
 
 	<Style x:Key="AraComboBox" TargetType="controls:AraComboBox">
+		<Setter Property="Height" Value="40" />
 		<Setter Property="MinWidth" Value="200" />
 		<Setter Property="ToggleButtonBackground" Value="{DynamicResource ToggleButtonBackground}" />
 		<Setter Property="ToggleButtonBorderThickness" Value="2" />
@@ -209,8 +210,9 @@
 	</Style>
 
 	<Style x:Key="AraStackRowLabel" TargetType="TextBlock" BasedOn="{StaticResource AraTextBlock}">
-		<Setter Property="MinWidth" Value="140" />
+		<Setter Property="Width" Value="140" />
 		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="TextWrapping" Value="Wrap" />
 	</Style>
 
 	<Style x:Key="AraHyperlink" TargetType="Hyperlink">

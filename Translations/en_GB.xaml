@@ -6,6 +6,7 @@
 
 	<sys:String x:Key="General.Save">Save</sys:String>
 	<sys:String x:Key="General.Exit">Exit</sys:String>
+	<sys:String x:Key="General.Default">Default</sys:String>
 	<sys:String x:Key="General.Unsaved.Title">Unsaved changes</sys:String>
 	<sys:String x:Key="General.Unsaved.Message">All unsaved changes will be lost.</sys:String>
 	<sys:String x:Key="General.Unsaved.SubMessage">Are you sure you want to discard changes?</sys:String>
@@ -36,8 +37,12 @@
 	<sys:String x:Key="Overlay.Esc">Esc to cancel</sys:String>
 
 	<sys:String x:Key="Settings.Title">Settings</sys:String>
+	<sys:String x:Key="Settings.General">General</sys:String>
+	<sys:String x:Key="Settings.Advanced">Advanced</sys:String>
 	<sys:String x:Key="Settings.Theme">Theme:</sys:String>
 	<sys:String x:Key="Settings.Language">Language:</sys:String>
+	<sys:String x:Key="Settings.DebugLevel">Debug Level:</sys:String>
+	<sys:String x:Key="Settings.CaptureMode">Capture Mode:</sys:String>
 	<sys:String x:Key="Settings.Zone">Zone</sys:String>
 	<sys:String x:Key="Settings.Zone.Button">Select Zone</sys:String>
 	<sys:String x:Key="Settings.Zone.X">X</sys:String>
@@ -54,6 +59,8 @@
 	<sys:String x:Key="Translation.Ukranian">Ukranian</sys:String>
 	<sys:String x:Key="Theme.Dark">Dark</sys:String>
 	<sys:String x:Key="Theme.Light">Light</sys:String>
+	<sys:String x:Key="Debug.Detailed">Detailed</sys:String>
+	<sys:String x:Key="CaptureMode.Ignore">Ignore [ARA]</sys:String>
 
 	<sys:String x:Key="About.Title">About</sys:String>
 	<sys:String x:Key="About.Info">Info</sys:String>
