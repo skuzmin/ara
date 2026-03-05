@@ -16,8 +16,8 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
 			<RowDefinition Height="12" />
-			<RowDefinition Height="40" />
-			<RowDefinition Height="20" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="12" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
@@ -37,19 +37,26 @@
 		</Grid>
 
 		<Grid Grid.Row="2">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"/>
 				<ColumnDefinition Width="12"/>
 				<ColumnDefinition Width="Auto"/>
 			</Grid.ColumnDefinitions>
-			<controls:AraComboBox
+
+			<controls:AraComboBox Grid.Column="0" Grid.Row="0"
+				Height="40"
 				x:Name="LoadoutComboBox"
 				Style="{StaticResource AraComboBox}"
 				ItemsSource="{Binding LoadoutOptions}"
 				PlaceholderText="{DynamicResource Loadout.Placeholder}"
 				DisplayMemberPath="Name"
 				SelectedItem="{Binding SelectedLoadout, Mode=TwoWay}"/>
-			<controls:AraButton Grid.Column="2" Command="{Binding CheckLoadout}">
+			<controls:AraButton Grid.Column="2" Grid.Row="0" Height="40" Command="{Binding CheckLoadout}">
 				<controls:AraButton.Children>
 					<Image Style="{StaticResource ButtonImage}" Source="/Assets/Icons/check-mark.png" />
 					<TextBlock Text="{DynamicResource Loadout.Button}" Margin="4 0 0 0"/>
@@ -64,6 +71,21 @@
 					</Style>
 				</controls:AraButton.Style>
 			</controls:AraButton>
+			<StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="3">
+				<StackPanel.Style>
+					<Style TargetType="StackPanel">
+						<Setter Property="Margin" Value="0 4 0 0" />
+						<Setter Property="Visibility" Value="Collapsed" />
+						<Style.Triggers>
+							<DataTrigger Binding="{Binding IsDefaultZone}" Value="True">
+								<Setter Property="Visibility" Value="Visible" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</StackPanel.Style>
+				<TextBlock Style="{DynamicResource ErrorMessage}" HorizontalAlignment="Center" Text="{DynamicResource Loadout.DefaultZoneMessage1}" />
+				<TextBlock Style="{DynamicResource ErrorMessage}" HorizontalAlignment="Center" Text="{DynamicResource Loadout.DefaultZoneMessage2}" />
+			</StackPanel>
 		</Grid>
 		<Grid Grid.Row="4">
 			<!-- Loadout Items Grid -->

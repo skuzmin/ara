@@ -70,7 +70,7 @@ namespace ARA.ViewModels.Pages
 			get => field;
 			set
 			{
-				field = value ;
+				field = value;
 				IsEdited = true;
 				OnPropertyChanged(nameof(SelectedLocale));
 			}
@@ -111,6 +111,7 @@ namespace ARA.ViewModels.Pages
 			CoordinatesY = settings.Coordinates.Y;
 			CoordinatesHeight = settings.Coordinates.Height;
 			CoordinatesWidth = settings.Coordinates.Width;
+			IsEdited = false;
 		}
 
 		private void UpdateTranslations()
@@ -149,6 +150,10 @@ namespace ARA.ViewModels.Pages
 			_themes.UpdateTheme(SelectedTheme!);
 			_translations.UpdateLocale(SelectedLocale!);
 			_configurations.UpdateSettings(settings);
+			if (settings.Coordinates.IsDefaultZone())
+			{
+				InitCoordinates();
+			}
 		}
 
 		public override bool CanNavigateAway()

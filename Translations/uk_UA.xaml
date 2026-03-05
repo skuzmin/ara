@@ -23,6 +23,8 @@
 
 	<sys:String x:Key="Loadout.Title">Перевірка спорядження</sys:String>
 	<sys:String x:Key="Loadout.Placeholder">Оберіть спорядження</sys:String>
+	<sys:String x:Key="Loadout.DefaultZoneMessage1">Ви використовуєте стандартну конфігурацію зони.</sys:String>
+	<sys:String x:Key="Loadout.DefaultZoneMessage2">Перейдіть до [Налаштування] => [Обрати зону], щоб встановити зону.</sys:String>
 	<sys:String x:Key="Loadout.Button">Перевірити</sys:String>
 	<sys:String x:Key="Loadout.Grid.Icon">Іконка</sys:String>
 	<sys:String x:Key="Loadout.Grid.Name">Назва</sys:String>

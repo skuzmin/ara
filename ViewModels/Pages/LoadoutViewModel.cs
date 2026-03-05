@@ -15,6 +15,7 @@ namespace ARA.ViewModels.Pages
 		private readonly ScreenCoordinates _coordinates;
 		public IAraNavigation Navigation { get; }
 		public ICommand CheckLoadout { get; }
+		public bool IsDefaultZone { get; }
 		public ObservableCollection<LoadoutConfiguration> LoadoutOptions { get; }
 		public LoadoutConfiguration? SelectedLoadout
 		{
@@ -30,11 +31,11 @@ namespace ARA.ViewModels.Pages
 				OnPropertyChanged(nameof(SelectedLoadout));
 			}
 		}
-
 		public LoadoutViewModel(IAraConfigurations config, ILogger logger, IAraNavigation navigation)
 		{
 			_logger = logger;
 			_coordinates = config.GetSettingsConfiguration().Coordinates;
+			IsDefaultZone = _coordinates.IsDefaultZone();
 			Navigation = navigation;
 			SelectedLoadout = null;
 			CheckLoadout = new RelayCommand(OnCheckLoadoutClicked);

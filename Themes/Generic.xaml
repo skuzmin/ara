@@ -61,7 +61,7 @@
 						Padding="{TemplateBinding Padding}"
 						Margin="{TemplateBinding Margin}"
 						CornerRadius="{TemplateBinding CornerRadius}">
-						<ItemsControl ItemsSource="{TemplateBinding Children}">
+						<ItemsControl AutomationProperties.Name="Content" Focusable="False" ItemsSource="{TemplateBinding Children}">
 							<ItemsControl.ItemsPanel>
 								<ItemsPanelTemplate>
 									<StackPanel 
@@ -100,7 +100,7 @@
 			<!-- ComboBoxToggleButton -->
 			<ControlTemplate x:Key="AraComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
 				<Grid>
-					<Border x:Name="ToggleBorder" 
+					<Border x:Name="ToggleBorder"
 						Background="{Binding ToggleButtonBackground, RelativeSource={RelativeSource AncestorType=customControls:AraComboBox}}" 
 						BorderThickness="{Binding ToggleButtonBorderThickness, RelativeSource={RelativeSource AncestorType=customControls:AraComboBox}}" 
 						CornerRadius="{Binding ToggleButtonCornerRadius, RelativeSource={RelativeSource AncestorType=customControls:AraComboBox}}"  

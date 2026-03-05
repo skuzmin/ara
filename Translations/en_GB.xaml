@@ -22,6 +22,8 @@
 
 	<sys:String x:Key="Loadout.Title">Loadout Checker</sys:String>
 	<sys:String x:Key="Loadout.Placeholder">Select Loadout</sys:String>
+	<sys:String x:Key="Loadout.DefaultZoneMessage1">You are using default zone configuration.</sys:String>
+	<sys:String x:Key="Loadout.DefaultZoneMessage2">Go to [Settings] => [Select Zone] to set a zone.</sys:String>
 	<sys:String x:Key="Loadout.Button">Check</sys:String>
 	<sys:String x:Key="Loadout.Grid.Icon">Icon</sys:String>
 	<sys:String x:Key="Loadout.Grid.Name">Name</sys:String>
