@@ -21,13 +21,13 @@ namespace ARA
 		];
 		public static readonly List<SettingsItem> DebugLevels =
 		[
-			new() {Id = "Default", TranslationKey = "General.Default", Name = "", Path = ""},
-			new() {Id = "Detailed", TranslationKey = "Debug.Detailed", Name = "", Path = ""}
+			new() {Id = "Default", TranslationKey = "General.Default", Name = "", Path = String.Concat(IconPath, "DebugLevels/Debug-Default.png")},
+			new() {Id = "Detailed", TranslationKey = "Debug.Detailed", Name = "", Path = String.Concat(IconPath, "DebugLevels/Debug-Details.png")}
 		];
 		public static readonly List<SettingsItem> CaptureModes =
 		[
-			new() {Id = "Default", TranslationKey = "General.Default", Name = "", Path = ""},
-			new() {Id = "Ignore", TranslationKey = "CaptureMode.Ignore", Name = "", Path = ""}
+			new() {Id = "Default", TranslationKey = "General.Default", Name = "", Path = String.Concat(IconPath, "CaptureModes/Capture-Default.png")},
+			new() {Id = "Ignore", TranslationKey = "CaptureMode.Ignore", Name = "", Path = String.Concat(IconPath, "CaptureModes/Capture-Ignore.png")}
 		];
 	}
 }

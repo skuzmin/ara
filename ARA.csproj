@@ -24,11 +24,15 @@
     <None Remove="Assets\Fonts\Oxanium-Bold.ttf" />
     <None Remove="Assets\Fonts\Oxanium-Medium.ttf" />
     <None Remove="Assets\Fonts\Oxanium-Regular.ttf" />
+    <None Remove="Assets\Icons\CaptureModes\Capture-Default.png" />
+    <None Remove="Assets\Icons\CaptureModes\Capture-Ignore.png" />
     <None Remove="Assets\Icons\check-mark.png" />
     <None Remove="Assets\Icons\chevron-left.png" />
     <None Remove="Assets\Icons\config.png" />
     <None Remove="Assets\Icons\DataGrid\delete.png" />
     <None Remove="Assets\Icons\DataGrid\edit.png" />
+    <None Remove="Assets\Icons\DebugLevels\Debug-Default.png" />
+    <None Remove="Assets\Icons\DebugLevels\Debug-Details.png" />
     <None Remove="Assets\Icons\Flags\Flag-GB.png" />
     <None Remove="Assets\Icons\Flags\Flag-UA.png" />
     <None Remove="Assets\Icons\Mode\Mode-Dark.png" />
@@ -85,6 +89,12 @@
 
   <ItemGroup>
     <Resource Include="Assets\Cursors\Cursor.png" />
+    <Resource Include="Assets\Icons\CaptureModes\Capture-Default.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\CaptureModes\Capture-Ignore.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Icons\check-mark.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -133,6 +143,12 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Icons\DataGrid\Edit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\DebugLevels\Debug-Default.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\DebugLevels\Debug-Details.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Icons\Flags\Flag-GB.png">

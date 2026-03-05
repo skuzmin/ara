@@ -74,8 +74,15 @@
 						x:Name="DebugLevelComboBox"
 						Style="{StaticResource AraComboBox}"
 						ItemsSource="{Binding DebugLevels}"
-						DisplayMemberPath="Name"
 						SelectedItem="{Binding SelectedDebugLevel, Mode=TwoWay}">
+						<controls:AraComboBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal">
+									<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
+									<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
+								</StackPanel>
+							</DataTemplate>
+						</controls:AraComboBox.ItemTemplate>
 					</controls:AraComboBox>
 				</StackPanel>
 
@@ -85,8 +92,15 @@
 						x:Name="CaptureModeComboBox"
 						Style="{StaticResource AraComboBox}"
 						ItemsSource="{Binding CaptureModes}"
-						DisplayMemberPath="Name"
 						SelectedItem="{Binding SelectedCaptureMode, Mode=TwoWay}">
+						<controls:AraComboBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal">
+									<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
+									<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
+								</StackPanel>
+							</DataTemplate>
+						</controls:AraComboBox.ItemTemplate>
 					</controls:AraComboBox>
 				</StackPanel>
 			</StackPanel>
