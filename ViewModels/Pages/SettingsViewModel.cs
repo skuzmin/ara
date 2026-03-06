@@ -145,15 +145,13 @@ namespace ARA.ViewModels.Pages
 			DebugLevels.ForEach(l => l.Name = _translations.Translate(l.TranslationKey));
 			CaptureModes.ForEach(m => m.Name = _translations.Translate(m.TranslationKey));
 			SelectedTheme = null;
-			SelectedTheme = _themes.GetTheme();
 			SelectedLocale = null;
-			SelectedLocale = _translations.GetLocale();
 			SelectedDebugLevel = null;
-			SelectedDebugLevel = _configurations.GetDebugLevel();
 			SelectedCaptureMode = null;
+			SelectedTheme = _themes.GetTheme();
+			SelectedLocale = _translations.GetLocale();
+			SelectedDebugLevel = _configurations.GetDebugLevel();
 			SelectedCaptureMode = _configurations.GetCaptureMode();
-			OnPropertyChanged(nameof(Themes));
-			OnPropertyChanged(nameof(Locales));
 			IsEdited = false;
 		}
 
