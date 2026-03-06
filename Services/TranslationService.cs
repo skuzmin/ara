@@ -2,16 +2,19 @@
 using ARA.Helpers;
 using ARA.Interfaces;
 using ARA.Models;
+using Microsoft.Extensions.Logging;
 
 namespace ARA.Services
 {
 	public class TranslationService : IAraTranslation
 	{
+		private readonly ILogger _logger;
 		private readonly SettingsConfiguration _configurations;
 		public event Action? TranslationChanged;
 
-		public TranslationService(IAraConfigurations configurationService)
+		public TranslationService(IAraConfigurations configurationService, ILogger logger)
 		{
+			_logger = logger;
 			_configurations = configurationService.GetSettingsConfiguration();
 		}
 
@@ -34,6 +37,7 @@ namespace ARA.Services
 		{
 			var uri = new Uri($"Translations/{_configurations.Locale}.xaml", UriKind.Relative);
 			DictionaryHelper.UpdateMergedDictionary(uri, "AppTranslationsDictionary");
+			_logger.LogInformation("Set locale: {locale}", _configurations.Locale);
 			TranslationChanged?.Invoke();
 		}
 

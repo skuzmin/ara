@@ -53,6 +53,7 @@ namespace ARA.Services
 				_logger.LogError("Error during ConfigurationService Init: {Message}", ex.Message);
 			}
 			ValidateSettingsConfig();
+			SetDebugLevel();
 		}
 		#endregion
 
@@ -77,6 +78,11 @@ namespace ARA.Services
 			}
 		}
 
+		private void SetDebugLevel()
+		{
+			(_logger as AraLogger)!.SetDebugLevel(_configurations.SettingsConfiguration.DebugLevel);
+		}
+
 		public SettingsConfiguration GetSettingsConfiguration()
 		{
 			return _configurations.SettingsConfiguration;
@@ -85,6 +91,7 @@ namespace ARA.Services
 		public void UpdateSettings(SettingsConfiguration settings)
 		{
 			_configurations.SettingsConfiguration = settings;
+			SetDebugLevel();
 			SaveConfig();
 		}
 
@@ -100,7 +107,7 @@ namespace ARA.Services
 
 		public bool IsCaptureModeIgnoreARA()
 		{
-			return _configurations.SettingsConfiguration.CaptureMode == "Ignore";
+			return _configurations.SettingsConfiguration.CaptureMode == Constants.CaptureMode.Ignore;
 		}
 		#endregion
 

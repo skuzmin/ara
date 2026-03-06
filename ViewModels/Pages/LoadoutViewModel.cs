@@ -86,7 +86,7 @@ namespace ARA.ViewModels.Pages
 			.ToList();
 
 			SelectedLoadout.Items = newItems;
-			_logger.LogInformation("Loadout Check");
+			_logger.LogInformation("Loadout Check: {Loadout}", SelectedLoadout.Name);
 			OnPropertyChanged(nameof(SelectedLoadout));
 		}
 	}

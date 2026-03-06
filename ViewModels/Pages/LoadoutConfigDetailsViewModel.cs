@@ -131,8 +131,6 @@ namespace ARA.ViewModels.Pages
 			return result ?? false;
 		}
 
-		
-
 		private void SaveLoadoutConfiguration()
 		{
 			LoadoutValidation.IsValidated = true;

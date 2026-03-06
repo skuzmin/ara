@@ -8,7 +8,7 @@ namespace ARA.Services
 	{
 		private static readonly Lock _lock = new();
 		private static readonly AsyncLocal<Stack<object>> _currentScopes = new();
-		private readonly LogLevel _minimalLogLevel = LogLevel.Trace;
+		private LogLevel _minimalLogLevel = LogLevel.Trace;
 
 		public IDisposable? BeginScope<TState>(TState state) where TState : notnull
 		{
@@ -22,8 +22,19 @@ namespace ARA.Services
 			return logLevel >= _minimalLogLevel;
 		}
 
+		public void SetDebugLevel(string debugLevel)
+		{
+			_minimalLogLevel = debugLevel == Constants.DebugLevel.Detailed
+				? LogLevel.Trace
+				: LogLevel.Warning;
+		}
+
 		public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
 		{
+			if (!IsEnabled(logLevel))
+			{
+				return;
+			}
 			string message;
 			if (formatter != null)
 			{
