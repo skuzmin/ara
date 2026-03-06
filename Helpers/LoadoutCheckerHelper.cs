@@ -2,6 +2,8 @@
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows;
+using ARA.Models;
+using Microsoft.Extensions.Logging;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 
@@ -11,53 +13,60 @@ namespace ARA.Helpers
 	{
 		private const double THRESHOLD = 0.8;
 
-		public static Dictionary<string, bool> CheckIcons(int x, int y, int width, int height, string[] iconPaths)
+		public static Dictionary<int, bool> CheckIcons(int x, int y, int width, int height, List<GameItem> icons, ILogger logger)
 		{
 			using var region = CaptureRegion(x, y, width, height);
 
-			var results = new Dictionary<string, bool>();
+			var results = new Dictionary<int, bool>();
 
-			foreach (var item in iconPaths)
+			foreach (var item in icons)
 			{
-				using var template = LoadTemplate(item);
-				results[item] = MatchSingle(region, template);
+				using var template = LoadTemplate(item.Path, logger);
+				results[item.Id] = MatchSingle(region, template, item.Name, logger);
 			}
 
 			return results;
 		}
 
-		private static Mat LoadTemplate(string packUri)
+		private static Mat LoadTemplate(string packUri, ILogger logger)
 		{
 			var uri = new Uri(packUri, UriKind.Absolute);
-			var streamInfo = Application.GetResourceStream(uri) ?? throw new FileNotFoundException($"Resource not found: {packUri}");
+			var streamInfo = Application.GetResourceStream(uri);
+
+			if (streamInfo == null)
+			{
+				logger.LogError("Resource not found: {packUri}", packUri);
+				throw new FileNotFoundException($"Resource not found: {packUri}");
+			}
 
 			using var stream = streamInfo.Stream;
 			using var memoryStream = new MemoryStream();
-			
+
 			stream.CopyTo(memoryStream);
 			byte[] bytes = memoryStream.ToArray();
 
 			return Mat.FromImageData(bytes, ImreadModes.Color);
 		}
 
-		private static bool MatchSingle(Mat region, Mat template)
+		private static bool MatchSingle(Mat region, Mat icon, string name, ILogger logger)
 		{
-			using var regionBgr = EnsureBGR(region);
-			using var templateBgr = EnsureBGR(template);
+			using var regionBgr = ToGray(region);
+			using var iconBgr = ToGray(icon);
 
 			using Mat result = new();
-			Cv2.MatchTemplate(regionBgr, templateBgr, result, TemplateMatchModes.CCoeffNormed);
+			Cv2.MatchTemplate(regionBgr, iconBgr, result, TemplateMatchModes.CCoeffNormed);
 			Cv2.MinMaxLoc(result, out _, out double maxVal, out _, out _);
+			logger.LogInformation("Icon check [{icon} : {value}]", name, $"{maxVal:F3}");
 			return maxVal >= THRESHOLD;
 		}
 
-		private static Mat EnsureBGR(Mat mat)
+		private static Mat ToGray(Mat mat)
 		{
 			return mat.Channels() switch
 			{
-				4 => mat.CvtColor(ColorConversionCodes.BGRA2BGR),
-				1 => mat.CvtColor(ColorConversionCodes.GRAY2BGR),
-				3 => mat.Clone(),
+				1 => mat.Clone(),
+				3 => mat.CvtColor(ColorConversionCodes.BGR2GRAY),
+				4 => mat.CvtColor(ColorConversionCodes.BGRA2GRAY),
 				_ => throw new NotSupportedException($"Unsupported channel count: {mat.Channels()}")
 			};
 		}

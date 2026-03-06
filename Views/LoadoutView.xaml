@@ -67,6 +67,10 @@
 							<DataTrigger Binding="{Binding SelectedLoadout}" Value="{x:Null}">
 								<Setter Property="IsEnabled" Value="False" />
 							</DataTrigger>
+
+							<DataTrigger Binding="{Binding IsLoading}" Value="True">
+								<Setter Property="IsEnabled" Value="False" />
+							</DataTrigger>
 						</Style.Triggers>
 					</Style>
 				</controls:AraButton.Style>
