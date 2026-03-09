@@ -66,6 +66,7 @@ namespace ARA
 			services.AddSingleton<IAraNavigation, NavigationService>();
 			services.AddSingleton<IMainWindow, MainWindowService>();
 			services.AddSingleton<GlobalHotKeyService>();
+			services.AddSingleton<ILoadoutCheckerService, LoadoutCheckerService>();
 			// ViewModels
 			services.AddSingleton<MainViewModel>();
 			services.AddSingleton<TrayIconViewModel>();

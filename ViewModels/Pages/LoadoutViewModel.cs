@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Input;
 using ARA.Enums;
-using ARA.Helpers;
 using ARA.Interfaces;
 using ARA.Models;
 using Microsoft.Extensions.Logging;
@@ -14,6 +13,7 @@ namespace ARA.ViewModels.Pages
 		private readonly ILogger _logger;
 		private readonly IAraConfigurations _configurations;
 		private readonly IMainWindow _window;
+		private readonly ILoadoutCheckerService _loadoutChecker;
 		private readonly ScreenCoordinates _coordinates;
 		public IAraNavigation Navigation { get; }
 		public ICommand CheckLoadout { get; }
@@ -42,11 +42,12 @@ namespace ARA.ViewModels.Pages
 				OnPropertyChanged(nameof(SelectedLoadout));
 			}
 		}
-		public LoadoutViewModel(IAraConfigurations config, ILogger logger, IAraNavigation navigation, IMainWindow window)
+		public LoadoutViewModel(IAraConfigurations config, ILogger logger, IAraNavigation navigation, IMainWindow window, ILoadoutCheckerService loadoutChecker)
 		{
 			_logger = logger;
 			_configurations = config;
 			_window = window;
+			_loadoutChecker = loadoutChecker;
 			_coordinates = config.GetSettingsConfiguration().Coordinates;
 			IsDefaultZone = _coordinates.IsDefaultZone();
 			Navigation = navigation;
@@ -68,25 +69,23 @@ namespace ARA.ViewModels.Pages
 			if (_configurations.IsCaptureModeIgnoreARA())
 			{
 				_window.HideMainWindow();
-				var checkTask = Task.Run(() => LoadoutCheckerHelper.CheckIcons(
+				var checkTask = Task.Run(() => _loadoutChecker.CheckIcons(
 					(int)_coordinates.X,
 					(int)_coordinates.Y,
 					(int)_coordinates.Width,
 					(int)_coordinates.Height,
-					SelectedLoadout.Items,
-					_logger));
+					SelectedLoadout.Items));
 				_window.ShowMainWindow();
 				results = await checkTask;
 			}
 			else
 			{
-				results = await Task.Run(() => LoadoutCheckerHelper.CheckIcons(
+				results = await Task.Run(() => _loadoutChecker.CheckIcons(
 					(int)_coordinates.X,
 					(int)_coordinates.Y,
 					(int)_coordinates.Width,
 					(int)_coordinates.Height,
-					SelectedLoadout.Items,
-					_logger));
+					SelectedLoadout.Items));
 			}
 
 			var newItems = SelectedLoadout.Items.Select(item => new GameItem

@@ -2,18 +2,24 @@
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows;
+using ARA.Interfaces;
 using ARA.Models;
 using Microsoft.Extensions.Logging;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 
-namespace ARA.Helpers
+namespace ARA.Services
 {
-	public class LoadoutCheckerHelper
+	public class LoadoutCheckerService : ILoadoutCheckerService
 	{
 		private const double THRESHOLD = 0.8;
+		private readonly ILogger _logger;
+		public LoadoutCheckerService(ILogger logger)
+		{
+			_logger = logger;
+		}
 
-		public static Dictionary<int, bool> CheckIcons(int x, int y, int width, int height, List<GameItem> icons, ILogger logger)
+		public Dictionary<int, bool> CheckIcons(int x, int y, int width, int height, List<GameItem> icons)
 		{
 			using var region = CaptureRegion(x, y, width, height);
 
@@ -21,21 +27,21 @@ namespace ARA.Helpers
 
 			foreach (var item in icons)
 			{
-				using var template = LoadTemplate(item.Path, logger);
-				results[item.Id] = MatchSingle(region, template, item.Name, logger);
+				using var template = LoadTemplate(item.Path);
+				results[item.Id] = MatchSingle(region, template, item.Name);
 			}
 
 			return results;
 		}
 
-		private static Mat LoadTemplate(string packUri, ILogger logger)
+		private Mat LoadTemplate(string packUri)
 		{
 			var uri = new Uri(packUri, UriKind.Absolute);
 			var streamInfo = Application.GetResourceStream(uri);
 
 			if (streamInfo == null)
 			{
-				logger.LogError("Resource not found: {packUri}", packUri);
+				_logger.LogError("Resource not found: {packUri}", packUri);
 				throw new FileNotFoundException($"Resource not found: {packUri}");
 			}
 
@@ -48,7 +54,7 @@ namespace ARA.Helpers
 			return Mat.FromImageData(bytes, ImreadModes.Color);
 		}
 
-		private static bool MatchSingle(Mat region, Mat icon, string name, ILogger logger)
+		private bool MatchSingle(Mat region, Mat icon, string name)
 		{
 			using var regionBgr = ToGray(region);
 			using var iconBgr = ToGray(icon);
@@ -56,7 +62,8 @@ namespace ARA.Helpers
 			using Mat result = new();
 			Cv2.MatchTemplate(regionBgr, iconBgr, result, TemplateMatchModes.CCoeffNormed);
 			Cv2.MinMaxLoc(result, out _, out double maxVal, out _, out _);
-			logger.LogInformation("Icon check [{icon} : {value}]", name, $"{maxVal:F3}");
+
+			_logger.LogInformation("Icon check [{icon} : {value}]", name, $"{maxVal:F3}");
 			return maxVal >= THRESHOLD;
 		}
 
