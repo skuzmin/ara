@@ -36,10 +36,7 @@ namespace ARA
 
 			_serviceProvider.GetService<IAraTranslation>()!.SetLocale();
 
-			var hotKeyService = _serviceProvider!.GetRequiredService<GlobalHotKeyService>()!;
-			var mainWindow = _serviceProvider.GetService<MainWindow>()!;
-			mainWindow.Show();
-			hotKeyService.Register(mainWindow);
+			_serviceProvider.GetService<MainWindow>()!.Show();
 		}
 
 		private void ReloadMainWindow()

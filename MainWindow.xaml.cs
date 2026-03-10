@@ -5,6 +5,7 @@ using System.Windows.Media.Animation;
 using ARA.Controls.CustomControls;
 using ARA.Enums;
 using ARA.Interfaces;
+using ARA.Services;
 using ARA.ViewModels.Shell;
 using Microsoft.Extensions.Logging;
 
@@ -13,14 +14,18 @@ namespace ARA
 	public partial class MainWindow : AraWindow
 	{
 		public required AraButton ActiveButton;
+		private readonly ILoadoutCheckerService _loadoutCheckerService;
+		private readonly GlobalHotKeyService _hotkeysService;
 		private readonly MainViewModel _vm;
 
-		public MainWindow(MainViewModel vm, ILogger logger, IAraTranslation translation)
+		public MainWindow(MainViewModel vm, ILogger logger, IAraTranslation translation, ILoadoutCheckerService loadoutChecker, GlobalHotKeyService hotkeys)
 		{
 			_vm = vm;
+			_loadoutCheckerService = loadoutChecker;
+			_hotkeysService = hotkeys;
 			InitializeComponent();
 			DataContext = vm;
-			Loaded += (s, e) => InitPillPosition();
+			Loaded += OnWindowLoaded;
 			translation.TranslationChanged += ReloadPill;
 			Cursor = App.AppCursor;
 			logger.LogInformation("App Start");
@@ -33,6 +38,13 @@ namespace ARA
 				.FirstOrDefault(b => (AraPage)b.Tag == page);
 
 			button?.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+		}
+
+		private void OnWindowLoaded(object sender, RoutedEventArgs e)
+		{
+			InitPillPosition();
+			_loadoutCheckerService.InitGameWindow();
+			_hotkeysService.Register(this);
 		}
 
 		private void Navigation_Click(object sender, RoutedEventArgs e)

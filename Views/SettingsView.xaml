@@ -106,7 +106,7 @@
 			</StackPanel>
 		</GroupBox>
 
-		<GroupBox Grid.Row="4" Grid.ColumnSpan="3" Header="{DynamicResource Settings.Zone}" Style="{StaticResource AraGroupBox}">
+		<GroupBox Visibility="Collapsed" Grid.Row="4" Grid.ColumnSpan="3" Header="{DynamicResource Settings.Zone}" Style="{StaticResource AraGroupBox}">
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="40"/>

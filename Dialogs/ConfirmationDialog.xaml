@@ -28,14 +28,32 @@
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
-				<controls:AraButton Grid.Column="0" Style="{StaticResource SecondarySmallButton}" IsCancel="True">
+				<controls:AraButton Grid.Column="0" IsCancel="True">
+					<controls:AraButton.Style>
+						<Style TargetType="controls:AraButton" BasedOn="{StaticResource SecondarySmallButton}">
+							<Style.Triggers>
+								<DataTrigger Binding="{Binding Text, ElementName=CancelTextEl}" Value="">
+									<Setter Property="Visibility" Value="Collapsed" />
+								</DataTrigger>
+							</Style.Triggers>
+						</Style>
+					</controls:AraButton.Style>
 					<controls:AraButton.Children>
-						<TextBlock x:Name="CancelTextEl" Text="Cancel"/>
+						<TextBlock x:Name="CancelTextEl" />
 					</controls:AraButton.Children>
 				</controls:AraButton>
-				<controls:AraButton Grid.Column="2" Style="{StaticResource PrimarySmallButton}" IsDefault="True" Click="ConfirmButton_Click">
+				<controls:AraButton Grid.Column="2" IsDefault="True" Click="ConfirmButton_Click">
+					<controls:AraButton.Style>
+						<Style TargetType="controls:AraButton" BasedOn="{StaticResource PrimarySmallButton}">
+							<Style.Triggers>
+								<DataTrigger Binding="{Binding Text, ElementName=ConfirmTextEl}" Value="">
+									<Setter Property="Visibility" Value="Collapsed" />
+								</DataTrigger>
+							</Style.Triggers>
+						</Style>
+					</controls:AraButton.Style>
 					<controls:AraButton.Children>
-						<TextBlock x:Name="ConfirmTextEl" Text="Delete"/>
+						<TextBlock x:Name="ConfirmTextEl" />
 					</controls:AraButton.Children>
 				</controls:AraButton>
 			</Grid>
