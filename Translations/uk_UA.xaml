@@ -16,7 +16,7 @@
 	<sys:String x:Key="General.Confirmation.Message">Ви впевнені, що хочете видалити конфігурацію?</sys:String>
 	<sys:String x:Key="General.Confirmation.ConfirmButton">Видалити</sys:String>
 	<sys:String x:Key="General.Confirmation.CancelButton">Відмінити</sys:String>
-
+	<sys:String x:Key="General.Confirmation.OK">ОК</sys:String>
 
 	<sys:String x:Key="Nav.Loadout">Спорядження</sys:String>
 	<sys:String x:Key="Nav.Settings">Налаштування</sys:String>
@@ -33,6 +33,16 @@
 	<sys:String x:Key="Loadout.Grid.Status">Статус</sys:String>
 	<sys:String x:Key="Loadout.Grid.EmptyTitle">У вас ще немає жодного спорядження.</sys:String>
 	<sys:String x:Key="Loadout.Grid.EmptySubTitle">Використайте кнопку налаштувань [ ⚙️ ], щоб створити набір спорядження.</sys:String>
+
+	<sys:String x:Key="GameNotification.NoFound.Title">Гру не виявлено</sys:String>
+	<sys:String x:Key="GameNotification.NoFound.Message">Запустіть гру: Arc Raiders</sys:String>
+	<sys:String x:Key="GameNotification.NoFound.SubMessage">Після цього перейдіть до [Налаштування] => [Виявити гру]</sys:String>
+	<sys:String x:Key="GameNotification.Minimized.Title">Проблема з вікном гри</sys:String>
+	<sys:String x:Key="GameNotification.Minimized.Message">Вікно гри було згорнуто</sys:String>
+	<sys:String x:Key="GameNotification.Minimized.SubMessage">Розгорніть вікно гри</sys:String>
+	<sys:String x:Key="GameNotification.Closed.Title">Проблема з вікном гри</sys:String>
+	<sys:String x:Key="GameNotification.Closed.Message">Гру було закрито</sys:String>
+	<sys:String x:Key="GameNotification.Closed.SubMessage">Запустіть гру, потім перейдіть до [Налаштування] => [Виявити гру]</sys:String>
 
 	<sys:String x:Key="Overlay.Enter">Enter для збереження</sys:String>
 	<sys:String x:Key="Overlay.Esc">Esc для скасування</sys:String>

@@ -13,7 +13,7 @@ using OpenCvSharp.Extensions;
 #pragma warning disable SYSLIB1054
 
 // dotnet publish -c Release
-// add translations, testing, add detect window button in settings, bug during save settings when app is closed/minimized
+// add detect window button in settings, bug during save settings when app is closed/minimized
 // add read.me
 
 namespace ARA.Services
@@ -32,8 +32,8 @@ namespace ARA.Services
 		private const uint PW_RENDERFULLCONTENT = 0x00000002;
 		#endregion
 
-		private const string WINDOW_PROC_NAME = "PioneerGame";
-		//private const string WINDOW_PROC_NAME = "notepad";
+		//private const string WINDOW_PROC_NAME = "PioneerGame";
+		private const string WINDOW_PROC_NAME = "notepad";
 		private const double REF_HEIGHT = 1440;
 		private const double REF_WIDTH = 2560;
 		private const double REF_ICON_SIZE = 128;
@@ -60,10 +60,10 @@ namespace ARA.Services
 				_logger.LogError("Can't find process: {proc}", WINDOW_PROC_NAME);
 				var dialogConfig = new ConfirmationDialogConfig
 				{
-					Title = "Game not detected",
-					Message = "Start the game: Arc Raiders",
-					SubMessage = "After that go to [Settings] => [Detect Game]",
-					ConfirmButtonText = "OK",
+					Title = _translations.Translate("GameNotification.NoFound.Title"),
+					Message = _translations.Translate("GameNotification.NoFound.Message"),
+					SubMessage = _translations.Translate("GameNotification.NoFound.SubMessage"),
+					ConfirmButtonText = _translations.Translate("General.Confirmation.OK"),
 				};
 				new ConfirmationDialog(dialogConfig).ShowDialog();
 				return;
@@ -120,10 +120,10 @@ namespace ARA.Services
 			{
 				var dialogConfig = new ConfirmationDialogConfig
 				{
-					Title = "Game window issue",
-					Message = "The game was minimized",
-					SubMessage = "Restore game window",
-					ConfirmButtonText = "OK",
+					Title = _translations.Translate("GameNotification.Minimized.Title"),
+					Message = _translations.Translate("GameNotification.Minimized.Message"),
+					SubMessage = _translations.Translate("GameNotification.Minimized.SubMessage"),
+					ConfirmButtonText = _translations.Translate("General.Confirmation.OK"),
 				};
 				Application.Current.Dispatcher.Invoke(() =>
 				{
@@ -244,10 +244,10 @@ namespace ARA.Services
 			{
 				var dialogConfig = new ConfirmationDialogConfig
 				{
-					Title = "Game window issue",
-					Message = "The game was closed",
-					SubMessage = "Start the game, then got to [Settings] => [Detect Game]",
-					ConfirmButtonText = "OK",
+					Title = _translations.Translate("GameNotification.Closed.Title"),
+					Message = _translations.Translate("GameNotification.Closed.Message"),
+					SubMessage = _translations.Translate("GameNotification.Closed.SubMessage"),
+					ConfirmButtonText = _translations.Translate("General.Confirmation.OK"),
 				};
 				Application.Current.Dispatcher.Invoke(() =>
 				{

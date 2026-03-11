@@ -16,6 +16,7 @@
 	<sys:String x:Key="General.Confirmation.Message">Are you sure you want to delete configuration?</sys:String>
 	<sys:String x:Key="General.Confirmation.ConfirmButton">Delete</sys:String>
 	<sys:String x:Key="General.Confirmation.CancelButton">Cancel</sys:String>
+	<sys:String x:Key="General.Confirmation.OK">OK</sys:String>
 
 	<sys:String x:Key="Nav.Loadout">Loadout</sys:String>
 	<sys:String x:Key="Nav.Settings">Settings</sys:String>
@@ -32,6 +33,16 @@
 	<sys:String x:Key="Loadout.Grid.Status">Status</sys:String>
 	<sys:String x:Key="Loadout.Grid.EmptyTitle">You don't have any Loadouts yet.</sys:String>
 	<sys:String x:Key="Loadout.Grid.EmptySubTitle">Use the configuration button [ ⚙️ ] to create your first loadout.</sys:String>
+
+	<sys:String x:Key="GameNotification.NoFound.Title">Game not detected</sys:String>
+	<sys:String x:Key="GameNotification.NoFound.Message">Start the game: Arc Raiders</sys:String>
+	<sys:String x:Key="GameNotification.NoFound.SubMessage">After that go to [Settings] => [Detect Game]</sys:String>
+	<sys:String x:Key="GameNotification.Minimized.Title">Game window issue</sys:String>
+	<sys:String x:Key="GameNotification.Minimized.Message">The game was minimized</sys:String>
+	<sys:String x:Key="GameNotification.Minimized.SubMessage">Restore game window</sys:String>
+	<sys:String x:Key="GameNotification.Closed.Title">Game window issue</sys:String>
+	<sys:String x:Key="GameNotification.Closed.Message">The game was closed</sys:String>
+	<sys:String x:Key="GameNotification.Closed.SubMessage">Start the game, then got to [Settings] => [Detect Game]</sys:String>
 
 	<sys:String x:Key="Overlay.Enter">Enter to save</sys:String>
 	<sys:String x:Key="Overlay.Esc">Esc to cancel</sys:String>
