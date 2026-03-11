@@ -43,6 +43,7 @@ namespace ARA
 		{
 			var oldWindow = Application.Current.MainWindow;
 			var newWindow = _serviceProvider!.GetRequiredService<MainWindow>()!;
+			newWindow.IsReload = true;
 			var hotKeyService = _serviceProvider!.GetRequiredService<GlobalHotKeyService>()!;
 			newWindow.Left = oldWindow.Left;
 			newWindow.Top = oldWindow.Top;

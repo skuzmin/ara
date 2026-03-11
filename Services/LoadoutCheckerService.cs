@@ -13,7 +13,7 @@ using OpenCvSharp.Extensions;
 #pragma warning disable SYSLIB1054
 
 // dotnet publish -c Release
-// add detect window button in settings, bug during save settings when app is closed
+// add detect window button in settings, certificate issue
 // add read.me
 
 namespace ARA.Services
@@ -52,7 +52,7 @@ namespace ARA.Services
 			return _hwnd != IntPtr.Zero;
 		}
 
-		public void InitGameWindow()
+		public void CaptureGameWindow()
 		{
 			var proc = Process.GetProcessesByName(WINDOW_PROC_NAME);
 			if (proc == null || proc.Length == 0)
@@ -125,10 +125,7 @@ namespace ARA.Services
 					SubMessage = _translations.Translate("GameNotification.Minimized.SubMessage"),
 					ConfirmButtonText = _translations.Translate("General.Confirmation.OK"),
 				};
-				Application.Current.Dispatcher.Invoke(() =>
-				{
-					new ConfirmationDialog(dialogConfig).ShowDialog();
-				});
+				Application.Current.Dispatcher.Invoke(() => new ConfirmationDialog(dialogConfig).ShowDialog());
 			}
 
 			return result;

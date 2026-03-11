@@ -14,6 +14,7 @@ namespace ARA
 {
 	public partial class MainWindow : AraWindow
 	{
+		public bool IsReload { get; set; }
 		public required AraButton ActiveButton;
 		private readonly ILoadoutCheckerService _loadoutCheckerService;
 		private readonly GlobalHotKeyService _hotkeysService;
@@ -48,8 +49,11 @@ namespace ARA
 		private void OnWindowLoaded(object sender, RoutedEventArgs e)
 		{
 			InitPillPosition();
-			_loadoutCheckerService.InitGameWindow();
 			_hotkeysService.Register(this);
+			if (!IsReload)
+			{
+				_loadoutCheckerService.CaptureGameWindow();
+			}
 		}
 
 		private void Navigation_Click(object sender, RoutedEventArgs e)

@@ -5,7 +5,7 @@ namespace ARA.Interfaces
 	public interface ILoadoutCheckerService
 	{
 		public Dictionary<int, bool> CheckIcons(List<GameItem> icons);
-		public void InitGameWindow();
+		public void CaptureGameWindow();
 		public bool IsGameDetected();
 
 	}
