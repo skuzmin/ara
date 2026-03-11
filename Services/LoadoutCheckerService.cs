@@ -13,7 +13,7 @@ using OpenCvSharp.Extensions;
 #pragma warning disable SYSLIB1054
 
 // dotnet publish -c Release
-// add detect window button in settings, bug during save settings when app is closed/minimized
+// add detect window button in settings, bug during save settings when app is closed
 // add read.me
 
 namespace ARA.Services
@@ -72,7 +72,7 @@ namespace ARA.Services
 			_logger.LogInformation("PROC: {proc} | WIN: {win} | HWND: {hwnd}", proc, proc[0], _hwnd);
 		}
 
-		public Dictionary<int, bool> CheckIcons(int x, int y, int width, int height, List<GameItem> icons)
+		public Dictionary<int, bool> CheckIcons(List<GameItem> icons)
 		{
 			var results = new Dictionary<int, bool>();
 			using var region = CaptureScreen();

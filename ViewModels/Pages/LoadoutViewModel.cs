@@ -14,10 +14,8 @@ namespace ARA.ViewModels.Pages
 		private readonly IAraConfigurations _configurations;
 		private readonly IMainWindow _window;
 		private readonly ILoadoutCheckerService _loadoutChecker;
-		private readonly ScreenCoordinates _coordinates;
 		public IAraNavigation Navigation { get; }
 		public ICommand CheckLoadout { get; }
-		public bool IsDefaultZone { get; }
 		public ObservableCollection<LoadoutConfiguration> LoadoutOptions { get; }
 		public bool IsLoading
 		{
@@ -48,8 +46,6 @@ namespace ARA.ViewModels.Pages
 			_configurations = config;
 			_window = window;
 			_loadoutChecker = loadoutChecker;
-			_coordinates = config.GetSettingsConfiguration().Coordinates;
-			IsDefaultZone = _coordinates.IsDefaultZone();
 			Navigation = navigation;
 			SelectedLoadout = null;
 			CheckLoadout = new RelayCommand(OnCheckLoadoutClicked);
@@ -69,23 +65,13 @@ namespace ARA.ViewModels.Pages
 			if (_configurations.IsCaptureModeIgnoreARA())
 			{
 				_window.HideMainWindow();
-				var checkTask = Task.Run(() => _loadoutChecker.CheckIcons(
-					(int)_coordinates.X,
-					(int)_coordinates.Y,
-					(int)_coordinates.Width,
-					(int)_coordinates.Height,
-					SelectedLoadout.Items));
+				var checkTask = Task.Run(() => _loadoutChecker.CheckIcons(SelectedLoadout.Items));
 				_window.ShowMainWindow();
 				results = await checkTask;
 			}
 			else
 			{
-				results = await Task.Run(() => _loadoutChecker.CheckIcons(
-					(int)_coordinates.X,
-					(int)_coordinates.Y,
-					(int)_coordinates.Width,
-					(int)_coordinates.Height,
-					SelectedLoadout.Items));
+				results = await Task.Run(() => _loadoutChecker.CheckIcons(SelectedLoadout.Items));
 			}
 
 			var newItems = SelectedLoadout.Items.Select(item => new GameItem

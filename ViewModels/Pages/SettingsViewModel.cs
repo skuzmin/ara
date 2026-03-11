@@ -4,7 +4,6 @@ using System.Windows.Input;
 using ARA.Dialogs;
 using ARA.Interfaces;
 using ARA.Models;
-using ARA.Views;
 
 namespace ARA.ViewModels.Pages
 {
@@ -27,46 +26,6 @@ namespace ARA.ViewModels.Pages
 		public List<SettingsItem> Locales { get; set; }
 		public List<SettingsItem> DebugLevels { get; set; }
 		public List<SettingsItem> CaptureModes { get; set; }
-		public double? CoordinatesX
-		{
-			get => field;
-			set
-			{
-				field = value;
-				IsEdited = true;
-				OnPropertyChanged(nameof(CoordinatesX));
-			}
-		}
-		public double? CoordinatesY
-		{
-			get => field;
-			set
-			{
-				field = value;
-				IsEdited = true;
-				OnPropertyChanged(nameof(CoordinatesY));
-			}
-		}
-		public double? CoordinatesHeight
-		{
-			get => field;
-			set
-			{
-				field = value;
-				IsEdited = true;
-				OnPropertyChanged(nameof(CoordinatesHeight));
-			}
-		}
-		public double? CoordinatesWidth
-		{
-			get => field;
-			set
-			{
-				field = value;
-				IsEdited = true;
-				OnPropertyChanged(nameof(CoordinatesWidth));
-			}
-		}
 		public SettingsItem? SelectedLocale
 		{
 			get => field;
@@ -107,7 +66,6 @@ namespace ARA.ViewModels.Pages
 				OnPropertyChanged(nameof(SelectedCaptureMode));
 			}
 		}
-		public ICommand SelectRegionCommand { get; }
 		public ICommand OpenConfigFolderCommand { get; }
 		public ICommand SaveSettingsCommand { get; }
 		public SettingsViewModel(IAraThemes themes, IAraTranslation translations, IAraConfigurations configurations, IMainWindow windowService)
@@ -118,24 +76,12 @@ namespace ARA.ViewModels.Pages
 			_configurations = configurations;
 			OpenConfigFolderCommand = new RelayCommand(_ => Process.Start("explorer.exe", Path.GetDirectoryName(Constants.ConfigFilePath)!));
 			SaveSettingsCommand = new RelayCommand(_ => SaveSettings());
-			SelectRegionCommand = new RelayCommand(_ => SelectRegion());
 			Themes = _themes.GetThemes();
 			Locales = _translations.GetLocales();
 			DebugLevels = Constants.DebugLevels;
 			CaptureModes = Constants.CaptureModes;
 			_translations.TranslationChanged += UpdateTranslations;
-			InitCoordinates();
 			UpdateTranslations();
-		}
-
-		private void InitCoordinates()
-		{
-			var settings = _configurations.GetSettingsConfiguration();
-			CoordinatesX = settings.Coordinates.X;
-			CoordinatesY = settings.Coordinates.Y;
-			CoordinatesHeight = settings.Coordinates.Height;
-			CoordinatesWidth = settings.Coordinates.Width;
-			IsEdited = false;
 		}
 
 		private void UpdateTranslations()
@@ -155,36 +101,15 @@ namespace ARA.ViewModels.Pages
 			IsEdited = false;
 		}
 
-		private void SelectRegion()
-		{
-			_windowService.HideMainWindow();
-			var coordinates = new ScreenCoordinates(CoordinatesX, CoordinatesY, CoordinatesHeight, CoordinatesWidth);
-			var overlay = new OverlayWindow(coordinates);
-			overlay.OnSave += coordinates =>
-			{
-				CoordinatesX = coordinates.X;
-				CoordinatesY = coordinates.Y;
-				CoordinatesHeight = coordinates.Height;
-				CoordinatesWidth = coordinates.Width;
-			};
-			overlay.Closed += (s, args) => _windowService.ShowMainWindow();
-			overlay.Show();
-		}
-
 		private void SaveSettings()
 		{
 			var settings = _configurations.GetSettingsConfiguration();
-			settings.Coordinates = new ScreenCoordinates(CoordinatesX, CoordinatesY, CoordinatesHeight, CoordinatesWidth);
 			settings.DebugLevel = SelectedDebugLevel!.Id;
 			settings.CaptureMode = SelectedCaptureMode!.Id;
 			_themes.UpdateTheme(SelectedTheme!.Id);
 			_translations.UpdateLocale(SelectedLocale!.Id);
 
 			_configurations.UpdateSettings(settings);
-			if (settings.Coordinates.IsDefaultZone())
-			{
-				InitCoordinates();
-			}
 		}
 
 		public override bool CanNavigateAway()
