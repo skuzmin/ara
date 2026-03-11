@@ -48,9 +48,9 @@ namespace ARA
 			newWindow.Top = oldWindow.Top;
 
 			Application.Current.MainWindow = newWindow;
+			hotKeyService.Unregister();
 			newWindow.Show();
 			oldWindow?.Close();
-			hotKeyService.Register(newWindow);
 		}
 
 		private static void ConfigureServices(IServiceCollection services)

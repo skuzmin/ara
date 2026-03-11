@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -18,7 +19,11 @@ namespace ARA
 		private readonly GlobalHotKeyService _hotkeysService;
 		private readonly MainViewModel _vm;
 
-		public MainWindow(MainViewModel vm, ILogger logger, IAraTranslation translation, ILoadoutCheckerService loadoutChecker, GlobalHotKeyService hotkeys)
+		public MainWindow(MainViewModel vm,
+			ILogger logger,
+			IAraTranslation translation,
+			ILoadoutCheckerService loadoutChecker,
+			GlobalHotKeyService hotkeys)
 		{
 			_vm = vm;
 			_loadoutCheckerService = loadoutChecker;

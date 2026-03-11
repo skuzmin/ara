@@ -13,6 +13,7 @@ namespace ARA.Services
 
 		[DllImport("user32.dll")]
 		private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
 		[DllImport("user32.dll")]
 		private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
@@ -45,6 +46,15 @@ namespace ARA.Services
 			RegisterHotKey(_handle, HOTKEY_ACTION, MOD_CONTROL | MOD_ALT, VK_E);
 		}
 
+		public void Unregister()
+		{
+			UnregisterHotKey(_handle, HOTKEY_SHOW);
+			UnregisterHotKey(_handle, HOTKEY_ACTION);
+			_source?.RemoveHook(HwndHook);
+			_source = null;
+			_handle = IntPtr.Zero;
+		}
+
 		private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
 		{
 			if (msg == WM_HOTKEY)
@@ -67,9 +77,7 @@ namespace ARA.Services
 
 		public void Dispose()
 		{
-			UnregisterHotKey(_handle, HOTKEY_SHOW);
-			UnregisterHotKey(_handle, HOTKEY_ACTION);
-			_source?.RemoveHook(HwndHook);
+			Unregister();
 			GC.SuppressFinalize(this);
 		}
 	}
