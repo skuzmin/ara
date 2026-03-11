@@ -28,6 +28,9 @@ jobs:
             -p:IncludeNativeLibrariesForSelfExtract=true `
             -o ./publish
 
+      - name: Setup Windows SDK (signtool)
+        uses: microsoft/setup-msbuild@v2
+
       - name: Sign EXE
         shell: pwsh
         env:
@@ -36,10 +39,18 @@ jobs:
         run: |
           $bytes = [Convert]::FromBase64String($env:CERT_PFX_BASE64)
           [IO.File]::WriteAllBytes("cert.pfx", $bytes)
-          signtool sign /f cert.pfx /p $env:CERT_PASSWORD `
+          
+          $signtool = Get-ChildItem -Path "C:\Program Files (x86)\Windows Kits\10\bin" `
+            -Recurse -Filter "signtool.exe" | 
+            Where-Object { $_.FullName -match "x64" } | 
+            Select-Object -First 1 -ExpandProperty FullName
+          
+          & $signtool sign /f cert.pfx /p $env:CERT_PASSWORD `
             /t http://timestamp.digicert.com /fd SHA256 `
             ./publish/ARA.exe
+          
           Remove-Item cert.pfx
+
 
 
       - name: Create GitHub Release
