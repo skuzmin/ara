@@ -70,7 +70,7 @@ namespace ARA.ViewModels.Pages
 			var loadoutConfig = _configurations.GetCurrentLoadoutConfig();
 			_isNewLoadout = loadoutConfig == null;
 			LoadoutConfiguration = loadoutConfig ?? new LoadoutConfiguration();
-			Title = _isNewLoadout ? "New Configuration" : LoadoutConfiguration.Name;
+			Title = _isNewLoadout ? _translations.Translate("LoadoutConfig.NewConfigration") : LoadoutConfiguration.Name;
 			// Init lists for Combobox/DataGrid
 			var allGameItems = GameItem.GetList();
 			var filteredList = allGameItems.Where(a => !LoadoutConfiguration.Items.Any(b => b.Id == a.Id)).ToList();

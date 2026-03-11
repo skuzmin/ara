@@ -54,16 +54,6 @@
 	<sys:String x:Key="Settings.Language">Мова:</sys:String>
 	<sys:String x:Key="Settings.DebugLevel">Рівень налагодження:</sys:String>
 	<sys:String x:Key="Settings.CaptureMode">Режим захоплення:</sys:String>
-	<sys:String x:Key="Settings.Zone">Зона</sys:String>
-	<sys:String x:Key="Settings.Zone.Button">Обрати зону</sys:String>
-	<sys:String x:Key="Settings.Zone.X">X</sys:String>
-	<sys:String x:Key="Settings.Zone.X.Placeholder">X</sys:String>
-	<sys:String x:Key="Settings.Zone.Y">Y</sys:String>
-	<sys:String x:Key="Settings.Zone.Y.Placeholder">Y</sys:String>
-	<sys:String x:Key="Settings.Zone.Width">Ширина</sys:String>
-	<sys:String x:Key="Settings.Zone.Width.Placeholder">Ширина зони</sys:String>
-	<sys:String x:Key="Settings.Zone.Height">Висота</sys:String>
-	<sys:String x:Key="Settings.Zone.Height.Placeholder">Висота зони</sys:String>
 	<sys:String x:Key="Settings.Button">Відкрити розташування файлу конфігурації</sys:String>
 
 	<sys:String x:Key="Translation.English">Англійська</sys:String>
@@ -87,6 +77,7 @@
 
 	<sys:String x:Key="LoadoutConfig.Title">Конфігурації спорядження</sys:String>
 	<sys:String x:Key="LoadoutConfig.Button">Нова</sys:String>
+	<sys:String x:Key="LoadoutConfig.NewConfigration">Нова Конфігурація</sys:String>
 	<sys:String x:Key="LoadoutConfig.Grid.Name">Назва</sys:String>
 	<sys:String x:Key="LoadoutConfig.Grid.Items">Предмети</sys:String>
 	<sys:String x:Key="LoadoutConfig.Grid.Actions">Дії</sys:String>

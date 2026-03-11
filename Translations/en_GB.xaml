@@ -54,16 +54,6 @@
 	<sys:String x:Key="Settings.Language">Language:</sys:String>
 	<sys:String x:Key="Settings.DebugLevel">Debug Level:</sys:String>
 	<sys:String x:Key="Settings.CaptureMode">Capture Mode:</sys:String>
-	<sys:String x:Key="Settings.Zone">Zone</sys:String>
-	<sys:String x:Key="Settings.Zone.Button">Select Zone</sys:String>
-	<sys:String x:Key="Settings.Zone.X">X</sys:String>
-	<sys:String x:Key="Settings.Zone.X.Placeholder">X</sys:String>
-	<sys:String x:Key="Settings.Zone.Y">Y</sys:String>
-	<sys:String x:Key="Settings.Zone.Y.Placeholder">Y</sys:String>
-	<sys:String x:Key="Settings.Zone.Width">Width</sys:String>
-	<sys:String x:Key="Settings.Zone.Width.Placeholder">Zone Width</sys:String>
-	<sys:String x:Key="Settings.Zone.Height">Height</sys:String>
-	<sys:String x:Key="Settings.Zone.Height.Placeholder">Zone Height</sys:String>
 	<sys:String x:Key="Settings.Button">Open configuration file location</sys:String>
 
 	<sys:String x:Key="Translation.English">English</sys:String>
@@ -84,9 +74,10 @@
 	<sys:String x:Key="About.Hotkeys.Egg">EEGG:</sys:String>
 	<sys:String x:Key="About.FAQ">FAQ</sys:String>
 	<sys:String x:Key="About.FAQ.1">No questions have been asked yet.</sys:String>
-
+	
 	<sys:String x:Key="LoadoutConfig.Title">Loadout Configurations</sys:String>
 	<sys:String x:Key="LoadoutConfig.Button">New</sys:String>
+	<sys:String x:Key="LoadoutConfig.NewConfigration">New Configuration</sys:String>
 	<sys:String x:Key="LoadoutConfig.Grid.Name">Name</sys:String>
 	<sys:String x:Key="LoadoutConfig.Grid.Items">Items</sys:String>
 	<sys:String x:Key="LoadoutConfig.Grid.Actions">Actions</sys:String>

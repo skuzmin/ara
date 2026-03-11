@@ -44,7 +44,7 @@
 						</StackPanel>
 						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
 							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource About.Stack}"/>
-							<TextBlock Style="{StaticResource AraTextBlock}" Text=".NET/WPF/C#"/>
+							<TextBlock Style="{StaticResource AraTextBlock}" Text=".NET/WPF/C#, OpenCV"/>
 						</StackPanel>
 					</StackPanel>
 				</GroupBox>
@@ -55,10 +55,6 @@
 							<TextBlock Style="{StaticResource AraStackRowLabel}" Width="280" Text="{DynamicResource About.Hotkeys.Restore}"/>
 							<TextBlock Style="{StaticResource AraTextBlock}" Text="Ctrl + Alt + O"/>
 						</StackPanel>
-						<!--<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
-							<TextBlock Style="{StaticResource AraStackRowLabel}" Width="280" Text="{DynamicResource About.Hotkeys.Egg}"/>
-							<TextBlock Style="{StaticResource AraTextBlock}" Text="Ctrl + Alt + E"/>
-						</StackPanel>-->
 					</StackPanel>
 				</GroupBox>
 
