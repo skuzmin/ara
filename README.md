@@ -2,8 +2,8 @@
 
 Small app which helps you to create and check loadout before you start the adventure. (Maybe some additional features)
 
-![App screenshot](.github/images/screenshot_1.png)
-![App screenshot](.github/images/screenshot_2.png)
+![App screenshot 1](Docs/images/screenshot_1.png)
+![App screenshot 2](Docs/images/screenshot_2.png)
 
 ## Features
 

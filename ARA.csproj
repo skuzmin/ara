@@ -88,8 +88,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include=".github\images\Screenshot_1.png" />
-    <Content Include=".github\images\Screenshot_2.png" />
+    <Content Include="Docs\images\Screenshot_1.png" />
+    <Content Include="Docs\images\Screenshot_2.png" />
   </ItemGroup>
 
   <ItemGroup>
