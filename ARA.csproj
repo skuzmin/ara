@@ -24,8 +24,6 @@
     <None Remove="Assets\Fonts\Oxanium-Bold.ttf" />
     <None Remove="Assets\Fonts\Oxanium-Medium.ttf" />
     <None Remove="Assets\Fonts\Oxanium-Regular.ttf" />
-    <None Remove="Assets\Icons\CaptureModes\Capture-Default.png" />
-    <None Remove="Assets\Icons\CaptureModes\Capture-Ignore.png" />
     <None Remove="Assets\Icons\check-mark.png" />
     <None Remove="Assets\Icons\chevron-left.png" />
     <None Remove="Assets\Icons\config.png" />
@@ -94,12 +92,6 @@
 
   <ItemGroup>
     <Resource Include="Assets\Cursors\Cursor.png" />
-    <Resource Include="Assets\Icons\CaptureModes\Capture-Default.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Icons\CaptureModes\Capture-Ignore.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Assets\Icons\check-mark.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

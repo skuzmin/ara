@@ -28,8 +28,7 @@ namespace ARA.Services
 		private const uint PW_RENDERFULLCONTENT = 0x00000002;
 		#endregion
 
-		//private const string WINDOW_PROC_NAME = "PioneerGame";
-		private const string WINDOW_PROC_NAME = "notepad";
+		private const string WINDOW_PROC_NAME = "PioneerGame";
 		private const double REF_HEIGHT = 1440;
 		private const double REF_WIDTH = 2560;
 		private const double REF_ICON_SIZE = 128;

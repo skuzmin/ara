@@ -52,6 +52,7 @@
 	<sys:String x:Key="Settings.Language">Language:</sys:String>
 	<sys:String x:Key="Settings.DebugLevel">Debug Level:</sys:String>
 	<sys:String x:Key="Settings.CaptureGame">Detect Game</sys:String>
+	<sys:String x:Key="Settings.CaptureGameSuccess">Game Detected</sys:String>
 	<sys:String x:Key="Settings.Button">Open configuration file location</sys:String>
 
 	<sys:String x:Key="Translation.English">English</sys:String>

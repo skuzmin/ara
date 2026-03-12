@@ -88,9 +88,10 @@
 					<controls:AraButton Command="{Binding DetectGameCommand}">
 						<controls:AraButton.Style>
 							<Style BasedOn="{StaticResource SecondaryButton}" TargetType="controls:AraButton">
+								<Setter Property="Visibility" Value="Visible" />
 								<Style.Triggers>
 									<DataTrigger Binding="{Binding IsGameDetected}" Value="True">
-										<Setter Property="IsEnabled" Value="False" />
+										<Setter Property="Visibility" Value="Collapsed" />
 									</DataTrigger>
 								</Style.Triggers>
 							</Style>
@@ -99,6 +100,20 @@
 							<TextBlock Text="{DynamicResource Settings.CaptureGame}" />
 						</controls:AraButton.Children>
 					</controls:AraButton>
+					<StackPanel>
+						<StackPanel.Style>
+							<Style BasedOn="{StaticResource GameDetectWrapper}" TargetType="StackPanel">
+								<Setter Property="Visibility" Value="Collapsed" />
+								<Style.Triggers>
+									<DataTrigger Binding="{Binding IsGameDetected}" Value="True">
+										<Setter Property="Visibility" Value="Visible" />
+									</DataTrigger>
+								</Style.Triggers>
+							</Style>
+						</StackPanel.Style>
+						<Image Style="{StaticResource GameDetectImage}" Source="/Assets/Icons/Statuses/Success.png" />
+						<TextBlock Style="{StaticResource GameDetectText}" Text="{DynamicResource Settings.CaptureGameSuccess}" />
+					</StackPanel>
 				</Grid>
 			</StackPanel>
 		</GroupBox>

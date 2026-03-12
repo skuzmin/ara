@@ -51,7 +51,8 @@
 	<sys:String x:Key="Settings.Theme">Тема:</sys:String>
 	<sys:String x:Key="Settings.Language">Мова:</sys:String>
 	<sys:String x:Key="Settings.DebugLevel">Рівень налагодження:</sys:String>
-	<sys:String x:Key="Settings.CaptureGame">Виявити гру</sys:String>
+	<sys:String x:Key="Settings.CaptureGame">Виявити Гру</sys:String>
+	<sys:String x:Key="Settings.CaptureGameSuccess">Гру Виявлено</sys:String>
 	<sys:String x:Key="Settings.Button">Відкрити розташування файлу конфігурації</sys:String>
 
 	<sys:String x:Key="Translation.English">Англійська</sys:String>
