@@ -88,8 +88,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Docs\images\Screenshot_1.png" />
-    <Content Include="Docs\images\Screenshot_2.png" />
+    <Content Include=".github\images\Screenshot_1.png" />
+    <Content Include=".github\images\Screenshot_2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -239,6 +239,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include=".github\images\Screenshot_1.png" />
+    <None Include=".github\images\Screenshot_2.png" />
     <None Include=".github\workflows\release.yml" />
   </ItemGroup>
 
