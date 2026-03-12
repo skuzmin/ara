@@ -5,6 +5,9 @@ Small app which helps you to create and check loadout before you start the adven
 ![App screenshot 1](.github/images/Screenshot_1.png)
 ![App screenshot 2](.github/images/Screenshot_2.png)
 
+## System Requirements
+Windows 11 x64
+
 ## Features
 
 - Create and Check Loadout
