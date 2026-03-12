@@ -88,6 +88,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include=".github\images\Screenshot_1.png" />
+    <Content Include=".github\images\Screenshot_2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\Cursors\Cursor.png" />
     <Resource Include="Assets\Icons\CaptureModes\Capture-Default.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

@@ -13,8 +13,7 @@ using OpenCvSharp.Extensions;
 #pragma warning disable SYSLIB1054
 
 // dotnet publish -c Release
-// add detect window button in settings, certificate issue
-// add read.me
+// add detect window button in settings
 
 namespace ARA.Services
 {
