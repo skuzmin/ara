@@ -92,6 +92,4 @@
 	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.Actions">Actions</sys:String>
 	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.EmptyTitle">You don't have any Loadout Items yet.</sys:String>
 	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.EmptySubTitle">Use the combobox and button [ Add ] to add your first item.</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.ValidationTitle">One or more validation errors.</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.ValidationSubTitle">Fill all required fields and/or add at least one item.</sys:String>
 </ResourceDictionary>

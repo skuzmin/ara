@@ -199,29 +199,8 @@
 			</Grid>
 		</ScrollViewer>
 
-		<Grid Grid.Row="4">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="Auto"/>
-			</Grid.ColumnDefinitions>
-
-			<!-- Validation Message -->
-			<StackPanel Grid.Column="0" Orientation="Vertical" >
-				<StackPanel.Style>
-					<Style TargetType="StackPanel">
-						<Setter Property="Visibility" Value="Collapsed"/>
-						<Style.Triggers>
-							<DataTrigger Binding="{Binding IsValid}" Value="False">
-								<Setter Property="Visibility" Value="Visible" />
-							</DataTrigger>
-						</Style.Triggers>
-					</Style>
-				</StackPanel.Style>
-				<TextBlock Style="{StaticResource ValidationErrorMessage}" Text="{DynamicResource LoadoutConfigDetails.Items.Grid.ValidationTitle}"/>
-				<TextBlock Style="{StaticResource ValidationErrorMessage}" Text="{DynamicResource LoadoutConfigDetails.Items.Grid.ValidationSubTitle}"/>
-			</StackPanel>
-
-			<controls:AraButton Grid.Column="1" Command="{Binding SaveLoadoutConfigurationCommand}">
+		<StackPanel Grid.Row="4">
+			<controls:AraButton HorizontalAlignment="Right" Grid.Column="1" Command="{Binding SaveLoadoutConfigurationCommand}">
 				<controls:AraButton.Style>
 					<Style TargetType="controls:AraButton" BasedOn="{StaticResource PrimaryButton}">
 						<Style.Triggers>
@@ -235,6 +214,6 @@
 					<TextBlock Text="{DynamicResource General.Save}" />
 				</controls:AraButton.Children>
 			</controls:AraButton>
-		</Grid>
+		</StackPanel>
 	</Grid>
 </UserControl>

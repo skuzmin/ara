@@ -92,6 +92,4 @@
 	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.Actions">Дії</sys:String>
 	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.EmptyTitle">У вас ще немає жодного предмета спорядження.</sys:String>
 	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.EmptySubTitle">Використайте випадаючий список і кнопку [ Додати ], щоб додати перший предмет.</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.ValidationTitle">Одна або декілька помилок валідації.</sys:String>
-	<sys:String x:Key="LoadoutConfigDetails.Items.Grid.ValidationSubTitle">Заповніть усі обов'язкові поля та/або додайте щонайменше один предмет.</sys:String>
 </ResourceDictionary>
