@@ -24,8 +24,6 @@
 
 	<sys:String x:Key="Loadout.Title">Перевірка спорядження</sys:String>
 	<sys:String x:Key="Loadout.Placeholder">Оберіть спорядження</sys:String>
-	<sys:String x:Key="Loadout.DefaultZoneMessage1">Ви використовуєте стандартну конфігурацію зони.</sys:String>
-	<sys:String x:Key="Loadout.DefaultZoneMessage2">Перейдіть до [Налаштування] => [Обрати зону], щоб встановити зону.</sys:String>
 	<sys:String x:Key="Loadout.Button">Перевірити</sys:String>
 	<sys:String x:Key="Loadout.Grid.Icon">Іконка</sys:String>
 	<sys:String x:Key="Loadout.Grid.Name">Назва</sys:String>
@@ -53,7 +51,7 @@
 	<sys:String x:Key="Settings.Theme">Тема:</sys:String>
 	<sys:String x:Key="Settings.Language">Мова:</sys:String>
 	<sys:String x:Key="Settings.DebugLevel">Рівень налагодження:</sys:String>
-	<sys:String x:Key="Settings.CaptureMode">Режим захоплення:</sys:String>
+	<sys:String x:Key="Settings.CaptureGame">Виявити гру</sys:String>
 	<sys:String x:Key="Settings.Button">Відкрити розташування файлу конфігурації</sys:String>
 
 	<sys:String x:Key="Translation.English">Англійська</sys:String>
@@ -61,7 +59,6 @@
 	<sys:String x:Key="Theme.Dark">Темна</sys:String>
 	<sys:String x:Key="Theme.Light">Світла</sys:String>
 	<sys:String x:Key="Debug.Detailed">Детальний</sys:String>
-	<sys:String x:Key="CaptureMode.Ignore">Ігнорувати [ARA]</sys:String>
 
 	<sys:String x:Key="About.Title">Про програму</sys:String>
 	<sys:String x:Key="About.Info">Інформація</sys:String>

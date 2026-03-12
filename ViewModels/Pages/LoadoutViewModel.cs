@@ -60,19 +60,8 @@ namespace ARA.ViewModels.Pages
 			IsLoading = true;
 			_logger.LogInformation("Loadout Check: {Loadout}", SelectedLoadout.Name);
 			var window = Application.Current.MainWindow;
-			var results = new Dictionary<int, bool>();
-
-			if (_configurations.IsCaptureModeIgnoreARA())
-			{
-				_window.HideMainWindow();
-				var checkTask = Task.Run(() => _loadoutChecker.CheckIcons(SelectedLoadout.Items));
-				_window.ShowMainWindow();
-				results = await checkTask;
-			}
-			else
-			{
-				results = await Task.Run(() => _loadoutChecker.CheckIcons(SelectedLoadout.Items));
-			}
+			
+			var results = await Task.Run(() => _loadoutChecker.CheckIcons(SelectedLoadout.Items));
 
 			var newItems = SelectedLoadout.Items.Select(item => new GameItem
 			{

@@ -72,10 +72,6 @@ namespace ARA.Services
 			{
 				_configurations.SettingsConfiguration.DebugLevel = Constants.DebugLevels[0].Id;
 			}
-			if (!Constants.CaptureModes.Any(i => i.Id == _configurations.SettingsConfiguration.CaptureMode))
-			{
-				_configurations.SettingsConfiguration.CaptureMode = Constants.CaptureModes[0].Id;
-			}
 		}
 
 		private void SetDebugLevel()
@@ -100,15 +96,6 @@ namespace ARA.Services
 			return Constants.DebugLevels.FirstOrDefault(l => l.Id == _configurations.SettingsConfiguration.DebugLevel)!;
 		}
 
-		public SettingsItem GetCaptureMode()
-		{
-			return Constants.CaptureModes.FirstOrDefault(m => m.Id == _configurations.SettingsConfiguration.CaptureMode)!;
-		}
-
-		public bool IsCaptureModeIgnoreARA()
-		{
-			return _configurations.SettingsConfiguration.CaptureMode == Constants.CaptureMode.Ignore;
-		}
 		#endregion
 
 		#region LoadoutConfig

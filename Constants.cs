@@ -24,17 +24,6 @@ namespace ARA
 			new() {Id = DebugLevel.Default, TranslationKey = "General.Default", Name = "", Path = String.Concat(IconPath, "DebugLevels/Debug-Default.png")},
 			new() {Id = DebugLevel.Detailed, TranslationKey = "Debug.Detailed", Name = "", Path = String.Concat(IconPath, "DebugLevels/Debug-Details.png")}
 		];
-		public static readonly List<SettingsItem> CaptureModes =
-		[
-			new() {Id = CaptureMode.Default, TranslationKey = "General.Default", Name = "", Path = String.Concat(IconPath, "CaptureModes/Capture-Default.png")},
-			new() {Id = CaptureMode.Ignore, TranslationKey = "CaptureMode.Ignore", Name = "", Path = String.Concat(IconPath, "CaptureModes/Capture-Ignore.png")}
-		];
-
-		public static class CaptureMode
-		{
-			public const string Default = "Default";
-			public const string Ignore = "Ignore";
-		}
 
 		public static class DebugLevel
 		{

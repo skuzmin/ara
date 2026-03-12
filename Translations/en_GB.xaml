@@ -24,8 +24,6 @@
 
 	<sys:String x:Key="Loadout.Title">Loadout Checker</sys:String>
 	<sys:String x:Key="Loadout.Placeholder">Select Loadout</sys:String>
-	<sys:String x:Key="Loadout.DefaultZoneMessage1">You are using default zone configuration.</sys:String>
-	<sys:String x:Key="Loadout.DefaultZoneMessage2">Go to [Settings] => [Select Zone] to set a zone.</sys:String>
 	<sys:String x:Key="Loadout.Button">Check</sys:String>
 	<sys:String x:Key="Loadout.Grid.Icon">Icon</sys:String>
 	<sys:String x:Key="Loadout.Grid.Name">Name</sys:String>
@@ -53,7 +51,7 @@
 	<sys:String x:Key="Settings.Theme">Theme:</sys:String>
 	<sys:String x:Key="Settings.Language">Language:</sys:String>
 	<sys:String x:Key="Settings.DebugLevel">Debug Level:</sys:String>
-	<sys:String x:Key="Settings.CaptureMode">Capture Mode:</sys:String>
+	<sys:String x:Key="Settings.CaptureGame">Detect Game</sys:String>
 	<sys:String x:Key="Settings.Button">Open configuration file location</sys:String>
 
 	<sys:String x:Key="Translation.English">English</sys:String>
@@ -61,7 +59,6 @@
 	<sys:String x:Key="Theme.Dark">Dark</sys:String>
 	<sys:String x:Key="Theme.Light">Light</sys:String>
 	<sys:String x:Key="Debug.Detailed">Detailed</sys:String>
-	<sys:String x:Key="CaptureMode.Ignore">Ignore [ARA]</sys:String>
 
 	<sys:String x:Key="About.Title">About</sys:String>
 	<sys:String x:Key="About.Info">Info</sys:String>

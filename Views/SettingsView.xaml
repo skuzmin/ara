@@ -84,23 +84,22 @@
 					</controls:AraComboBox>
 				</StackPanel>
 
-				<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
-					<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource Settings.CaptureMode}"/>
-					<controls:AraComboBox
-						x:Name="CaptureModeComboBox"
-						Style="{StaticResource AraComboBox}"
-						ItemsSource="{Binding CaptureModes}"
-						SelectedItem="{Binding SelectedCaptureMode, Mode=TwoWay}">
-						<controls:AraComboBox.ItemTemplate>
-							<DataTemplate>
-								<StackPanel Orientation="Horizontal">
-									<Image Source="{Binding Path}" Height="32" Stretch="Uniform" VerticalAlignment="Center"/>
-									<TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="8 0 0 0"/>
-								</StackPanel>
-							</DataTemplate>
-						</controls:AraComboBox.ItemTemplate>
-					</controls:AraComboBox>
-				</StackPanel>
+				<Grid Margin="0 4">
+					<controls:AraButton Command="{Binding DetectGameCommand}">
+						<controls:AraButton.Style>
+							<Style BasedOn="{StaticResource SecondaryButton}" TargetType="controls:AraButton">
+								<Style.Triggers>
+									<DataTrigger Binding="{Binding IsGameDetected}" Value="True">
+										<Setter Property="IsEnabled" Value="False" />
+									</DataTrigger>
+								</Style.Triggers>
+							</Style>
+						</controls:AraButton.Style>
+						<controls:AraButton.Children>
+							<TextBlock Text="{DynamicResource Settings.CaptureGame}" />
+						</controls:AraButton.Children>
+					</controls:AraButton>
+				</Grid>
 			</StackPanel>
 		</GroupBox>
 

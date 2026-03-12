@@ -11,8 +11,8 @@ namespace ARA.ViewModels.Pages
 	{
 		private readonly IAraThemes _themes;
 		private readonly IAraTranslation _translations;
-		private readonly IMainWindow _windowService;
 		private readonly IAraConfigurations _configurations;
+		private readonly ILoadoutCheckerService _loadoutChecker;
 		public bool IsEdited
 		{
 			get => field;
@@ -25,7 +25,6 @@ namespace ARA.ViewModels.Pages
 		public List<SettingsItem> Themes { get; set; }
 		public List<SettingsItem> Locales { get; set; }
 		public List<SettingsItem> DebugLevels { get; set; }
-		public List<SettingsItem> CaptureModes { get; set; }
 		public SettingsItem? SelectedLocale
 		{
 			get => field;
@@ -56,30 +55,32 @@ namespace ARA.ViewModels.Pages
 				OnPropertyChanged(nameof(SelectedDebugLevel));
 			}
 		}
-		public SettingsItem? SelectedCaptureMode
+		public bool IsGameDetected
 		{
-			get => field;
-			set
-			{
-				field = value;
-				IsEdited = true;
-				OnPropertyChanged(nameof(SelectedCaptureMode));
-			}
+			get => _loadoutChecker.IsGameDetected();
 		}
 		public ICommand OpenConfigFolderCommand { get; }
 		public ICommand SaveSettingsCommand { get; }
-		public SettingsViewModel(IAraThemes themes, IAraTranslation translations, IAraConfigurations configurations, IMainWindow windowService)
+		public ICommand DetectGameCommand { get; }
+		public SettingsViewModel(IAraThemes themes,
+			IAraTranslation translations,
+			IAraConfigurations configurations,
+			ILoadoutCheckerService loadoutChecker)
 		{
 			_themes = themes;
 			_translations = translations;
-			_windowService = windowService;
 			_configurations = configurations;
+			_loadoutChecker = loadoutChecker;
 			OpenConfigFolderCommand = new RelayCommand(_ => Process.Start("explorer.exe", Path.GetDirectoryName(Constants.ConfigFilePath)!));
 			SaveSettingsCommand = new RelayCommand(_ => SaveSettings());
+			DetectGameCommand = new RelayCommand(_ =>
+			{
+				loadoutChecker.CaptureGameWindow();
+				OnPropertyChanged(nameof(IsGameDetected));
+			});
 			Themes = _themes.GetThemes();
 			Locales = _translations.GetLocales();
 			DebugLevels = Constants.DebugLevels;
-			CaptureModes = Constants.CaptureModes;
 			_translations.TranslationChanged += UpdateTranslations;
 			UpdateTranslations();
 		}
@@ -89,15 +90,12 @@ namespace ARA.ViewModels.Pages
 			Themes.ForEach(t => t.Name = _translations.Translate(t.TranslationKey));
 			Locales.ForEach(l => l.Name = _translations.Translate(l.TranslationKey));
 			DebugLevels.ForEach(l => l.Name = _translations.Translate(l.TranslationKey));
-			CaptureModes.ForEach(m => m.Name = _translations.Translate(m.TranslationKey));
 			SelectedTheme = null;
 			SelectedLocale = null;
 			SelectedDebugLevel = null;
-			SelectedCaptureMode = null;
 			SelectedTheme = _themes.GetTheme();
 			SelectedLocale = _translations.GetLocale();
 			SelectedDebugLevel = _configurations.GetDebugLevel();
-			SelectedCaptureMode = _configurations.GetCaptureMode();
 			IsEdited = false;
 		}
 
@@ -105,7 +103,6 @@ namespace ARA.ViewModels.Pages
 		{
 			var settings = _configurations.GetSettingsConfiguration();
 			settings.DebugLevel = SelectedDebugLevel!.Id;
-			settings.CaptureMode = SelectedCaptureMode!.Id;
 			_themes.UpdateTheme(SelectedTheme!.Id);
 			_translations.UpdateLocale(SelectedLocale!.Id);
 
