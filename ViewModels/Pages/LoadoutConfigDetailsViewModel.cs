@@ -19,7 +19,15 @@ namespace ARA.ViewModels.Pages
 		public ICommand AddItemCommand { get; }
 		public ICommand RemoveItemCommand { get; }
 		public ICommand SaveLoadoutConfigurationCommand { get; }
-		public ObservableCollection<GameItem> ItemsList { get; set; }
+		public ObservableCollection<GameItem> ItemsList
+		{
+			get => field;
+			set
+			{
+				field = value;
+				OnPropertyChanged(nameof(ItemsList));
+			}
+		}
 		public ObservableCollection<GameItem> SelectedItemsList { get; }
 		public LoadoutConfiguration LoadoutConfiguration { get; }
 		public string Title { get; }
@@ -56,8 +64,8 @@ namespace ARA.ViewModels.Pages
 		}
 		public bool IsValid => LoadoutValidation.IsValid;
 		public LoadoutConfigDetailsViewModel(
-			IAraNavigation navigation, 
-			IAraConfigurations configurations, 
+			IAraNavigation navigation,
+			IAraConfigurations configurations,
 			ILogger logger,
 			IAraTranslation translation)
 		{
@@ -163,7 +171,11 @@ namespace ARA.ViewModels.Pages
 			}
 			IsEdited = true;
 			SelectedItemsList.Add(item);
-			ItemsList.Remove(item);
+			ItemsList = new ObservableCollection<GameItem>(
+				ItemsList
+					.Where(x => x != item)
+					.OrderBy(x => x.Name)
+			);
 			ResetComboBox?.Invoke();
 			ListValidate();
 			_logger.LogInformation("Add {item} to {loadout}", item.Name, LoadoutConfiguration.Name);
@@ -178,7 +190,6 @@ namespace ARA.ViewModels.Pages
 					.Append(item)
 					.OrderBy(x => x.Name)
 			);
-			OnPropertyChanged(nameof(ItemsList));
 			ListValidate();
 			_logger.LogInformation("Remove {item} from {loadout}", item.Name, LoadoutConfiguration.Name);
 		}
