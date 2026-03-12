@@ -12,8 +12,6 @@ using OpenCvSharp;
 using OpenCvSharp.Extensions;
 #pragma warning disable SYSLIB1054
 
-// dotnet publish -c Release
-
 namespace ARA.Services
 {
 	public class LoadoutCheckerService : ILoadoutCheckerService
