@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -32,7 +33,8 @@ namespace ARA.Services
 		private const double REF_HEIGHT = 1440;
 		private const double REF_WIDTH = 2560;
 		private const double REF_ICON_SIZE = 128;
-		private const double THRESHOLD = 0.9;
+		private const double THRESHOLD_STAGE_1 = 0.8;
+		private const double THRESHOLD_STAGE_2 = 0.9;
 		private readonly ILogger _logger;
 		private readonly IAraTranslation _translations;
 		private IntPtr _hwnd;
@@ -67,10 +69,12 @@ namespace ARA.Services
 			_logger.LogInformation("PROC: {proc} | WIN: {win} | HWND: {hwnd}", proc, proc[0], _hwnd);
 		}
 
+
 		public Dictionary<int, bool> CheckIcons(List<GameItem> icons)
 		{
 			var results = new Dictionary<int, bool>();
 			using var region = CaptureScreen();
+
 			if (!IsGameDetected() || region == null || GetClientGameArea() is not { } size)
 			{
 				foreach (var item in icons)
@@ -79,21 +83,30 @@ namespace ARA.Services
 				}
 				return results;
 			}
+
 			double ratioW = size.Width / REF_WIDTH;
 			double ratioH = size.Height / REF_HEIGHT;
-			double changeH = Math.Abs(ratioH - 1);
-			double changeW = Math.Abs(ratioW - 1);
-			double scale = changeH > changeW ? ratioH : ratioW;
+			double scale = Math.Abs(ratioH - 1) > Math.Abs(ratioW - 1) ? ratioH : ratioW;
 			double iconSize = REF_ICON_SIZE * scale;
 
+			var candidates = icons
+				.Select(item => (icon: LoadTemplate(item.Path), item.Name, iconSize))
+				.ToList();
+
+			var matchResults = MatchAll(region, candidates);
 			foreach (var item in icons)
 			{
-				using var template = LoadTemplate(item.Path);
-				results[item.Id] = MatchSingle(region, template, item.Name, iconSize);
+				results[item.Id] = matchResults.TryGetValue(item.Name, out bool matched) && matched;
+			}
+
+			foreach (var candidate in candidates)
+			{
+				candidate.icon.Dispose();
 			}
 
 			return results;
 		}
+
 
 		private System.Drawing.Size? GetClientGameArea()
 		{
@@ -146,27 +159,67 @@ namespace ARA.Services
 			return Mat.FromImageData(bytes, ImreadModes.Color);
 		}
 
-		private bool MatchSingle(Mat region, Mat icon, string name, double iconSize)
+		private Dictionary<string, bool> MatchAll(Mat region, List<(Mat icon, string name, double iconSize)> icons)
 		{
-			using var regionBgr = ToGray(region);
-			using var iconBgr = ToGray(icon);
-			if (regionBgr.Empty() || iconBgr.Empty())
+			using var regionGray = ToGray(region, blurSize: 3);
+			var results = new ConcurrentDictionary<string, bool>();
+			var stage2Candidates = new ConcurrentBag<(Mat resize, string name)>();
+			// Stage 1: Fast check icons in parallel (Grayscale and Resize)
+			Parallel.ForEach(icons, item =>
 			{
-				return false;
+				using var iconGray = ToGray(item.icon, blurSize: 5);
+				using var resize = new Mat();
+				Cv2.Resize(iconGray, resize, new OpenCvSharp.Size(item.iconSize, item.iconSize), interpolation: InterpolationFlags.Area);
+
+				using var resultFast = new Mat();
+				Cv2.MatchTemplate(regionGray, resize, resultFast, TemplateMatchModes.CCoeffNormed);
+				Cv2.MinMaxLoc(resultFast, out _, out double fastVal, out _, out _);
+
+				if (fastVal < THRESHOLD_STAGE_1)
+				{
+					results[item.name] = false;
+				}
+				else if (fastVal >= THRESHOLD_STAGE_2)
+				{
+					results[item.name] = true;
+				}
+				else
+				{
+					stage2Candidates.Add((resize.Clone(), item.name));
+				}
+				_logger.LogInformation("Stage #1 | [{icon} : {value}]", item.name, $"{fastVal:F3}");
+			});
+
+			if (stage2Candidates.IsEmpty)
+			{
+				return results.ToDictionary(k => k.Key, v => v.Value);
 			}
 
-			using Mat result = new();
-			using Mat resize = new();
+			// Create mask using Icon scaled size to cover 40x32(ingame item quantity) in the bottom right corner
+			var firstCandidate = stage2Candidates.First();
+			var maskSize = firstCandidate.resize.Size();
+			double scale = maskSize.Width / 128.0;
+			int maskW = (int)(40 * scale);
+			int maskH = (int)(32 * scale);
 
-			Cv2.Resize(iconBgr, resize, new OpenCvSharp.Size(iconSize, iconSize), interpolation: InterpolationFlags.Linear);
-			Cv2.MatchTemplate(regionBgr, resize, result, TemplateMatchModes.CCoeffNormed);
-			Cv2.MinMaxLoc(result, out _, out double maxVal, out _, out _);
+			using Mat sharedMask = Mat.Ones(maskSize, MatType.CV_8UC1) * 255;
+			sharedMask[new OpenCvSharp.Rect(maskSize.Width - maskW, maskSize.Height - maskH, maskW, maskH)].SetTo(Scalar.Black);
 
-			_logger.LogInformation("Icon check [{icon} : {value}]", name, $"{maxVal:F3}");
-			return maxVal >= THRESHOLD;
+			// Stage 2: Detailed check of candidate icons using mask
+			Parallel.ForEach(stage2Candidates, candidate =>
+			{
+				using var resultMasked = new Mat();
+				Cv2.MatchTemplate(regionGray, candidate.resize, resultMasked, TemplateMatchModes.CCoeffNormed, sharedMask);
+				Cv2.MinMaxLoc(resultMasked, out _, out double maskedVal, out _, out _);
+				results[candidate.name] = maskedVal >= THRESHOLD_STAGE_2;
+				candidate.resize.Dispose();
+				_logger.LogInformation("Stage #2 | [{icon} : {value}]", candidate.name, $"{maskedVal:F3}");
+			});
+
+			return results.ToDictionary(k => k.Key, v => v.Value);
 		}
 
-		private Mat ToGray(Mat mat)
+		private Mat ToGray(Mat mat, int blurSize)
 		{
 			if (mat.Empty())
 			{
@@ -174,15 +227,18 @@ namespace ARA.Services
 				return new Mat();
 			}
 
+			Mat gray;
 			switch (mat.Channels())
 			{
-				case 1: return mat.Clone();
-				case 3: return mat.CvtColor(ColorConversionCodes.BGR2GRAY);
-				case 4: return mat.CvtColor(ColorConversionCodes.BGRA2GRAY);
+				case 1: gray = mat.Clone(); break;
+				case 3: gray = mat.CvtColor(ColorConversionCodes.BGR2GRAY); break;
+				case 4: gray = mat.CvtColor(ColorConversionCodes.BGRA2GRAY); break;
 				default:
 					_logger.LogError("Unsupported channel count: {c}", mat.Channels());
 					return new Mat();
 			}
+			Cv2.GaussianBlur(gray, gray, new OpenCvSharp.Size(blurSize, blurSize), 0);
+			return gray;
 		}
 
 		private Mat? CaptureScreen()
@@ -192,7 +248,7 @@ namespace ARA.Services
 				return null;
 			}
 
-			var bmp = new Bitmap(size.Width, size.Height, PixelFormat.Format32bppArgb);
+			using var bmp = new Bitmap(size.Width, size.Height, PixelFormat.Format32bppArgb);
 			using Graphics g = Graphics.FromImage(bmp);
 			IntPtr hdcDest = g.GetHdc();
 			try

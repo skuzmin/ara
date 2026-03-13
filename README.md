@@ -8,6 +8,8 @@ Small app which helps you to create and check loadout before you start the adven
 ## System Requirements
 Windows 11 x64
 
+**IMPORTANT: Game should run in Windowed or Borderless Fullscreen modes!**
+
 ## Features
 
 - Create and Check Loadout

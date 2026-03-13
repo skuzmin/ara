@@ -543,7 +543,6 @@ namespace ARA.Controls.CustomControls
 		{
 			Text = "";
 			SelectedItem = null;
-			Focus();
 		}
 		private void OnTextBoxKeyDown(object sender, KeyEventArgs e)
 		{
