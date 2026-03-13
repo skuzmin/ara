@@ -33,6 +33,8 @@ namespace ARA.Services
 		private const double REF_HEIGHT = 1440;
 		private const double REF_WIDTH = 2560;
 		private const double REF_ICON_SIZE = 128;
+		private const double REF_MASK_HEIGHT = 32;
+		private const double REF_MASK_WITH = 40;
 		private const double THRESHOLD_STAGE_1 = 0.8;
 		private const double THRESHOLD_STAGE_2 = 0.9;
 		private readonly ILogger _logger;
@@ -198,9 +200,9 @@ namespace ARA.Services
 			// Create mask using Icon scaled size to cover 40x32(ingame item quantity) in the bottom right corner
 			var firstCandidate = stage2Candidates.First();
 			var maskSize = firstCandidate.resize.Size();
-			double scale = maskSize.Width / 128.0;
-			int maskW = (int)(40 * scale);
-			int maskH = (int)(32 * scale);
+			double scale = maskSize.Width / REF_ICON_SIZE;
+			int maskW = (int)(REF_MASK_WITH * scale);
+			int maskH = (int)(REF_MASK_HEIGHT * scale);
 
 			using Mat sharedMask = Mat.Ones(maskSize, MatType.CV_8UC1) * 255;
 			sharedMask[new OpenCvSharp.Rect(maskSize.Width - maskW, maskSize.Height - maskH, maskW, maskH)].SetTo(Scalar.Black);
