@@ -25,10 +25,3 @@ Windows 11 x64
 Copyright 2026 Serhii Kuzmin
 
 This project is licensed under the [MIT License](LICENSE).
-
-## Code Signing Policy
-
-Free code signing provided by [SignPath.io](https://signpath.io),
-certificate by [SignPath Foundation](https://signpath.org).
-
-Maintainers: Serhii Kuzmin ([@skuzmin](https://github.com/skuzmin)) — Releaser, Signer

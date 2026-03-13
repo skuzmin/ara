@@ -32,7 +32,7 @@
 						</StackPanel>
 						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
 							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource About.Version}"/>
-							<TextBlock Style="{StaticResource AraTextBlock}" Text="1.0.0"/>
+							<TextBlock Style="{StaticResource AraTextBlock}" Text="1.1.1"/>
 						</StackPanel>
 						<StackPanel Style="{StaticResource AraStackRow}" Orientation="Horizontal">
 							<TextBlock Style="{StaticResource AraStackRowLabel}" Text="{DynamicResource About.Repository}"/>
