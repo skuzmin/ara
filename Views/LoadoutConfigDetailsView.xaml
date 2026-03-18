@@ -132,14 +132,6 @@
 												</DataTemplate>
 											</DataGridTemplateColumn.CellTemplate>
 										</DataGridTemplateColumn>
-										<!-- Quantity -->
-										<DataGridTemplateColumn Header="{DynamicResource LoadoutConfigDetails.Items.Grid.Quantity}" Width="Auto">
-											<DataGridTemplateColumn.CellTemplate>
-												<DataTemplate>
-													<TextBlock Text="{Binding Quantity}"/>
-												</DataTemplate>
-											</DataGridTemplateColumn.CellTemplate>
-										</DataGridTemplateColumn>
 										<!-- Actions -->
 										<DataGridTemplateColumn Header="{DynamicResource LoadoutConfigDetails.Items.Grid.Actions}" Width="Auto">
 											<DataGridTemplateColumn.CellTemplate>

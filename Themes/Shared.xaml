@@ -103,7 +103,7 @@
 			</Setter.Value>
 		</Setter>
 		<Setter Property="ItemsListCornerRadius" Value="{StaticResource Radius-1}" />
-		<Setter Property="ItemsListMaxHeight" Value="124" />
+		<Setter Property="ItemsListMaxHeight" Value="205" />
 		<Setter Property="ItemsListBorderBrush" Value="{DynamicResource ItemsListBorderBrush}" />
 		<Setter Property="ItemsListBorderThickness" Value="2" />
 		<Setter Property="ListItemHeight" Value="40" />
